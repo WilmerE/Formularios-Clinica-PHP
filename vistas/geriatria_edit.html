@@ -1,0 +1,535 @@
+ {% extends 'base.html' %}
+
+ {% block title %} | Geriatría {% endblock %}
+
+ {% block css %}
+ <!-- SELECT2 -->
+ <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+ {% endblock %}
+
+ {% block content %}
+
+{% if resultado %}
+ <form action="." method="post" name="geriatria_update" id="geriatria_update" enctype="multipart/form-data">
+ 	{% for p in resultado %}
+ 	<div class="caja">
+ 		<div class="caja-header">
+ 			<h3 class="caja-title">HISTORIA CLÍNICA GERIATRIA</h3>
+ 		</div>
+ 		<div class="caja-body">
+ 			<input type="hidden" name="id_form" value="{{ p.id }}">
+ 			<div class="form-group">
+ 				<label for="id_numero" id="numero" class="label active">N°:</label>
+ 				<input type="text" name="numero" value="{{ p.numero }}" class="form-control" required="" id="id_numero" readonly>
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_nombre">PACIENTE:</label>
+ 				<br>
+ 				<select id="id_nombre" name="nombre" class="select2 users-select">
+ 					<option value="{{ p.paciente_id }}"><strong>{{ p.display_name }}</strong></option>
+ 					{% for users in usuarios %}
+ 					<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+ 					{% endfor %}
+ 				</select>
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_edad" id="edad" class="label">EDAD:</label>
+ 				<input type="text" name="edad" placeholder="" maxlength="100" autocomplete="off" class="form-control" required="" id="id_edad" value="{{ p.edad }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_lugar_fecha" id="lugar_fecha" class="label">FECHA Y LUGAR DE NACIMIENTO:</label>
+ 				<input type="text" name="lugar_fecha" placeholder="" maxlength="128" autocomplete="off" class="form-control" required="" id="id_lugar_fecha" value="{{ p.lugar_fecha }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_sexo" id="sexo">SEXO:</label>
+ 				<input type="text" name="sexo" maxlength="200" placeholder="" autocomplete="off" class="form-control pac-target-input" required="" id="id_sexo" value="{{ p.sexo }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_estado_civil" id="estado_civil" class="label">ESTADO CIVIL:</label>
+ 				<input type="text" name="estado_civil" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_civil" value="{{ p.estado_civil }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_profesion" id="profesion" class="label">PROFESIÓN:</label>
+ 				<input type="text" name="profesion" placeholder="" autocomplete="off" class="form-control" required="" id="id_profesion" value="{{ p.profesion }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_cui" id="cui" class="label">NÚMERO DE IDENTIDAD:</label>
+ 				<input type="text" name="cui" placeholder="" autocomplete="off" class="form-control" required="" id="id_cui" value="{{ p.cui }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_seguro" id="seguro" class="label">SEGURO:</label>
+ 				<input type="text" name="seguro" placeholder="" autocomplete="off" class="form-control" required="" id="id_seguro" value="{{ p.seguro }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_persona_referencia" id="persona_referencia" class="label">PERSONA DE REFERENCIA:</label>
+ 				<input type="text" name="persona_referencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_persona_referencia" value="{{ p.referencia }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_telefono" id="telefono" class="label">TELÉDONOS DE CONTÁCTO:</label>
+ 				<input type="tel" name="telefono" placeholder="" autocomplete="off" class="form-control" required="" id="id_telefono" value="{{ p.telefono }}">
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="caja">
+ 		<div class="caja-header">
+ 			<h3 class="card-title">ANTECEDENTES FAMILIARES</h3>
+ 		</div>
+ 		<div class="caja-body">
+ 			<div class="form-group">
+ 				<label for="id_madre" id="madre" class="label">MADRE:</label>
+ 				<input type="text" name="madre" placeholder="" autocomplete="off" class="form-control" required="" id="id_madre" value="{{ p.antecedente_madre }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_padre" id="padre" class="label">PADRE:</label>
+ 				<input type="text" name="padre" placeholder="" autocomplete="off" class="form-control" required="" id="id_padre" value="{{ p.antecedente_padre }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_otro_familiar" id="otro_familiar" class="label">OTROS FAMILIARES:</label>
+ 				<input type="text" name="otro_familiar" placeholder="" autocomplete="off" class="form-control" required="" id="id_otro_familiar" value="{{ p.antecedente_otros }}">
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="caja">
+ 		<div class="caja-header">
+ 			<h3 class="card-title">ANTECEDENTES PERSONALES</h3>
+ 		</div>
+ 		<div class="caja-body">
+ 			<div class="form-group">
+ 				<label for="id_farmacos" id="farmacos" class="label">FARMACOS:</label>
+ 				<input type="text" name="farmacos" placeholder="" autocomplete="off" class="form-control" required="" id="id_farmacos" value="{{ p.antecedente_farmacos }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_motivo_consulta" id="motivo_consulta" class="label">MOTIVOS DE CONSULTA:</label>
+ 				<input type="text" name="motivo_consulta" placeholder="" autocomplete="off" class="form-control" required="" id="id_motivo_consulta" value="{{ p.antecedente_motivo_consulta }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_enfermedad_actual" id="enfermedad_actual" class="label">ENFERMEDAD ACTUAL:</label>
+ 				<input type="text" name="enfermedad_actual" placeholder="" autocomplete="off" class="form-control" required="" id="id_enfermedad_actual" value="{{ p.antecedente_enfermedad_actual }}">
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="caja">
+ 		<div class="caja-header">
+ 			<h3 class="card-title">EXPLORACIÓN FÍSICA</h3>
+ 		</div>
+ 		<div class="caja-body">
+ 			<div class="form-group">
+ 				<label for="id_peso" id="peso" class="label">PESO (kg.):</label>
+ 				<input type="text" name="peso" placeholder="" autocomplete="off" class="form-control peso" required="" id="id_peso" value="{{ p.peso }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_talla" id="talla" class="label">TALLA (mts.):</label>
+ 				<input type="text" name="talla" placeholder="" autocomplete="off" class="form-control talla" required="" id="id_talla" value="{{ p.talla }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_juventud" id="juventud" class="label">ALCANZADA EN JUVENTUD:</label>
+ 				<input type="text" name="juventud" placeholder="" autocomplete="off" class="form-control" required="" id="id_juventud" value="{{ p.juventud }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_imc" id="imc" class="label active">IMC:</label>
+ 				<input type="text" name="imc" placeholder="" autocomplete="off" class="form-control" required="" id="id_imc" readonly value="{{ p.imc }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_temp" id="temp" class="label">TEMPERATURA C°:</label>
+ 				<input type="text" name="temp" placeholder="" autocomplete="off" class="form-control" required="" id="id_temp" value="{{ p.temperatura }}">
+ 			</div>
+ 			<hr>
+ 			<h5>TA</h5>
+ 			<br>
+ 			<div class="form-group">
+ 				<label for="id_tas" id="tas" class="label">(S):</label>
+ 				<input type="text" name="tas" placeholder="" autocomplete="off" class="form-control" required="" id="id_tas" value="{{ p.tas }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_taa" id="taa" class="label">(A):</label>
+ 				<input type="text" name="taa" placeholder="" autocomplete="off" class="form-control" required="" id="id_taa" value="{{ p.taa }}">
+ 			</div>
+ 			<hr><br>
+ 			<div class="form-group">
+ 				<label for="id_fc" id="fc" class="label">FC:</label>
+ 				<input type="text" name="fc" placeholder="" autocomplete="off" class="form-control" required="" id="id_fc" value="{{ p.fc }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_p" id="p" class="label">P:</label>
+ 				<input type="text" name="p" placeholder="" autocomplete="off" class="form-control" required="" id="id_p" value="{{ p.p }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_fr" id="fr" class="label">FR:</label>
+ 				<input type="text" name="fr" placeholder="" autocomplete="off" class="form-control" required="" id="id_fr" value="{{ p.fr }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_sat" id="sat" class="label">SAT O2:</label>
+ 				<input type="text" name="sat" placeholder="" autocomplete="off" class="form-control" required="" id="id_sat" value="{{ p.sat }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_estado_general" id="estado_general" class="label">ESTADO GENERAL:</label>
+ 				<input type="text" name="estado_general" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_general" value="{{ p.estado_general }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_estado_mental" id="estado_mental" class="label">ESTADO MENTAL:</label>
+ 				<input type="text" name="estado_mental" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_mental" value="{{ p.estado_mental }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_cabeza" id="cabeza" class="label">CABEZA Y CUELLO:</label>
+ 				<input type="text" name="cabeza" placeholder="" autocomplete="off" class="form-control" required="" id="id_cabeza" value="{{ p.cabeza_cuello }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_torax" id="torax" class="label">TÓRAX:</label>
+ 				<input type="text" name="torax" placeholder="" autocomplete="off" class="form-control" required="" id="id_torax" value="{{ p.torax }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_abdomen" id="abdomen" class="label">ABDOMEN:</label>
+ 				<input type="text" name="abdomen" placeholder="" autocomplete="off" class="form-control" required="" id="id_abdomen" value="{{ p.abdomen }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_extremidades" id="extremidades" class="label">EXTREMIDADES:</label>
+ 				<input type="text" name="extremidades" placeholder="" autocomplete="off" class="form-control" required="" id="id_extremidades" value="{{ p.extremidades }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_neurologico" id="neurologico" class="label">NEUROLÓGICO:</label>
+ 				<input type="text" name="neurologico" placeholder="" autocomplete="off" class="form-control" required="" id="id_neurologico" value="{{ p.neurologico }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_dolor" id="dolor" class="label">DOLOR:</label>
+ 				<input type="text" name="dolor" placeholder="" autocomplete="off" class="form-control" required="" id="id_dolor" value="{{ p.dolor }}">
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="caja">
+ 		<div class="caja-header">
+ 			<h3 class="card-title">ESTUDIOS COMPLEMENTARIOS</h3>
+ 		</div>
+ 		<div class="caja-body">
+ 			<div class="form-group">
+ 				<label for="id_diagnostico" id="diagnostico" class="label">DIAGNÓSTICO(S):</label>
+ 				<input type="text" name="diagnostico" placeholder="" autocomplete="off" class="form-control" required="" id="id_diagnostico" value="{{ p.diagnostico }}">
+ 			</div>
+ 			<div class="form-group">
+ 				<label for="id_tratamientos" id="tratamientos" class="label">TRATAMIENTO(S):</label>
+ 				<input type="text" name="tratamientos" placeholder="" autocomplete="off" class="form-control" required="" id="id_tratamientos" value="{{ p.tratamiento }}">
+ 			</div>
+ 			<table border="1" cellspacing=0 cellpadding=2 bordercolor="#ced4da">
+ 				<thead>
+ 					<tr>
+ 						<th><p><strong>VALORACIÓN GERIÁTRICA INTEGRAL:</strong></p></th>
+ 						<th><p><strong>PUNTOS</strong></p></th>
+ 						<th><p><strong>FECHA</strong></p></th>
+ 					</tr>
+ 				</thead>
+ 				<tbody>
+ 					<tr>
+ 						<td colspan="3"><h5>FUNCIONAL:</h5></td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- VELOCIDAD DE MARCHA</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_velocidad" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_velocidad" value="{{ p.velocidad_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_velocidad" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_velocidad" value="{{ p.velocidad_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- SPPB</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_sppb" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_sppb" value="{{ p.sppb_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_sppb" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_sppb" value="{{ p.sppb_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- TUG</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_tug" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_tug" value="{{ p.tug_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_tug" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_tug" value="{{ p.tug_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- FAC</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_fac" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fac" value="{{ p.fac_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_fac" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fac" value="{{ p.fac_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td colspan="3"><h5>DISCAPACIDAD:</h5></td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- BARTHEL</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_barthel" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_barthel" value="{{ p.barthel_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_barthel" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_barthel" value="{{ p.barthel_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- LAWTON</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_lawton" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_lawton" value="{{ p.lawton_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_lawton" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_lawton" value="{{ p.lawton_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td colspan="3"><h5>MENTAL:</h5></td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- MMSE</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_mmse" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_mmse" value="{{ p.mmse_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_mmse" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_mmse" value="{{ p.mmse_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- T@M 7 MÍNUTOS</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_7minutos" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_7minutos" value="{{ p.tom7_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_7minutos" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_7minutos" value="{{ p.tom7_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- FAST</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_fast" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fast" value="{{ p.fast_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_fast" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fast" value="{{ p.fast_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- RELOJ</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_reloj" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_reloj" value="{{ p.reloj_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_reloj" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_reloj" value="{{ p.reloj_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- FLUENCIA VERBAL</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_fluencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fluencia" value="{{ p.fluencia_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_fluencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fluencia" value="{{ p.fluencia_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td colspan="3"><h5>(DEMENCIA):</h5></td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- GDS</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_gds" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_gds" value="{{ p.gds_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_gds" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_gds" value="{{ p.gds_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- YESAVAGE</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_yesavage" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_yesavage" value="{{ p.yesavage_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_yesavage" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_yesavage" value="{{ p.yesavage_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td colspan="3"><h5>OTRAS:</h5></td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- CARGA DEL CUIDADOR</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_cuidador" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_cuidador" value="{{ p.cuidador_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_cuidador" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_cuidador" value="{{ p.cuidador_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- CALIDAD DE VIDA</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_calidad_vida" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_calidad_vida" value="{{ p.calidad_vida_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_calidad_vida" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_calidad_vida" value="{{ p.calidad_vida_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>- VALORACIÓN SOCIAL</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_valoracion_social" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_valoracion_social" value="{{ p.vsocial_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_valoracion_social" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_valoracion_social" value="{{ p.vsocial_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td><p>-VALORACIÓN NUTRICIONAL</p></td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="text" name="puntos_valoracion_nutricional" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_valoracion_nutricional" value="{{ p.vnutricional_pts }}">
+ 							</div>
+ 						</td>
+ 						<td>
+ 							<div class="form-group">
+ 								<input type="date" name="fecha_valoracion_nutricional" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_valoracion_nutricional" value="{{ p.vnutricional_fecha }}">
+ 							</div>
+ 						</td>
+ 					</tr>
+ 				</tbody>
+ 			</table>
+ 		</div>
+ 		<div class="caja-footer">
+ 			<a class="btn btn-link" id="btn_cancelar">Cancelar</a>
+ 			<button type="submit" class="btn btn-primary" id="btn_estudios">Actualizar</button>
+ 		</div>
+ 	</div>
+ 	{% endfor %}
+ </form>
+  {% else %}
+   <span>Ocurrió un error 505</span>
+ {% endif %}
+
+ {% endblock %}
+
+ {% block js %}
+ <script src="js_libs/select2/js/select2.min.js"></script>
+ <script type="text/javascript">
+ 	$activo = $("input")
+ 	$activo.addClass("active")
+ 	$label = $("label")
+ 	$label.addClass("active")
+
+ 	/*
+	*=================================== INICIAR SELECT2 ===================================
+	*/
+	$(document).ready(function() {
+		$('.select2').select2();
+	});
+ 	/*
+	*=================================== CALCULAR IMC ===================================
+	*/
+	$(".peso").on('change', calcIMC)
+	$(".talla").on('change', calcIMC)
+
+	function calcIMC(){
+		peso = document.getElementById("id_peso")
+		talla = document.getElementById("id_talla")
+		imc = document.getElementById("id_imc")
+		imc.value = (peso.value/Math.pow(talla.value, 2)).toFixed(2)
+	}
+	/*
+	*=================================== ENVIAR FORMULARIO ===================================
+	*/
+	$(function(){
+		//Validar Formulario
+			$('#geriatria_update').validate({
+				submitHandler: function(){
+
+					// Serializamos formularios
+					var dataForm = $('#geriatria_update').serialize();
+
+					$.ajax({
+						type: "POST",
+						url: "insertar_geriatria.php",
+						data: dataForm,
+						dataType: "json",
+						success: function() {
+							//var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+							// do what ever you want with the server response
+							window.location="http://localhost/formularios_historia/geriatria_list.php";
+							$('#geriatria_update').reset();
+						},
+						error: function() {
+							window.location="http://localhost/formularios_historia/geriatria_list.php";
+							$('#geriatria_update').reset();
+						}
+					});
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+	})
+
+</script>
+{% endblock %}

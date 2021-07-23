@@ -1,0 +1,322 @@
+  {% extends 'base.html' %}
+
+  {% block title %} | Ficha de Identidad {% endblock %}
+
+  {% block css %}
+  <!-- SELECT2 -->
+  <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+  {% endblock %}
+
+  {% block content %}
+  <div class="overlay active" id="overlay">
+  	<div class="popup active" id="popup">
+  		<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+  		<div class="form_popup" id="formularios">
+  			<div id="paso_a">
+  				<form action="." method="post" name="form_a" id="form_a" enctype="multipart/form-data">
+  					<div class="caja">
+  						<div class="caja-header">
+  							<h3 class="caja-title">Ficha de Identificación</h3>
+  						</div>
+  						<div class="caja-body">
+  							<div class="form-group">
+  								<label for="id_fecha" id="fecha" class="label active">Fecha de Creación:</label>
+  								<input type="text" name="fecha" class="form-control" required="" id="id_fecha" readonly>
+  							</div>
+  							<div class="form-group">
+  								<label for="id_expediente" id="expediente" class="label">No. Expediente:</label>
+  								<input type="text" name="expediente" class="form-control" required="" id="id_expediente">
+  							</div>
+  						</div>
+  						<div class="caja-header">
+  							<h5 class="caja-title">I. Datos Generales</h5>
+  						</div>
+  						<div class="caja-body">
+  							<div class="form-group">
+  								<label for="id_nombre">PACIENTE:</label>
+  								<br><br>
+  								<select id="id_nombre" name="nombre" class="select2 users-select">
+  									<option>Seleccione un paciente</option>
+  									{% for users in usuarios %}
+  									<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+  									{% endfor %}
+  								</select>
+  							</div>
+  							<div class="form-group">
+  								<label for="id_edad" id="edad" class="label">Edad:</label>
+  								<input type="text" name="edad" class="form-control" required="" id="id_edad">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_lugar" id="lugar" class="label">Lugar y fecha de nacimiento:</label>
+  								<input type="text" name="lugar" class="form-control" required="" id="id_nacimiento">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_codigo_empleado" id="codigo_empleado" class="label">Código de empleado:</label>
+  								<input type="text" name="codigo_empleado" class="form-control" required="" id="id_codigo_empleado">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_escolaridad" id="escolaridad" class="label">Escolaridad:</label>
+  								<input type="text" name="escolaridad" class="form-control" required="" id="id_escolaridad">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_ocupacion" id="ocupacion" class="label">Ocupación:</label>
+  								<input type="text" name="ocupacion" class="form-control" required="" id="id_ocupacion">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_estado_civil" id="estado_civil" class="label">Estado Civil:</label>
+  								<input type="text" name="estado_civil" class="form-control" required="" id="id_estado_civil">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_religion" id="religion" class="label">Religión:</label>
+  								<input type="text" name="religion" class="form-control" required="" id="id_religion">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_direccion" id="direccion" class="label">Dirección:</label>
+  								<input type="text" name="direccion" class="form-control" required="" id="id_direccion">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_telefono" id="telefono" class="label">Teléfono:</label>
+  								<input type="text" name="telefono" class="form-control" required="" id="id_telefono">
+  							</div>
+  							<div class="form-group">
+  								<label for="id_correo" id="correo" class="label">Correo:</label>
+  								<input type="text" name="correo" class="form-control" required="" id="id_correo">
+  							</div>
+  						</div>
+  						<div class="caja-footer">
+  							<a href="" id="cancelar_form" class="btn btn-link">Cancelar</a>
+  							<button type="submit" class="btn btn-primary" id="btn-generales">Siguiente</button>
+  						</div>
+  					</div>
+  				</form>
+  			</div>
+  			<div id="paso_b" class="hide">
+  				<form action="." method="post" name="form_b" id="form_b" enctype="multipart/form-data">
+  					<div class="caja">
+  						<div class="caja-header">
+  							<h3 class="card-title">Descripción del Sujeto</h3>
+  						</div>
+  						<div class="caja-body">
+  							<textarea id="id_desc_sujeto" name="desc_sujeto"></textarea>
+  						</div>
+  						<div class="caja-footer">
+  							<a class="btn btn-primary" id="btn_return_a">Atrás</a>
+  							<button type="submit" class="btn btn-primary" id="btn_familiares">Siguiente</button>
+  						</div>
+  					</div>
+  				</form>
+  			</div>
+  			<div id="paso_c" class="hide">
+  				<form action="." method="post" name="form_c" id="form_c" enctype="multipart/form-data">
+  					<div class="caja">
+  						<div class="caja-header">
+  							<h3 class="card-title">Motivo de Consulta</h3>
+  						</div>
+  						<div class="caja-body">
+  							<textarea id="id_motivo_consulta" name="motivo_consulta"></textarea>
+  						</div>
+  						<div class="caja-footer">
+  							<a class="btn btn-primary" id="btn_return_b">Atrás</a>
+  							<button type="submit" class="btn btn-primary" id="btn_motivo">Siguiente</button>
+  						</div>
+  					</div>
+  				</form>
+  			</div>
+  			<div id="paso_d" class="hide">
+  				<div class="caja">
+  					<div class="caja-header">
+  						<h3 class="card-title">CONFIRMAR</h3>
+  					</div>
+  					<div class="caja-body">
+  						<ul>
+  							<li id="txt_fecha"></li>
+  							<li id="txt_expediente"></li>
+  							<li id="txt_nombre"></li>
+  							<li id="txt_edad"></li>
+  							<li id="txt_nacimiento"></li>
+  							<li id="txt_codigo_empleado"></li>
+  							<li id="txt_escolaridad"></li>
+  							<li id="txt_ocupacion"></li>
+  							<li id="txt_estado_civil"></li>
+  							<li id="txt_religion"></li>
+  							<li id="txt_direccion"></li>
+  							<li id="txt_telefono"></li>
+  							<li id="txt_correo"></li>
+  							<li><h1>Descripcion del sujeto</h1></li>
+  							<li id="txt_sujeto"></li>
+  							<li><h1>Motivo de Consulta</h1></li>
+  							<li id="txt_motivo"></li>
+  						</ul>
+  					</div>
+  					<div class="caja-footer">
+  						<a class="btn btn-primary" id="btn_return_c">Atrás</a>
+  						<a class="btn btn-primary" id="btn_terminar">Terminar</a>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  {% endblock %}
+
+  {% block js %}
+  <script src="js/formulario-reporte.js"></script>
+  <script src="js/popup.js"></script>
+  <script src="js_libs/select2/js/select2.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8">
+
+	/*
+	*=================================== INICIAR SELECT2 ===================================
+	*/
+	$(document).ready(function() {
+		$('.select2').select2();
+	});
+
+	/*
+	*=================================== FECHA ACTUAL ===================================
+	*/
+	$(function(){
+		var fecha = new Date(); //Fecha actual
+		var mes = fecha.getMonth()+1; //obteniendo mes
+		var dia = fecha.getDate(); //obteniendo dia
+		var ano = fecha.getFullYear(); //obteniendo año
+		if(dia<10)
+			dia='0'+dia; //agrega cero si el menor de 10
+		if(mes<10)
+			mes='0'+mes //agrega cero si el menor de 10
+		document.getElementById('id_fecha').value=dia+"-"+mes+"-"+ano;
+	})
+
+	/*
+	*=================================== FORMULARIO POR PARTES ===================================
+	*/
+	$(function(){
+
+		//Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
+		$('body').on('click','#formularios a', function(elemento){
+
+			elemento.preventDefault();
+
+			//Se obtiene el id del botón clickeado
+			mostrar = $(this).attr('id');
+
+			//Usamos condiciones para saber que acción tomar según el botón
+			if(mostrar == 'btn_return_a'){
+				$('#paso_b').hide();
+				$('#paso_a').show();
+			}
+			else if(mostrar == 'btn_return_b'){
+				$('#paso_c').hide();
+				$('#paso_b').show();
+			}
+			else if(mostrar == 'btn_return_c'){
+				$('#paso_d').hide();
+				$('#paso_c').show();
+			}
+			else if(mostrar == 'btn_terminar'){
+
+				var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e').serialize();
+
+				$.ajax({
+					type: "POST",
+					url: "insertar_ficha.php",
+					data: dataForm,
+					dataType: "json",
+					success: function() {
+						//var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+						// do what ever you want with the server response
+						window.location="http://localhost/formularios_historia/ficha-de-identidad_list.php";
+						$('#form_a').trigger("reset")
+						$('#form_b').trigger("reset")
+						$('#form_c').trigger("reset")
+						$('#form_d').trigger("reset")
+					},
+					error: function() {
+						window.location="http://localhost/formularios_historia/ficha-de-identidad_list.php";
+						$('#form_a').trigger("reset")
+						$('#form_b').trigger("reset")
+						$('#form_c').trigger("reset")
+						$('#form_d').trigger("reset")
+					}
+				});
+			}
+		});
+
+		//EJECUTAR CUANDO SE CLICKEE UN SUBMIT
+		//Formulario Datos Personales
+		$('#form_a').validate({
+			submitHandler: function(){
+
+				$('#paso_a').hide();
+				$('#paso_b').show();
+
+				return false;
+			},
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent().append());
+			}
+		}); 
+		//Formulario Antecedentes familiares
+		$('#form_b').validate({
+			submitHandler: function(){
+
+				$('#paso_b').hide();
+				$('#paso_c').show();
+
+				return false;
+			},
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent().append());
+			}
+		});
+		//Formulario Antecedentes Personales
+		$('#form_c').validate({
+			submitHandler: function(){
+
+				fecha          = $('#id_fecha').val();
+				expediente     = $('#id_expediente').val();
+				nombre         = $('select[name="nombre"] option:selected').text();
+				edad           = $('#id_edad').val();
+				nacimiento     = $('#id_nacimiento').val();
+				codigo         = $('#id_codigo_empleado').val();
+				escolaridad    = $('#id_escolaridad').val();
+				ocupacion      = $('#id_ocupacion').val();
+				estadoCivil    = $('#id_estado_civil').val();
+				religion       = $('#id_religion').val();
+				direccion      = $('#id_direccion').val();
+				telefono       = $('#id_telefono').val();
+				correo         = $('#id_correo').val();
+
+				sujeto         = $('#id_desc_sujeto').val();
+				motivo         = $('#id_motivo_consulta').val();
+
+				$('#txt_fecha').text(fecha);
+				$('#txt_expediente').text(expediente);
+				$('#txt_nombre').text(nombre);
+				$('#txt_edad').text(edad)
+				$('#txt_nacimiento').text(nacimiento);
+				$('#txt_codigo_empleado').text(codigo);
+				$('#txt_escolaridad').text(escolaridad);
+				$('#txt_ocupacion').text(ocupacion);
+				$('#txt_estado_civil').text(estadoCivil);
+				$('#txt_religion').text(religion);
+				$('#txt_direccion').text(direccion);
+				$('#txt_telefono').text(telefono);
+				$('#txt_correo').text(correo);
+
+				$('#txt_sujeto').text(sujeto);
+				$('#txt_motivo').text(motivo);
+
+				$('#paso_c').hide();
+				$('#paso_d').show();
+
+				return false;
+			},
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent().append());
+			}
+		});
+	});
+</script>
+{% endblock %}

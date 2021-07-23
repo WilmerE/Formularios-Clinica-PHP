@@ -1,0 +1,570 @@
+ {% extends 'base.html' %}
+
+ {% block title %} | Geriatría {% endblock %}
+
+ {% block css %}
+ <!-- SELECT2 -->
+ <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+ {% endblock %}
+
+ {% block content %}
+
+ {% if resultado %}
+ <form action="." method="post" name="rehabicentro_update" id="rehabicentro_update" enctype="multipart/form-data">
+    {% for p in resultado %}
+    <div class="caja">
+        <div class="caja-header">
+            <h3 class="caja-title">CLNINICA REHABICENTRO</h3>
+            <h4>HISTORIA CLÍNICA - ADULTOS</h4>
+            <h5 class="caja-title">I. Datos Generales</h5>
+        </div>
+        <div class="caja-body">
+            <input type="hidden" name="id_form" value="{{ p.id }}">
+            <div class="form-group">
+                <label for="id_nombre">Nombre:</label>
+                <br>
+                <select id="id_nombre" name="nombre" class="select2 users-select">
+                    <option value="{{ p.paciente_id }}"><strong>{{ p.display_name }}</strong></option>
+                    {% for users in usuarios %}
+                    <option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_identidad" class="label">No. Identidad:</label>
+                <input type="text" name="identidad" class="form-control" required="" id="id_identidad" value="{{ p.identidad }}">
+            </div>
+            <div class="form-group">
+                <label for="id_fecha_nacimiento" class="label active">Fecha de nacimiento:</label>
+                <input type="date" name="fecha_nacimiento" class="form-control" required="" id="id_fecha_nacimiento" value="{{ p.nacimiento }}">
+            </div>
+            <div class="form-group">
+                <label for="id_edad" class="label active">Edad:</label>
+                <input type="text" name="edad" class="form-control" required="" id="id_edad" readonly value="{{ p.edad }}">
+            </div>
+            <div class="form-group">
+                <p>Sexo:</p>
+                <label for="id_m">M:</label>
+                <input type="checkbox" name="masculino" class="form-control sexo" id="id_m" {% if p.sexo == 0 %} checked="checked" {% endif %}>
+                <label for="id_f">F:</label>
+                <input type="checkbox" name="femenino" class="form-control sexo" id="id_f" {% if p.sexo == 1 %} checked="checked" {% endif %}>
+            </div>
+            <div class="form-group">
+                <label for="id_residencia" class="label">Lugar de Residencia:</label>
+                <input type="text" name="residencia" class="form-control" required="" id="id_residencia" value="{{ p.residencia }}">
+            </div>
+            <div class="form-group">
+                <label for="id_ocupacion" class="label">Ocupación Actual:</label>
+                <br>
+                <select id="id_ocupacion" name="ocupacion" class="select2">
+                    <option value="{{ p.ocupacion }}"><strong>{{ p.ocupacion }}</strong></option>
+                    <option value="0">0:Fuerzas armadas</option>
+                    <option value="1">1:Miembros del poder ejecutivo y de los cuerpos legislativos y personal directivo de la administración pública y empresas</option>
+                    <option value="2">2:Profesionales, científicos e intelectuales</option>
+                    <option value="3">3:Técnicos y profesionales de nivel medio</option>
+                    <option value="4">4:Empleados de oficina</option>
+                    <option value="5">5:Trabajadores de los servicios y vendedores de los comercios y mercados</option>
+                    <option value="6">6:Agricultores y trabajadores calificados agropecuarios y pesqueros.</option>
+                    <option value="7">7:Oficiales operarios y artesanos de las artes mecánicas y otros oficios.</option>
+                    <option value="8">8:Operadores de instalaciones y máquinas montadoras</option>
+                    <option value="9">9:Trabajadores no calificados, ama de casa</option>
+                    <option value="10">10:No corresponde.</option> 
+                </select>
+            </div>
+            <div class="form-group" id="show_cargo">
+                <label for="id_cargo" class="label" id="tipo_select">Cargo:</label>
+                <input type="text" name="cargo" class="form-control" id="id_cargo" value="{{ p.cargo }}">
+            </div>
+            <div class="form-group">
+                <p>Lateralidad:</p>
+                <label for="id_izq">Izquierdo:</label>
+                <input type="checkbox" name="izq" class="form-control" id="id_izq" {% if p.lateralidad == 0 %} checked="checked" {% endif %}>
+                <label for="id_der">Derecho:</label>
+                <input type="checkbox" name="der" class="form-control" id="id_der" {% if p.lateralidad == 1 %} checked="checked" {% endif %}>
+            </div>
+            <div class="form-group">
+                <label for="id_religion" class="label">Religión:</label>
+                <input type="text" name="religion" class="form-control" required="" id="id_religion" value="{{ p.religion }}">
+            </div>
+            <div class="form-group">
+                <label for="id_informante" class="label">Informante/confiabilidad:</label>
+                <input type="text" name="informante" class="form-control" required="" id="id_informante" value="{{ p.informante }}">
+            </div> 
+            <div class="form-group">
+                <label for="id_fecha_evalaucion" class="label active">Fecha de la evaluación:</label>
+                <input type="date" name="fecha_evalaucion" class="form-control" required="" id="id_fecha_evalaucion" value="{{ p.fecha_evaluacion }}">
+            </div>
+            <div class="form-group">
+                <label for="id_compania" class="label">Persona que le acompaña en la consulta:</label>
+                <input type="text" name="compania" class="form-control" required="" id="id_compania" value="{{ p.compania }}">
+            </div>
+            <div class="form-group">
+                <label for="id_remitente" class="label">Remitente:</label>
+                <input type="text" name="remitente" class="form-control" required="" id="id_remitente" value="{{ p.remitente }}">
+            </div>
+            <div class="form-group">
+                <label for="id_motivo_consulta" class="label">Motivo de consulta:</label>
+                <input type="text" name="motivo_consulta" class="form-control" required="" id="id_motivo_consulta" value="{{ p.motivo_consulta }}">
+            </div>
+        </div>
+    </div>
+    <div class="caja">
+        <div class="caja-header">
+            <h5 class="caja-title">III. Historia de la Enfermedad Actual</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_hea" class="label active">HEA:</label>
+                <textarea name="hea" class="form-control" required="" id="id_hea">{{  p.hea }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_escala" class="label active">Puntación en la ESCALA DE DOLOR:</label>
+                <input type="number" name="escala" class="form-control number" required="" id="id_escala" value="{{ p.escala }}"><span>/10</span>
+            </div>
+            <div class="form-group">
+                <label for="id_citas" class="label">CITAS:</label>
+                <input type="text" name="citas" class="form-control" required="" id="id_citas" value="{{ p.citas }}">
+            </div>
+            <div class="form-group">
+                <label for="id_tipo_danio" class="label">Tipo de daño:</label>
+                <br><br>
+                <select id="id_tipo_danio" name="tipo_danio" class="select2">
+                    <option value="{{ p.tipo_danio }}"> {{ p.tipo_danio }}</option>
+                    <option value="0">Enfermedad Profesional/Ambiental</option>
+                    <option value="1">Accidente laboral</option>
+                    <option value="2">Enfermedad Común</option>
+                    <option value="3">Accidente común</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="caja">
+        <div class="caja-header">
+            <h5 class="caja-title">IV. Funcionamiento</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_limitaciones" class="label">Limitaciones en las actividades:</label>
+                <input type="text" name="limitaciones" class="form-control" required="" id="id_limitaciones" value="{{ p.limitaciones }}">
+            </div>
+            <div class="form-group">
+                <label for="id_cif" class="label">Clasificación de la discapacidad según CIF:</label>
+                <input type="text" name="cif" class="form-control" required="" id="id_cif" value="{{ p.cif }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">V. Funciones orgánicas generales alteradas </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_hambre" class="label">Hambre:</label>
+                <input type="text" name="hambre" class="form-control" required="" id="id_hambre" value="{{ p.hambre }}">
+            </div>
+            <div class="form-group">
+                <label for="id_sed" class="label">Sed:</label>
+                <input type="text" name="sed" class="form-control" required="" id="id_sed" value="{{ p.sed }}">
+            </div>
+            <div class="form-group">
+                <label for="id_defecacion" class="label">Defecación:</label>
+                <input type="text" name="defecacion" class="form-control" required="" id="id_defecacion" value="{{ p.defecacion }}">
+            </div>
+            <div class="form-group">
+                <label for="id_suenio" class="label">Sueño:</label>
+                <input type="text" name="suenio" class="form-control" required="" id="id_suenio" value="{{ p.suenio }}">
+            </div>
+            <div class="form-group">
+                <label for="id_dieta" class="label">Dieta:</label>
+                <input type="text" name="dieta" class="form-control" required="" id="id_dieta" value="{{ p.dieta }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">VII. Antecedentes personales patológicos </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_antecedentes" class="label">Antecedente:</label>
+                <input type="text" name="antecedentes" class="form-control" required="" id="id_antecedentes" value="{{ p.antecedentes }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">VIII. Antecedentes hospitalarios traumáticos y quirúrgicos  </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_antecedente_hospitalario" class="label">Antecedente hospitalario:</label>
+                <input type="text" name="antecedente_hospitalario" class="form-control" required="" id="id_antecedente_hospitalario" value="{{ p.antecedente_hospitalario }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">IX. Antecedentes familiares patológicos </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_antecedente_familiares" class="label">Antecedente familiares:</label>
+                <input type="text" name="antecedente_familiares" class="form-control" required="" id="id_antecedente_familiares" value="{{ p.antecedente_familiares }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">X. Antecedentes personales no patológicos </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_arqui" class="label">Barreras arquitectónicas:</label>
+                <input type="text" name="arqui" class="form-control" required="" id="id_arqui" value="{{ p.arqui }}">
+            </div>
+            <div class="form-group">
+                <label for="id_fisica" class="label">Actividad física regular:</label>
+                <input type="text" name="fisica" class="form-control" required="" id="id_fisica" value="{{ p.fisica }}">
+            </div>
+            <div class="form-group">
+                <label for="id_pasatiempos" class="label">Pasatiempos y deportes:</label>
+                <input type="text" name="pasatiempos" class="form-control" required="" id="id_pasatiempos" value="{{ p.pasatiempos }}">
+            </div>
+            <div class="form-group">
+                <label for="id_habitos" class="label">Hábitos y Toximanías:</label>
+                <input type="text" name="habitos" class="form-control" required="" id="id_habitos" value="{{ p.habitos }}">
+            </div>
+        </div>
+    </div>
+    <div class="caja">
+        <div class="caja-header">
+            <h5 class="caja-title">XIII.  Historia vocacional</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_ocupacion_tareas" class="label">Ocupación y tareas que realiza, tiempo de trabajar en la empresa:</label>
+                <input type="text" name="ocupacion_tareas" class="form-control" required="" id="id_ocupacion_tareas" value="{{ p.ocupacion_tareas }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_tipo_empleo" class="label">Tipo de empleo (asalariado, independiente, contrato fijo o por tiempo determinado, jornada completa o media jornada, etc.):</label>
+                <input type="text" name="tipo_empleo" class="form-control" required="" id="id_tipo_empleo" value="{{ p.tipo_empleo }}">
+            </div>
+            <div class="form-group">
+                <label for="id_sustento" class="label">Fuente de su sustento económico (trabajo, pensiones, remesas, ayuda de hijos, etc):</label>
+                <input type="text" name="sustento" class="form-control" required="" id="id_sustento" value="{{ p.sustento }}">
+            </div>
+            <div class="form-group">
+                <label for="id_ocupaciones" class="label">Ocupaciones previas:</label>
+                <input type="text" name="ocupaciones" class="form-control" required="" id="id_ocupaciones" value="{{ p.ocupaciones }}">
+            </div>
+            <div class="form-group">
+                <label for="id_otro_trabajo" class="label">Algún otro trabajo que puede o que le gustaría realizar:</label>
+                <input type="text" name="otro_trabajo" class="form-control" required="" id="id_otro_trabajo" value="{{ p.otro_trabajo }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">XIII. Historia Social y psicológica </h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_grupo_familiar" class="label">Grupo y dinámica familiar (con quien vive, como son las relaciones): </label>
+                <input type="text" name="grupo_familiar" class="form-control" required="" id="id_grupo_familiar" value="{{ p.grupo_familiar }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_estilo_vida_anterior" class="label">Estilo de vida anterior  a la enfermedad): </label>
+                <input type="text" name="estilo_vida_anterior" class="form-control" required="" id="id_estilo_vida_anterior" value="{{ p.estilo_vida_anterior }}"></input>
+            </div>
+            <div class="form-group">
+                <p>Estrés por la enfermedad/ problema actual:</p>
+                <label for="id_estres_si">Si:</label>
+                <input type="checkbox" name="estres_si" class="form-control sexo" id="id_estres_si" {% if estres == 0 %} checked="checked" {% endif %}>
+                <label for="id_estres_no">No:</label>
+                <input type="checkbox" name="estres_no" class="form-control sexo" id="id_estres_no" {% if estres == 1 %} checked="checked" {% endif %}>
+            </div>
+            <div class="form-group">
+                <label for="id_enfermedad_mental" class="label">Enfermedad mental previa: </label>
+                <input type="text" name="enfermedad_mental" class="form-control" required="" id="id_enfermedad_mental" value="{{ p.enfermedad_mental }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_actividad_superacion" class="label">Actividades para motivar la superación de la discapacidad: </label>
+                <input type="text" name="actividad_superacion" class="form-control" required="" id="id_actividad_superacion" value="{{ p.actividad_superacion }}"></input>
+            </div>
+        </div>
+    </div>
+    <div class="caja">
+        <div class="caja-header">
+            <h5 class="caja-title">XIV. Examen Físico </h5>
+            <h5 class="caja-title">Somatometría</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_peso">Peso (lbs): </label>
+                <input type="number" name="peso" class="form-control peso" required="" id="id_peso" value="{{ p.peso }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_sustento">Talla (pulg):</label>
+                <input type="number" name="talla" class="form-control talla" required="" id="id_talla" value="{{ p.talla }}">
+            </div>
+            <div class="form-group">
+                <label for="id_musculo" id="musculo" class="label active">%Musculo:</label>
+                <input type="text" name="musculo" placeholder="" autocomplete="off" class="form-control" id="id_musculo" readonly value="{{ p.musculo }}">
+            </div>
+            <div class="form-group">
+                <label for="id_imc" id="imc" class="label active">IMC:</label>
+                <input type="text" name="imc" placeholder="" autocomplete="off" class="form-control" required="" id="id_imc" readonly value="{{ p.imc }}">
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">Apariencia General</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_conciencia" class="label">Estado de conciencia: (Glasgow/ RLA):</label>
+                <input type="text" name="conciencia" class="form-control" required="" id="id_conciencia" value="{{ p.conciencia }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_nervios" class="label">Nervios Craneales:</label>
+                <input type="text" name="nervios" class="form-control" required="" id="id_nervios" value="{{ p.nervios }}"></input>
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">Evaluación cognoscitiva</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_examen_mental" class="label">Mini examen mental:</label>
+                <input type="text" name="examen_mental" class="form-control" required="" id="id_examen_mental" value="{{ p.examen_mental }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_lenguaje" class="label active">Lenguaje (afasia, afectación de lecto-escritura, fluidez, disfonía):</label>
+                <textarea name="lenguaje" class="form-control" required="" id="id_lenguaje"> {{ p.lenguaje }} </textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_aaaa" class="label active">Agnosia, alexia, agrafia, apraxia: </label>
+                <textarea name="aaaa" class="form-control" required="" id="id_aaaa"> {{ p.aaaa }} </textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_postura" class="label active">Postura (Actitud, postura en bipedestación, sedente, decúbito, etc): </label>
+                <textarea name="postura" class="form-control" required="" id="postura"> {{ p.postura }} </textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_traslados" class="label">Traslados, transferencias:</label>
+                <input type="text" name="traslados" class="form-control" required="" id="id_traslados" value="{{ p.traslados }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_marcha" class="label">Marcha:</label>
+                <input type="text" name="marcha" class="form-control" required="" id="id_marcha" value="{{ p.marcha }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_podoscopio" class="label">Podoscopio:</label>
+                <input type="text" name="podoscopio" class="form-control" required="" id="id_podoscopio" value="{{ p.podoscopio }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_cabeza_cuello" class="label">Cabeza, cuello, tórax: (cardiopulmonar) abdomen y genitales:</label>
+                <input type="text" name="cabeza_cuello" class="form-control" required="" id="id_cabeza_cuello" value="{{ p.cabeza_cuello }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_columna" class="label">Columna: (alineación, puntos dolorosos, contracturas/espasmos, maniobras especiales):</label>
+                <input type="text" name="columna" class="form-control" required="" id="id_columna" value="{{ p.columna }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_estrella" class="label">Estrella de Maigne:</label>
+                <input type="text" name="estrella" class="form-control" required="" id="id_estrella" value="{{ p.estrella }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_miembros_toracicos" class="label">Miembros Torácicos:</label>
+                <input type="text" name="miembros_toracicos" class="form-control" required="" id="id_miembros_toracicos" value="{{ p.miembros_toracicos }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_miembros_pelvicos" class="label">Miembros Pélvicos:</label>
+                <input type="text" name="miembros_pelvicos" class="form-control" required="" id="id_miembros_pelvicos" value="{{ p.miembros_pelvicos }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_reacciones" class="label">Reacciones de enderezamiento y equilibrio, función cerebelosa:</label>
+                <input type="text" name="reacciones" class="form-control" required="" id="id_reacciones" value="{{ p.reacciones }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_anexos" class="label">Anexos (escala ASIA):</label>
+                <input type="text" name="anexos" class="form-control" required="" id="id_anexos" value="{{ p.anexos }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_tacto_rectal" class="label">Tacto rectal:</label>
+                <input type="text" name="tacto_rectal" class="form-control" required="" id="id_tacto_rectal" value="{{ p.tacto_rectal }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_nivel_sensitivo" class="label">Nivel sensitivo:</label>
+                <input type="text" name="nivel_sensitivo" class="form-control" required="" id="id_nivel_sensitivo" value="{{ p.nivel_sensitivo }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_nivel_neurologico" class="label">Nivel neurológico:</label>
+                <input type="text" name="nivel_neurologico" class="form-control" required="" id="id_nivel_neurologico" value="{{ p.nivel_neurologico }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_diagnostico" class="label active">*DIAGNOSTICO (impresión diagnostica topográfica, anatómico, etiológico):</label>
+                <textarea type="text" name="diagnostico" class="form-control" required="" id="id_diagnostico"> {{ p.diagnostico }} </textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_objetivos" class="label">Objetivos del paciente:</label>
+                <input type="text" name="objetivos" class="form-control" id="id_objetivos" value="{{ p.objetivos }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_objetivos_familiar" class="label">Objetivos del familiar:</label>
+                <input type="text" name="objetivos_familiar" class="form-control" id="id_objetivos_familiar" value="{{ p.objetivos_familiar }}"></input>
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">Metas de rehabilicatión</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_meta_corto" class="label">Corto plazo:</label>
+                <input type="text" name="meta_corto" class="form-control" id="id_meta_corto" value="{{ p.meta_corto }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_meta_largo" class="label">Largo plazo:</label>
+                <input type="text" name="meta_largo" class="form-control" id="id_meta_largo" value="{{ p.meta_largo }}"></input>
+            </div>
+        </div>
+    </div>
+    <div class="caja">
+        <div class="caja-header">
+            <h5 class="caja-title">Indicaciones Médicas</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_medicamentos" class="label">Medicamentos:</label>
+                <input type="text" name="medicamentos" class="form-control" id="id_medicamentos" value="{{ p.medicamentos }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_estudios_laboratorio" class="label">Estudios de laboratorio:</label>
+                <input type="text" name="estudios_laboratorio" class="form-control" id="id_estudios_laboratorio" value="{{ p.estudios_laboratorio }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_interconsulta" class="label">Interconsulta /remisión:</label>
+                <input type="text" name="interconsulta" class="form-control" id="id_interconsulta" value="{{ p.interconsulta }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_psicologia" class="label">Psicología:</label>
+                <input type="text" name="psicologia" class="form-control" id="id_psicologia" value="{{ p.psicologia }}"></input>
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">Prescripción</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_ortesica" class="label">Ortesica/protésica:</label>
+                <input type="text" name="ortesica" class="form-control" id="id_ortesica" value="{{ p.ortesica }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_recomendaciones" class="label">Recomendaciones/cuidados generales:</label>
+                <input type="text" name="recomendaciones" class="form-control" id="id_recomendaciones" value="{{ p.recomendaciones }}"></input>
+            </div>
+        </div>
+        <div class="caja-header">
+            <h5 class="caja-title">Tratamiento terapéutico de rehabilitación</h5>
+        </div>
+        <div class="caja-body">
+            <div class="form-group">
+                <label for="id_modalidad" class="label">Modalidad:</label>
+                <input type="text" name="modalidad" class="form-control" id="id_modalidad" value="{{ p.modalidad }}"></input>
+            </div>
+            <div class="form-group">
+                <label for="id_n_sesiones" class="label">Número de sesiones, duración, componentes de la terapia:</label>
+                <input type="text" name="n_sesiones" class="form-control" id="id_n_sesiones" value="{{ p.sesiones }}"></input>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</form>
+{% else %}
+<span>Ocurrió un error 505</span>
+{% endif %}
+
+{% endblock %}
+
+{% block js %}
+<script src="js_libs/select2/js/select2.min.js"></script>
+<script type="text/javascript">
+    $activo = $("input")
+    $activo.addClass("active")
+    $label = $("label")
+    $label.addClass("active")
+
+    /*
+    *=================================== INICIAR SELECT2 ===================================
+    */
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    /*
+    *=================================== CALCULAR IMC ===================================
+    */
+    $(".peso").on('change', calcIMC)
+    $(".talla").on('change', calcIMC)
+
+    function calcIMC(){
+        peso = document.getElementById("id_peso")
+        talla = document.getElementById("id_talla")
+        imc = document.getElementById("id_imc")
+        imc.value = (peso.value/Math.pow(talla.value, 2)).toFixed(2)
+    }
+    /*
+        *=================================== CALCULAR EDAD ===================================
+        */
+        $('#id_fecha_nacimiento').on('change', calcularEdad)
+
+        function calcularEdad(){
+            fecha = $(this).val()
+            var hoy = new Date()
+            var cumpleanos = new Date(fecha)
+            var edad = hoy.getFullYear() - cumpleanos.getFullYear()
+            var m = hoy.getMonth() - cumpleanos.getMonth()
+
+            if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+                edad--;
+            }
+            $('#id_edad').val(edad);
+        }
+        /*
+        *=================================== SELECCIÓN DE SEXO ===================================
+        */
+        let Checked = null;
+        //Tomamos los elementos con clase sexo
+        for (let CheckBox of document.getElementsByClassName('sexo')){
+            CheckBox.onclick = function(){
+                if(Checked!=null){
+                    Checked.checked = false;
+                    Checked = CheckBox;
+                }
+                Checked = CheckBox;
+            }
+        }
+    /*
+    *=================================== ENVIAR FORMULARIO ===================================
+    */
+    $(function(){
+        //Validar Formulario
+        $('#rehabicentro_update').validate({
+            submitHandler: function(){
+
+                    // Serializamos formularios
+                    var dataForm = $('#rehabicentro_update').serialize();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "insertar_rehabicentro.php",
+                        data: dataForm,
+                        dataType: "json",
+                        success: function() {
+                            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                            // do what ever you want with the server response
+                            window.location="http://localhost/formularios_historia/rehabicentro_list.php";
+                            $('#rehabicentro_update').reset();
+                        },
+                        error: function() {
+                            window.location="http://localhost/formularios_historia/rehabicentro_list.php";
+                            $('#rehabicentro_update').reset();
+                        }
+                    });
+
+                    return false;
+                },
+                errorPlacement: function(error, element) {
+                    error.appendTo(element.parent().append());
+                }
+            });
+    })
+
+</script>
+{% endblock %}

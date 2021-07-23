@@ -1,0 +1,182 @@
+  {% extends 'base.html' %}
+
+  {% block title %} | Ficha de identidad {% endblock %}
+
+  {% block css %}
+  <!-- SELECT2 -->
+  <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+  {% endblock %}
+
+  {% block content %}
+
+  {% if resultado %}
+  <form action="." method="post" name="ficha_update" id="ficha_update" enctype="multipart/form-data">
+  	{% for p in resultado %}
+  	<div class="caja">
+  		<div class="caja-header">
+  			<h3 class="caja-title">Ficha de Identificación</h3>
+  		</div>
+  		<div class="caja-body">
+  			<div class="form-group">
+  				<label for="id_fecha" id="fecha" class="label active">Fecha de Creación:</label>
+  				<input type="text" name="fecha" class="form-control" required="" id="id_fecha" readonly value="{{ p.fecha }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_expediente" id="expediente" class="label">No. Expediente:</label>
+  				<input type="text" name="expediente" class="form-control" required="" id="id_expediente" value="{{ p.expediente }}">
+  			</div>
+  		</div>
+  		<div class="caja-header">
+  			<h5 class="caja-title">I. Datos Generales</h5>
+  		</div>
+  		<div class="caja-body">
+  			<div class="form-group">
+  				<label for="id_nombre">PACIENTE:</label>
+  				<br><br>
+  				<select id="id_nombre" name="nombre" class="select2 users-select">
+  					<option value="{{ p.paciente }}">{{ p.display_name }}</option>
+  					{% for users in usuarios %}
+  					<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+  					{% endfor %}
+  				</select>
+  			</div>
+  			<div class="form-group">
+  				<label for="id_edad" id="edad" class="label">Edad:</label>
+  				<input type="text" name="edad" class="form-control" required="" id="id_edad" value="{{ p.edad }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_lugar" id="lugar" class="label">Lugar y fecha de nacimiento:</label>
+  				<input type="text" name="lugar" class="form-control" required="" id="id_nacimiento" value="{{ p.nacimiento }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_codigo_empleado" id="codigo_empleado" class="label">Código de empleado:</label>
+  				<input type="text" name="codigo_empleado" class="form-control" required="" id="id_codigo_empleado" value="{{ p.codigo }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_escolaridad" id="escolaridad" class="label">Escolaridad:</label>
+  				<input type="text" name="escolaridad" class="form-control" required="" id="id_escolaridad" value="{{ p.escolaridad }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_ocupacion" id="ocupacion" class="label">Ocupación:</label>
+  				<input type="text" name="ocupacion" class="form-control" required="" id="id_ocupacion" value="{{ p.ocupacion }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_estado_civil" id="estado_civil" class="label">Estado Civil:</label>
+  				<input type="text" name="estado_civil" class="form-control" required="" id="id_estado_civil" value="{{ p.estadoCivil }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_religion" id="religion" class="label">Religión:</label>
+  				<input type="text" name="religion" class="form-control" required="" id="id_religion" value="{{ p.religion }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_direccion" id="direccion" class="label">Dirección:</label>
+  				<input type="text" name="direccion" class="form-control" required="" id="id_direccion" value="{{ p.direccion }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_telefono" id="telefono" class="label">Teléfono:</label>
+  				<input type="text" name="telefono" class="form-control" required="" id="id_telefono" value="{{ p.telefono }}">
+  			</div>
+  			<div class="form-group">
+  				<label for="id_correo" id="correo" class="label">Correo:</label>
+  				<input type="text" name="correo" class="form-control" required="" id="id_correo" value="{{ p.correo }}">
+  			</div>
+  		</div>
+  	</div>
+  	<div class="caja">
+  		<div class="caja-header">
+  			<h3 class="card-title">Descripción del Sujeto</h3>
+  		</div>
+  		<div class="caja-body">
+  			<textarea id="id_desc_sujeto" name="desc_sujeto">{{ p.sujeto }}</textarea>
+  		</div>
+  	</div>
+  	<div class="caja">
+  		<div class="caja-header">
+  			<h3 class="card-title">Motivo de Consulta</h3>
+  		</div>
+  		<div class="caja-body">
+  			<textarea id="id_motivo_consulta" name="motivo_consulta">{{ p.motivo }}</textarea>
+  		</div>
+  		<div class="caja-footer">
+ 			<a class="btn btn-link" id="btn_cancelar">Cancelar</a>
+ 			<button type="submit" class="btn btn-primary" id="btn_actualizar">Actualizar</button>
+ 		</div>
+  	</div>
+  	{% endfor %}
+  </form>
+  {% else %}
+  <span>Ocurrió un error 505</span>
+  {% endif %}
+
+  {% endblock %}
+
+  {% block js %}
+  <script src="js_libs/select2/js/select2.min.js"></script>
+  <script type="text/javascript">
+
+  	$activo = $("input")
+  	$activo.addClass("active")
+  	$label = $("label")
+  	$label.addClass("active")
+
+ 	/*
+	*=================================== INICIAR SELECT2 ===================================
+	*/
+	$(document).ready(function() {
+		$('.select2').select2();
+	});
+
+	/*
+	*=================================== FECHA ACTUAL ===================================
+	
+	$(function(){
+		var fecha = new Date(); //Fecha actual
+		var mes = fecha.getMonth()+1; //obteniendo mes
+		var dia = fecha.getDate(); //obteniendo dia
+		var ano = fecha.getFullYear(); //obteniendo año
+		if(dia<10)
+			dia='0'+dia; //agrega cero si el menor de 10
+		if(mes<10)
+			mes='0'+mes //agrega cero si el menor de 10
+		document.getElementById('id_fecha').value=dia+"-"+mes+"-"+ano;
+	})
+	*/
+
+	/*
+	*=================================== ENVIAR FORMULARIO ===================================
+	*/
+	$(function(){
+		//Validar Formulario
+		$('#geriatria_update').validate({
+			submitHandler: function(){
+
+					// Serializamos formularios
+					var dataForm = $('#ficha_update').serialize();
+
+					$.ajax({
+						type: "POST",
+						url: "insertar_ficha.php",
+						data: dataForm,
+						dataType: "json",
+						success: function() {
+							//var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+							// do what ever you want with the server response
+							window.location="http://localhost/formularios_historia/ficha-de-identidad_list.php";
+							$('#geriatria_update').reset();
+						},
+						error: function() {
+							window.location="http://localhost/formularios_historia/ficha-de-identidad_list.php";
+							$('#geriatria_update').reset();
+						}
+					});
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+	})
+
+</script>
+{% endblock %}

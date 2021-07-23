@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Formularios {% block title %} {% endblock %}</title>
+	<script type="text/javascript" src="js_libs/jquery-3.6.0.min.js"></script>
+	{% if lista == false %}
+	<link rel="stylesheet" type="text/css" href="css/form_reporte.css">
+		{% else %}
+		<link rel="stylesheet" href="libs/bootstrap-4.3.1-dist/css/bootstrap.min.css"/>
+		<script src="libs/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	{% endif %}
+	<link rel="stylesheet" type="text/css" href="css/form_popup.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="libs/font-awesome-5.11.1/css/all.min.css">
+	{% block css %}
+	{% endblock %}
+</head>
+<body>
+	<main>
+		{% block content %}
+
+		{% endblock %}
+	</main>
+
+	<!-- PLUGIN VALIDAR FORMULARIOS -->
+	<script type="text/javascript" src="js_libs/jquery-validation-1.10.0/jquery.metadata.js"></script>
+	<script type="text/javascript" src="js_libs/jquery-validation-1.10.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js_libs/jquery-validation-1.10.0/localization/messages_es.js"></script>
+
+	{% if lista == false %}
+	
+		{% else %}
+		<script src="libs/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	{% endif %}
+
+	{% block js %}
+
+	{% endblock %}
+</body>
+</html>

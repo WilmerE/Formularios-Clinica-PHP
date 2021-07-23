@@ -1,0 +1,1043 @@
+ {% extends 'base.html' %}
+
+ {% block title %} | Geriatría {% endblock %}
+
+ {% block css %}
+ <!-- SELECT2 -->
+ <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+ {% endblock %}
+
+ {% block content %}
+ <div class="overlay active" id="overlay">
+ 	<div class="popup active" id="popup">
+ 		<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+ 		<div class="form_popup" id="formularios">
+ 			<div id="paso_a">
+ 				<form action="." method="post" name="form_a" id="form_a" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="caja-title">HISTORIA CLÍNICA GERIATRIA</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<div class="form-group">
+ 								<label for="id_numero" id="numero" class="label active">N°:</label>
+ 								<input type="text" name="numero" value="{{ serie }}-{{ anio }}" class="form-control" required="" id="id_numero" readonly>
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_nombre">PACIENTE:</label>
+ 								<br><br>
+ 								<select id="id_nombre" name="nombre" class="select2 users-select">
+ 									<option>Seleccione un paciente</option>
+ 									{% for users in usuarios %}
+ 									<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+ 									{% endfor %}
+ 								</select>
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_edad" id="edad" class="label">EDAD:</label>
+ 								<input type="text" name="edad" placeholder="" maxlength="100" autocomplete="off" class="form-control" required="" id="id_edad">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_lugar_fecha" id="lugar_fecha" class="label">FECHA Y LUGAR DE NACIMIENTO:</label>
+ 								<input type="text" name="lugar_fecha" placeholder="" maxlength="128" autocomplete="off" class="form-control" required="" id="id_lugar_fecha">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_sexo" id="sexo" class="label">SEXO:</label>
+ 								<input type="text" name="sexo" maxlength="200" placeholder="" autocomplete="off" class="form-control pac-target-input" required="" id="id_sexo">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_estado_civil" id="estado_civil" class="label">ESTADO CIVIL:</label>
+ 								<input type="text" name="estado_civil" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_civil">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_profesion" id="profesion" class="label">PROFESIÓN:</label>
+ 								<input type="text" name="profesion" placeholder="" autocomplete="off" class="form-control" required="" id="id_profesion">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_cui" id="cui" class="label">NÚMERO DE IDENTIDAD:</label>
+ 								<input type="text" name="cui" placeholder="" autocomplete="off" class="form-control" required="" id="id_cui">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_seguro" id="seguro" class="label">SEGURO:</label>
+ 								<input type="text" name="seguro" placeholder="" autocomplete="off" class="form-control" required="" id="id_seguro">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_persona_referencia" id="persona_referencia" class="label">PERSONA DE REFERENCIA:</label>
+ 								<input type="text" name="persona_referencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_persona_referencia">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_telefono" id="telefono" class="label">TELÉDONOS DE CONTÁCTO:</label>
+ 								<input type="tel" name="telefono" placeholder="" autocomplete="off" class="form-control" required="" id="id_telefono">
+ 							</div>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a href="" id="cancelar_form" class="btn btn-link">Cancelar</a>
+ 							<button type="submit" class="btn btn-primary" id="btn-personales">Siguiente</button>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 			<div id="paso_b" class="hide">
+ 				<form action="." method="post" name="form_b" id="form_b" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="card-title">ANTECEDENTES FAMILIARES</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<div class="form-group">
+ 								<label for="id_madre" id="madre" class="label">MADRE:</label>
+ 								<input type="text" name="madre" placeholder="" autocomplete="off" class="form-control" required="" id="id_madre">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_padre" id="padre" class="label">PADRE:</label>
+ 								<input type="text" name="padre" placeholder="" autocomplete="off" class="form-control" required="" id="id_padre">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_otro_familiar" id="otro_familiar" class="label">OTROS FAMILIARES:</label>
+ 								<input type="text" name="otro_familiar" placeholder="" autocomplete="off" class="form-control" required="" id="id_otro_familiar">
+ 							</div>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a class="btn btn-primary" id="btn_return_a">Atrás</a>
+ 							<button type="submit" class="btn btn-primary" id="btn_familiares">Siguiente</button>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 			<div id="paso_c" class="hide">
+ 				<form action="." method="post" name="form_c" id="form_c" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="card-title">ANTECEDENTES PERSONALES</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<div class="form-group">
+ 								<label for="id_farmacos" id="farmacos" class="label">FARMACOS:</label>
+ 								<input type="text" name="farmacos" placeholder="" autocomplete="off" class="form-control" required="" id="id_farmacos">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_motivo_consulta" id="motivo_consulta" class="label">MOTIVOS DE CONSULTA:</label>
+ 								<input type="text" name="motivo_consulta" placeholder="" autocomplete="off" class="form-control" required="" id="id_motivo_consulta">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_enfermedad_actual" id="enfermedad_actual" class="label">ENFERMEDAD ACTUAL:</label>
+ 								<input type="text" name="enfermedad_actual" placeholder="" autocomplete="off" class="form-control" required="" id="id_enfermedad_actual">
+ 							</div>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a class="btn btn-primary" id="btn_return_b">Atrás</a>
+ 							<button type="submit" class="btn btn-primary" id="btn_antecedentes">Siguiente</button>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 			<div id="paso_d" class="hide">
+ 				<form action="." method="post" name="form_d" id="form_d" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="card-title">EXPLORACIÓN FÍSICA</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<div class="form-group">
+ 								<label for="id_peso" id="peso" class="label">PESO (kg.):</label>
+ 								<input type="text" name="peso" placeholder="" autocomplete="off" class="form-control peso" required="" id="id_peso">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_talla" id="talla" class="label">TALLA (mts.):</label>
+ 								<input type="text" name="talla" placeholder="" autocomplete="off" class="form-control talla" required="" id="id_talla">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_juventud" id="juventud" class="label">ALCANZADA EN JUVENTUD:</label>
+ 								<input type="text" name="juventud" placeholder="" autocomplete="off" class="form-control" required="" id="id_juventud">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_imc" id="imc" class="label active">IMC:</label>
+ 								<input type="text" name="imc" placeholder="" autocomplete="off" class="form-control" required="" id="id_imc" readonly>
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_temp" id="temp" class="label">TEMPERATURA °C:</label>
+ 								<input type="text" name="temp" placeholder="" autocomplete="off" class="form-control" required="" id="id_temp">
+ 							</div>
+ 							<hr>
+ 							<h5>TA</h5>
+ 							<br>
+ 							<div class="form-group">
+ 								<label for="id_tas" id="tas" class="label">(S):</label>
+ 								<input type="text" name="tas" placeholder="" autocomplete="off" class="form-control" required="" id="id_tas">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_taa" id="taa" class="label">(A):</label>
+ 								<input type="text" name="taa" placeholder="" autocomplete="off" class="form-control" required="" id="id_taa">
+ 							</div>
+ 							<hr><br>
+ 							<div class="form-group">
+ 								<label for="id_fc" id="fc" class="label">FC:</label>
+ 								<input type="text" name="fc" placeholder="" autocomplete="off" class="form-control" required="" id="id_fc">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_p" id="p" class="label">P:</label>
+ 								<input type="text" name="p" placeholder="" autocomplete="off" class="form-control" required="" id="id_p">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_fr" id="fr" class="label">FR:</label>
+ 								<input type="text" name="fr" placeholder="" autocomplete="off" class="form-control" required="" id="id_fr">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_sat" id="sat" class="label">SAT O2:</label>
+ 								<input type="text" name="sat" placeholder="" autocomplete="off" class="form-control" required="" id="id_sat">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_estado_general" id="estado_general" class="label">ESTADO GENERAL:</label>
+ 								<input type="text" name="estado_general" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_general">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_estado_mental" id="estado_mental" class="label">ESTADO MENTAL:</label>
+ 								<input type="text" name="estado_mental" placeholder="" autocomplete="off" class="form-control" required="" id="id_estado_mental">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_cabeza" id="cabeza" class="label">CABEZA Y CUELLO:</label>
+ 								<input type="text" name="cabeza" placeholder="" autocomplete="off" class="form-control" required="" id="id_cabeza">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_torax" id="torax" class="label">TÓRAX:</label>
+ 								<input type="text" name="torax" placeholder="" autocomplete="off" class="form-control" required="" id="id_torax">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_abdomen" id="abdomen" class="label">ABDOMEN:</label>
+ 								<input type="text" name="abdomen" placeholder="" autocomplete="off" class="form-control" required="" id="id_abdomen">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_extremidades" id="extremidades" class="label">EXTREMIDADES:</label>
+ 								<input type="text" name="extremidades" placeholder="" autocomplete="off" class="form-control" required="" id="id_extremidades">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_neurologico" id="neurologico" class="label">NEUROLÓGICO:</label>
+ 								<input type="text" name="neurologico" placeholder="" autocomplete="off" class="form-control" required="" id="id_neurologico">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_dolor" id="dolor" class="label">DOLOR:</label>
+ 								<input type="text" name="dolor" placeholder="" autocomplete="off" class="form-control" required="" id="id_dolor">
+ 							</div>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a class="btn btn-primary" id="btn_return_c">Atrás</a>
+ 							<button type="submit" class="btn btn-primary" id="btn_exploracion">Siguiente</button>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 			<div id="paso_e" class="hide">
+ 				<form action="." method="post" name="form_e" id="form_e" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="card-title">ESTUDIOS COMPLEMENTARIOS</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<div class="form-group">
+ 								<label for="id_diagnostico" id="diagnostico" class="label">DIAGNÓSTICO(S):</label>
+ 								<input type="text" name="diagnostico" placeholder="" autocomplete="off" class="form-control" required="" id="id_diagnostico">
+ 							</div>
+ 							<div class="form-group">
+ 								<label for="id_tratamientos" id="tratamientos" class="label">TRATAMIENTO(S):</label>
+ 								<input type="text" name="tratamientos" placeholder="" autocomplete="off" class="form-control" required="" id="id_tratamientos">
+ 							</div>
+ 							<table border="1" cellspacing=0 cellpadding=2 bordercolor="#ced4da">
+ 								<thead>
+ 									<tr>
+ 										<th><p><strong>VALORACIÓN GERIÁTRICA INTEGRAL:</strong></p></th>
+ 										<th><p><strong>PUNTOS</strong></p></th>
+ 										<th><p><strong>FECHA</strong></p></th>
+ 									</tr>
+ 								</thead>
+ 								<tbody>
+ 									<tr>
+ 										<td colspan="3"><h5>FUNCIONAL:</h5></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- VELOCIDAD DE MARCHA</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_velocidad"></label>
+ 												<input type="number" name="puntos_velocidad" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_velocidad">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_velocidad"></label>
+ 												<input type="date" name="fecha_velocidad" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_velocidad">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- SPPB</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_sppb"></label>
+ 												<input type="number" name="puntos_sppb" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_sppb">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_sppb"></label>
+ 												<input type="date" name="fecha_sppb" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_sppb">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- TUG</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_tug"></label>
+ 												<input type="number" name="puntos_tug" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_tug">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_tug"></label>
+ 												<input type="date" name="fecha_tug" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_tug">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- FAC</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_fac"></label>
+ 												<input type="number" name="puntos_fac" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fac">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_fac"></label>
+ 												<input type="date" name="fecha_fac" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fac">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="3"><h5>DISCAPACIDAD:</h5></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- BARTHEL</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_barthel"></label>
+ 												<input type="number" name="puntos_barthel" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_barthel">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_barthel"></label>
+ 												<input type="date" name="fecha_barthel" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_barthel">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- LAWTON</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_lawton"></label>
+ 												<input type="number" name="puntos_lawton" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_lawton">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_lawton"></label>
+ 												<input type="date" name="fecha_lawton" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_lawton">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="3"><h5>MENTAL:</h5></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- MMSE</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_mmse"></label>
+ 												<input type="number" name="puntos_mmse" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_mmse">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_mmse"></label>
+ 												<input type="date" name="fecha_mmse" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_mmse">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- T@M 7 MÍNUTOS</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_7minutos"></label>
+ 												<input type="number" name="puntos_7minutos" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_7minutos">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_7minutos"></label>
+ 												<input type="date" name="fecha_7minutos" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_7minutos">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- FAST</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_fast"></label>
+ 												<input type="number" name="puntos_fast" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fast">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_fast"></label>
+ 												<input type="date" name="fecha_fast" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fast">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- RELOJ</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_reloj"></label>
+ 												<input type="number" name="puntos_reloj" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_reloj">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_reloj"></label>
+ 												<input type="date" name="fecha_reloj" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_reloj">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- FLUENCIA VERBAL</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_fluencia"></label>
+ 												<input type="number" name="puntos_fluencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_fluencia">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_fluencia"></label>
+ 												<input type="date" name="fecha_fluencia" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_fluencia">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="3"><h5>(DEMENCIA):</h5></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- GDS</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_gds"></label>
+ 												<input type="number" name="puntos_gds" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_gds">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_gds"></label>
+ 												<input type="date" name="fecha_gds" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_gds">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- YESAVAGE</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_yesavage"></label>
+ 												<input type="number" name="puntos_yesavage" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_yesavage">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<input type="date" name="fecha_yesavage" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_yesavage">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="3"><h5>OTRAS:</h5></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- CARGA DEL CUIDADOR</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_cuidador"></label>
+ 												<input type="number" name="puntos_cuidador" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_cuidador">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_cuidador"></label>
+ 												<input type="date" name="fecha_cuidador" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_cuidador">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- CALIDAD DE VIDA</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_calidad_vida"></label>
+ 												<input type="number" name="puntos_calidad_vida" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_calidad_vida">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_calidad_vida"></label>
+ 												<input type="date" name="fecha_calidad_vida" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_calidad_vida">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>- VALORACIÓN SOCIAL</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_valoracion_social"></label>
+ 												<input type="number" name="puntos_valoracion_social" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_valoracion_social">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_valoracion_social"></label>
+ 												<input type="date" name="fecha_valoracion_social" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_valoracion_social">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>-VALORACIÓN NUTRICIONAL</p></td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_puntos_valoracion_nutricional"></label>
+ 												<input type="number" name="puntos_valoracion_nutricional" placeholder="" autocomplete="off" class="form-control" required="" id="id_puntos_valoracion_nutricional">
+ 											</div>
+ 										</td>
+ 										<td>
+ 											<div class="form-group">
+ 												<label for="id_fecha_valoracion_nutricional"></label>
+ 												<input type="date" name="fecha_valoracion_nutricional" placeholder="" autocomplete="off" class="form-control" required="" id="id_fecha_valoracion_nutricional">
+ 											</div>
+ 										</td>
+ 									</tr>
+ 								</tbody>
+ 							</table>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a class="btn btn-primary" id="btn_return_d">Atrás</a>
+ 							<button type="submit" class="btn btn-primary" id="btn_estudios">Siguiente</button>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 			<div id="paso_f" class="hide">
+ 				<div class="caja">
+ 					<div class="caja-header">
+ 						<h3 class="caja-title">CONFIRMAR</h3>
+ 					</div>
+ 					<div class="caja-body">
+ 						<ul class="lista-elementos">
+ 							<li><h4>Datos Personales</h4></li>
+ 							<li><p>Nombre: <span id="txt_nombre"></span></p></li>
+ 							<li><p>Edad: <span id="txt_edad"></span></p></li>
+ 							<li><p>Lugar y Fecha: <span id="txt_lugaryfecha"></span></p></li>
+ 							<li><p>Sexo: <span id="txt_sexo"></span></p></li>
+ 							<li><p>Estado Civil: <span id="txt_estadocivil"></span></p></li>
+ 							<li><p>Profesión: <span id="txt_profesion"></span></p></li>
+ 							<li><p>No. de Identidad: <span id="txt_cui"></span></p></li>
+ 							<li><p>Seguro: <span id="txt_seguro"></span></p></li>
+ 							<li><p>Referencia: <span id="txt_referencia"></span></p></li>
+ 							<li><p>Teléfono: <span id="txt_contacto"></span></p></li>
+ 							<li><h4>Antecedentes Familiares</h4></li>
+ 							<li><p>Madre: <span id="txt_madre"></span></p></li>
+ 							<li><p>Padre: <span id="txt_padre"></span></p></li>
+ 							<li><p>Otros: <span id="txt_otros"></span></p></li>
+ 							<li><h4>Antecedentes Personales</h4></li>
+ 							<li><p>Fármacos: <span id="txt_farmacos"></span></p></li>
+ 							<li><p>Motivo de Consulta: <span id="txt_mconsulta"></span></p></li>
+ 							<li><p>Enfermedad Actual: <span id="txt_enfermedad"></span></p></li>
+ 							<li><h4>Exploración Física</h4></li>
+ 							<li>
+ 								<table>
+ 									<tr>
+ 										<td><p>Peso: <span id="txt_peso"></span></p></td>
+ 										<td><p>Talla: <span id="txt_talla"></span></p></td>
+ 										<td colspan="2"><p>(Alcanzada en juventud): <span id="txt_juventud"></span></p></td>
+ 										<td><p>IMC: <span id="txt_imc"></span></p></td>
+ 										<td><p>T C°: <span id="txt_temp"></span></p></td>
+ 									</tr>
+ 									<tr>
+ 										<td><p>TA: (S) <span id="txt_tas"></span></p></td>
+ 										<td><p>TA: (A) <span id="txt_taa"></span></p></td>
+ 										<td><p>FC: <span id="txt_fc"></span></p></td>
+ 										<td><p>P: <span id="txt_p"></span></p></td>
+ 										<td><p>FR: <span id="txt_fr"></span></p></td>
+ 										<td><p>SAT O2: <span id="txt_sat"></span></p></td>
+ 									</tr>
+ 								</table>
+ 							</li>
+ 							<li><p>Estado General: <span id="txt_estadogeneral"></span></p></li>
+ 							<li><p>Esato Mental: <span id="txt_estadomental"></span></p></li>
+ 							<li><p>Cabeza y Cuello: <span id="txt_cabezacuello"></span></p></li>
+ 							<li><p>Tórax: <span id="txt_torax"></span></p></li>
+ 							<li><p>Abdomen: <span id="txt_abdomen"></span></p></li>
+ 							<li><p>Extremidades: <span id="txt_extremidades"></span></p></li>
+ 							<li><p>Neurológico: <span id="txt_neurologico"></span></p></li>
+ 							<li><p>Dolor: <span id="txt_dolor"></span></p></li>
+ 							<li><h4>Estudios Complementarios</h4></li>
+ 							<li><p>Diagnóstico(s): <span id="txt_diagnostico"></span></p></li>
+ 							<li><p>Tratamiento: <span id="txt_tratamiento"></span></p></li>
+ 							<li>
+ 								<table border="1" cellspacing=0 cellpadding=2 bordercolor="#ced4da">
+ 									<thead>
+ 										<tr>
+ 											<th><p><strong>VALORACIÓN GERIÁTRICA INTEGRAL:</strong></p></th>
+ 											<th><p><strong>PUNTOS</strong></p></th>
+ 											<th><p><strong>FECHA</strong></p></th>
+ 										</tr>
+ 									</thead>
+ 									<tbody>
+ 										<tr>
+ 											<td colspan="3"><h5>FUNCIONAL:</h5></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- VELOCIDAD DE MARCHA</p></td>
+ 											<td><p><span id="txt_puntos_velocidad"></span></p></td>
+ 											<td><p><span id="txt_fecha_velocidad"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- SPPB</p></td>
+ 											<td><p><span id="txt_puntos_sppb"></span></p></td>
+ 											<td><p><span id="txt_fecha_sppb"></span></p></td>
+ 										</td>
+ 										<tr>
+ 											<td><p>- TUG</p></td>
+ 											<td><p><span id="txt_puntos_tug"></span></p></td>
+ 											<td><p><span id="txt_fecha_tug"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- FAC</p></td>
+ 											<td><p><span id="txt_puntos_fac"></span></p></td>
+ 											<td><p><span id="txt_fecha_fac"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td colspan="3"><h5>DISCAPACIDAD:</h5></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- BARTHEL</p></td>
+ 											<td><p><span id="txt_puntos_barthel"></span></p></td>
+ 											<td><p><span id="txt_fecha_barthel"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- LAWTON</p></td>
+ 											<td><p><span id="txt_puntos_lawton"></span></p></td>
+ 											<td><p><span id="txt_fecha_lawton"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td colspan="3"><h5>MENTAL:</h5></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- MMSE</p></td>
+ 											<td><p><span id="txt_puntos_mmse"></span></p></td>
+ 											<td><p><span id="txt_fecha_mmse"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- T@M 7 MÍNUTOS</p></td>
+ 											<td><p><span id="txt_puntos_7minutos"></span></p></td>
+ 											<td><p><span id="txt_fecha_7minutos"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- FAST</p></td>
+ 											<td><p><span id="txt_puntos_fast"></span></p></td>
+ 											<td><p><span id="txt_fecha_fast"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- RELOJ</p></td>
+ 											<td><p><span id="txt_puntos_reloj"></span></p></td>
+ 											<td><p><span id="txt_fecha_reloj"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- FLUENCIA VERBAL</p></td>
+ 											<td><p><span id="txt_puntos_fluencia"></span></p></td>
+ 											<td><p><span id="txt_fecha_fluencia"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td colspan="3"><h5>(DEMENCIA):</h5></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- GDS</p></td>
+ 											<td><p><span id="txt_puntos_gds"></span></p></td>
+ 											<td><p><span id="txt_fecha_gds"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- YESAVAGE</p></td>
+ 											<td><p><span id="txt_puntos_yesavage"></span></p></td>
+ 											<td><p><span id="txt_fecha_yesavage"></span></p></td>
+ 										</tr>
+ 										<tr>
+ 											<td colspan="3"><h5>OTRAS:</h5></td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- CARGA DEL CUIDADOR</p></td>
+ 											<td>
+ 												<p><span id="txt_puntos_cuidador"></span></p>
+ 											</td>
+ 											<td>
+ 												<p><span id="txt_fecha_cuidador"></span></p>
+ 											</td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- CALIDAD DE VIDA</p></td>
+ 											<td>
+ 												<p><span id="txt_puntos_calidad_vida"></span></p>
+ 											</td>
+ 											<td>
+ 												<P><span id="txt_fecha_calidad_vida"></span></P>
+ 											</td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>- VALORACIÓN SOCIAL</p></td>
+ 											<td>
+ 												<p><span id="txt_puntos_valoracion_social"></span></p>
+ 											</td>
+ 											<td>
+ 												<p><span id="txt_fecha_valoracion_social"></span></p>
+ 											</td>
+ 										</tr>
+ 										<tr>
+ 											<td><p>-VALORACIÓN NUTRICIONAL</p></td>
+ 											<td>
+ 												<p><span id="txt_puntos_valoracion_nutricional"></span></p>
+ 											</td>
+ 											<td>
+ 												<p><span id="txt_fecha_valoracion_nutricional"></span></p>
+ 											</td>
+ 										</tr>
+ 									</tbody>
+ 								</table>
+ 							</li>
+ 						</ul>
+ 					</div>
+ 					<div class="caja-footer">
+ 						<a class="btn btn-primary" id="btn_return_e">Atrás</a>
+ 						<a class="btn btn-primary" id="btn-terminar">Terminar</a>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+ {% endblock %}
+
+ {% block js %}
+ <script src="js/formulario-reporte.js"></script>
+ <script src="js/popup.js"></script>
+ <script src="js_libs/select2/js/select2.min.js"></script>
+
+ <script type="text/javascript">
+
+		/*
+		*=================================== INICIAR SELECT2 ===================================
+		*/
+		$(document).ready(function() {
+			$('.select2').select2();
+		});
+
+		/*
+		*=================================== CALCULAR IMC ===================================
+		*/
+		$(".peso").on('change', calcIMC)
+		$(".talla").on('change', calcIMC)
+		function calcIMC(){
+			peso = document.getElementById("id_peso")
+			talla = document.getElementById("id_talla")
+			imc = document.getElementById("id_imc")
+			imc.value = (peso.value/Math.pow(talla.value, 2)).toFixed(2)
+		}
+
+		/*
+		*=================================== FORMULARIO POR PARTES ===================================
+		*/
+		$(function(){
+
+			//Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
+			$('body').on('click','#formularios a', function(elemento){
+
+				elemento.preventDefault();
+
+				//Se obtiene el id del botón clickeado
+				mostrar = $(this).attr('id');
+
+				//Usamos condiciones para saber que acción tomar según el botón
+				if(mostrar == 'btn_return_a'){
+					$('#paso_b').hide();
+					$('#paso_a').show();
+				}
+				else if(mostrar == 'btn_return_b'){
+					$('#paso_c').hide();
+					$('#paso_b').show();
+				}
+				else if(mostrar == 'btn_return_c'){
+					$('#paso_d').hide();
+					$('#paso_c').show();
+				}
+				else if(mostrar == 'btn_return_d'){
+					$('#paso_e').hide();
+					$('#paso_d').show();
+				}
+				else if(mostrar == 'btn_return_e'){
+					$('#paso_f').hide();
+					$('#paso_e').show();
+				}
+				else if(mostrar == 'btn-terminar'){
+					// Serializamos formularios
+					var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e').serialize();
+
+					$.ajax({
+						type: "POST",
+						url: "insertar_geriatria.php",
+						data: dataForm,
+						dataType: "json",
+						success: function() {
+							//var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+							// do what ever you want with the server response
+							window.location="http://localhost/formularios_historia/geriatria_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						},
+						error: function() {
+							window.location="http://localhost/formularios_historia/geriatria_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						}
+					});
+				}
+			});
+
+			//EJECUTAR CUANDO SE CLICKEE UN SUBMIT
+			//Formulario Datos Personales
+			$('#form_a').validate({
+				submitHandler: function(){
+
+					$('#paso_a').hide();
+					$('#paso_b').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			}); 
+			//Formulario Antecedentes familiares
+			$('#form_b').validate({
+				submitHandler: function(){
+
+					$('#paso_b').hide();
+					$('#paso_c').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			//Formulario Antecedentes Personales
+			$('#form_c').validate({
+				submitHandler: function(){
+
+					$('#paso_c').hide();
+					$('#paso_d').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			//Formulario Exploración Física
+			$('#form_d').validate({
+				submitHandler: function(){
+
+					$('#paso_d').hide();
+					$('#paso_e').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			//Formulario Terminar
+			$('#form_e').validate({
+				submitHandler: function(){
+
+					//Datos Personales
+					nombre       = $('select[name="nombre"] option:selected').text();
+					edad         = $('#id_edad').val();
+					lugaFecha    = $('#id_lugar_fecha').val();
+					sexo         = $('#id_sexo').val();
+					estadoCivil  = $('#id_estado_civil').val();
+					profesion    = $('#id_profesion').val();
+					noIdentidad  = $('#id_cui').val();
+					seguro       = $('#id_seguro').val();
+					referencia   = $('#id_persona_referencia').val();
+					contacto     = $('#id_telefono').val();
+					//Antecedentes Familiares
+					madre        = $('#id_madre').val();
+					padre        = $('#id_padre').val();
+					otros        = $('#id_otro_familiar').val();
+					//Antecedentes Personales
+					farmacos     = $('#id_farmacos').val();
+					motivo       = $('#id_motivo_consulta').val();
+					enfermadad   = $('#id_enfermedad_actual').val();
+					//Exploración Física
+					peso         = $('#id_peso').val();
+					talla        = $('#id_talla').val();
+					juventud     = $('#id_juventud').val();
+					imc          = $('#id_imc').val();
+					temperatura  = $('#id_temp').val();
+					tas          = $('#id_tas').val();
+					taa          = $('#id_taa').val();
+					fc           = $('#id_fc').val();
+					p            = $('#id_p').val();
+					fr           = $('#id_fr').val();
+					sat          = $('#id_sat').val();
+					estadoGeneral= $('#id_estado_general').val();
+					estadoMental = $('#id_estado_mental').val();
+					cabezaCuello = $('#id_cabeza').val();
+					torax        = $('#id_torax').val();
+					abdomen      = $('#id_abdomen').val();
+					extremidades = $('#id_extremidades').val();
+					neurologico  = $('#id_neurologico').val();
+					dolor        = $('#id_dolor').val();
+					//Estudios Complementarios
+					diagnostico  = $('#id_diagnostico').val();
+					tratamiento  = $('#id_tratamientos').val();
+					velocidadpt  = $('#id_puntos_velocidad').val();
+					velocidafech = $('#id_fecha_velocidad').val();
+					sppbpt       = $('#id_puntos_sppb').val();
+					sppbfech     = $('#id_fecha_sppb').val();
+					tugpt        = $('#id_puntos_tug').val();
+					tugfech      = $('#id_fecha_tug').val();
+					facpt        = $('#id_puntos_fac').val();
+					facfech      = $('#id_fecha_fac').val();
+					barthelpt    = $('#id_puntos_barthel').val();
+					barthelfech  = $('#id_fecha_barthel').val();
+					lawtonpt     = $('#id_puntos_lawton').val();
+					lawtonfech   = $('#id_fecha_lawton').val();
+					mmsepts      = $('#id_puntos_mmse').val();
+					mmsefech     = $('#id_fecha_mmse').val();
+					tom7pt       = $('#id_puntos_7minutos').val();
+					tom7fech     = $('#id_fecha_7minutos').val();
+					fastpt       = $('#id_puntos_fast').val();
+					fastfech     = $('#id_fecha_fast').val();
+					relojpt      = $('#id_puntos_reloj').val();
+					relojfech    = $('#id_fecha_reloj').val();
+					fluenciapt   = $('#id_puntos_fluencia').val();
+					fluenciafech = $('#id_fecha_fluencia').val();
+					gdspt        = $('#id_puntos_gds').val();
+					gdsfech      = $('#id_fecha_gds').val();
+					yesavagept   = $('#id_puntos_yesavage').val();
+					yesavagefech = $('#id_fecha_yesavage').val();
+					cuidadorpt   = $('#id_puntos_cuidador').val();
+					cuidadorfech = $('#id_fecha_cuidador').val();
+					cvidapt      = $('#id_puntos_calidad_vida').val();
+					cvidafech    = $('#id_fecha_calidad_vida').val();
+					vsocialpt    = $('#id_puntos_valoracion_social').val();
+					vsocialfech  = $('#id_fecha_valoracion_social').val();
+					nutricionalpt= $('#id_puntos_valoracion_nutricional').val();
+					nutricionalfe= $('#id_fecha_valoracion_nutricional').val();
+
+					//Llenamos lista final
+					//Datos Personales
+					$('#txt_nombre').text(nombre);
+					$('#txt_edad').text(edad);
+					$('#txt_lugaryfecha').text(lugaFecha);
+					$('#txt_sexo').text(sexo);
+					$('#txt_estadocivil').text(estadoCivil);
+					$('#txt_profesion').text(profesion);
+					$('#txt_cui').text(noIdentidad);
+					$('#txt_seguro').text(seguro);
+					$('#txt_referencia').text(referencia);
+					$('#txt_contacto').text(contacto);
+					//Antecedentes Familiares
+					$('#txt_madre').text(madre);
+					$('#txt_padre').text(padre);
+					$('#txt_otros').text(otros);
+					//Antecedentes Personales
+					$('#txt_farmacos').text(farmacos);
+					$('#txt_mconsulta').text(motivo);
+					$('#txt_enfermedad').text(enfermadad);
+					//Exploración Física
+					$('#txt_peso').text(peso);
+					$('#txt_talla').text(talla);
+					$('#txt_juventud').text(juventud);
+					$('#txt_imc').text(imc);
+					$('#txt_temp').text(temperatura);
+					$('#txt_tas').text(tas);
+					$('#txt_taa').text(taa);
+					$('#txt_fc').text(fc);
+					$('#txt_p').text(p);
+					$('#txt_fr').text(fr);
+					$('#txt_sat').text(sat);
+					$('#txt_estadogeneral').text(estadoGeneral);
+					$('#txt_estadomental').text(estadoMental);
+					$('#txt_cabezacuello').text(cabezaCuello);
+					$('#txt_torax').text(torax);
+					$('#txt_abdomen').text(abdomen);
+					$('#txt_extremidades').text(extremidades);
+					$('#txt_neurologico').text(neurologico);
+					$('#txt_dolor').text(dolor);
+					//Estudios Complementarios
+					$('#txt_diagnostico').text(diagnostico);
+					$('#txt_tratamiento').text(tratamiento);
+					$('#txt_puntos_velocidad').text(velocidadpt);
+					$('#txt_fecha_velocidad').text(velocidafech);
+					$('#txt_puntos_sppb').text(sppbpt);
+					$('#txt_fecha_sppb').text(sppbfech);
+					$('#txt_puntos_tug').text(tugpt);
+					$('#txt_fecha_tug').text(tugfech);
+					$('#txt_puntos_fac').text(facpt);
+					$('#txt_fecha_fac').text(facfech);
+					$('#txt_puntos_barthel').text(barthelpt);
+					$('#txt_fecha_barthel').text(barthelfech);
+					$('#txt_puntos_lawton').text(lawtonpt);
+					$('#txt_fecha_lawton').text(lawtonfech);
+					$('#txt_puntos_mmse').text(mmsepts);
+					$('#txt_fecha_mmse').text(mmsefech);
+					$('#txt_puntos_7minutos').text(tom7pt);
+					$('#txt_fecha_7minutos').text(tom7fech);
+					$('#txt_puntos_fast').text(fastpt);
+					$('#txt_fecha_fast').text(fastfech);
+					$('#txt_puntos_reloj').text(relojpt);
+					$('#txt_fecha_reloj').text(relojfech);
+					$('#txt_puntos_fluencia').text(fluenciapt);
+					$('#txt_fecha_fluencia').text(fluenciafech);
+					$('#txt_puntos_gds').text(gdspt);
+					$('#txt_fecha_gds').text(gdsfech);
+					$('#txt_puntos_yesavage').text(yesavagept);
+					$('#txt_fecha_yesavage').text(yesavagefech);
+					$('#txt_puntos_cuidador').text(cuidadorpt);
+					$('#txt_fecha_cuidador').text(cuidadorfech);
+					$('#txt_puntos_calidad_vida').text(cvidapt);
+					$('#txt_fecha_calidad_vida').text(cvidafech);
+					$('#txt_puntos_valoracion_social').text(vsocialpt);
+					$('#txt_fecha_valoracion_social').text(vsocialfech);
+					$('#txt_puntos_valoracion_nutricional').text(nutricionalpt);
+					$('#txt_fecha_valoracion_nutricional').text(nutricionalfe);
+
+					$('#paso_e').hide();
+					$('#paso_f').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+});
+</script>
+{% endblock %}

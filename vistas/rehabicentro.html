@@ -1,0 +1,979 @@
+
+{% extends 'base.html' %}
+
+ {% block title %} | Historia Clínica Adultos {% endblock %}
+
+ {% block css %}
+ <!-- SELECT2 -->
+	<link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+ {% endblock %}
+
+{% block content %}
+	<div class="overlay active" id="overlay">
+		<div class="popup active" id="popup">
+			<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+			<div class="form_popup" id="formularios">
+				<div id="paso_a">
+					<form action="." method="post" name="form_a" id="form_a" enctype="multipart/form-data">
+						<div class="caja">
+							<div class="caja-header">
+								<h3 class="caja-title">CLNINICA REHABICENTRO</h3>
+								<h4>HISTORIA CLÍNICA - ADULTOS</h4>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">I. Datos Generales</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_nombre">Nombre:</label>
+									<br><br>
+									<select id="id_nombre" name="nombre" class="select2 users-select">
+										<option>Seleccione un paciente</option>
+										{% for users in usuarios %}
+											<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+										{% endfor %}
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="id_identidad" class="label">No. Identidad:</label>
+									<input type="text" name="identidad" class="form-control" required="" id="id_identidad">
+								</div>
+								<div class="form-group">
+									<label for="id_fecha_nacimiento" class="label active">Fecha de nacimiento:</label>
+									<input type="date" name="fecha_nacimiento" class="form-control" required="" id="id_fecha_nacimiento">
+								</div>
+								<div class="form-group">
+									<label for="id_edad" class="label active">Edad:</label>
+									<input type="text" name="edad" class="form-control" required="" id="id_edad" readonly>
+								</div>
+								<div class="form-group">
+									<p>Sexo:</p>
+									<label for="id_m">M:</label>
+									<input type="checkbox" name="masculino" class="form-control sexo" id="id_m">
+									<label for="id_f">F:</label>
+									<input type="checkbox" name="femenino" class="form-control sexo" id="id_f">
+								</div>
+								<div class="form-group">
+									<label for="id_residencia" class="label">Lugar de Residencia:</label>
+									<input type="text" name="residencia" class="form-control" required="" id="id_residencia">
+								</div>
+								<div class="form-group">
+									<label for="id_ocupacion" class="label">Ocupación Actual:</label>
+									<br><br>
+									<select id="id_ocupacion" name="ocupacion" class="select2">
+										<option>Seleccione una profesión</option>
+										<option value="0">0:Fuerzas armadas</option>
+										<option value="1">1:Miembros del poder ejecutivo y de los cuerpos legislativos y personal directivo de la administración pública y empresas</option>
+										<option value="2">2:Profesionales, científicos e intelectuales</option>
+										<option value="3">3:Técnicos y profesionales de nivel medio</option>
+										<option value="4">4:Empleados de oficina</option>
+										<option value="5">5:Trabajadores de los servicios y vendedores de los comercios y mercados</option>
+										<option value="6">6:Agricultores y trabajadores calificados agropecuarios y pesqueros.</option>
+										<option value="7">7:Oficiales operarios y artesanos de las artes mecánicas y otros oficios.</option>
+										<option value="8">8:Operadores de instalaciones y máquinas montadoras</option>
+										<option value="9">9:Trabajadores no calificados, ama de casa</option>
+										<option value="10">10:No corresponde.</option> 
+									</select>
+								</div>
+								<div class="form-group hide" id="show_cargo">
+									<label for="id_cargo" class="label" id="tipo_select">Cargo:</label>
+									<input type="text" name="cargo" class="form-control" id="id_cargo">
+								</div>
+								<div class="form-group">
+									<p>Lateralidad:</p>
+									<label for="id_izq">Izquierdo:</label>
+									<input type="checkbox" name="izq" class="form-control" id="id_izq">
+									<label for="id_der">Derecho:</label>
+									<input type="checkbox" name="der" class="form-control" id="id_der">
+								</div>
+								<div class="form-group">
+									<label for="id_religion" class="label">Religión:</label>
+									<input type="text" name="religion" class="form-control" required="" id="id_religion">
+								</div>
+								<div class="form-group">
+									<label for="id_informante" class="label">Informante/confiabilidad:</label>
+									<input type="text" name="informante" class="form-control" required="" id="id_informante">
+								</div> 
+								<div class="form-group">
+									<label for="id_fecha_evalaucion" class="label active">Fecha de la evaluación:</label>
+									<input type="date" name="fecha_evalaucion" class="form-control" required="" id="id_fecha_evalaucion">
+								</div>
+								<div class="form-group">
+									<label for="id_compania" class="label">Persona que le acompaña en la consulta:</label>
+									<input type="text" name="compania" class="form-control" required="" id="id_compania">
+								</div>
+								<div class="form-group">
+									<label for="id_remitente" class="label">Remitente:</label>
+									<input type="text" name="remitente" class="form-control" required="" id="id_remitente">
+								</div>
+								<div class="form-group">
+									<label for="id_motivo_consulta" class="label">Motivo de consulta:</label>
+									<input type="text" name="motivo_consulta" class="form-control" required="" id="id_motivo_consulta">
+								</div>
+							</div>
+							<div class="caja-footer">
+								<a href="" id="cancelar_form" class="btn btn-link">Cancelar</a>
+								<button type="submit" class="btn btn-primary" id="btn-generales">Siguiente</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="paso_b" class="hide">
+					<form action="." method="post" name="form_b" id="form_b" enctype="multipart/form-data">
+						<div class="caja">
+							<div class="caja-header">
+								<h3 class="caja-title">CLNINICA REHABICENTRO</h3>
+								<h4>HISTORIA CLÍNICA - ADULTOS</h4>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">III. Historia de la Enfermedad Actual</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_hea" class="label active">HEA:</label>
+									<textarea name="hea" class="form-control" required="" id="id_hea"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="id_escala" class="label active">Puntación en la ESCALA DE DOLOR:</label>
+									<input type="number" name="escala" class="form-control number" required="" id="id_escala"><span>/10</span>
+								</div>
+								<div class="form-group">
+									<label for="id_citas" class="label">CITAS:</label>
+									<input type="text" name="citas" class="form-control" required="" id="id_citas">
+								</div>
+								<div class="form-group">
+									<label for="id_tipo_danio" class="label">Tipo de daño:</label>
+									<br><br>
+									<select id="id_tipo_danio" name="tipo_danio" class="select2">
+										<option>Seleccione una opción</option>
+										<option value="0">Enfermedad Profesional/Ambiental</option>
+										<option value="1">Accidente laboral</option>
+										<option value="2">Enfermedad Común</option>
+										<option value="3">Accidente común</option>
+									</select>
+								</div>
+							</div>
+							<div class="caja-footer">
+								<a href="" id="btn_return_a" class="btn btn-primary">Atrás</a>
+								<button type="submit" class="btn btn-primary" id="btn-hea">Siguiente</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="paso_c" class="hide">
+					<form action="." method="post" name="form_c" id="form_c" enctype="multipart/form-data">
+						<div class="caja">
+							<div class="caja-header">
+								<h3 class="caja-title">CLNINICA REHABICENTRO</h3>
+								<h4>HISTORIA CLÍNICA - ADULTOS</h4>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">IV. Funcionamiento</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_limitaciones" class="label">Limitaciones en las actividades:</label>
+									<input type="text" name="limitaciones" class="form-control" required="" id="id_limitaciones">
+								</div>
+								<div class="form-group">
+									<label for="id_cif" class="label">Clasificación de la discapacidad según CIF:</label>
+									<input type="text" name="cif" class="form-control" required="" id="id_cif">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">V. Funciones orgánicas generales alteradas </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_hambre" class="label">Hambre:</label>
+									<input type="text" name="hambre" class="form-control" required="" id="id_hambre">
+								</div>
+								<div class="form-group">
+									<label for="id_sed" class="label">Sed:</label>
+									<input type="text" name="sed" class="form-control" required="" id="id_sed">
+								</div>
+								<div class="form-group">
+									<label for="id_defecacion" class="label">Defecación:</label>
+									<input type="text" name="defecacion" class="form-control" required="" id="id_defecacion">
+								</div>
+								<div class="form-group">
+									<label for="id_suenio" class="label">Sueño:</label>
+									<input type="text" name="suenio" class="form-control" required="" id="id_suenio">
+								</div>
+								<div class="form-group">
+									<label for="id_dieta" class="label">Dieta:</label>
+									<input type="text" name="dieta" class="form-control" required="" id="id_dieta">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">VII. Antecedentes personales patológicos </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_antecedentes" class="label">Antecedente:</label>
+									<input type="text" name="antecedentes" class="form-control" required="" id="id_antecedentes">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">VIII. Antecedentes hospitalarios traumáticos y quirúrgicos  </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_antecedente_hospitalario" class="label">Antecedente hospitalario:</label>
+									<input type="text" name="antecedente_hospitalario" class="form-control" required="" id="id_antecedente_hospitalario">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">IX. Antecedentes familiares patológicos </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_antecedente_familiares" class="label">Antecedente familiares:</label>
+									<input type="text" name="antecedente_familiares" class="form-control" required="" id="id_antecedente_familiares">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">X. Antecedentes personales no patológicos </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_arqui" class="label">Barreras arquitectónicas:</label>
+									<input type="text" name="arqui" class="form-control" required="" id="id_arqui">
+								</div>
+								<div class="form-group">
+									<label for="id_fisica" class="label">Actividad física regular:</label>
+									<input type="text" name="fisica" class="form-control" required="" id="id_fisica">
+								</div>
+								<div class="form-group">
+									<label for="id_pasatiempos" class="label">Pasatiempos y deportes:</label>
+									<input type="text" name="pasatiempos" class="form-control" required="" id="id_pasatiempos">
+								</div>
+								<div class="form-group">
+									<label for="id_habitos" class="label">Hábitos y Toximanías:</label>
+									<input type="text" name="habitos" class="form-control" required="" id="id_habitos">
+								</div>
+							</div>
+							<div class="caja-footer">
+								<a href="" id="btn_return_b" class="btn btn-primary">Atrás</a>
+								<button type="submit" class="btn btn-primary" id="btn-funciones">Siguiente</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="paso_d" class="hide">
+					<form action="." method="post" name="form_d" id="form_d" enctype="multipart/form-data">
+						<div class="caja">
+							<div class="caja-header">
+								<h3 class="caja-title">CLNINICA REHABICENTRO</h3>
+								<h4>HISTORIA CLÍNICA - ADULTOS</h4>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">XIII.  Historia vocacional</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_ocupacion_tareas" class="label">Ocupación y tareas que realiza, tiempo de trabajar en la empresa:</label>
+									<input type="text" name="ocupacion_tareas" class="form-control" required="" id="id_ocupacion_tareas"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_tipo_empleo" class="label">Tipo de empleo (asalariado, independiente, contrato fijo o por tiempo determinado, jornada completa o media jornada, etc.):</label>
+									<input type="text" name="tipo_empleo" class="form-control" required="" id="id_tipo_empleo">
+								</div>
+								<div class="form-group">
+									<label for="id_sustento" class="label">Fuente de su sustento económico (trabajo, pensiones, remesas, ayuda de hijos, etc):</label>
+									<input type="text" name="sustento" class="form-control" required="" id="id_sustento">
+								</div>
+								<div class="form-group">
+									<label for="id_ocupaciones" class="label">Ocupaciones previas:</label>
+									<input type="text" name="ocupaciones" class="form-control" required="" id="id_ocupaciones">
+								</div>
+								<div class="form-group">
+									<label for="id_otro_trabajo" class="label">Algún otro trabajo que puede o que le gustaría realizar:</label>
+									<input type="text" name="otro_trabajo" class="form-control" required="" id="id_otro_trabajo">
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">XIII. Historia Social y psicológica </h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_grupo_familiar" class="label">Grupo y dinámica familiar (con quien vive, como son las relaciones): </label>
+									<input type="text" name="grupo_familiar" class="form-control" required="" id="id_grupo_familiar"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_estilo_vida_anterior" class="label">Estilo de vida anterior  a la enfermedad): </label>
+									<input type="text" name="estilo_vida_anterior" class="form-control" required="" id="id_estilo_vida_anterior"></input>
+								</div>
+								<div class="form-group">
+									<p>Estrés por la enfermedad/ problema actual:</p>
+									<label for="id_estres_si">Si:</label>
+									<input type="checkbox" name="estres_si" class="form-control sexo" id="id_estres_si">
+									<label for="id_estres_no">No:</label>
+									<input type="checkbox" name="estres_no" class="form-control sexo" id="id_estres_no">
+								</div>
+								<div class="form-group">
+									<label for="id_enfermedad_mental" class="label">Enfermedad mental previa: </label>
+									<input type="text" name="enfermedad_mental" class="form-control" required="" id="id_enfermedad_mental"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_actividad_superacion" class="label">Actividades para motivar la superación de la discapacidad: </label>
+									<input type="text" name="actividad_superacion" class="form-control" required="" id="id_actividad_superacion"></input>
+								</div>
+							</div>
+							<div class="caja-footer">
+								<a href="" id="btn_return_c" class="btn btn-primary">Atrás</a>
+								<button type="submit" class="btn btn-primary" id="btn-historia-v">Siguiente</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="paso_e" class="hide">
+					<form action="." method="post" name="form_e" id="form_e" enctype="multipart/form-data">
+						<div class="caja">
+							<div class="caja-header">
+								<h5 class="caja-title">XIV. Examen Físico </h5>
+								<h5 class="caja-title">Somatometría</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_peso">Peso (lbs): </label>
+									<input type="number" name="peso" class="form-control peso" required="" id="id_peso"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_sustento">Talla (pulg):</label>
+									<input type="number" name="talla" class="form-control talla" required="" id="id_talla">
+								</div>
+								<div class="form-group">
+									<label for="id_musculo" id="musculo" class="label active">%Musculo:</label>
+									<input type="text" name="musculo" placeholder="" autocomplete="off" class="form-control" id="id_musculo" readonly>
+								</div>
+								<div class="form-group">
+									<label for="id_imc" id="imc" class="label active">IMC:</label>
+									<input type="text" name="imc" placeholder="" autocomplete="off" class="form-control" required="" id="id_imc" readonly>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Apariencia General</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_conciencia" class="label">Estado de conciencia: (Glasgow/ RLA):</label>
+									<input type="text" name="conciencia" class="form-control" required="" id="id_conciencia"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_nervios" class="label">Nervios Craneales:</label>
+									<input type="text" name="nervios" class="form-control" required="" id="id_nervios"></input>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Evaluación cognoscitiva</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_examen_mental" class="label">Mini examen mental:</label>
+									<input type="text" name="examen_mental" class="form-control" required="" id="id_examen_mental"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_lenguaje" class="label active">Lenguaje (afasia, afectación de lecto-escritura, fluidez, disfonía):</label>
+									<textarea name="lenguaje" class="form-control" required="" id="id_lenguaje"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="id_aaaa" class="label active">Agnosia, alexia, agrafia, apraxia: </label>
+									<textarea name="aaaa" class="form-control" required="" id="id_aaaa"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="id_postura" class="label active">Postura (Actitud, postura en bipedestación, sedente, decúbito, etc): </label>
+									<textarea name="postura" class="form-control" required="" id="postura"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="id_traslados" class="label">Traslados, transferencias:</label>
+									<input type="text" name="traslados" class="form-control" required="" id="id_traslados"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_marcha" class="label">Marcha:</label>
+									<input type="text" name="marcha" class="form-control" required="" id="id_marcha"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_podoscopio" class="label">Podoscopio:</label>
+									<input type="text" name="podoscopio" class="form-control" required="" id="id_podoscopio"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_cabeza_cuello" class="label">Cabeza, cuello, tórax: (cardiopulmonar) abdomen y genitales:</label>
+									<input type="text" name="cabeza_cuello" class="form-control" required="" id="id_cabeza_cuello"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_columna" class="label">Columna: (alineación, puntos dolorosos, contracturas/espasmos, maniobras especiales):</label>
+									<input type="text" name="columna" class="form-control" required="" id="id_columna"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_estrella" class="label">Estrella de Maigne:</label>
+									<input type="text" name="estrella" class="form-control" required="" id="id_estrella"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_miembros_toracicos" class="label">Miembros Torácicos:</label>
+									<input type="text" name="miembros_toracicos" class="form-control" required="" id="id_miembros_toracicos"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_miembros_pelvicos" class="label">Miembros Pélvicos:</label>
+									<input type="text" name="miembros_pelvicos" class="form-control" required="" id="id_miembros_pelvicos"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_reacciones" class="label">Reacciones de enderezamiento y equilibrio, función cerebelosa:</label>
+									<input type="text" name="reacciones" class="form-control" required="" id="id_reacciones"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_anexos" class="label">Anexos (escala ASIA):</label>
+									<input type="text" name="anexos" class="form-control" required="" id="id_anexos"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_tacto_rectal" class="label">Tacto rectal:</label>
+									<input type="text" name="tacto_rectal" class="form-control" required="" id="id_tacto_rectal"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_nivel_sensitivo" class="label">Nivel sensitivo:</label>
+									<input type="text" name="nivel_sensitivo" class="form-control" required="" id="id_nivel_sensitivo"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_nivel_neurologico" class="label">Nivel neurológico:</label>
+									<input type="text" name="nivel_neurologico" class="form-control" required="" id="id_nivel_neurologico"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_diagnostico" class="label active">*DIAGNOSTICO (impresión diagnostica topográfica, anatómico, etiológico):</label>
+									<textarea type="text" name="diagnostico" class="form-control" required="" id="id_diagnostico"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="id_objetivos" class="label">Objetivos del paciente:</label>
+									<input type="text" name="objetivos" class="form-control" id="id_objetivos"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_objetivos_familiar" class="label">Objetivos del familiar:</label>
+									<input type="text" name="objetivos_familiar" class="form-control" id="id_objetivos_familiar"></input>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Metas de rehabilicatión</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_meta_corto" class="label">Corto plazo:</label>
+									<input type="text" name="meta_corto" class="form-control" id="id_meta_corto"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_meta_largo" class="label">Largo plazo:</label>
+									<input type="text" name="meta_largo" class="form-control" id="id_meta_largo"></input>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Indicaciones Médicas</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_medicamentos" class="label">Medicamentos:</label>
+									<input type="text" name="medicamentos" class="form-control" id="id_medicamentos"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_estudios_laboratorio" class="label">Estudios de laboratorio:</label>
+									<input type="text" name="estudios_laboratorio" class="form-control" id="id_estudios_laboratorio"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_interconsulta" class="label">Interconsulta /remisión:</label>
+									<input type="text" name="interconsulta" class="form-control" id="id_interconsulta"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_psicologia" class="label">Psicología:</label>
+									<input type="text" name="psicologia" class="form-control" id="id_psicologia"></input>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Prescripción</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_ortesica" class="label">Ortesica/protésica:</label>
+									<input type="text" name="ortesica" class="form-control" id="id_ortesica"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_recomendaciones" class="label">Recomendaciones/cuidados generales:</label>
+									<input type="text" name="recomendaciones" class="form-control" id="id_recomendaciones"></input>
+								</div>
+							</div>
+							<div class="caja-header">
+								<h5 class="caja-title">Tratamiento terapéutico de rehabilitación</h5>
+							</div>
+							<div class="caja-body">
+								<div class="form-group">
+									<label for="id_modalidad" class="label">Modalidad:</label>
+									<input type="text" name="modalidad" class="form-control" id="id_modalidad"></input>
+								</div>
+								<div class="form-group">
+									<label for="id_n_sesiones" class="label">Número de sesiones, duración, componentes de la terapia:</label>
+									<input type="text" name="n_sesiones" class="form-control" id="id_n_sesiones"></input>
+								</div>
+							</div>
+							<div class="caja-footer">
+								<a href="" id="btn_return_c" class="btn btn-primary">Atrás</a>
+								<button type="submit" class="btn btn-primary" id="btn-examen">Siguiente</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="paso_f" class="hide">
+					<div class="caja">
+						<div class="caja-header">
+							<h3 class="caja-title">CONFIRMAR</h3>
+						</div>
+						<div class="caja-body">
+							<ul class="lista-elementos">
+								<li><p>Nombre: <span id="txt_nombre"></span></p><li>
+								<li><p>No. Identidad: <span id="txt_identidad"></span></p><li>
+								<li><p>Fecha de nacimiento: <span id="txt_nacimiento"></span></p><li>
+								<li><p>Edad: <span id="txt_edad"></span></p><li>
+								<li><p>Sexo: <span id="txt_sexo"></span></p><li>
+								<li><p>Lugar de residencia: <span id="txt_residencia"></span></p><li>
+								<li><p>Ocupación Actual: <span id="txt_edad"></span></p><li>
+								<li><p>Cargo/: <span id="txt_cargo"></span></p><li>
+								<li><p>Lateralidad: <span id="txt_lateralidad"></span></p><li>
+								<li><p>Religión: <span id="txt_religion"></span></p><li>
+								<li><p>Informante/confiabilidad: <span id="txt_informante"></span></p><li>
+								<li><p>Fecha de la evaluación: <span id="txt_fecha_eval"></span></p><li>
+								<li><p>Persona que le acompaña en la consutla: <span id="txt_companiante"></span></p><li>
+								<li><p>Remitente: <span id="txt_remitente"></span></p><li>
+								<li><p>Motivo de consulta: <span id="txt_motivo_consulta"></span></p><li>
+								<li><p>Edad: <span id="txt_edad"></span></p><li>
+
+								<li><p>Historia de la enfermedad actual: <span id="txt_historia_enfermedad"></span></p><li>
+								<li><p>Puntuación en la escala de dolor: <span id="txt_dolor"></span></p><li>
+								<li><p>Citas: <span id="txt_citas"></span></p><li>
+								<li><p>Tipo de daño: <span id="txt_tipo_danio"></span></p><li>
+
+								<li><p>Limitaciones en las actividades: <span id="txt_lim_actividades"></span></p><li>
+								<li><p>Clasificación de la discapacidad según CIF: <span id="txt_discapacidad"></span></p><li>
+								<li><p>Hambre: <span id="txt_hambre"></span></p><li>
+								<li><p>Sed: <span id="txt_sed"></span></p><li>
+								<li><p>Defecación: <span id="txt_defecacion"></span></p><li>
+								<li><p>Sueño: <span id="txt_suenio"></span></p><li>
+								<li><p>Dieta: <span id="txt_dieta"></span></p><li>
+								<li><p>Antecedentes hospitalarios, traumáticos y qirúrgicos: <span id="txt_antecedentes"></span></p><li>
+								<li><p>Antecedentes familiares: <span id="txt_antecedentes_fam"></span></p><li>
+								<li><p>Barreras arquitectónicas: <span id="txt_barreras"></span></p><li>
+								<li><p>Actividad física regular: <span id="txt_actividad"></span></p><li>
+								<li><p>Pasatiempos y deportes: <span id="txt_pasatiempos"></span></p><li>
+								<li><p>Hábitos y taxomanías: <span id="txt_habitos"></span></p><li>
+
+								<li><p>Ocupación y tareas que realiza, tiempo de trabajar en la empresa: <span id="txt_tareas"></span></p><li>
+								<li><p>Tipo de empleo (asalariado, independiente, contrato fijo, o por tiempo determinado, jornada completa o media jronada, etc.): <span id="txt_tipo_empleo"></span></p><li>
+								<li><p>Grupo y dinámica familiar (con quien vive, como son las relaciones): <span id="txt_grupo_familiar"></span></p><li>
+								<li><p>Fuente de sustento económico (trabajo, pensiones, remesas, ayuda de hijos, etc): <span id="txt_sustento"></span></p><li>
+
+								<li><p>Peso(lbs): <span id="txt_peso"></span></p><li>
+								<li><p>Talla(pulg): <span id="txt_talla"></span></p><li>
+								<li><p>%musculo: <span id="txt_musculo"></span></p><li>
+								<li><p>IMC: <span id="txt_imc"></span></p><li>
+								<li><p>Estado de conciencia: (Glasgow/RLA): <span id="txt_conciencia"></span></p><li>
+								<li><p>Nervios craneales: <span id="txt_nervios"></span></p><li>
+								<li><p>Mini exámen mental: <span id="txt_examen_mental"></span></p><li>
+								<li><p>Lenguaje (afasia, afectación de lecto-escritura, fluidez, disfonía): <span id="txt_edad"></span></p><li>
+								<li><p>Agnosia, alexia, agrafia, apraxia: <span id="txt_agnosia"></span></p><li>
+								<li><p>Postura (Actitud, postura en bidepestación, sedente, decúbito, etc): <span id="txt_postura"></span></p><li>
+								<li><p>Traslados, transferencias: <span id="txt_traslados"></span></p><li>
+								<li><p>Marcha: <span id="txt_marcha"></span></p><li>
+								<li><p>Podoscopio: <span id="txt_podoscopio"></span></p><li>
+								<li><p>Cabeza, cuello, tórax:(cardipulmonar): <span id="txt_cabeza"></span></p><li>
+								<li><p>Columna: (alineación, puntos dolorosos, contracturas/espasmos, maniobras especuiales): <span id="txt_columna"></span></p><li>
+								<li><p>Estrella de maigne: <span id="txt_estrella"></span></p><li>
+								<li><p>Miembros torácicos: <span id="txt_miembros_toracicos"></span></p><li>
+								<li><p>Miembros pélvicos: <span id="txt_miembros_pelvicos"></span></p><li>
+								<li><p>Reacciones de enderezamiento y equilibrio, función cerebolosa: <span id="txt_reacciones"></span></p><li>
+								<li><p>Anexos (escala ASIA): <span id="txt_anxos"></span></p><li>
+								<li><p>Taco rectal: <span id="txt_tacto-rectal"></span></p><li>
+								<li><p>Nivel sensitivo: <span id="txt_nivel_sensitivo"></span></p><li>
+								<li><p>Nivel neurológico: <span id="txt_nivel_neurologico"></span></p><li>
+								<li><p>*Diagnóstico (impresión diagnóstica topográfica, anatómico, etiológico: <span id="txt_diagnostico"></span></p><li>
+								<li><p>Objetivos del paciente: <span id="txt_objetivos_paciente"></span></p><li>
+								<li><p>Objetivos del familiar: <span id="txt_objetivos_familiar"></span></p><li>
+								<li><p>Corto Plazo: <span id="txt_corto_plazo"></span></p><li>
+								<li><p>Largo Plazo: <span id="txt_largo_plazo"></span></p><li>
+								<li><p>Medicamentos: <span id="txt_medicamentos"></span></p><li>
+								<li><p>Estudios de laboratorio: <span id="txt_estudios_lab"></span></p><li>
+								<li><p>Interconsulta/remisión: <span id="txt_interconsulta"></span></p><li>
+								<li><p>Psicología: <span id="txt_psicologia"></span></p><li>
+								<li><p>Ortesica/protésica: <span id="txt_ortesica"></span></p><li>
+								<li><p>Recomendaciones/cuidados generales: <span id="txt_recomendaciones"></span></p><li>
+								<li><p>Modalidad: <span id="txt_modalidad"></span></p><li>
+								<li><p>Número de sesiones, duración, componentes de la terapia: <span id="txt_sesiones"></span></p><li>
+							</ul>
+						</div>
+						<div class="caja-footer">
+							<a class="btn btn-primary" id="btn_return_e">Atrás</a>
+							<a class="btn btn-primary" id="btn-terminar">Terminar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="js/formulario-reporte.js"></script>
+	<script src="js/popup.js"></script>
+	<script src="js_libs/select2/js/select2.min.js"></script>
+
+	<script type="text/javascript">
+
+		/*
+		*=================================== INICIAR SELECT2 ===================================
+		*/
+		$(document).ready(function() {
+			$('.select2').select2();
+		});
+
+		/*
+		*=================================== CALCULAR IMC ===================================
+		*/
+		$(".peso").on('change', calcIMC)
+		$(".talla").on('change', calcIMC)
+		function calcIMC(){
+			peso = document.getElementById("id_peso")
+			talla = document.getElementById("id_talla")
+			imc = document.getElementById("id_imc")
+			kg = peso.value/2.205
+			mts = (talla.value*2.54)/100
+			imc.value = (kg/Math.pow(mts, 2)).toFixed(2)
+		}
+
+		/*
+		*=================================== CALCULAR EDAD ===================================
+		*/
+		$('#id_fecha_nacimiento').on('change', calcularEdad)
+
+		function calcularEdad(){
+			fecha = $(this).val()
+			var hoy = new Date()
+			var cumpleanos = new Date(fecha)
+			var edad = hoy.getFullYear() - cumpleanos.getFullYear()
+			var m = hoy.getMonth() - cumpleanos.getMonth()
+
+			if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+				edad--;
+			}
+			$('#id_edad').val(edad);
+		}
+		/*
+		*=================================== SELECCIÓN DE SEXO ===================================
+		*/
+		let Checked = null;
+		//Tomamos los elementos con clase sexo
+		for (let CheckBox of document.getElementsByClassName('sexo')){
+			CheckBox.onclick = function(){
+				if(Checked!=null){
+					Checked.checked = false;
+					Checked = CheckBox;
+				}
+				Checked = CheckBox;
+			}
+		}
+		/*
+		*=================================== SELECCIÓN DE OCUPACIÓN ===================================
+		*/
+		$('#id_ocupacion').on('change', mostrar_cargo);
+		cargo = document.getElementById('show_cargo');
+
+		function mostrar_cargo(){
+			ocupacion = document.getElementById('id_ocupacion');
+			if (ocupacion.value >= 0) {
+				cargo.classList.remove('hide');
+				if(ocupacion.value == 10){
+					$('#tipo_select').text('Motivo de No Corresponde:');
+				}else{
+					$('#tipo_select').text('Cargo:');
+				}
+			} else{
+				cargo.classList.add('hide');
+			}
+		}
+		/*
+		*=================================== FORMULARIO POR PARTES ===================================
+		*/
+		$(function(){
+			//Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
+			$('body').on('click','#formularios a', function(elemento){
+
+				elemento.preventDefault();
+
+				//Se obtiene el id del botón clickeado
+				mostrar = $(this).attr('id');
+
+				//Usamos condiciones para saber que acción tomar según el botón
+				if(mostrar == 'btn_return_a'){
+					$('#paso_b').hide();
+					$('#paso_a').show();
+				}
+				else if(mostrar == 'btn_return_b'){
+					$('#paso_c').hide();
+					$('#paso_b').show();
+				}
+				else if(mostrar == 'btn_return_c'){
+					$('#paso_d').hide();
+					$('#paso_c').show();
+				}
+				else if(mostrar == 'btn_return_d'){
+					$('#paso_e').hide();
+					$('#paso_d').show();
+				}
+				else if(mostrar == 'btn_return_e'){
+					$('#paso_f').hide();
+					$('#paso_e').show();
+				}
+				else if(mostrar == 'btn-terminar'){
+					// Serializamos formularios
+					var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e').serialize();
+
+					$.ajax({
+						type: "POST",
+						url: "insertar_rehabicentro.php",
+						data: dataForm,
+						dataType: "json",
+						success: function() {
+							//var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+							// do what ever you want with the server response
+							//window.location="http://localhost/formularios_historia/rehabicentro_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						},
+						error: function() {
+							//window.location="http://localhost/formularios_historia/rehabicentro_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						}
+					});
+				}
+			});
+
+			//EJECUTAR CUANDO SE CLICKEE UN SUBMIT
+			//Formulario Datos Personales
+			$('#form_a').validate({
+				submitHandler: function(){
+
+					$('#paso_a').hide();
+					$('#paso_b').show();
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			$('#form_b').validate({
+				submitHandler: function(){
+
+					$('#paso_b').hide();
+					$('#paso_c').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			$('#form_c').validate({
+				submitHandler: function(){
+
+					$('#paso_c').hide();
+					$('#paso_d').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			$('#form_d').validate({
+				submitHandler: function(){
+
+					$('#paso_d').hide();
+					$('#paso_e').show();
+
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+			$('#form_e').validate({
+				submitHandler: function(){
+					nombre            = $('select[name="nombre"] option:selected').text();
+					identidad              = $('#id_identidad').val();
+					nacimiento              = $('#id_fecha_nacimiento').val();
+					edad              = $('#id_edad').val();
+					if($('#id_m').val() != null){
+						sexo              = $('#id_f').val();
+					} else{
+						sexo              = $('#id_m').val();
+					}
+					residencia              = $('#id_residencia').val();
+					ocupacion               = $('select[name="ocupacion"] option:selected').text();
+					cargo              = $('#id_cargo').val();
+					if($('#id_izq').val() != null){
+						lateralidad              = $('#id_der').val();
+					} else {
+						lateralidad              = $('#id_izq').val();
+					}
+					religion             = $('#id_religion').val();
+					informante              = $('#id_informante').val();
+					fecha_evaluacion              = $('#id_fecha_evaluacion').val();
+					compania             = $('#id_compania').val();
+					remitente             = $('#id_remitente').val();
+					motivo_consulta             = $('#id_motivo_consulta').val();
+
+					hea             = $('#id_hea').val();
+					escala             = $('#id_escala').val();
+					citas             = $('#id_citas').val();
+					tipo_danio               = $('select[name="tipo_danio"] option:selected').text();
+
+					limitaciones             = $('#id_limitaciones').val();
+					cif             = $('#id_cif').val();
+					hambre             = $('#id_hambre').val();
+					sed             = $('#id_sed').val();
+					defecacion             = $('#id_defecacion').val();
+					suenio             = $('#id_suenio').val();
+					dieta             = $('#id_dieta').val();
+					antecedentes             = $('#id_antecedentes').val();
+					antecedente_hospitalario            = $('#id_antecedente_hospitalario').val();
+					antecedente_familiares             = $('#id_antecedente_familiares').val();
+					arqui           = $('#id_arqui').val();
+					fisica             = $('#id_fisica').val();
+					pasatiempos             = $('#id_pasatiempos').val();
+					habitos             = $('#id_habitos').val();
+					ocupacion_tareas             = $('#id_ocupacion_tareas').val();
+					tipo_empleo           = $('#id_tipo_empleo').val();
+					grupo_familiar           = $('#id_grupo_familiar').val();
+					sustento           = $('#id_sustento').val();
+					peso           = $('#id_peso').val();
+					talla           = $('#id_talla').val();
+					musculo           = $('#id_musculo').val();
+					imc           = $('#id_imc').val();
+					conciencia           = $('#id_conciencia').val();
+					nervios           = $('#id_nervios').val();
+					examen_mental           = $('#id_examen_mental').val();
+					lenguaje           = $('#id_lenguaje').val();
+					aaaa           = $('#id_aaaa').val();
+					postura           = $('#id_postura').val();
+					traslados           = $('#id_traslados').val();
+					marcha           = $('#id_marcha').val();
+					podoscopio           = $('#id_podoscopio').val();
+					cabeza_cuello           = $('#id_cabeza_cuello').val();
+					columna           = $('#id_columna').val();
+					estrella           = $('#id_estrella').val();
+					miembros_toracicos           = $('#id_miembros_toracicos').val();
+					miembros_pelvicos           = $('#id_miembros_pelvicos').val();
+					reacciones           = $('#id_reacciones').val();
+					anexos           = $('#id_anexos').val();
+					tacto_rectal           = $('#id_tacto_rectal').val();
+					nivel_sensitivo           = $('#id_nivel_sensitivo').val();
+					nivel_neurologico           = $('#id_nivel_neurologico').val();
+					diagnostico           = $('#id_diagnostico').val();
+					objetivos           = $('#id_objetivos').val();
+					objetivos_familiar           = $('#id_objetivos_familiar').val();
+					meta_corto           = $('#id_meta_corto').val();
+					meta_largo           = $('#id_meta_largo').val();
+					medicamentos           = $('#id_medicamentos').val();
+					estudios_laboratorio           = $('#id_estudios_laboratorio').val();
+					interconsulta           = $('#id_interconsulta').val();
+					psicologia           = $('#id_psicologia').val();
+					ortesica           = $('#id_ortesica').val();
+					recomendaciones           = $('#id_recomendaciones').val();
+					modalidad           = $('#id_modalidad').val();
+					sesiones           = $('#id_n_sesiomes').val();
+
+					$('#txt_nombre').text(nombre);
+					$('#txt_identidad').text(identidad);
+					$('#txt_nacimiento').text(nacimiento);
+					$('#txt_edad').text(edad);
+					$('#txt_sexo').text(sexo);
+					$('#txt_residencia').text(residencia);
+					$('#txt_edad').text(ocupacion);
+					$('#txt_cargo').text(cargo);
+					$('#txt_lateralidad').text(lateralidad);
+					$('#txt_religion').text(religion);
+					$('#txt_informante').text(informante);
+					$('#txt_fecha_eval').text(fecha_evaluacion);
+					$('#txt_companiante').text(compania);
+					$('#txt_remitente').text(remitente);
+					$('#txt_motivo_consulta').text(motivo_consulta);
+
+					$('#txt_historia_enfermedad').text(hea);
+					$('#txt_dolor').text(escala);
+					$('#txt_citas').text(citas);
+					$('#txt_tipo_danio').text(tipo_danio);
+
+					$('#txt_lim_actividades').text(limitaciones);
+					$('#txt_discapacidad').text(cif);
+					$('#txt_hambre').text(hambre);
+					$('#txt_sed').text(sed);
+					$('#txt_defecacion').text(defecacion);
+					$('#txt_suenio').text(suenio);
+					$('#txt_dieta').text(dieta);
+					$('#txt_antecedentes').text(antecedentes);
+					$('#txt_antecedentes_fam').text(nombre);
+					$('#txt_barreras').text(arqui);
+					$('#txt_actividad').text(fisica);
+					$('#txt_pasatiempos').text(pasatiempos);
+					$('#txt_habitos').text(habitos);
+
+					$('#txt_tareas').text(ocupacion_tareas);
+					$('#txt_tipo_empleo').text(tipo_empleo);
+					$('#txt_grupo_familiar').text(grupo_familiar);
+					$('#txt_sustento').text(sustento);
+
+					$('#txt_peso').text(peso);
+					$('#txt_talla').text(talla);
+					$('#txt_musculo').text(musculo);
+					$('#txt_imc').text(imc);
+					$('#txt_conciencia').text(conciencia);
+					$('#txt_nervios').text(nervios);
+					$('#txt_examen_mental').text(examen_mental);
+					
+					$('#txt_agnosia').text(aaaa);
+					$('#txt_postura').text(postura);
+					$('#txt_traslados').text(traslados);
+					$('#txt_marcha').text(marcha);
+					$('#txt_podoscopio').text(podoscopio);
+					$('#txt_cabeza').text(cabeza_cuello);
+					$('#txt_columna').text(columna);
+					$('#txt_estrella').text(estrella);
+					$('#txt_miembros_toracicos').text(miembros_toracicos);
+					$('#txt_miembros_pelvicos').text(miembros_pelvicos);
+					$('#txt_reacciones').text(reacciones);
+					$('#txt_anxos').text(anexos);
+					$('#txt_tacto-rectal').text(tacto_rectal);
+					$('#txt_nivel_sensitivo').text(nivel_sensitivo);
+					$('#txt_nivel_neurologico').text(nivel_neurologico);
+					$('#txt_diagnostico').text(diagnostico);
+					$('#txt_objetivos_paciente').text(objetivos);
+					$('#txt_objetivos_familiar').text(objetivos_familiar);
+					$('#txt_corto_plazo').text(meta_corto);
+					$('#txt_largo_plazo').text(meta_largo);
+					$('#txt_medicamentos').text(medicamentos);
+					$('#txt_estudios_lab').text(estudios_laboratorio);
+					$('#txt_interconsulta').text(interconsulta);
+					$('#txt_psicologia').text(psicologia);
+					$('#txt_ortesica').text(ortesica);
+					$('#txt_recomendaciones').text(recomendaciones);
+					$('#txt_modalidad').text(modalidad);
+					$('#txt_sesiones').text(sesiones);
+
+					$('#paso_e').hide();
+					$('#paso_f').show();
+					return false;
+				},
+				errorPlacement: function(error, element) {
+					error.appendTo(element.parent().append());
+				}
+			});
+		});
+	</script>
+{% endblock %}

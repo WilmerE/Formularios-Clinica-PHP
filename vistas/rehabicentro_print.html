@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block title %} | PDF {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="css/rehabicentro_pdf.css">
+{% endblock %}
+
+{% block content %}
+<div id="sidebar">
+	<div id="outline"></div>
+</div>
+
+{% for p in resultado %}
+	<span id="nombre_p" class="{{ p.display_name }}"></span>
+	<div id="page-container">
+		<div id="pf1" class="pf w0 h0" data-page-no="1">
+			<div class="pc pc1 w0 h0">
+				<div class="c x0 y0 w1 h0">
+					<div class="t m0 x1 h1 y1 ff1 fs0 fc0 sc0 ls0 ws0">CLNINICA REHABICENTRO  </div>
+					<div class="t m0 x2 h2 y2 ff1 fs0 fc0 sc0 ls0 ws0">HISTORIA CLÍNICA -ADULTOS<span class="ff2 fs1"> </span></div>
+					<div class="t m0 x3 h3 y3 ff3 fs2 fc0 sc0 ls0 ws0">I. Datos Generales </div><div class="t m0 x3 h3 y4 ff3 fs2 fc0 sc0 ls0 ws0">Nombre: </div>
+					<div class="t m0 x3 h3 y5 ff3 fs2 fc0 sc0 ls0 ws0"> {{ p.display_name }}</div>
+					<div class="t m0 x3 h3 y6 ff3 fs2 fc0 sc0 ls0 ws0">N° de identidad: <span class="_ _0"></span> {{ p.identidad }} </div>
+					<div class="t m0 x3 h3 y7 ff3 fs2 fc0 sc0 ls0 ws0">Fecha de nacimiento:&nbsp;{{ p.nacimiento }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edad:&nbsp;{{ p.edad }}</div>
+					<div class="t m0 x3 h3 y8 ff3 fs2 fc0 sc0 ls0 ws0"> Sexo: M:{% if p.sexo == 0 %}&nbsp;X{% else %}___{% endif %}&nbsp;&nbsp;&nbsp;F:{% if p.sexo == 1 %}&nbsp;X{% else %}___{% endif %}<span class="_ _0"></span> </div>
+					<div class="t m0 x3 h3 y9 ff3 fs2 fc0 sc0 ls0 ws0">Lugar de residencia:<span class="_ _0"></span> </div><div class="t m0 x3 h3 ya ff3 fs2 fc0 sc0 ls0 ws0">*ocupación actual: <span class="_ _0"></span>{% if p.ocupacion == 0 %} 0:fuerzas armadas {% elseif p.ocupacion == 1 %} 1: miembros del poder ejecutivo y de los cuerpos legislativos y personal directivo de la administración pública y empresas {% elseif p.ocupacion == 2 %} 2: profesionales, científicos e intelectuales {% elseif p.ocupacion == 3 %} 3:Técnicos y profesionales de nivel medio {% elseif p.ocupacion == 4 %} 4: Empleados de oficina {% elseif p.ocupacion == 5 %} 5: Trabajadores de los servicios y vendedores de los comercios y mercados {% elseif p.ocupacion == 6 %} 6: Agricultores y trabajadores calificados agropecuarios y pesqueros. {% elseif p.ocupacion == 7 %} 7: oficiales operarios y artesanos de las artes mecánicas y otros oficios.  {% elseif p.ocupacion == 8 %} 8: operadores de instalaciones y máquinas montadoras {% elseif p.ocupacion == 9 %} 9: Trabajadores no calificados, ama de casa {% elseif p.ocupacion == 10 %} 10: No corresponde. Se puede dejar al lado un espacio para escribir porqué no corresponde, que puede ser: desempleado, pensionado, jubilado, etc. {% endif %}</div><div class="t m0 x3 h3 yb ff3 fs2 fc0 sc0 ls0 ws0">Lateralidad: Derecho:{% if p.lateralidad == 0 %}&nbsp;X{% else %}___{% endif %}&nbsp;&nbsp;&nbsp;Izquiedo:{% if p.lateralidad == 1 %}&nbsp;X{% else %}___{% endif %}</div><div class="t m0 x3 h3 yc ff3 fs2 fc0 sc0 ls0 ws0">Religión:&nbsp;{{ p.religion }}</div>
+					<div class="t m0 x3 h3 yd ff3 fs2 fc0 sc0 ls0 ws0">Informante/confiabilidad:&nbsp;{{ p.informante }}</div>
+					<div class="t m0 x3 h3 ye ff3 fs2 fc0 sc0 ls0 ws0">Fecha de la evaluación:&nbsp;{{ p.fecha_evaluacion }}</div>
+					<div class="t m0 x3 h3 yf ff3 fs2 fc0 sc0 ls0 ws0">Persona que le acompaña en la consulta:&nbsp; {{ p.compania }} </div>
+					<div class="t m0 x3 h3 y10 ff3 fs2 fc0 sc0 ls0 ws0">Remitente:&nbsp; {{ p.remitente }}</div>
+					<div class="t m0 x3 h3 y11 ff3 fs2 fc0 sc0 ls0 ws0"> <span class="ls2">II</span>. Motivo de consulta<span class="ls3">: </span> </div>
+					<div class="t m0 x3 h3 y12 ff3 fs2 fc0 sc0 ls0 ws0">&nbsp; {{ p.motivo_consulta}} </div>
+					<div class="t m0 x3 h3 y14 ff3 fs2 fc0 sc0 ls2 ws0">III<span class="ls0">. Historia de la enfermedad actual: </span></div>
+					<div class="t m0 x3 h3 y15 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.hea }}</div>
+				</div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+		</div>
+		<div id="pf2" class="pf w0 h0" data-page-no="2"><div class="pc pc2 w0 h0">
+			<div class="c x0 y0 w1 h0">
+				<div class="t m0 x3 h3 y23 ff3 fs2 fc0 sc0 ls0 ws0">Puntuación en la ESCALA DE DOLOR: {{ p.escala }}/10 </div>
+				<div class="t m0 x3 h3 y24 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y25 ff3 fs2 fc0 sc0 ls0 ws0">TIPO DE DAÑO:&nbsp;{% if p.tipo_danio == 0 %} Enfermedad Profesional/ambiental {% elseif p.tipo_danio == 1 %} Accidente laboral {% elseif p.tipo_danio == 2 %} Enfermedad Común {% elseif p.tipo_danio == 3 %} Accidente común {% endif %}</div>
+				<div class="t m0 x3 h3 y26 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y27 ff3 fs2 fc0 sc0 ls0 ws0">IV<span class="ls0">. Funcionamiento:<span class="_ _0"></span> </span></div>
+				<div class="t m0 x3 h3 y28 ff3 fs2 fc0 sc0 ls0 ws0">Limitaciones en<span class="_ _0"></span> las actividades: </div>
+				<div class="t m0 x3 h3 y29 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.limitaciones }}</div>
+				<div class="t m0 x3 h3 y2a ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y2b ff3 fs2 fc0 sc0 ls0 ws0">Clasificación de la dis<span class="_ _0"></span>capacidad<span class="_ _0"></span> según CIF: </div>
+				<div class="t m0 x3 h3 y2c ff3 fs2 fc0 sc0 ls0 ws0">_________.__<span class="_ _0"></span> </div>
+				<div class="t m0 x3 h3 y2d ff3 fs2 fc0 sc0 ls0 ws0">________.__  </div>
+				<div class="t m0 x3 h3 y2e ff3 fs2 fc0 sc0 ls0 ws0">________.__ </div>
+				<div class="t m0 x3 h3 y2f ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y30 ff3 fs2 fc0 sc0 ls0 ws0">V. <span class="_ _1"></span>Funciones <span class="_ _1"></span>Orgánicas <span class="_ _1"></span>Ge<span class="_ _0"></span>nerales <span class="_ _1"></span>alteradas <span class="_ _1"></span>(Inclu<span class="_ _0"></span>ye <span class="_ _1"></span>problemas <span class="_ _1"></span>de <span class="_ _1"></span>deglución, <span class="_ _2"></span>masticación,<span class="_ _0"></span> </div>
+				<div class="t m0 x3 h3 y31 ff3 fs2 fc0 sc0 ls0 ws0">control de esfínter v<span class="_ _0"></span>esical y rectal) <span class="_ _0"></span> </div>
+				<div class="t m0 x3 h3 y32 ff3 fs2 fc0 sc0 ls0 ws0">Hambre ( {{ p.hambre }} )     Sed ( {{ p.sed }} )  <span class="_ _0"></span>  Micción (  )    Defecación ( {{ p.defecacion }} )      Sueño ( {{ p.suenio }} )    Dieta ( {{ p.dieta }} )</span></span> </div>
+				<div class="t m0 x3 h3 y33 ff3 fs2 fc0 sc0 ls2 ws0"></div>
+				<div class="t m0 x3 h3 y34 ff3 fs2 fc0 sc0 ls0 ws0">VI. Revisión por <span class="_ _0"></span>órganos aparatos y siste<span class="_ _0"></span>mas: </div>
+				<div class="t m0 x3 h3 y35 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y36 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y37 ff3 fs2 fc0 sc0 ls0 ws0">VII<span class="ls0">. Antecedentes per<span class="_ _0"></span>sonales patológic<span class="_ _0"></span>os </span></div>
+				<div class="t m0 x3 h3 y38 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.antecedentes }}</div>
+				<div class="t m0 x3 h3 y39 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y3a ff3 fs2 fc0 sc0 ls0 ws0">VIII<span class="ls0">. Antecedentes h<span class="_ _0"></span>ospitalarios traumá<span class="_ _0"></span>ticos y quirúrg<span class="_ _0"></span>icos </span></div>
+				<div class="t m0 x3 h3 y3b ff3 fs2 fc0 sc0 ls0 ws0">{{ p.antecedente_hospitalario }}</div>
+				<div class="t m0 x3 h3 y3c ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y3d ff3 fs2 fc0 sc0 ls0 ws0">IX<span class="ls0">. Antecedentes Familiar<span class="_ _0"></span>es patológic<span class="_ _0"></span>os: </span></div>
+				<div class="t m0 x3 h3 y3e ff3 fs2 fc0 sc0 ls4 ws0">{{ p.antecedente_familiares}}</div>
+				<div class="t m0 x3 h3 y3f ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y40 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+				<div class="t m0 x3 h3 y41 ff3 fs2 fc0 sc0 ls8 ws0"></div>
+			</div>
+		</div>
+		<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+	</div>
+	<div id="pf3" class="pf w0 h0" data-page-no="3"><div class="pc pc3 w0 h0">
+		<div class="c x0 y0 w1 h0">
+			<div class="t m0 x3 h3 y23 ff3 fs2 fc0 sc0 ls0 ws0">X. Antecedentes pers<span class="_ _0"></span>onales no patol<span class="_ _0"></span>ógicos:</div>
+			<div class="t m0 x3 h3 y24 ff3 fs2 fc0 sc0 ls0 ws0">A.<span class="ff5 ls0"> <span class="_ _3"> </span><span class="ff3">Barreras arquitect<span class="_ _0"></span>ónicas: </span></span></div>
+			<div class="t m0 x3 h3 y25 ff3 fs2 fc0 sc0 ls8 ws0">{{ p.arqui }}</div>
+			<div class="t m0 x3 h3 y43 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+			<div class="t m0 x3 h3 y44 ff3 fs2 fc0 sc0 ls0 ws0">B.<span class="ff5 ls0"> <span class="_ _4"> </span><span class="ff3">Actividad física regular </span></span></div>
+			<div class="t m0 x3 h3 y45 ff3 fs2 fc0 sc0 ls2 ws0">{{ p.fisica }}</div>
+			<div class="t m0 x3 h3 y46 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+			<div class="t m0 x3 h3 y47 ff3 fs2 fc0 sc0 ls0 ws0">C.<span class="ff5 ls0"> <span class="_ _5"> </span><span class="ff3">Pasatiempos y deportes: </span></span></div>
+			<div class="t m0 x3 h3 y48 ff3 fs2 fc0 sc0 ls4 ws0">{{ p.pasatiempos }}</div>
+			<div class="t m0 x3 h3 y4a ff3 fs2 fc0 sc0 ls0 ws0">D.  Hábitos y txicomanías</div>
+			<div class="t m0 x3 h3 y50 ff3 fs2 fc0 sc0 ls4 ws0">{{ p.habitos }}</div>
+			<div class="t m0 xa h3 y4d ff3 fs2 fc0 sc0 ls0 ws0"></div>
+			<div class="t m0 x3 h3 y51 ff3 fs2 fc0 sc0 lsc ws0">XI<span class="ls0">. Historia Sexual <span class="_ _0"></span>(tiene pa<span class="_ _0"></span>reja, planifica, refier<span class="_ _0"></span>e disfunción, etc):<span class="_ _0"></span> </span></div>
+			<div class="t m0 x3 h3 y52 ff3 fs2 fc0 sc0 ls0 ws0">XII. Historia Ginec<span class="_ _0"></span>o-obstétrica:   </div>
+			<div class="t m0 x3 h3 y53 ff3 fs2 fc0 sc0 ls0 ws0">FUM: ________<span class="_ _0"></span>____   G: #__   P:# ___<span class="_ _0"></span>   A:# ___ <span class="ls1">  <span class="lsd">C:</span></span># ___   HV: _#__   H<span class="_ _0"></span>M:# ___                 <span class="_ _0"></span></div>
+			<div class="t m0 x3 h3 y54 ff3 fs2 fc0 sc0 ls0 ws0">fecha de última Cit<span class="_ _0"></span>ología: _______        <span class="_ _0"></span> Menopausia: _______ <span class="_ _0"></span>      </div>
+			<div class="t m0 x3 h3 y55 ff3 fs2 fc0 sc0 ls0 ws0">XIII.  Historia voca<span class="_ _0"></span>cional:  </div>
+			<div class="t m0 x3 h3 y56 ff3 fs2 fc0 sc0 ls0 ws0">Ocupación y tareas qu<span class="_ _0"></span>e realiza, tie<span class="_ _0"></span>mpo de </div>
+			<div class="t m0 x3 h3 y57 ff3 fs2 fc0 sc0 ls0 ws0">trabajar en la e<span class="_ _0"></span>mpresa<span class="lse">: </span></div>
+			<div class="t m0 x3 h3 y58 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.ocupacion_tareas}}</div>
+			<div class="t m0 x3 h3 y59 ff3 fs2 fc0 sc0 ls0 ws0">Tipo de emple<span class="_ _0"></span>o (asalariado, independ<span class="_ _0"></span>iente, </div>
+			<div class="t m0 x3 h3 y5a ff3 fs2 fc0 sc0 ls0 ws0">contrato fijo o por ti<span class="_ _0"></span>empo determinad<span class="_ _0"></span>o, </div>
+			<div class="t m0 x3 h3 y5b ff3 fs2 fc0 sc0 ls0 ws0">jornada completa o <span class="_ _0"></span>media jornada, e<span class="_ _0"></span>tc.) </div><div class="t m0 x3 h3 y5c ff3 fs2 fc0 sc0 ls0 ws0">{{ p.tipo_empleo }}</div>
+			<div class="t m0 xa h3 y56 ff3 fs2 fc0 sc0 ls0 ws0">Fuente de su susten<span class="_ _0"></span>to económico <span class="_ _0"></span>(trabajo, </div>
+			<div class="t m0 xa h3 y57 ff3 fs2 fc0 sc0 ls0 ws0">pensiones, remesa<span class="_ _0"></span>s, ayuda de hijos,<span class="_ _0"></span> etc)<span class="lse">: </span></div>
+			<div class="t m0 xa h3 y58 ff3 fs2 fc0 sc0 ls0 ws0"> {{ p.sustento }}</div>
+			<div class="t m0 xa h3 y59 ff3 fs2 fc0 sc0 ls0 ws0">Ocupaciones pre<span class="_ _0"></span>vias: </div>
+			<div class="t m0 xa h3 y5a ff3 fs2 fc0 sc0 ls4 ws0">{{ p.ocupaciones }}</span></div>
+			<div class="t m0 xa h3 y5d ff3 fs2 fc0 sc0 ls0 ws0">Algún otro trabaj<span class="_ _0"></span>o que puede o que le </div>
+			<div class="t m0 xa h3 y5c ff3 fs2 fc0 sc0 ls0 ws0">gustaría realizar<span class="ls3">: </span></div>
+			<div class="t m0 xa h3 y5e ff3 fs2 fc0 sc0 ls4 ws0">{{ p.otro_trabajo }}</div>
+			<div class="t m0 x3 h3 y5f ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x3 h3 y60 ff3 fs2 fc0 sc0 lsc ws0">XI<span class="ls2">II<span class="ls0">. Historia Social<span class="_ _0"></span> y psicológica: <span class="_ _0"></span> </span></span></div>
+			<div class="t m0 x3 h3 y61 ff3 fs2 fc0 sc0 ls0 ws0">Grupo y dinámica fa<span class="_ _0"></span>miliar (con quien <span class="_ _0"></span>vive, </div>
+			<div class="t m0 x3 h3 y62 ff3 fs2 fc0 sc0 ls0 ws0">como son las rela<span class="_ _0"></span>ciones)<span class="ls3">: </span> </div>
+			<div class="t m0 x3 h3 y63 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.grupo_familiar}}</div><div class="t m0 x3 h3 y64 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 xa h3 y61 ff3 fs2 fc0 sc0 ls0 ws0">Estrés por la enfer<span class="_ _0"></span>medad/ problema </div>
+			<div class="t m0 xa h3 y62 ff3 fs2 fc0 sc0 ls0 ws0">actual: Si: {% if estres == 0 %} X {% else %}___ {% endif %} No: {% if estres == 1 %} X {% else %}___ {% endif %} </div>
+			<div class="t m0 xa h3 y63 ff3 fs2 fc0 sc0 ls0 ws0">Enfermedad mental pr<span class="_ _0"></span>evia<span class="ls3">: </span></div>
+			<div class="t m0 xa h3 y65 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.enfermedad_mental }}</div>
+		</div>
+	</div>
+	<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf4" class="pf w0 h0" data-page-no="4"><div class="pc pc4 w0 h0"><img class="bi xb y66 w2 h5" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1kAAAADCAIAAADunlJoAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAHUlEQVRYw+3BAQEAAACCIP+vbkhAAQAAAAAAAPBiHiQAAVRvLA4AAAAASUVORK5CYII="/>
+	<div class="c x0 y0 w1 h0">
+		<div class="t m0 x3 h3 y23 ff3 fs2 fc0 sc0 ls0 ws0">Estilo de vida anteri<span class="_ _0"></span>or  a la enfermedad<span class="_ _0"></span>: </div><div class="t m0 x3 h3 y24 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.estilo_vida_anterior }}</div>
+		<div class="t m0 xa h3 y23 ff3 fs2 fc0 sc0 ls0 ws0">Actividades para <span class="_ _0"></span>motivar la sup<span class="_ _0"></span>eración de </div><div class="t m0 xa h3 y24 ff3 fs2 fc0 sc0 ls0 ws0">la discapacidad: </div>
+		<div class="t m0 xa h3 y25 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.actividad_superacion }}</div>
+		<div class="t m0 x3 h3 y43 ff3 fs2 fc0 sc0 ls0 ws0">XIV. Examen Físico<span class="_ _0"></span>: </div>
+		<div class="t m0 x3 h3 y67 ff3 fs2 fc0 sc0 ls0 ws0">Somatometría:<span class="_ _0"></span>  </div>
+		<div class="t m0 x3 h3 y68 ff3 fs2 fc0 sc0 ls0 ws0">Peso en lbs<span class="lse">: <span class="_ _0"></span><span class="ls0">{{ p.peso }}     Talla en mts:&nbsp;{{ p.talla }}</span></span></div>
+		<div class="t m0 x3 h3 y46 ff3 fs2 fc0 sc0 ls0 ws0">IMC:&nbsp;{{ p.imc }}<span class="ls1">   </span> </div>
+		<div class="t m0 xa h3 y67 ff3 fs2 fc0 sc0 ls0 ws0">Signos vitales:<span class="_ _0"></span> </div>
+		<div class="t m0 xa h3 y68 ff3 fs2 fc0 sc0 ls0 ws0"> P/A: ##/##    FR<span class="_ _0"></span>: ##<span class="ls1">  <span class="lsf">T°</span></span>C: ##.#<span class="_ _0"></span> </div>
+		<div class="t m0 x3 h3 y69 ff3 fs2 fc0 sc0 ls0 ws0">Apariencia General: </div>
+		<div class="t m0 x3 h3 y6a ff3 fs2 fc0 sc0 ls0 ws0">________________<span class="_ _0"></span>__________<span class="_ _0"></span>______________<span class="_ _0"></span>___________<span class="_ _0"></span>___________<span class="_ _0"></span>______________<span class="_ _0"></span>_ <span class="_ _2"></span> </div>
+		<div class="t m0 x3 h3 y6b ff3 fs2 fc0 sc0 ls0 ws0">Estado de conciencia<span class="_ _0"></span>: (Glasgow/ RLA<span class="ls6">):</span> <span class="_ _0"></span>{{ p.conciencia }}</div>
+		<div class="t m0 x3 h3 y6c ff3 fs2 fc0 sc0 ls0 ws0">Nervios Craneales:{{ p.nervios}} </div>
+		<div class="t m0 x3 h3 y6d ff3 fs2 fc0 sc0 ls0 ws0">Evaluación cognoscitiva:  </div>
+		<div class="t m0 xc h6 y6e ff3 fs2 fc0 sc0 ls0 ws0">-<span class="ff6"> <span class="_ _6"> </span></span>Mini examen mental:<span class="_ _0"></span> </div>
+		<div class="t m0 xc h3 y6f ff3 fs2 fc0 sc0 ls0 ws0">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ p.examen_mental }}</div>
+		<div class="t m0 xc h3 y6f ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 xc h6 y70 ff3 fs2 fc0 sc0 ls0 ws0">-<span class="ff6"> <span class="_ _6"> </span></span>Lenguaje (afasia, afecta<span class="_ _0"></span>ción de lecto-escritura,<span class="_ _0"></span> fluidez, disfonía)<span class="_ _0"></span>:   </div>
+		<div class="t m0 xc h3 y71 ff3 fs2 fc0 sc0 ls0 ws0">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ p.lenguaje }}</div>
+		<div class="t m0 xc h3 y72 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 xc h6 y73 ff3 fs2 fc0 sc0 ls0 ws0">-<span class="ff6"> <span class="_ _6"> </span></span>Agnosia, alexia, agrafi<span class="_ _0"></span>a, apraxia<span class="lse">: <span class="_ _0"></span><span class="ls0"></span></span></div>
+		<div class="t m0 xc h6 y74 ff3 fs2 fc0 sc0 ls0 ws0">-&nbsp;&nbsp;&nbsp;&nbsp;{{ p.aaaa }}<span class="ff6"> <span class="_ _6"> </span></span> </div>
+		<div class="t m0 xc h6 y75 ff3 fs2 fc0 sc0 ls0 ws0"><span class="ff6"> <span class="_ _6"> </span></span> </div>
+		<div class="t m0 xc h6 y76 ff3 fs2 fc0 sc0 ls0 ws0"><span class="ff6"> <span class="_ _6"> </span></span> </div>
+		<div class="t m0 xc h6 y77 ff3 fs2 fc0 sc0 ls0 ws0"><span class="ff6"> <span class="_ _6"> </span></span> </div>
+		<div class="t m0 xc h6 y78 ff3 fs2 fc0 sc0 ls0 ws0"><span class="ff6"> <span class="_ _6"> </span></span> Postura (Actitud, p<span class="_ _0"></span>ostura en bipedestaci<span class="_ _0"></span>ón, sedente, <span class="_ _0"></span>decúbito, etc)<span class="lse">: </span></div>
+		<div class="t m0 x6 h3 y79 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.postura }}</div>
+		<div class="t m0 x6 h3 y7a ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x6 h3 y7b ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y7c ff3 fs2 fc0 sc0 ls0 ws0">Traslados, transferenci<span class="_ _0"></span>as: </div>
+		<div class="t m0 x3 h3 y7d ff3 fs2 fc0 sc0 ls0 ws0">{{ p.traslados }}</div>
+		<div class="t m0 x3 h3 y7e ff3 fs2 fc0 sc0 ls0 ws0">Marcha: </div>
+		<div class="t m0 x3 h3 y7f ff3 fs2 fc0 sc0 ls0 ws0">{{ p.marcha }}</div>
+		<div class="t m0 x3 h3 y80 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y81 ff3 fs2 fc0 sc0 ls0 ws0">Podoscopio: </div>
+		<div class="t m0 x3 h3 y82 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.podoscopio }}</div>
+	</div>
+</div>
+<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+
+<div id="pf5" class="pf w0 h0" data-page-no="5">
+	<div class="pc pc5 w0 h0"><img class="bi x2 y83 w3 h7" alt="" src="data:image/png;base64,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"/><div class="c x0 y0 w1 h0">
+		<div class="t m0 x3 h3 y23 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y84 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y85 ff3 fs2 fc0 sc0 ls0 ws0">Cabeza, cuello, tóra<span class="_ _0"></span>x: (cardiopulm<span class="_ _0"></span>onar) <span class="_ _7"></span>abdomen y genitales<span class="_ _0"></span>: </div>
+		<div class="t m0 x3 h3 y86 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.cabeza_cuello }}</div>
+		<div class="t m0 x3 h3 y87 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y88 ff3 fs2 fc0 sc0 ls0 ws0">Columna: (alineación,<span class="_ _0"></span> puntos doloros<span class="_ _0"></span>os, contracturas<span class="_ _0"></span>/espasmos, mani<span class="_ _0"></span>obras especiales) </div>
+		<div class="t m0 x3 h3 y89 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.columna }}</div>
+		<div class="t m0 x3 h3 y8a ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y8b ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 y8c ff3 fs2 fc0 sc0 ls0 ws0">Estrella de Maigne</div>
+		<div class="t m0 x3 h3 y8d ff3 fs2 fc0 sc0 ls0 ws0">0: Completo <span class="_ _8"> </span> </div>
+		<div class="t m0 x3 h3 y8e ff3 fs2 fc0 sc0 ls0 ws0">-1: Limitado 2<span class="_ _0"></span>5% </div>
+		<div class="t m0 x3 h3 y8f ff3 fs2 fc0 sc0 ls0 ws0">-2: Limitado 5<span class="_ _0"></span>0% </div>
+		<div class="t m0 x3 h3 y90 ff3 fs2 fc0 sc0 ls0 ws0">-3: Limitado 7<span class="_ _0"></span>5% </div>
+		<div class="t m0 x3 h3 y91 ff3 fs2 fc0 sc0 ls0 ws0">-4: Limitado 1<span class="_ _0"></span>00% </div>
+		<div class="t m0 x3 h3 y92 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y93 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y94 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y95 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y96 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y97 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y98 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x3 h3 y99 ff3 fs2 fc0 sc0 ls0 ws0">Miembros torácicos: <span class="_ _9"></span>Actitud, <span class="_ _1"></span>piel, <span class="_ _a"></span>cicatrices, <span class="_ _1"></span>cambios <span class="_ _9"></span>inflamatori<span class="_ _0"></span>os, <span class="_ _9"></span>pulso, <span class="_ _9"></span>puntos <span class="_ _9"></span>doloros<span class="_ _0"></span>os, </div>
+		<div class="t m0 x3 h3 y9a ff3 fs2 fc0 sc0 ls0 ws0">tono <span class="_ _b"> </span>muscular, <span class="_ _b"> </span>trofismo,<span class="_ _0"></span> <span class="_ _b"> </span>arcos <span class="_ _c"> </span>de <span class="_ _b"> </span>movilidad, <span class="_ _b"> </span>co<span class="_ _0"></span>ntracturas, <span class="_ _b"> </span>REMs, <span class="_ _b"> </span>reflejos <span class="_ _b"> </span>patológic<span class="_ _0"></span>os, </div>
+		<div class="t m0 x3 h3 y9b ff3 fs2 fc0 sc0 ls0 ws0">movimientos in<span class="_ _0"></span>voluntarios, sensibilid<span class="_ _0"></span>ad, maniobras<span class="_ _0"></span> especiales, fuerza <span class="_ _0"></span>muscular, f<span class="_ _0"></span>unción (puño, </div>
+		<div class="t m0 x3 h3 y9c ff3 fs2 fc0 sc0 ls0 ws0">pinza, garra ),pruebas de<span class="_ _0"></span> coordinación <span class="_ _0"></span>y metrí<span class="ls10">a)</span> </div>
+		<div class="t m0 x3 h3 y9d ff3 fs2 fc0 sc0 ls4 ws0">{{ p.miembros_toracicos }}</div>
+		<div class="t m0 x3 h3 y9e ff3 fs2 fc0 sc0 ls4 ws0"></div>
+		<div class="t m0 x3 h3 y9f ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya0 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya1 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya2 ff3 fs2 fc0 sc0 ls0 ws0">Miembros <span class="_ _0"></span>pélvicos:(sim<span class="_ _0"></span>etría, acti<span class="_ _0"></span>tud, piel<span class="_ _0"></span> y <span class="_ _0"></span>cicatrices, <span class="_ _0"></span>cambios <span class="_ _0"></span>inflamatori<span class="_ _0"></span>os, pun<span class="_ _0"></span>tos doloro<span class="_ _0"></span>sos, </div>
+		<div class="t m0 x3 h3 ya3 ff3 fs2 fc0 sc0 ls0 ws0">tono <span class="_ _9"></span>muscular,<span class="_ _0"></span> <span class="_ _9"></span>trofismo, <span class="_ _1"></span>arcos <span class="_ _9"></span>de <span class="_ _1"></span>movilidad, <span class="_ _1"></span>co<span class="_ _2"></span>ntra<span class="_ _0"></span>cturas, <span class="_ _1"></span>reflejos <span class="_ _9"></span>pat<span class="_ _0"></span>ológicos, <span class="_ _9"></span>movimi<span class="_ _0"></span>entos </div>
+		<div class="t m0 x3 h3 ya4 ff3 fs2 fc0 sc0 ls0 ws0">involuntarios, sensib<span class="_ _0"></span>ilidad, maniobras<span class="_ _0"></span> especiales, fuer<span class="_ _0"></span>za muscular) </div>
+		<div class="t m0 x3 h3 ya5 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.miembros_pelvicos }}</div>
+		<div class="t m0 x3 h3 ya6 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya7 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya8 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+		<div class="t m0 x3 h3 ya9 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+	</div>
+</div>
+<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf6" class="pf w0 h0" data-page-no="6">
+	<div class="pc pc6 w0 h0"><div class="c x0 y0 w1 h0"><div class="t m0 x3 h3 y23 ff3 fs2 fc0 sc0 ls0 ws0">Reacciones de ender<span class="_ _0"></span>ezamiento y equ<span class="_ _0"></span>ilibrio, función cerebel<span class="_ _0"></span>osa: </div>
+	<div class="t m0 x3 h3 yaa ff3 fs2 fc0 sc0 ls0 ws0">{{ p.reacciones }}</div>
+	<div class="t m0 x3 h3 yab ff3 fs2 fc0 sc0 ls0 ws0">Anexos (escala ASIA<span class="_ _0"></span>): {{ p.anexos }}</div>
+	<div class="t m0 x3 h3 yac ff3 fs2 fc0 sc0 ls0 ws0">Tacto rectal: {{ p.tacto_rectal }}</div>
+	<div class="t m0 x3 h3 yad ff3 fs2 fc0 sc0 ls0 ws0">Nivel sensitivo: <span class="_ _0"></span>{{ p.nivel_sensitivo }}             Niv<span class="_ _0"></span>el neurológico: <span class="_ _0"></span>{{ p.nivel_neurologico }}</div>
+	<div class="t m0 x3 h3 yae ff3 fs2 fc0 sc0 ls0 ws0">*DIAGNOSTICO (i<span class="_ _0"></span>mpresión diag<span class="_ _0"></span>nostica topográfica, anatómic<span class="_ _0"></span>o, etiológic<span class="_ _0"></span>o) </div>
+	<div class="t m0 x3 h3 yaf ff3 fs2 fc0 sc0 ls4 ws0">{{ p.diagnostico }}</div>
+	<div class="t m0 x3 h3 yb0 ff3 fs2 fc0 sc0 ls0 ws0"></div>
+	<div class="t m0 x3 h3 yb1 ff3 fs2 fc0 sc0 ls0 ws0">Objetivos del pacien<span class="_ _0"></span>te: </div>
+	<div class="t m0 x3 h3 yb2 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.objetivos }} </div>
+	<div class="t m0 x3 h3 yb3 ff3 fs2 fc0 sc0 ls0 ws0">Objetivos del fa<span class="_ _0"></span>miliar </div>
+	<div class="t m0 x3 h3 yb4 ff3 fs2 fc0 sc0 ls0 ws0">{{ p.objetivos_familiar }}</div>
+	<div class="t m0 x3 h3 yb5 ff3 fs2 fc0 sc0 ls0 ws0">Metas de rehabil<span class="_ _0"></span>itación: </div>
+	<div class="t m0 x3 h3 yb6 ff3 fs2 fc0 sc0 ls0 ws0">Corto plazo: {{ p.meta_corto }} </div>
+	<div class="t m0 x3 h3 yb7 ff3 fs2 fc0 sc0 ls0 ws0">Largo plazo: {{ p.meta_largo }}</div>
+	<div class="t m0 x3 h3 yb8 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+	<div class="t m0 x3 h3 yb9 ff3 fs2 fc0 sc0 ls0 ws0">Indicaciones médi<span class="_ _0"></span>cas: </div>
+	<div class="t m0 x3 h8 yba ff3 fs2 fc0 sc0 ls0 ws0">Medicamentos<span class="ff4">: </span>{{ p.medicamentos }}</div>
+	<div class="t m0 x3 h3 ybb ff3 fs2 fc0 sc0 ls0 ws0">Estudios de labor<span class="_ _0"></span>atorio: {{ p.estudios_laboratorio }}</div>
+	<div class="t m0 x3 h3 ybc ff3 fs2 fc0 sc0 ls0 ws0">Interconsulta /re<span class="_ _0"></span>misión:{{ p.interconsulta }}</div>
+	<div class="t m0 x3 h8 ybd ff3 fs2 fc0 sc0 ls0 ws0">Psicología<span class="ff4">: </span>{{ p.psicologia }}</div>
+	<div class="t m0 x3 h3 ybe ff3 fs2 fc0 sc0 ls0 ws0">Prescripción </div>
+	<div class="t m0 x3 h3 ybf ff3 fs2 fc0 sc0 ls0 ws0">Ortesica/protésica<span class="_ _0"></span>: {{ p.ortesica }} </div>
+	<div class="t m0 x3 h3 yc0 ff3 fs2 fc0 sc0 ls0 ws0">Recomendaciones/cuid<span class="_ _0"></span>ados generales<span class="_ _0"></span>: {{ p.recomendaciones }}</div>
+	<div class="t m0 xd h3 yc1 ff3 fs2 fc0 sc0 ls0 ws0">Tratamiento terapéutic<span class="_ _0"></span>o de rehabilitaci<span class="_ _0"></span>ón </div>
+	<div class="t m0 xc h6 yc2 ff3 fs2 fc0 sc0 ls11 ws0">1)<span class="ff6 ls0"> <span class="_ _4"> </span><span class="ff3">Mo<span class="_ _2"></span>dali<span class="_ _0"></span>dad: en la clín<span class="_ _0"></span>ica, por tele<span class="_ _0"></span>terapia o ambas: &nbsp;{{ p.modalidad }} </span></span></div>
+	<div class="t m0 xc h6 yc3 ff3 fs2 fc0 sc0 ls11 ws0">2)<span class="ff6 ls0"> <span class="_ _4"> </span><span class="ff3">Número de sesiones, duración, c<span class="_ _0"></span>omponentes de la t<span class="_ _0"></span>erapia: &nbsp;{{ p.sesiones }} </span></span></div>
+	<div class="t m0 x3 h3 yc4 ff3 fs2 fc0 sc0 ls0 ws0"> </div>
+</div>
+</div>
+<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div></div>
+</div>
+{% endfor %}
+
+<div class="loading-indicator">
+{% endblock %}
+
+{% block js %}
+<script src="js/rehabicentro_pdf.js"></script>
+{% endblock %}

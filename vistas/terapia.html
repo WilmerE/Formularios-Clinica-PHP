@@ -1,0 +1,296 @@
+ {% extends 'base.html' %}
+
+ {% block title %} | Teriapia {% endblock %}
+
+ {% block css %}
+ <!-- SELECT2 -->
+ <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+ {% endblock %}
+
+ {% block content %}
+ <div class="overlay active" id="overlay">
+ 	<div class="popup active" id="popup">
+ 		<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+ 		<div class="form_popup" id="formularios">
+ 			<div id="paso_a">
+ 				<form action="." method="post" name="form_a" id="form_a" enctype="multipart/form-data">
+ 					<div class="caja">
+ 						<div class="caja-header">
+ 							<h3 class="caja-title">Terapia Física/Terapia Ocupacional</h3>
+ 						</div>
+ 						<div class="caja-body">
+ 							<table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
+ 								<thead>
+ 									<tr>
+ 										<th><p><strong>Manejo con:</strong></p></th>
+ 										<th><p><strong>Dosis y descripción del tratamiento</strong></p></th>
+ 									</tr>
+ 								</thead>
+ 								<tbody>
+ 									<tr>
+ 										<td class="table-column-izq">
+ 											<h5>Modalidades terapéuticas</h5>
+ 											<!-- PRIMER NIVEL -->
+ 											<select id="modalidades" name="modalidades" class="select2">
+ 												<option value="">Seleccionar Elemento</option>
+ 												<option value="Termoterapia">Termoterapia</option>
+ 												<option value="Contraste">Contraste</option>
+ 												<option value="Fototerapia">Fototerapia</option>
+ 												<option value="Electroterapia">Electroterapia</option>
+ 												<option value="Ultrasonido Combinado">Ultrasonido Combinado</option>
+ 											</select>
+ 											<br><br>
+ 											<!-- SEGUNDO NIVEL -->
+ 											<select id="submenu_modalidades" name="submenu_modalidades" class="select2">
+ 												<option value="">Seleccionar Subelemento</option>
+
+ 												<option value="CHC" data-chained="Termoterapia">CHC</option>
+ 												<option value="Ultrasonido" data-chained="Termoterapia">Ultrasonido</option>
+ 												<option value="Crioterapia" data-chained="Termoterapia">Crioterapia</option>
+
+ 												<option value="Laser" data-chained="Fototerapia">Laser</option>
+
+ 												<option value="Interferenciales" data-chained="Electroterapia">Interferenciales</option>
+ 												<option value="TENS" data-chained="Electroterapia">TENS</option>
+ 												<option value="Diadinámicas" data-chained="Electroterapia">Diadinámicas</option>
+ 												<option value="Microcorrientes" data-chained="Electroterapia">Microcorrientes</option>
+ 												<option value="Galvánicas" data-chained="Electroterapia">Galvánicas</option>
+ 												<option value="Alto voltaje" data-chained="Electroterapia">Alto voltaje</option>
+ 												<option value="Surge" data-chained="Electroterapia">Surge</option>
+ 												<option value="Rusas" data-chained="Electroterapia">Rusas</option>
+ 												<option value="EMS" data-chained="Electroterapia">EMS</option>
+ 												<option value="Trabert" data-chained="Electroterapia">Trabert</option>
+ 												<option value="VMS" data-chained="Electroterapia">VMS</option>
+ 												<option value="Monofásicas" data-chained="Electroterapia">Monofásicas</option>
+ 												<option value="Farádicas" data-chained="Electroterapia">Farádicas</option>
+ 											</select>
+ 										</td>
+ 										<td class="table-column-der">
+ 											<textarea id="dosis_modalidades" name="dosis_modalidades">
+
+ 											</textarea>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td class="table-column-izq">
+ 											<h5>Terapia Manual</h5>
+ 											<!-- PRIMER NIVEL -->
+ 											<select id="terapia_manual" name="terapia_manual" class="select2">
+ 												<option value="">Seleccionar Elemento</option>
+ 												<option value="Masaje">Masaje</option>
+ 												<option value="Movilidad">Movilidad</option>
+ 												<option value="Estiramiento">Estiramiento pasivos o asistido</option>
+ 											</select>
+ 											<br><br>
+ 											<!-- SEGUNDO NIVEL -->
+ 											<select id="submenu_terapia_manual" name="submenu_terapia_manual" class="select2">
+ 												<option value="">Seleccionar Subelemento</option>
+ 												<option value="chc" data-chained="Masaje">Relajante</option>
+ 												<option value="estimulante" data-chained="Masaje">Estimulante</option>
+ 												<option value="superficial" data-chained="Masaje">Superficial</option>
+ 												<option value="profundo" data-chained="Masaje">Profundo</option>
+
+ 												<option value="pasiva" data-chained="Movilidad">Pasiva</option>
+ 												<option value="AA" data-chained="Movilidad">AA</option>
+ 												<option value="AL" data-chained="Movilidad">AL</option>
+
+ 												<option value="Manual" data-chained="Estiramiento">Manual</option>
+ 												<option value="Con bandas" data-chained="Estiramiento">Con Bandas</option>
+ 											</select>
+ 										</td>
+ 										<td class="table-column-der">
+ 											<textarea id="dosis_terapia_manual" name="dosis_terapia_manual">
+
+ 											</textarea>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td class="table-column-izq">
+ 											<h5>Ejercicio</h5>
+ 											<!-- PRIMER NIVEL -->
+ 											<select id="ejercicios" name="ejercicios" class="select2">
+ 												<option value="">Seleccionar Elemento</option>
+ 												<option value="Fortalecimiento">Fortalecimiento</option>
+ 												<option value="Colchoneta">Cochoneta</option>
+ 												<option value="Barras">Barras</option>
+ 												<option value="Gimnasio">Gimnasio/Mecanoterapia</option>
+ 												<option value="Terapia-respiratoria">Terapia respiratoria</option>
+ 												<option value="Otros">Otros</option>
+ 											</select>
+ 											<br><br>
+ 											<!-- SEGUNDO NIVEL -->
+ 											<select id="submenu_ejercicios" name="submenu_ejercicios" class="select2">
+ 												<option value="">Seleccionar Subelemento</option>
+ 												<option value="Isométrico" data-chained="Fortalecimiento">Isométrico</option>
+ 												<option value="Isotónico" data-chained="Fortalecimiento">Isotónico</option>
+ 												<option value="PRM" data-chained="Fortalecimiento">PRM</option>
+ 												<option value="Pesas" data-chained="Fortalecimiento">Pesas</option>
+ 												<option value="Bandas" data-chained="Fortalecimiento">Bandas</option>
+ 												<option value="Tuberia de resistencia" data-chained="Fortalecimiento">Tuberia de resistencia</option>
+
+ 												<option value="Neurorelajación" data-chained="Colchoneta">Neurorelajación</option>
+ 												<option value="Inhibición de patrones anormales" data-chained="Colchoneta">Inhibición de patrones anormales</option>
+ 												<option value="Neurofacilitación" data-chained="Colchoneta">Neurofacilitación</option>
+ 												<option value="Giros y medio-giros" data-chained="Colchoneta">Giros y medio-giros</option>
+ 												<option value="Control de cuello/tronco" data-chained="Colchoneta">Control de cuello/tronco</option>
+ 												<option value="Disociación de cinturas" data-chained="Colchoneta">Disociación de cinturas</option>
+ 												<option value="Auto sedestación" data-chained="Colchoneta">Auto sedestación</option>
+ 												<option value="Propiecepción" data-chained="Colchoneta">Propiecepción</option>
+ 												<option value="Traslados" data-chained="Colchoneta">Traslados</option>
+ 												<option value="Cambios intermedios" data-chained="Colchoneta">Cambios intermedios</option>
+
+ 												<option value="Bipedestación" data-chained="Barras">Bipedestación</option>
+ 												<option value="Descargas de peso" data-chained="Barras">Descargas de peso</option>
+ 												<option value="Equilibrio y coordinación" data-chained="Barras">Equilibrio y coordinación</option>
+ 												<option value="Auto-sedestación" data-chained="Barras">Auto-sedestación</option>
+ 												<option value="Reeducación de marcha" data-chained="Barras">Reeducación de marcha</option>
+
+ 												<option value="Barras" data-chained="Gimnasio">Barras</option>
+ 												<option value="Rueda" data-chained="Gimnasio">Rueda</option>
+ 												<option value="Escalerilla" data-chained="Gimnasio">Escalerilla</option>
+ 												<option value="Cicloergómetro" data-chained="Gimnasio">Cicloergómetro</option>
+ 												<option value="Caminadora" data-chained="Gimnasio">Caminadora</option>
+ 												<option value="Elíptica" data-chained="Gimnasio">Elíptica</option>
+ 												<option value="Estabilizadores" data-chained="Gimnasio">Estabilizadores</option>
+
+ 												<option value="Mímica Facial" data-chained="Otros">Mímica Facial</option>
+ 												<option value="Codman" data-chained="Otros">Codman</option>
+ 												<option value="Risser" data-chained="Otros">Risser</option>
+ 												<option value="Posturas" data-chained="Otros">Posturas</option>
+ 												<option value="Ejercicios de columna" data-chained="Otros">Ejercicios de columna</option>
+ 												<option value="Burger-Allen" data-chained="Otros">Burger-Allen</option>
+ 											</select>
+ 										</td>
+ 										<td class="table-column-der">
+ 											<textarea id="dosis_ejercicio" name="dosis_ejercicio">
+
+ 											</textarea>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td class="table-column-izq">
+ 											<h5>Terapia para la mano</h5>
+ 											<!-- PRIMER NIVEL -->
+ 											<select id="terapia_mano" name="terapia_mano" class="select2">
+ 												<option value="">Seleccionar Elemento</option>
+ 												<option value="Funciones-de-la-mano">Funciones básicas de la mano</option>
+ 												<option value="Destreza-Manual">Destreza Manual</option>
+ 												<option value="Uso-de-aditamentos">Uso de aditamentos</option>
+ 												<option value="Actividades-diarias">Actividades básicas de vida diaria</option>
+ 												<option value="Actividades-instrumentales">Actividades instrumentales de vida diaria</option>
+ 												<option value="Reeducacion-sensitiva">Reeducación sensitiva</option>
+ 												<option value="Otros">Otros</option>
+ 											</select>
+ 											<br><br>
+ 											<!-- SEGUNDO NIVEL -->
+ 											<select id="submenu_terapia_mano" name="submenu_terapia_mano" class="select2">
+ 												<option value="">Seleccionar Subelemento</option>
+ 												<option value="Puño" data-chained="Funciones-de-la-mano">Puño</option>
+ 												<option value="Pinzas" data-chained="Funciones-de-la-mano">Pinzas</option>
+ 												<option value="Oponencias" data-chained="Funciones-de-la-mano">Oponencias</option>
+
+ 												<option value="Uso de mano y brazo" data-chained="Destreza-Manual">Uso de mano y brazo</option>
+ 												<option value="Escritura" data-chained="Destreza-Manual">Escritura</option>
+ 												<option value="Cambio de lateralidad" data-chained="Destreza-Manual">Cambio de lateralidad</option>
+
+ 												<option value="Rutinas" data-chained="Otros">Rutinas</option>
+ 												<option value="Cognición" data-chained="Otros">Cognición</option>
+ 											</select>
+ 										</td>
+ 										<td class="table-column-der">
+ 											<textarea id="dosis_terapia_mano" name="dosis_terapia_mano">
+
+ 											</textarea>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="2">
+ 											<h5>Terapia de realidad virtual</h5>
+ 											<canvas id="esquema" width="500" height="200" style="border:1px solid #000000;"></canvas>
+ 										</td>
+ 									</tr>
+ 									<tr>
+ 										<td colspan="2">
+ 											<h5>Observaciones/Recomendaciones/Consolidación</h5>
+ 											<textarea id="observaciones" name="observaciones">
+
+ 											</textarea>
+ 										</td>
+ 									</tr>
+ 								</tbody>
+ 							</table>
+ 						</div>
+ 						<div class="caja-footer">
+ 							<a href="" id="cancelar_form" class="btn btn-link">Cancelar</a>
+ 							<a class="btn btn-primary" id="btn-guardar">Guardar</a>
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+ {% endblock %}
+
+ {% block js %}
+ <script src="js_libs/select2/js/select2.min.js"></script>
+ <script src="js/jquery.chained.js"></script>
+
+ <script type="text/javascript" charset="utf-8">
+ 	$(function() {
+ 		/* For jquery.chained.js */
+ 		$("#submenu_terapia_manual").chained("#terapia_manual");
+ 		$("#submenu_modalidades").chained("#modalidades");
+ 		$("#submenu_ejercicios").chained("#ejercicios");
+ 		$("#submenu_terapia_mano").chained("#terapia_mano");
+ 	});
+
+ 	$(document).ready(function() {
+ 		$('.select2').select2();
+ 	});
+
+ 	/*
+		*=================================== FORMULARIO POR PARTES ===================================
+		*/
+		$(function(){
+			//Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
+			$('body').on('click','#formularios a', function(elemento){
+
+				elemento.preventDefault();
+
+				//Se obtiene el id del botón clickeado
+				mostrar = $(this).attr('id');
+
+				//Usamos condiciones para saber que acción tomar según el botón
+				if(mostrar == 'cancelar_form'){
+					window.location="http://localhost/formularios_historia/";
+				}
+				else if(mostrar == 'btn-guardar'){
+					// Serializamos formularios
+					var dataForm = $('#form_a').serialize();
+
+					$.ajax({
+						type: "POST",
+						url: "insertar_terapia.php",
+						data: dataForm,
+						dataType: "json",
+						success: function() {
+							window.location="http://localhost/formularios_historia/terapia_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						},
+						error: function() {
+							window.location="http://localhost/formularios_historia/terapia_list.php";
+							$('#form_a').trigger("reset")
+							$('#form_b').trigger("reset")
+							$('#form_c').trigger("reset")
+							$('#form_d').trigger("reset")
+						}
+					});
+				}
+			});
+		});
+ </script>
+ {% endblock %}

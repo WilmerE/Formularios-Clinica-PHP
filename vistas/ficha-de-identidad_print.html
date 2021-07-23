@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block title %} | PDF {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="css/ficha_pdf.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.60/jspdf.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="sidebar">
+	<div id="outline"></div>
+</div>
+
+{% for p in resultado %}
+<div id="page-container">
+<div id="pf1" class="pf w0 h0" data-page-no="1">
+	<div class="pc pc1 w0 h0"><img class="bi x0 y0 w1 h1" alt="" src="data:image/png;base64,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"/><div class="c x1 y1 w2 h0">
+		<div class="t m0 x2 h2 y2 ff1 fs0 fc0 sc0 ls0 ws0">Ficha de Identificación </div>
+		<div class="t m0 x3 h3 y3 ff2 fs1 fc0 sc0 ls0 ws0">Fecha de creación:&nbsp;{{ p.fecha }}</div>
+		<div class="t m0 x4 h3 y4 ff2 fs1 fc0 sc0 ls0 ws0">No. Expediente<span class="_ _0"></span>:&nbsp;{{ p.expediente }}</div>
+		<div class="t m0 x0 h4 y5 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h5 y6 ff1 fs2 fc0 sc0 ls0 ws0">I. Datos generales </div>
+		<div class="t m0 x0 h4 y7 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y8 ff3 fs1 fc0 sc0 ls0 ws0">Nombre:&nbsp; {{ p.display_name }} </div>
+		<div class="t m0 x0 h4 y9 ff3 fs1 fc0 sc0 ls0 ws0">Edad:&nbsp;{{ p.edad }}</div>
+		<div class="t m0 x0 h4 ya ff3 fs1 fc0 sc0 ls0 ws0">Lugar y Fecha de<span class="_ _0"></span> Nacimiento: &nbsp;{{p.nacimiento}} </div>
+		<div class="t m0 x0 h4 yb ff3 fs1 fc0 sc0 ls0 ws0">Código de empleado:&nbsp; {{ p.codigo }}</div>
+		<div class="t m0 x0 h4 yc ff3 fs1 fc0 sc0 ls0 ws0">Escolaridad:&nbsp;{{ p.escolaridad }} </div>
+		<div class="t m0 x0 h4 yd ff3 fs1 fc0 sc0 ls0 ws0">Ocupación:&nbsp;{{ p.ocupacion }}</div>
+		<div class="t m0 x0 h4 ye ff3 fs1 fc0 sc0 ls0 ws0">Estado Civil:&nbsp;{{ p.estadoCivil }}</div>
+		<div class="t m0 x0 h4 yf ff3 fs1 fc0 sc0 ls0 ws0">Religión:&nbsp;{{ p.religion }}</div>
+		<div class="t m0 x0 h4 y10 ff3 fs1 fc0 sc0 ls0 ws0">Dirección:&nbsp; {{ p.direccion }}</div>
+		<div class="t m0 x0 h4 y11 ff3 fs1 fc0 sc0 ls0 ws0">Teléfono:&nbsp;{{ p.telefono }}</div>
+		<div class="t m0 x0 h4 y12 ff3 fs1 fc0 sc0 ls0 ws0">Correo:&nbsp; {{ p.correo }}</div>
+		<div class="t m0 x0 h4 y13 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h5 y14 ff1 fs2 fc0 sc0 ls0 ws0">II: Descripción del Sujeto </div>
+		<div class="t m0 x0 h4 y15 ff3 fs1 fc0 sc0 ls0 ws0"> {{ p.sujeto }} </div>
+		<div class="t m0 x0 h4 y16 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y17 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y18 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y19 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y1a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y1b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h5 y1c ff1 fs2 fc0 sc0 ls0 ws0">III. Motivo de Con<span class="_ _0"></span>sulta </div>
+		<div class="t m0 x0 h4 y1d ff3 fs1 fc0 sc0 ls0 ws0"> {{ p.motivo }} </div>
+		<div class="t m0 x0 h4 y1e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		<div class="t m0 x0 h4 y1f ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+	</div>
+</div>
+<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf2" class="pf w0 h0" data-page-no="2">
+	<div class="pc pc2 w0 h0">
+		<div class="c x1 y1 w2 h0">
+			<div class="t m0 x5 h6 y20 ff1 fs1 fc0 sc0 ls0 ws0">Fecha:<span class="ff3"> __________<span class="_ _0"></span>________________<span class="_ _0"></span>____ </span></div>
+			<div class="t m0 x0 h4 y21 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x6 h5 y22 ff1 fs2 fc0 sc0 ls0 ws0">Reporte de Sesión<span class="_ _0"></span> </div>
+			<div class="t m0 x0 h4 y23 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y24 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y25 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y26 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y27 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y28 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y29 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2f ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y30 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y31 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y32 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y33 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y34 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y35 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y36 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y37 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y38 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y39 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		</div>
+	</div>
+	<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf3" class="pf w0 h0" data-page-no="3">
+	<div class="pc pc3 w0 h0">
+		<div class="c x1 y1 w2 h0">
+			<div class="t m0 x5 h4 y20 ff3 fs1 fc0 sc0 ls0 ws0">Fecha: _________<span class="_ _0"></span>___________<span class="_ _0"></span>__________ </div><div class="t m0 x0 h4 y21 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x6 h5 y22 ff1 fs2 fc0 sc0 ls0 ws0">Reporte de Sesión<span class="_ _0"></span> </div>
+			<div class="t m0 x0 h4 y23 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y24 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y25 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y26 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y27 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y28 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y29 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2f ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y30 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y31 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y32 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y33 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y34 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y35 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y36 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y37 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y38 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y39 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		</div>
+	</div>
+	<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf4" class="pf w0 h0" data-page-no="4">
+	<div class="pc pc4 w0 h0">
+		<div class="c x1 y1 w2 h0">
+			<div class="t m0 x5 h4 y20 ff3 fs1 fc0 sc0 ls0 ws0">Fecha: _________<span class="_ _0"></span>___________<span class="_ _0"></span>__________ </div><div class="t m0 x0 h4 y21 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x6 h5 y22 ff1 fs2 fc0 sc0 ls0 ws0">Reporte de Sesión<span class="_ _0"></span> </div>
+			<div class="t m0 x0 h4 y23 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y24 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y25 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y26 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y27 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y28 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y29 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2f ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y30 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y31 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y32 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y33 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y34 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y35 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y36 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y37 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y38 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y39 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y3e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		</div>
+	</div>
+	<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+<div id="pf5" class="pf w0 h0" data-page-no="5">
+	<div class="pc pc5 w0 h0">
+		<div class="c x1 y1 w2 h0">
+			<div class="t m0 x5 h4 y20 ff3 fs1 fc0 sc0 ls0 ws0">Fecha: _________<span class="_ _0"></span>___________<span class="_ _0"></span>__________ </div><div class="t m0 x0 h4 y21 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x6 h5 y22 ff1 fs2 fc0 sc0 ls0 ws0">Reporte de Sesión<span class="_ _0"></span> </div>
+			<div class="t m0 x0 h4 y23 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y24 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y25 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y26 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y27 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y28 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y29 ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2a ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2b ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2c ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2d ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2e ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+			<div class="t m0 x0 h4 y2f ff3 fs1 fc0 sc0 ls0 ws0"> </div>
+		</div>
+	</div>
+	<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+</div>
+</div>
+{% endfor %}
+
+<div class="loading-indicator">
+</div>
+
+<div id="editor"></div>
+
+{% endblock %}

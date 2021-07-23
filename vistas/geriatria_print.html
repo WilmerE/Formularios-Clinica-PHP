@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+{% block title %} | PDF {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="css/geriatria_pdf.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.60/jspdf.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="sidebar">
+	<div id="outline"></div>
+</div>
+
+{% for p in resultado %}
+<span id="nombre_p" class="{{ p.display_name }}"></span>
+<div id="page-container" class="spFxJspdf">
+	<div id="pf1" class="pf w0 h0" data-page-no="1">
+			<div class="pc pc1 w0 h0">
+				<div class="c x0 y0 w1 h0">
+					<div class="t m0 x1 h1 y1 ff1 fs0 fc0 sc0 ls0 ws0">HISTORIA CLÍNICA GERIATRIA<span class="sc1"></span>
+					</div>
+					<div class="t m0 x2 h2 y2 ff1 fs1 fc0 sc1 ls0 ws0">N°: <span class="res">{{ p.numero }}</span></div>
+					<div class="t m0 x3 h2 y3 ff1 fs1 fc0 sc1 ls0 ws0">NOMBRE DEL PACIENTE: <span class="res">{{ p.display_name }}</span></div>
+					<div class="t m0 x3 h2 y4 ff1 fs1 fc0 sc1 ls0 ws0">EDAD: <span class="res">{{ p.edad }}</span> FECHA Y LUGAR DE NACIMIENTO: <span class="res">{{ p.lugar_fecha }}</span></div>
+					<div class="t m0 x3 h2 y5 ff1 fs1 fc0 sc1 ls0 ws0">SEXO: <span class="res">{{ p.sexo }}</span> ESTADO CIVIL: <span class="res">{{ p.estado_civil }}</span> PROFESIÓN: <span class="res">{{ p.profesion }}</span> </div>
+					<div class="t m0 x3 h2 y6 ff1 fs1 fc0 sc1 ls0 ws0">NÚMERO DE IDENTIDAD: <span class="res">{{ p.cui }}</span> SEGURO: <span class="res">{{ p.seguro }}</span> </div>
+					<div class="t m0 x3 h2 y7 ff1 fs1 fc0 sc1 ls0 ws0">PERSONA DE REFERENCIA: <span class="res">{{ p.referencia }}</span></div>
+					<div class="t m0 x3 h2 y8 ff1 fs1 fc0 sc1 ls0 ws0">TELÉFONOS DE CONTACTO: <span class="res">{{ p.telefono }}</span></div>
+					<div class="t m0 x3 h2 y15 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y9 ff1 fs1 fc0 sc1 ls0 ws0">ANTECEDENTES FAMILIARES:</div>
+					<div class="t m0 x3 h2 ya ff1 fs1 fc0 sc1 ls0 ws0">MADRE:</div>
+					<div class="t m0 x3 h2 yb ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_madre }}</span></div>
+					<div class="t m0 x3 h2 yc ff1 fs1 fc0 sc1 ls0 ws0">PADRE:</div>
+					<div class="t m0 x3 h2 yd ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_padre }}</span></div>
+					<div class="t m0 x3 h2 ye ff1 fs1 fc0 sc1 ls0 ws0">OTROS FAMILIARES:</div>
+					<div class="t m0 x3 h2 yf ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_otros }}</span></div>
+					<div class="t m0 x3 h2 y10 ff1 fs1 fc0 sc1 ls0 ws0">ANTECEDENTES PERSONALES:</div>
+					<div class="t m0 x3 h2 y15 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y16 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y17 ff1 fs1 fc0 sc1 ls0 ws0">FÁRMACOS:</div>
+					<div class="t m0 x3 h2 y18 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_farmacos }}</span></div>
+				</div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'>
+				
+			</div>
+	</div>
+	<div id="pf2" class="pf w0 h0" data-page-no="2">
+			<div class="pc pc2 w0 h0">
+				<div class="c x0 y0 w1 h0">
+					<div class="t m0 x3 h2 y1b ff1 fs1 fc0 sc1 ls0 ws0">MOTIVO DE CONSULTA:</div>
+					<div class="t m0 x3 h2 y1c ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_motivo_consulta }}</span></div>
+					<div class="t m0 x3 h2 y1d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1e ff1 fs1 fc0 sc1 ls0 ws0">ENFERMEDAD ACTUAL:</div>
+					<div class="t m0 x3 h2 y1f ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.antecedente_enfermedad_actual }}</span></div>
+					<div class="t m0 x3 h2 y20 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y21 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y22 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y23 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y24 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y25 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y26 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y28 ff1 fs1 fc0 sc1 ls0 ws0">EXPLORACIÓN FÍSICA:</div>
+					<div class="t m0 x3 h2 y29 ff1 fs1 fc0 sc1 ls0 ws0">PESO: <span class="res">{{ p.peso }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TALLA: <span class="res">{{ p.talla }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(alcanzada en juventud): <span class="res">{{ p.juventud }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMC: <span class="res">{{ p.imc }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T°C: <span class="res">{{ p.temperatura }}</span></div>
+					<div class="t m0 x3 h2 y2a ff1 fs1 fc0 sc1 ls0 ws0">TA: (S) <span class="res">{{ p.tas }}</span><span class="_ _6"></span> <span class="_ _2"> </span>  <span class="ls1">(A)<span class="res">{{ p.taa }}</span></span> <span class="_ _7"> </span> <span class="_ _2"> </span>FC: <span class="res">{{ p.fc }}</span><span class="_ _8"> </span> <span class="_ _2"> </span><span class="ls2">P: <span class="res">{{ p.p }}</span></span> <span class="_ _9"> </span> <span class="_ _2"> </span>FR: <span class="res">{{ p.fr }}</span><span class="_ _a"> </span> <span class="_ _2"> </span>SAT O²: <span class="res">{{ p.sat }}</span></div>
+					<div class="t m0 x3 h2 y27 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2b ff1 fs1 fc0 sc1 ls0 ws0">ESTADO GENERAL:</div>
+					<div class="t m0 x3 h2 y2c ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.estado_general }}</span></div>
+					<div class="t m0 x3 h2 y2d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2e ff1 fs1 fc0 sc1 ls0 ws0">ESTADO MENTAL:</div>
+					<div class="t m0 x3 h2 y2f ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.estado_mental }}</span></div>
+					<div class="t m0 x3 h2 y30 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y31 ff1 fs1 fc0 sc1 ls0 ws0">CABEZA Y CUELLO:</div>
+					<div class="t m0 x3 h2 y32 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.cabeza_cuello }}</span></div>
+					<div class="t m0 x3 h2 y33 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y34 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+				</div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'>
+				
+			</div>
+	</div>
+	<div id="pf3" class="pf w0 h0" data-page-no="3">
+			<div class="pc pc3 w0 h0">
+				<div class="c x0 y0 w1 h0">
+					<div class="t m0 x3 h2 y1b ff1 fs1 fc0 sc1 ls0 ws0">TÓRAX:</div>
+					<div class="t m0 x3 h2 y1c ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.torax }}</span></div>
+					<div class="t m0 x3 h2 y1d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1e ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1f ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y20 ff1 fs1 fc0 sc1 ls0 ws0">ABDOMEN:</div>
+					<div class="t m0 x3 h2 y21 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.abdomen }}</span></div>
+					<div class="t m0 x3 h2 y22 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y23 ff1 fs1 fc0 sc1 ls0 ws0">EXTREMIDADES:</div>
+					<div class="t m0 x3 h2 y24 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.extremidades }}</span></div>
+					<div class="t m0 x3 h2 y25 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y26 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y27 ff1 fs1 fc0 sc1 ls0 ws0">NEUROLÓGICO:</div>
+					<div class="t m0 x3 h2 y28 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.neurologico }}</span></div>
+					<div class="t m0 x3 h2 y29 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2a ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2b ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2c ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2e ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2f ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y30 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y31 ff1 fs1 fc0 sc1 ls0 ws0">DOLOR:</div>
+					<div class="t m0 x3 h2 y32 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.dolor }}</span></div>
+					<div class="t m0 x3 h2 y33 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y34 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+				</div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'>
+				
+			</div>
+	</div>
+	<div id="pf4" class="pf w0 h0" data-page-no="4">
+			<div class="pc pc4 w0 h0">
+				<div class="c x0 y0 w1 h0">
+					<div class="t m0 x3 h2 y1b ff1 fs1 fc0 sc1 ls0 ws0">ESTUDIOS COMPLEMENTARIOS:</div>
+					<div class="t m0 x3 h2 y1c ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1e ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y1f ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y20 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y21 ff1 fs1 fc0 sc1 ls0 ws0">DIAGÓSTICO(S):</div>
+					<div class="t m0 x3 h2 y22 ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.diagnostico }}</span></div>
+					<div class="t m0 x3 h2 y23 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y24 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y25 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y26 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y27 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y28 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y29 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2a ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2b ff1 fs1 fc0 sc1 ls0 ws0">TRATAMIENTO(S):</div>
+					<div class="t m0 x3 h2 y2c ff1 fs1 fc0 sc1 ls0 ws0"><span class="res">{{ p.tratamiento }}</span></div>
+					<div class="t m0 x3 h2 y2d ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2e ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y2f ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y30 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y31 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y32 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y33 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+					<div class="t m0 x3 h2 y34 ff1 fs1 fc0 sc1 ls0 ws0"></div>
+				</div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+	</div>
+	<div id="pf5" class="pf w0 h0" data-page-no="5">
+			<div class="pc pc5 w0 h0">
+				<div class="c x0 y0 w1 h0"><div class="t m0 x3 h2 y1b ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y1c ff1 fs1 fc0 sc1 ls0 ws0">VALORACIÓN GERIÁTRICA INTEGRAL: <span class="_ _b"> </span> <span class="_ _2"> </span>PUNTOS <span class="_ _c"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span>FECHA </div><div class="t m0 x3 h2 y1d ff1 fs1 fc0 sc1 ls0 ws0">FUNCIONAL: </div><div class="t m0 x4 h3 y35 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>VELOCIDAD DE MARCHA <span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.velocidad_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.velocidad_fecha }}</span> </div><div class="t m0 x4 h3 y36 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>SPPB <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _f"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.sppb_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">&nbsp;{{ p.sppb_fecha }}</span> </div><div class="t m0 x4 h3 y37 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>TUG <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _10"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.tug_pts }}</span><span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">&nbsp;&nbsp;{{ p.tug_fecha }}</span> </div><div class="t m0 x4 h3 y38 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>FAC <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _11"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.fac_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">&nbsp;{{ p.fac_fecha }}</span> </div><div class="t m0 x3 h2 y39 ff1 fs1 fc0 sc1 ls0 ws0">DISCAPACIDAD: </div><div class="t m0 x4 h3 y3a ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>BARTHEL <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _12"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.barthel_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.barthel_fecha }}</span> </div><div class="t m0 x4 h3 y3b ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>LAWTON <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _13"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.lawton_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.lawton_fecha }}</span> </div><div class="t m0 x3 h2 y3c ff1 fs1 fc0 sc1 ls0 ws0">MENTAL: </div><div class="t m0 x4 h3 y3d ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>MMSE <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _14"></span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.mmse_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.mmse_fecha }}</span> </div><div class="t m0 x4 h3 y3e ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>T@M 7 MÍNUTOS <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _15"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.tom7_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.tom7_fecha }}</span> </div><div class="t m0 x4 h3 y3f ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>FAST <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _5"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.fast_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.fast_fecha }}</span> </div><div class="t m0 x4 h3 y40 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span><span class="ls3">RE<span class="ls2">LOJ</span></span> <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _16"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.reloj_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.reloj_fecha }}</span> </div><div class="t m0 x4 h3 y41 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>FLUENCIA VERBAL <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _10"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.fluencia_pts }}</span> <span class="_ _17"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.fluencia_fecha }}</span> </div><div class="t m0 x3 h2 y42 ff1 fs1 fc0 sc1 ls0 ws0">(DEMENCIA): </div><div class="t m0 x4 h3 y43 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>GDS <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _d"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.gds_pts }}</span> <span class="_ _17"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.gds_fecha }}</span> </div><div class="t m0 x4 h3 y44 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>YESAVAGE <span class="_ _5"> </span><span class="_ _5"> </span>&nbsp;<span class="_ _18"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.yesavage_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span><span class="res">{{ p.yesavage_fecha }}</span> </div><div class="t m0 x3 h2 y45 ff1 fs1 fc0 sc1 ls0 ws0">OTRAS: </div><div class="t m0 x4 h3 y46 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>CARGA DEL CUIDADOR <span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.cuidador_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.cuidador_fecha }}</span></div><div class="t m0 x4 h3 y47 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>CALIDAD DE VIDA <span class="_ _2"> </span><span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.calidad_vida_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.calidad_vida_fecha }}</span></div><div class="t m0 x4 h3 y48 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>VALORACIÓN SOCIAL <span class="_ _5"> </span> <span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">&nbsp;&nbsp;{{ p.vsocial_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.vsocial_fecha }}</span></div><div class="t m0 x4 h3 y49 ff1 fs1 fc0 sc1 ls0 ws0">-<span class="ff2"> <span class="_ _d"> </span></span>VALORACIÓN NUTRICIONAL <span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span><span class="_ _5"> </span> <span class="_ _2"> </span> <span class="res">{{ p.vnutricional_pts }}</span> <span class="_ _e"> </span> <span class="_ _2"> </span> <span class="_ _2"> </span> <span class="res">{{ p.vnutricional_fecha }}</span></div><div class="t m0 x3 h2 y4a ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y4b ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y4c ff1 fs1 fc0 sc1 ls0 ws0"> <span class="_ _2"> </span> </div><div class="t m0 x3 h2 y4d ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y4e ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y4f ff1 fs1 fc0 sc1 ls0 ws0"> </div><div class="t m0 x3 h2 y50 ff1 fs1 fc0 sc1 ls0 ws0"> </div></div>
+			</div>
+			<div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+	</div>
+</div>
+{% endfor %}
+
+<div class="loading-indicator">
+</div>
+
+<div id="editor"></div>
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(event) {
+	/*
+		const contenido = $('div[class^="spFxJspdf"]');
+		var nombre = $('#nombre_p').attr('class');
+		var doc = new jsPDF();
+		var specialElementHandlers = {
+			'#editor': function (element, renderer) {
+			return true;
+			}
+		};
+		doc.fromHTML(contenido.html(), 15, 15, {
+			'width': 170,
+			'elementHandlers': specialElementHandlers
+		});
+		doc.save('geriatria-'+nombre+'.pdf');
+	*/
+		var html = $('#page-container');
+		var nombre = $('#nombre_p').attr('class');
+		$(function(){
+			$.ajax({
+				type: "POST",
+				url: "ajax/geriatria_pdf.php",
+				data: {
+					'action': 'var',
+					'html': html.html(),
+					'nombre': nombre
+				},
+				success: function() {
+				},
+				error: function() {
+				}
+			});
+		})
+	});
+
+</script>
+
+{% endblock %}
