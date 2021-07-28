@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} | Geriatría {% endblock %}
+{% block title %} | Evaluación del lenguaje {% endblock %}
 
 {% block css %}
 <!-- SELECT2 -->
@@ -12,7 +12,7 @@
  	<div class="popup active" id="popup">
  		<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
  		<div class="form_popup" id="formularios">
- 			<div id="paso_a" class="hide">
+ 			<div id="paso_a">
  				<form action="." method="post" name="form_a" id="form_a" enctype="multipart/form-data">
  					<div class="caja">
  						<div class="caja-header">
@@ -759,8 +759,8 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label for="id_entonacion_normal" class="label">Robótica:</label>
-                                                <input type="text" name="entonacion_normal" class="form-control"  id="id_entonacion_normal">
+                                                <label for="id_entonacion_robotica" class="label">Robótica:</label>
+                                                <input type="text" name="entonacion_robotica" class="form-control"  id="id_entonacion_robotica">
                                             </div>
                                         </td>
                                         <td>
@@ -933,13 +933,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion1" class="label"></label>
-                                            <input type="text" name="transcripcion1" class="form-control" required="" id="id_transcripcion1">
+                                            <input type="text" name="transcripcion1" class="form-control" id="id_transcripcion1">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion1" class="label"></label>
-                                            <input type="text" name="observacion1" class="form-control" required="" id="id_observacion1">
+                                            <input type="text" name="observacion1" class="form-control" id="id_observacion1">
                                         </div>
                                     </td>
                                 </tr>
@@ -950,13 +950,13 @@
                                    <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion2" class="label"></label>
-                                            <input type="text" name="transcripcion2" class="form-control" required="" id="id_transcripcion2">
+                                            <input type="text" name="transcripcion2" class="form-control" id="id_transcripcion2">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion2" class="label"></label>
-                                            <input type="text" name="observacion2" class="form-control" required="" id="id_observacion2">
+                                            <input type="text" name="observacion2" class="form-control" id="id_observacion2">
                                         </div>
                                     </td>
                                 </tr>
@@ -967,13 +967,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion3" class="label"></label>
-                                            <input type="text" name="transcripcion3" class="form-control" required="" id="id_transcripcion3">
+                                            <input type="text" name="transcripcion3" class="form-control" id="id_transcripcion3">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion3" class="label"></label>
-                                            <input type="text" name="observacion3" class="form-control" required="" id="id_observacion3">
+                                            <input type="text" name="observacion3" class="form-control" id="id_observacion3">
                                         </div>
                                     </td>
                                 </tr>
@@ -984,13 +984,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion4" class="label"></label>
-                                            <input type="text" name="transcripcion4" class="form-control" required="" id="id_transcripcion4">
+                                            <input type="text" name="transcripcion4" class="form-control" id="id_transcripcion4">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion4" class="label"></label>
-                                            <input type="text" name="observacion4" class="form-control" required="" id="id_observacion4">
+                                            <input type="text" name="observacion4" class="form-control" id="id_observacion4">
                                         </div>
                                     </td>
                                 </tr>
@@ -1001,13 +1001,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion5" class="label"></label>
-                                            <input type="text" name="transcripcion5" class="form-control" required="" id="id_transcripcion5">
+                                            <input type="text" name="transcripcion5" class="form-control" id="id_transcripcion5">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion5" class="label"></label>
-                                            <input type="text" name="observacion5" class="form-control" required="" id="id_observacion5">
+                                            <input type="text" name="observacion5" class="form-control" id="id_observacion5">
                                         </div>
                                     </td>
                                 </tr>
@@ -1018,13 +1018,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion6" class="label"></label>
-                                            <input type="text" name="transcripcion6" class="form-control" required="" id="id_transcripcion6">
+                                            <input type="text" name="transcripcion6" class="form-control" id="id_transcripcion6">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion6" class="label"></label>
-                                            <input type="text" name="observacion6" class="form-control" required="" id="id_observacion6">
+                                            <input type="text" name="observacion6" class="form-control" id="id_observacion6">
                                         </div>
                                     </td>
                                 </tr>
@@ -1035,13 +1035,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion7" class="label"></label>
-                                            <input type="text" name="transcripcion7" class="form-control" required="" id="id_transcripcion7">
+                                            <input type="text" name="transcripcion7" class="form-control" id="id_transcripcion7">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion7" class="label"></label>
-                                            <input type="text" name="observacion7" class="form-control" required="" id="id_observacion7">
+                                            <input type="text" name="observacion7" class="form-control" id="id_observacion7">
                                         </div>
                                     </td>
                                 </tr>
@@ -1052,13 +1052,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion8" class="label"></label>
-                                            <input type="text" name="transcripcion8" class="form-control" required="" id="id_transcripcion8">
+                                            <input type="text" name="transcripcion8" class="form-control" id="id_transcripcion8">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion8" class="label"></label>
-                                            <input type="text" name="observacion8" class="form-control" required="" id="id_observacion8">
+                                            <input type="text" name="observacion8" class="form-control" id="id_observacion8">
                                         </div>
                                     </td>
                                 </tr>
@@ -1069,13 +1069,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion9" class="label"></label>
-                                            <input type="text" name="transcripcion9" class="form-control" required="" id="id_transcripcion9">
+                                            <input type="text" name="transcripcion9" class="form-control" id="id_transcripcion9">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion9" class="label"></label>
-                                            <input type="text" name="observacion9" class="form-control" required="" id="id_observacion9">
+                                            <input type="text" name="observacion9" class="form-control" id="id_observacion9">
                                         </div>
                                     </td>
                                 </tr>
@@ -1086,13 +1086,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion10" class="label"></label>
-                                            <input type="text" name="transcripcion10" class="form-control" required="" id="id_transcripcion10">
+                                            <input type="text" name="transcripcion10" class="form-control" id="id_transcripcion10">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion10" class="label"></label>
-                                            <input type="text" name="observacion10" class="form-control" required="" id="id_observacion10">
+                                            <input type="text" name="observacion10" class="form-control" id="id_observacion10">
                                         </div>
                                     </td>
                                 </tr>
@@ -1103,13 +1103,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion11" class="label"></label>
-                                            <input type="text" name="transcripcion11" class="form-control" required="" id="id_transcripcion11">
+                                            <input type="text" name="transcripcion11" class="form-control" id="id_transcripcion11">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion11" class="label"></label>
-                                            <input type="text" name="observacion11" class="form-control" required="" id="id_observacion11">
+                                            <input type="text" name="observacion11" class="form-control" id="id_observacion11">
                                         </div>
                                     </td>
                                 </tr>
@@ -1120,13 +1120,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion12" class="label"></label>
-                                            <input type="text" name="transcripcion12" class="form-control" required="" id="id_transcripcion12">
+                                            <input type="text" name="transcripcion12" class="form-control" id="id_transcripcion12">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion12" class="label"></label>
-                                            <input type="text" name="observacion12" class="form-control" required="" id="id_observacion12">
+                                            <input type="text" name="observacion12" class="form-control" id="id_observacion12">
                                         </div>
                                     </td>
                                 </tr>
@@ -1137,13 +1137,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion13" class="label"></label>
-                                            <input type="text" name="transcripcion13" class="form-control" required="" id="id_transcripcion13">
+                                            <input type="text" name="transcripcion13" class="form-control" id="id_transcripcion13">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion13" class="label"></label>
-                                            <input type="text" name="observacion13" class="form-control" required="" id="id_observacion13">
+                                            <input type="text" name="observacion13" class="form-control" id="id_observacion13">
                                         </div>
                                     </td>
                                 </tr>
@@ -1154,13 +1154,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion14" class="label"></label>
-                                            <input type="text" name="transcripcion14" class="form-control" required="" id="id_transcripcion14">
+                                            <input type="text" name="transcripcion14" class="form-control" id="id_transcripcion14">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion14" class="label"></label>
-                                            <input type="text" name="observacion14" class="form-control" required="" id="id_observacion14">
+                                            <input type="text" name="observacion14" class="form-control" id="id_observacion14">
                                         </div>
                                     </td>
                                 </tr>
@@ -1171,13 +1171,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion15" class="label"></label>
-                                            <input type="text" name="transcripcion15" class="form-control" required="" id="id_transcripcion15">
+                                            <input type="text" name="transcripcion15" class="form-control" id="id_transcripcion15">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion15" class="label"></label>
-                                            <input type="text" name="observacion15" class="form-control" required="" id="id_observacion15">
+                                            <input type="text" name="observacion15" class="form-control" id="id_observacion15">
                                         </div>
                                     </td>
                                 </tr>
@@ -1188,13 +1188,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion16" class="label"></label>
-                                            <input type="text" name="transcripcion16" class="form-control" required="" id="id_transcripcion16">
+                                            <input type="text" name="transcripcion16" class="form-control" id="id_transcripcion16">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion16" class="label"></label>
-                                            <input type="text" name="observacion16" class="form-control" required="" id="id_observacion16">
+                                            <input type="text" name="observacion16" class="form-control" id="id_observacion16">
                                         </div>
                                     </td>
                                 </tr>
@@ -1205,13 +1205,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion17" class="label"></label>
-                                            <input type="text" name="transcripcio17n" class="form-control" required="" id="id_transcripcion17">
+                                            <input type="text" name="transcripcio17n" class="form-control" id="id_transcripcion17">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion17" class="label"></label>
-                                            <input type="text" name="observacion17" class="form-control" required="" id="id_observacion17">
+                                            <input type="text" name="observacion17" class="form-control" id="id_observacion17">
                                         </div>
                                     </td>
                                 </tr>
@@ -1222,13 +1222,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion18" class="label"></label>
-                                            <input type="text" name="transcripcion18" class="form-control" required="" id="id_transcripcion18">
+                                            <input type="text" name="transcripcion18" class="form-control" id="id_transcripcion18">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion18" class="label"></label>
-                                            <input type="text" name="observacion18" class="form-control" required="" id="id_observacion18">
+                                            <input type="text" name="observacion18" class="form-control" id="id_observacion18">
                                         </div>
                                     </td>
                                 </tr>
@@ -1239,13 +1239,13 @@
                                     <td>
                                         <div class="form-group">
                                             <label for="id_transcripcion19" class="label"></label>
-                                            <input type="text" name="transcripcion19" class="form-control" required="" id="id_transcripcion19">
+                                            <input type="text" name="transcripcion19" class="form-control" id="id_transcripcion19">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="id_observacion19" class="label"></label>
-                                            <input type="text" name="observacion19" class="form-control" required="" id="id_observacion19">
+                                            <input type="text" name="observacion19" class="form-control" id="id_observacion19">
                                         </div>
                                     </td>
                                 </tr>
@@ -1533,12 +1533,12 @@
                     </div>
                 </form>
             </div>
-            <div id="paso_f">
+            <div id="paso_f" class="hide">
                 <form action="." method="post" name="form_f" id="form_f" enctype="multipart/form-data">
                     <div class="caja">
                         <div class="caja-header">
                             <h3 class="caja-title">B. CONTENIDO<br>VI. ASPECTO SEMÁNTICO</h3>
-                            <h5>Conocimiento corporal</h5>
+                            <h4>Conocimiento corporal</h4>
                         </div>
                         <div class="caja-body">
                             <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
@@ -2736,8 +2736,8 @@
                             </table>
                             <br><br>
                             <div class="form-group">
-                                <label for="id_observaciones_morfosintactico" class="label active">Observaciones</label>
-                                <textarea name="observaciones_morfosintactico" class="form-control"  id="id_observaciones_morfosintactico"></textarea>
+                                <label for="id_observaciones_semantico" class="label active">Observaciones</label>
+                                <textarea name="observaciones_semantico" class="form-control"  id="id_observaciones_semantico"></textarea>
                             </div>
                             <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
                                 <tbody>
@@ -2886,18 +2886,529 @@
                                 </tbody>
                             </table>
                             <br>
-                            <p>Nota: fichas a utilizar en anexos </p>
+                            <p>Nota: fichas a utilizar en anexos</p>
+                            <br>
+                            <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4"><br><strong>Juego de ficción:</strong> Se usará un muñeco y un biberón, el niño/a deberá seguir las instrucciones que reciba creando un escenario. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_reconoce_juguetes" class="label">Reconoce los juguetes:</label>
+                                                <input type="text" name="reconoce_juguetes" class="form-control"  id="id_reconoce_juguetes">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_discrimina_necesidades" class="label">Discrimina necesidades:</label>
+                                                <input type="text" name="discrimina_necesidades" class="form-control"  id="id_discrimina_necesidades">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_resuelve_necesidades" class="label">Resuelve las necesidades:</label>
+                                                <input type="text" name="resuelve_necesidades" class="form-control"  id="id_resuelve_necesidades">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_consideraciones_juego" class="label">Consideraciones:</label>
+                                                <input type="text" name="consideraciones_juego" class="form-control"  id="id_consideraciones_juego">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"><strong>Reproducción de roles en dialogo:</strong> usando como base el cuento “caperucita roja” se creará un escenario ficticio donde se le atribuye un rol o papel al niño creando un diálogo entre ambos. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_respeta_turnos" class="label">Respetó los turno:</label>
+                                                <input type="text" name="respeta_turnos" class="form-control"  id="id_respeta_turnos">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_utliza_gestos" class="label">Utiliza gestos:</label>
+                                                <input type="text" name="utliza_gestos" class="form-control"  id="id_utliza_gestos">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_respontaneidad" class="label">Mostró espontaneidad:</label>
+                                                <input type="text" name="espontaneidad" class="form-control"  id="id_espontaneidad">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_sigue_rol" class="label">Siguió su rol:</label>
+                                                <input type="text" name="sigue_rol" class="form-control"  id="id_sigue_rol">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_modula_voz" class="label">Moduló la voz a su personaje:</label>
+                                                <input type="text" name="modula_voz" class="form-control"  id="id_modula_voz">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_fue_colaborativo" class="label">Fue colaborativo:</label>
+                                                <input type="text" name="fue_colaborativo" class="form-control"  id="id_fue_colaborativo">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <p style="text-align: justify;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Comprensión narrativa:</strong> se verá si es capaz de contestar a preguntas sobre el cuento oído.<br>
+                                            <b><i>Los tres cochinitos:</i></b> 
+                                            En el corazón del bosque vivían tres cerditos que eran hermanos. El lobo siempre andaba persiguiéndolos para comérselos. Para escapar del lobo, los cerditos decidieron hacerse una casa. El pequeño la hizo de paja, para acabar antes y poder irse a jugar. El mediano construyó una casita de madera. Al ver que su hermano pequeño había terminado ya, se dio prisa para irse a jugar con él. El mayor trabajaba en su casa de ladrillo. 
+                                            ─Ya verán lo que hace el lobo con sus casas─, dijo a sus hermanos mientras éstos se divertían. 
+                                            El lobo salió detrás del cerdito pequeño y él corrió hasta su casita de paja, pero el lobo sopló y sopló y la casita de paja derrumbó. El lobo persiguió también al cerdito por el bosque, que corrió a refugiarse en casa de su hermano mediano. Pero el lobo sopló y sopló y la casita de madera derribó. 
+                                            Los dos cerditos salieron corriendo de allí. Casi sin aliento, con el lobo pegado a sus talones, llegaron a la casa del hermano mayor. Los tres se metieron dentro y cerraron bien todas las puertas y ventanas. El lobo intento soplar y soplar, pero no logro derribar la casa de ladrillos, entonces se puso a dar vueltas alrededor, buscando algún sitio para entrar. Con una escalera larguísima trepó hasta el tejado, para colarse por la chimenea. Pero el cerdito mayor puso al fuego una olla con agua. El lobo comilón descendió por el interior de la chimenea, pero cayó sobre el agua hirviendo y se quemó. Escapó de allí dando unos terribles aullidos que se oyeron en todo el bosque. Se cuenta que nunca jamás quiso comer cerditos. </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Elementos a observar </h5></td>
+                                        <td><h5>Responde</h5></td>
+                                        <td><h5>No responde</h5></td>
+                                        <td><h5>Observación</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Explica la historia</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_responde_historia" class="label"></label>
+                                                <input type="text" name="responde_historia" class="form-control"  id="id_responde_historia">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_noresponde_historia" class="label"></label>
+                                                <input type="text" name="noresponde_historia" class="form-control"  id="id_noresponde_historia">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_observacion_historia" class="label"></label>
+                                                <input type="text" name="observacion_historia" class="form-control"  id="id_observacion_historia">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>¿Qué quería hacer el lobo?</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_responde_lobo" class="label"></label>
+                                                <input type="text" name="responde_lobo" class="form-control"  id="id_responde_lobo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_noresponde_lobo" class="label"></label>
+                                                <input type="text" name="noresponde_lobo" class="form-control"  id="id_noresponde_lobo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_observacion_lobo" class="label"></label>
+                                                <input type="text" name="observacion_lobo" class="form-control"  id="id_observacion_lobo">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>¿De quién era la casa de ladrillos?</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_responde_ladrillos" class="label"></label>
+                                                <input type="text" name="responde_ladrillos" class="form-control"  id="id_responde_ladrillos">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_noresponde_ladrillos" class="label"></label>
+                                                <input type="text" name="noresponde_ladrillos" class="form-control"  id="id_noresponde_ladrillos">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_observacion_ladrillos" class="label"></label>
+                                                <input type="text" name="observacion_ladrillos" class="form-control"  id="id_observacion_ladrillos">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>¿Qué sucedió con el lobo?</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_responde_sucedio_lobo" class="label"></label>
+                                                <input type="text" name="responde_sucedio_lobo" class="form-control"  id="id_responde_sucedio_lobo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_noresponde_sucedio_lobo" class="label"></label>
+                                                <input type="text" name="noresponde_sucedio_lobo" class="form-control"  id="id_noresponde_sucedio_lobo">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_observacion_sucedio_lobo" class="label"></label>
+                                                <input type="text" name="observacion_sucedio_lobo" class="form-control"  id="id_observacion_sucedio_lobo">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Identifica los personajes</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_responde_identifica" class="label"></label>
+                                                <input type="text" name="responde_identifica" class="form-control"  id="id_responde_identifica">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_noresponde_identifica" class="label"></label>
+                                                <input type="text" name="noresponde_identifica" class="form-control"  id="id_noresponde_identifica">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_observacion_identifica" class="label"></label>
+                                                <input type="text" name="observacion_identifica" class="form-control"  id="id_observacion_identifica">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br><br>
+                            <div class="form-group">
+                                <label for="id_observaciones_juego" class="label active">Observaciones</label>
+                                <textarea name="observaciones_juego" class="form-control"  id="id_observaciones_juego"></textarea>
+                            </div>
+                            <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5"><h5>Evaluación del seguimiento de ordenes:</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Edad</h5></td>
+                                        <td><h5>Tipo de orden</h5></td>
+                                        <td><h5>Indicación</h5></td>
+                                        <td><h5>La realiza</h5></td>
+                                        <td><h5>No la realiza</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">3-4</td>
+                                        <td rowspan="2">Ordenes sencillas</td>
+                                        <td>Dame el lápiz</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_lapiz" class="label"></label>
+                                                <input type="text" name="realiza_lapiz" class="form-control"  id="id_realiza_lapiz">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_lapiz" class="label"></label>
+                                                <input type="text" name="norealiza_lapiz" class="form-control"  id="id_norealiza_lapiz">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Toca tu cabello</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_cabello" class="label"></label>
+                                                <input type="text" name="realiza_cabello" class="form-control"  id="id_realiza_cabello">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_cabello" class="label"></label>
+                                                <input type="text" name="norealiza_cabello" class="form-control"  id="id_norealiza_cabello">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3-4</td>
+                                        <td>Orden simple de dos elementos</td>
+                                        <td>Toma el lápiz y dibuja algo</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_dibuja" class="label"></label>
+                                                <input type="text" name="realiza_dibuja" class="form-control"  id="id_realiza_dibuja">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_dibuja" class="label"></label>
+                                                <input type="text" name="norealiza_dibuja" class="form-control"  id="id_norealiza_dibuja">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">3-4</td>
+                                        <td rowspan="2">Orden de conceptos de modo</td>
+                                        <td>Camina despacio hacia la puerta</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_despacio_puerta" class="label"></label>
+                                                <input type="text" name="realiza_despacio_puerta" class="form-control"  id="id_realiza_despacio_puerta">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_despacio_puerta" class="label"></label>
+                                                <input type="text" name="norealiza_despacio_puerta" class="form-control"  id="id_norealiza_despacio_puerta">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Camina rápido hacia la puerta</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_rapido_puerta" class="label"></label>
+                                                <input type="text" name="realiza_rapido_puerta" class="form-control"  id="id_realiza_rapido_puerta">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_rapido_puerta" class="label"></label>
+                                                <input type="text" name="norealiza_rapido_puerta" class="form-control"  id="id_norealiza_rapido_puerta">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4-5</td>
+                                        <td>Ordena compleja relacionada</td>
+                                        <td>Siéntate en el suelo, suéltale el zapato y quítalo</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_zapato" class="label"></label>
+                                                <input type="text" name="realiza_zapato" class="form-control"  id="id_realiza_zapato">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_zapato" class="label"></label>
+                                                <input type="text" name="norealiza_zapato" class="form-control"  id="id_norealiza_zapato">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4-5</td>
+                                        <td>Orden compleja no relacionada</td>
+                                        <td>Trae la pelota, abreabre el libro y cierra la puerta</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_libro" class="label"></label>
+                                                <input type="text" name="realiza_libro" class="form-control"  id="id_realiza_libro">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_libro" class="label"></label>
+                                                <input type="text" name="norealiza_libro" class="form-control"  id="id_norealiza_libro">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>6-7</td>
+                                        <td>Orden extensa</td>
+                                        <td>Toma la hoja color amarillo con la mano izquierda, toma el color rojo y dibuja una flor</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_realiza_hoja" class="label"></label>
+                                                <input type="text" name="realiza_hoja" class="form-control"  id="id_realiza_hoja">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_norealiza_hoja" class="label"></label>
+                                                <input type="text" name="norealiza_hoja" class="form-control"  id="id_norealiza_hoja">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="caja-footer">
-                            <a class="btn btn-primary" id="btn_return_f">Atrás</a>
+                            <a class="btn btn-primary" id="btn_return_e">Atrás</a>
                             <button type="submit" class="btn btn-primary" id="btn_semantico">Siguiente</button>
                         </div>
                     </div>
                 </form>
             </div>
+            <div id="paso_g" class="hide">
+                <form action="." method="post" name="form_g" id="form_g" enctype="multipart/form-data">
+                    <div class="caja">
+                        <div class="caja-header">
+                            <h3 class="caja-title">VII. ASPECTO PRAGMÁTICO:</h3>
+                        </div>
+                        <div class="caja-body">
+                            <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6"><h5>Intención comunicativa: </h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="form-group">
+                                                <label for="id_comunicarse" class="label">¿Tiene interés en comunicarse?</label>
+                                                <input type="text" name="comunicarse" class="form-control"  id="id_comunicarse">
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-group">
+                                                <label for="id_comunicacion" class="label">¿Responde a la comunicación?</label>
+                                                <input type="text" name="comunicacion" class="form-control"  id="id_comunicacion">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="form-group">
+                                                <label for="id_iniciativa_hablar" class="label">¿Toma la iniciativa para hablar?</label>
+                                                <input type="text" name="iniciativa_hablar" class="form-control"  id="id_iniciativa_hablar">
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-group">
+                                                <label for="id_canal_abierto" class="label">¿Mantiene el canal abierto?</label>
+                                                <input type="text" name="canal_abierto" class="form-control"  id="id_canal_abierto">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"><h5>Modo de comunicación: </h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_contacto_visual" class="label">¿El niño hace contacto visual?</label>
+                                                <input type="text" name="contacto_visual" class="form-control"  id="id_contacto_visual">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_comunica_verbalmente" class="label" style="font-size:0.6rem; margin-left: 5px;">¿Se comunica verbalmente?</label>
+                                                <input type="text" name="comunica_verbalmente" class="form-control"  id="id_comunica_verbalmente">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_gestos" class="label" style="font-size:0.7rem;">¿Utiliza gestos naturales o intencionados?</label>
+                                                <input type="text" name="gestos" class="form-control"  id="id_gestos">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_utliza_signos" class="label">¿Utiliza signos?</label>
+                                                <input type="text" name="utliza_signos" class="form-control"  id="id_utliza_signos">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6"><h5>Uso del lenguaje:</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_saluda" class="label">Saluda</label>
+                                                <input type="text" name="saluda" class="form-control"  id="id_saluda">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_nosaluda" class="label">No saluda</label>
+                                                <input type="text" name="nosaluda" class="form-control"  id="id_nosaluda">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_deseos" class="label">Solicita deseos</label>
+                                                <input type="text" name="deseos" class="form-control"  id="id_deseos">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_pide_atencion" class="label">Pide atención</label>
+                                                <input type="text" name="pide_atencion" class="form-control"  id="id_pide_atencion">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_sigue_ordenes" class="label">Sigue órdenes</label>
+                                                <input type="text" name="sigue_ordenes" class="form-control"  id="id_sigue_ordenes">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_pregunta" class="label">Pregunta</label>
+                                                <input type="text" name="pregunta" class="form-control"  id="id_pregunta">
+                                            </div>
+                                        </td>
+                                        <tr>
+                                            <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_preguntas_abiertas" class="label">Contesta preguntas abiertas</label>
+                                                <input type="text" name="preguntas_abiertas" class="form-control"  id="id_preguntas_abiertas">
+                                            </div>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <div class="form-group">
+                                                <label for="id_preguntas_cerradas" class="label" style="font-size:0.6rem; margin-left: 3px;">Contesta preguntas cerradas</label>
+                                                <input type="text" name="preguntas_cerradas" class="form-control"  id="id_preguntas_cerradas">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div class="form-group">
+                                                <label for="id_describe_laminas" class="label">Describe láminas</label>
+                                                <input type="text" name="describe_laminas" class="form-control"  id="id_describe_laminas">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label for="id_expresa_placer" class="label" style="font-size:0.6rem;">Expresa placer/rechazo</label>
+                                                <input type="text" name="expresa_placer" class="form-control"  id="id_expresa_placer">
+                                            </div>
+                                        </td>
+                                        </tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br><br>
+                            <div class="form-group">
+                                <label for="id_observaciones_pragmatico" class="label active">Observaciones</label>
+                                <textarea name="observaciones_pragmatico" class="form-control"  id="id_observaciones_pragmatico"></textarea>
+                            </div>
+                        </div>
+                        <div class="caja-footer">
+                            <a class="btn btn-primary" id="btn_return_f">Atrás</a>
+                            <button type="submit" class="btn btn-primary" id="btn_pragmatico">Siguiente</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="paso_h">
+                <div class="caja-header">
+                    <h3 class="caja-title">Confirmar:</h3>
+                </div>
+                <ul id="pintar_datos">
+                    
+                </ul>
+            </div>
         </div>
     </div>
 </div>
+<template id="datos_form">
+    <li></li>
+</template>
 {% endblock %}
 
 {% block js %}
@@ -2932,5 +3443,153 @@
         }
         $('#id_edad').val(edad);
     }
+
+    /*
+    *=================================== FORMULARIO POR PARTES ===================================
+    */
+    const pintarProducto = document.querySelector('#pintar_datos')
+    const template = document.querySelector('#datos_form').content
+    const fragment = document.createDocumentFragment()
+
+    $(function(){
+
+        //Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
+        $('body').on('click','#formularios a', function(elemento){
+
+            elemento.preventDefault();
+
+            //Se obtiene el id del botón clickeado
+            mostrar = $(this).attr('id');
+
+            //Usamos condiciones para saber que acción tomar según el botón
+            if(mostrar == 'btn_return_a'){
+                $('#paso_b').hide();
+                $('#paso_a').show();
+            }
+            else if(mostrar == 'btn_return_b'){
+                $('#paso_c').hide();
+                $('#paso_b').show();
+            }
+            else if(mostrar == 'btn_return_c'){
+                $('#paso_d').hide();
+                $('#paso_c').show();
+            }
+            else if(mostrar == 'btn_return_d'){
+                $('#paso_e').hide();
+                $('#paso_d').show();
+            }
+            else if(mostrar == 'btn_return_e'){
+                $('#paso_f').hide();
+                $('#paso_e').show();
+            }
+            else if(mostrar == 'btn_return_f'){
+                $('#paso_g').hide();
+                $('#paso_f').show();
+            }
+            else if(mostrar == 'btn_return_g'){
+                $('#paso_g').hide();
+                $('#paso_h').show();
+            }
+        });
+        
+        //EJECUTAR CUANDO SE CLICKEE UN SUBMIT
+        //A.FORMA-ASPECTO ANATOMICO
+        $('#form_a').validate({
+            submitHandler: function(){
+
+                var elementoshijo = document.getElementById('form_a').elements;
+                console.log(elementoshijo)
+                
+                for (var i = 0; i < elementoshijo.length; i++) {
+                    template.querySelector('li').textContent = elementoshijo[i].value
+                    const clone = template.cloneNode(true)
+                    fragment.appendChild(clone)
+                }
+                pintarProducto.appendChild(fragment)
+
+                $('#paso_a').hide();
+                $('#paso_b').show();
+
+            }
+        }); 
+        //II. REQUISITOS PRELUIGUISTICOS
+        $('#form_b').validate({
+            submitHandler: function(){
+
+                $('#paso_b').hide();
+                $('#paso_c').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+        //III. VOZ, ENTONACION Y RITMO
+        $('#form_c').validate({
+            submitHandler: function(){
+
+                $('#paso_c').hide();
+                $('#paso_d').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+        //IV. ASPECTO Y CONCIENCIA FONOLOGICA
+        $('#form_d').validate({
+            submitHandler: function(){
+
+                $('#paso_d').hide();
+                $('#paso_e').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+        //V. ASPECTO MOFOSINTACTICO
+        $('#form_e').validate({
+            submitHandler: function(){
+
+                $('#paso_e').hide();
+                $('#paso_f').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+        //B. CONTENIDO - VI. ASPECTO SEMANTICO
+        $('#form_f').validate({
+            submitHandler: function(){
+
+                $('#paso_f').hide();
+                $('#paso_g').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+        //VII. ASPECTO PRAGMATICO
+        $('#form_g').validate({
+            submitHandler: function(){
+
+                $('#paso_g').hide();
+                $('#paso_h').show();
+
+                return false;
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().append());
+            }
+        });
+    });
 </script>
 {% endblock %}

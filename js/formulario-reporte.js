@@ -33,6 +33,20 @@
 	attrForm(elementos)
 }());
 
+//Formulario F
+(function(){
+	var elementos = document.getElementById('form_f').elements;
+
+	attrForm(elementos)
+}());
+
+//Formulario G
+(function(){
+	var elementos = document.getElementById('form_g').elements;
+
+	attrForm(elementos)
+}());
+
 
 function attrForm(elementos){
 	// Funcion que se ejecuta cuando el evento click es activado
