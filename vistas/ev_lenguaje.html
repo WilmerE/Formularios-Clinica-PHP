@@ -3450,6 +3450,13 @@
     const pintarProducto = document.querySelector('#pintar_datos')
     const template = document.querySelector('#datos_form').content
     const fragment = document.createDocumentFragment()
+    const label_a = document.querySelectorAll('label')
+    console.log(label_a)
+    /*
+    for (var j = 0; j < label_a.length; j++) {
+        console.log(label_a[j].textContent)
+    }
+    */
 
     $(function(){
 
@@ -3501,7 +3508,7 @@
                 console.log(elementoshijo)
                 
                 for (var i = 0; i < elementoshijo.length; i++) {
-                    template.querySelector('li').textContent = elementoshijo[i].value
+                    template.querySelector('li').textContent = label_a[i].textContent+" "+elementoshijo[i].value
                     const clone = template.cloneNode(true)
                     fragment.appendChild(clone)
                 }
