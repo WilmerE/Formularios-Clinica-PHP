@@ -487,8 +487,8 @@
                                 </tbody>
                             </table>
                             <div class="form-group">
-                                <label for="id_observaciones_aspecto" class="label active">Observaciones:</label>
-                                <textarea name="observaciones_aspecto" class="form-control"  id="id_observaciones_aspecto"></textarea>
+                                <label for="id_observaciones_anatomico" class="label active">Observaciones:</label>
+                                <textarea name="observaciones_anatomico" class="form-control"  id="id_observaciones_anatomico"></textarea>
                             </div>
                         </div>
                         <div class="caja-footer">
@@ -510,8 +510,8 @@
                                 <textarea name="atencion" class="form-control"  id="id_atencion"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="id_percepcion" class="label active">Percepción visual: (Verificar si puede seguir con la mirada un objeto animado o inanimado que se desplace, si se reconoce ante un espejo, si reconoce a personas y objetos)</label>
-                                <textarea name="percepcion" class="form-control"  id="id_percepcion"></textarea>
+                                <label for="id_percepcion_visual" class="label active">Percepción visual: (Verificar si puede seguir con la mirada un objeto animado o inanimado que se desplace, si se reconoce ante un espejo, si reconoce a personas y objetos)</label>
+                                <textarea name="percepcion_visual" class="form-control"  id="id_percepcion_visual"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="id_percepcion_auditiva" class="label active">Percepción y discrimiación auditiva: (Cerciorarse de que oye reaccionando ante ruidos y sonidos y si discrimina diferentes sonidos, voces, etc.)</label>
@@ -655,8 +655,8 @@
                             </table>
                             <br><br>
                             <div class="form-group">
-                                <label for="id_observaciones" class="label active">Observaciones</label>
-                                <textarea name="observaciones" class="form-control"  id="id_observaciones"></textarea>
+                                <label for="id_observaciones_linguistico" class="label active">Observaciones</label>
+                                <textarea name="observaciones_linguistico" class="form-control"  id="id_observaciones_linguistico"></textarea>
                             </div>
                         </div>
                         <div class="caja-footer">
@@ -1515,7 +1515,8 @@
                                             <label for="num4">4</label>
                                         </td>
                                         <td>
-
+                                            <label for="id_narra_secuencia"></label>
+                                            <input type="text" name="narra_secuencia" id="id_narra_secuencia">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -3259,8 +3260,8 @@
                                     <tr>
                                         <td colspan="3">
                                             <div class="form-group">
-                                                <label for="id_comunicarse" class="label">¿Tiene interés en comunicarse?</label>
-                                                <input type="text" name="comunicarse" class="form-control"  id="id_comunicarse">
+                                                <label for="id_interes" class="label">¿Tiene interés en comunicarse?</label>
+                                                <input type="text" name="interes" class="form-control"  id="id_interes">
                                             </div>
                                         </td>
                                         <td colspan="3">
@@ -3576,13 +3577,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4"><strong>Capacidad de atención:</strong> (comprobar si el niño/niña es capaz de mantener la mirada o escuchar intencionalmente al menos unos instantes, ante una demanda o estímulo)</td>
+                            <td colspan="4"><strong>Capacidad de atención:</strong> (comprobar si el niño/niña es capaz de mantener la mirada o escuchar intencionalmente al menos unos instantes, ante una demanda o estímulo) <span id="txt_atencion"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="4"><strong>Percepción visual:</strong> (Verificar si puede seguir con la mirada un objeto animado o inanimado que se desplace, si se reconoce ante un espejo, si reconoce a personas y objetos)</td>
+                            <td colspan="4"><strong>Percepción visual:</strong> (Verificar si puede seguir con la mirada un objeto animado o inanimado que se desplace, si se reconoce ante un espejo, si reconoce a personas y objetos) <span id="txt_percepcion_visual"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="4"><strong>Percepción y discriminación auditiva:</strong> (Cerciorarse de que oye reaccionando ante ruidos y sonidos y si discrimina diferentes sonidos, voces, etc.)</td>
+                            <td colspan="4"><strong>Percepción y discriminación auditiva:</strong> (Cerciorarse de que oye reaccionando ante ruidos y sonidos y si discrimina diferentes sonidos, voces, etc.) <span id="txt_percepcion_auditiva"></span></td>
                         </tr>
                         <!-- =====================================================
                         ------------------------- BLOQUE -------------------------
@@ -3596,20 +3597,20 @@
                         <tr>
                             <td>Sonido<br>Silencio </td>
                             <td>Levanta la mano derecha </td>
-                            <td><span id="txt_rezaliza_mano_derecha"></span></td>
-                            <td><span id="txt_notas_mano_derecha"></span></td>
+                            <td><span id="txt_rezaliza_sonido"></span></td>
+                            <td><span id="txt_notas_sonido"></span></td>
                         </tr>
                         <tr>
                             <td>Fuerte<br>Débil</td>
                             <td>Te pones de pie<br>Te quedas sentado</td>
-                            <td><span id="txt_rezaliza_pie_sentado"></span></td>
-                            <td><span id="txt_notas_pie_sentado"></span></td>
+                            <td><span id="txt_rezaliza_fuerte"></span></td>
+                            <td><span id="txt_notas_fuerte"></span></td>
                         </tr>
                         <tr>
                             <td>Largo<br>Corto</td>
                             <td>Agita la mano derecha<br>Cierra el puño derecho</td>
-                            <td><span id="txt_rezaliza_punio"></span></td>
-                            <td><span id="txt_notas_punio"></span></td>
+                            <td><span id="txt_rezaliza_largo"></span></td>
+                            <td><span id="txt_notas_largo"></span></td>
                         </tr>
                         <!-- =====================================================
                         ------------------------- BLOQUE -------------------------
@@ -3625,12 +3626,12 @@
                         </tr>
                         <tr>
                             <td>Aplauso</td>
-                            <td colspan="2"></td>
+                            <td colspan="2"><span id="txt_sonido_aplauso"></span></td>
                         </tr>
                         <tr>
                             <td rowspan="2">Sonido de objetos</td>
                             <td>Llaves</td>
-                            <td colspan="2"><span id="txt_sonido_objetos"></span></td>
+                            <td colspan="2"><span id="txt_sonido_llaves"></span></td>
                         </tr>
                         <tr>
                             <td>Pelota</td>
@@ -3648,7 +3649,7 @@
                         <tr>
                             <td rowspan="2">Sonidos naturales</td>
                             <td>Agua</td>
-                            <td colspan="2"><span id="txt_sonido_naturales"></span></td>
+                            <td colspan="2"><span id="txt_sonido_agua"></span></td>
                         </tr>
                         <tr>
                             <td>Viento</td>
@@ -3675,25 +3676,25 @@
                             <td><h5>Consideraciones</h5></td>
                         </tr>
                         <tr>
-                            <td>Normal</td>
-                            <td>Baja</td>
-                            <td>Normal</td>
-                            <td>Normal</td>
+                            <td>Normal <span id="txt_voz_normal"></span></td>
+                            <td>Baja <span id="txt_voz_baja"></span></td>
+                            <td>Normal <span id="txt_entonacion_normal"></span></td>
+                            <td>Normal <span id="txt_ritmo_normal"></span></td>
                             <td><span id="txt_consideraciones1"></span></td>
                         </tr>
                         <tr>
-                            <td>Fuerte</td>
-                            <td>Susurrada</td>
-                            <td>Monótona</td>
-                            <td>Rápido</td>
+                            <td>Fuerte <span id="txt_voz_fuerte"></span></td>
+                            <td>Susurrada <span id="txt_voz_susurrada"></span></td>
+                            <td>Monótona <span id="txt_entonacion_monotona"></span></td>
+                            <td>Rápido <span id="txt_ritmo_rapido"></span></td>
                             <td><span id="txt_consideraciones2"></span></td>
                         </tr>
                         <tr>
                             <tr>
-                                <td>Disfónica</td>
-                                <td>Nasal</td>
-                                <td>Robótica</td>
-                                <td>Lento</td>
+                                <td>Disfónica <span id="txt_voz_disfonica"></span></td>
+                                <td>Nasal <span id="txt_voz_nasal"></span></td>
+                                <td>Robótica <span id="txt_entonacion_robotica"></span></td>
+                                <td>Lento <span id="txt_ritmo_lento"></span></td>
                                 <td><span id="txt_consideraciones3"></span></td>
                             </tr>
                         </tr>
@@ -3964,7 +3965,7 @@
                             <td colspan="3"><span id="txt_consideraciones_complejas"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="6"></td>
+                            <td colspan="6"><span id="txt_sin_contexto"></span></td>
                         </tr>
                         <!-- =====================================================
                         ------------------------- BLOQUE -------------------------
@@ -4009,10 +4010,10 @@
                             <td rowspan="2"><h5>Consideraciones:</h5></td>
                         </tr>
                         <tr>
-                            <td style="width: 10%;">1</td>
-                            <td style="width: 10%;">2</td>
-                            <td style="width: 10%;">3</td>
-                            <td style="width: 10%;">4</td>
+                            <td style="width: 10%;">1 <span id="txt_num1"></span></td>
+                            <td style="width: 10%;">2 <span id="txt_num2"></span></td>
+                            <td style="width: 10%;">3 <span id="txt_num3"></span></td>
+                            <td style="width: 10%;">4 <span id="txt_num4"></span></td>
                             <td><span id="txt_narra_secuencia"></span></td>
                         </tr>
                     </tbody>
@@ -4409,7 +4410,7 @@
                     </tbody>
                 </table>
                 <h4>Observaciones</h4>
-                <span id="txt_observaciones_conocimiento"></span>
+                <span id="txt_observaciones_semantico"></span>
                 <!-- =====================================================
                 ------------------------- BLOQUE -------------------------
                 ===================================================== -->
@@ -4478,10 +4479,10 @@
                             <td colspan="4"><br><strong>Juego de ficción:</strong> Se usará un muñeco y un biberón, el niño/a deberá seguir las instrucciones que reciba creando un escenario. </td>
                         </tr>
                         <tr>
-                            <td><strong>Reconoce los juguetes:</strong></td>
-                            <td><strong>Discrimina necesidades:</strong></td>
-                            <td><strong>Resuelve las necesidades:</strong></td>
-                            <td><strong>Consideraciones:</strong></td>
+                            <td><strong>Reconoce los juguetes: <span id="txt_reconoce_juguetes"></span></strong></td>
+                            <td><strong>Discrimina necesidades: <span id="txt_discrimina_necesidades"></span></strong></td>
+                            <td><strong>Resuelve las necesidades: <span id="txt_resuelve_necesidades"></span></strong></td>
+                            <td><strong>Consideraciones: <span id="txt_consideraciones_juego"></span></strong></td>
                         </tr>
                         <tr>
                             <td colspan="4"><strong>Reproducción de roles en dialogo:</strong> usando como base el cuento “caperucita roja” se creará un escenario ficticio donde se le atribuye un rol o papel al niño creando un diálogo entre ambos. </td>
@@ -4615,8 +4616,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h4>Observaciones</h4>
-                <span id="txt_observaciones_ordenes"></span>
                 <!-- =====================================================
                 ------------------------- BLOQUE -------------------------
                 ===================================================== -->
@@ -4663,7 +4662,7 @@
                     </tbody>
                 </table>
                 <h4>Observaciones</h4>
-                <span id="txt_observaciones_uso"></span>
+                <span id="txt_observaciones_pragmatico"></span>
             </div>
         </div>
     </div>
@@ -4713,7 +4712,6 @@
     const template = document.querySelector('#datos_form').content
     const fragment = document.createDocumentFragment()
     const label_a = document.querySelectorAll('span')
-
 
     for (var j = 0; j < label_a.length; j++) {
         console.log(label_a[j].id)
