@@ -3400,7 +3400,6 @@
                 <div class="caja-header">
                     <h3 class="caja-title">Confirmar:</h3>
                 </div>
-                <ul id="pintar_datos"></ul>
                 <table border="1" cellspacing="0" cellpadding="2" bordercolor="#e7e7e7">
                     <tbody>
                         <tr>
@@ -4672,9 +4671,6 @@
         </div>
     </div>
 </div>
-<template id="datos_form">
-    <li></li>
-</template>
 {% endblock %}
 
 {% block js %}
@@ -4713,9 +4709,6 @@
     /*
     *=================================== FORMULARIO POR PARTES ===================================
     */
-    const pintarProducto = document.querySelector('#pintar_datos')
-    const template = document.querySelector('#datos_form').content
-    const fragment = document.createDocumentFragment()
 
     $(function(){
 
@@ -4801,16 +4794,24 @@
                 var span = document.querySelectorAll('.txt_show')
 
                 for (var i = 0; i < form_a.length; i++) {
-                    valores[i] = form_a[i].value
-                }
-
-                for (var m = 0; m < valores.length; m++){
-                    console.log(valores[m])
+                    if (form_a[i].name != "" && form_a[i].type != "submit" && form_a[i].type != "hidden") {
+                        valores.push(form_a[i].value)
+                    }
                 }
 
                 for(var j = 0; j < span.length; j++){
                     span[j].textContent = valores[j]
                 }
+
+                nombre       = $('select[name="nombre"] option:selected').text()
+                cara         = $('select[name="cara"] option:selected').text()
+                cuello       = $('select[name="cuello"] option:selected').text()
+                multiselect  = $('#id_anomalias').val();
+
+                $('#txt_nombre').text(nombre)
+                $('#txt_cara').text(cara)
+                $('#txt_cuello').text(cuello)
+                $('#txt_anomalias').text(multiselect)
 
                 $('#paso_a').hide();
                 $('#paso_b').show();
