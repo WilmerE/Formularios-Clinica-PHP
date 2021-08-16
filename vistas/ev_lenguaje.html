@@ -1495,7 +1495,10 @@
                                         <td rowspan="2"><h5>Secuencia temporal</h5></td>
                                         <td colspan="4"><h5>Ordena las viñetas en:</h5></td>
                                         <td><h5>Narra la sucuencia:</h5></td>
-                                        <td rowspan="2"><h5>Consideraciones:</h5></td>
+                                        <td rowspan="2">
+                                            <label for="id_consideraciones_secuencia"  class="label">Consideraciones:</label>
+                                            <input type="text" name="consideraciones_secuencia" class="form-control"  id="id_consideraciones_secuencia">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -3396,7 +3399,7 @@
                     </div>
                 </form>
             </div>
-            <div id="paso_h" style="text-align: left;">
+            <div id="paso_h" class="hide" style="text-align: left;">
                 <div class="caja-header">
                     <h3 class="caja-title">Confirmar:</h3>
                 </div>
@@ -4007,7 +4010,7 @@
                             <td rowspan="2"><h5>Secuencia temporal</h5></td>
                             <td colspan="4"><h5>Ordena las viñetas en:</h5></td>
                             <td><h5>Narra la sucuencia:</h5></td>
-                            <td rowspan="2"><h5>Consideraciones:</h5></td>
+                            <td rowspan="2"><h5>Consideraciones:</h5> <span class="txt_show" id="txt_consideraciones_secuencia"></span></td>
                         </tr>
                         <tr>
                             <td style="width: 10%;">1 <span class="txt_show" id="txt_num1"></span></td>
@@ -4789,30 +4792,6 @@
         $('#form_a').validate({
             submitHandler: function(){
 
-                var valores = new Array()
-                var form_a = document.getElementById('form_a').elements
-                var span = document.querySelectorAll('.txt_show')
-
-                for (var i = 0; i < form_a.length; i++) {
-                    if (form_a[i].name != "" && form_a[i].type != "submit" && form_a[i].type != "hidden") {
-                        valores.push(form_a[i].value)
-                    }
-                }
-
-                for(var j = 0; j < span.length; j++){
-                    span[j].textContent = valores[j]
-                }
-
-                nombre       = $('select[name="nombre"] option:selected').text()
-                cara         = $('select[name="cara"] option:selected').text()
-                cuello       = $('select[name="cuello"] option:selected').text()
-                multiselect  = $('#id_anomalias').val();
-
-                $('#txt_nombre').text(nombre)
-                $('#txt_cara').text(cara)
-                $('#txt_cuello').text(cuello)
-                $('#txt_anomalias').text(multiselect)
-
                 $('#paso_a').hide();
                 $('#paso_b').show();
 
@@ -4888,7 +4867,87 @@
             submitHandler: function(){
 
                 //RELLENAR PARTE DE CONFIRMAR
+                var valores = new Array()
+                var form_a = document.getElementById('form_a').elements
+                var form_b = document.getElementById('form_b').elements
+                var form_c = document.getElementById('form_c').elements
+                var form_d = document.getElementById('form_d').elements
+                var form_e = document.getElementById('form_e').elements
+                var form_f = document.getElementById('form_f').elements
+                var form_g = document.getElementById('form_g').elements
+                var span = document.querySelectorAll('.txt_show')
 
+                /*
+                **============================== FORMULARIO A ==============================
+                */
+                for (var a = 0; a < form_a.length; a++) {
+                    if (form_a[a].name != "" && form_a[a].type != "submit" && form_a[a].type != "hidden") {
+                        valores.push(form_a[a].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO B ==============================
+                */
+                for (var b = 0; b < form_b.length; b++) {
+                    if (form_b[b].name != "" && form_b[b].type != "submit" && form_b[b].type != "hidden") {
+                        valores.push(form_b[b].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO C ==============================
+                */
+                for (var c = 0; c < form_c.length; c++) {
+                    if (form_c[c].name != "" && form_c[c].type != "submit" && form_c[c].type != "hidden") {
+                        valores.push(form_c[c].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO D ==============================
+                */
+                for (var d = 0; d < form_d.length; d++) {
+                    if (form_d[d].name != "" && form_d[d].type != "submit" && form_d[d].type != "hidden") {
+                        valores.push(form_d[d].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO E ==============================
+                */
+                for (var e = 0; e < form_e.length; e++) {
+                    if (form_e[e].name != "" && form_e[e].type != "submit" && form_e[e].type != "hidden") {
+                        valores.push(form_e[e].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO F ==============================
+                */
+                for (var f = 0; f < form_f.length; f++) {
+                    if (form_f[f].name != "" && form_f[f].type != "submit" && form_f[f].type != "hidden") {
+                        valores.push(form_f[f].value)
+                    }
+                }
+                /*
+                **============================== FORMULARIO G ==============================
+                */
+                for (var g = 0; g < form_g.length; g++) {
+                    if (form_g[g].name != "" && form_g[g].type != "submit" && form_g[g].type != "hidden") {
+                        valores.push(form_g[g].value)
+                    }
+                }
+
+                for(var i = 0; i < span.length; i++){
+                    span[i].textContent = valores[i]
+                }
+
+                //VALORES DE CAMPOS SELECT Y MULTISELECT
+                nombre       = $('select[name="nombre"] option:selected').text()
+                multiselect  = $('#id_anomalias').val();
+
+                $('#txt_nombre').text(nombre)
+                $('#txt_anomalias').text(multiselect)
+
+                /*
+                **============================== OCULTAR Y MOSTRAR ==============================
+                */
 
                 $('#paso_g').hide();
                 $('#paso_h').show();
