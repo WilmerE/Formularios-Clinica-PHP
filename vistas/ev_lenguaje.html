@@ -4668,7 +4668,7 @@
                 <span class="txt_show" id="txt_observaciones_pragmatico"></span>
                 <div class="caja-footer">
                     <a class="btn btn-primary" id="btn_return_g">Atrás</a>
-                    <a class="btn btn-primary" id="btn_terminar">Siguiente</a>
+                    <a class="btn btn-primary" id="btn_terminar">Guardar</a>
                 </div>
             </div>
         </div>
@@ -4754,36 +4754,53 @@
             }
             else if(mostrar == 'btn_terminar'){
                 // Serializamos formularios
-                    var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e, #form_f, #form_g').serialize();
+                //var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e, #form_f, #form_g').serialize();
+                var contenido = document.querySelectorAll('.txt_show')
+                var elements = document.querySelectorAll( "input, select, textarea" )
+                var obj = {}
 
-                    $.ajax({
-                        type: "POST",
-                        url: "insertar_ev_lenguale.php",
-                        data: dataForm,
-                        dataType: "json",
-                        success: function() {
-                            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
-                            // do what ever you want with the server response
-                            window.location="http://localhost/formularios_historia/ev_lenguale_list.php";
-                            $('#form_a').trigger("reset")
-                            $('#form_b').trigger("reset")
-                            $('#form_c').trigger("reset")
-                            $('#form_d').trigger("reset")
-                            $('#form_e').trigger("reset")
-                            $('#form_f').trigger("reset")
-                            $('#form_g').trigger("reset")
-                        },
-                        error: function() {
-                            window.location="http://localhost/formularios_historia/ev_lenguale_list.php";
-                            $('#form_a').trigger("reset")
-                            $('#form_b').trigger("reset")
-                            $('#form_c').trigger("reset")
-                            $('#form_d').trigger("reset")
-                            $('#form_e').trigger("reset")
-                            $('#form_f').trigger("reset")
-                            $('#form_g').trigger("reset")
-                        }
-                    });
+                for( var i = 0; i < contenido.length; ++i ) {
+                    var element = elements[i]
+                    var name = element.name
+                    var value = contenido[i].textContent
+
+                    if( name ) {
+                        obj[ name ] = value
+                    }
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "insertar_ev_lenguaje.php",
+                    data: {
+                        'action': "add",
+                        'num': $('#id_numero').val(),
+                        'data': obj
+                    },
+                    dataType: "json",
+                    success: function() {
+                        //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                        // do what ever you want with the server response
+                        window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
+                        $('#form_a').trigger("reset")
+                        $('#form_b').trigger("reset")
+                        $('#form_c').trigger("reset")
+                        $('#form_d').trigger("reset")
+                        $('#form_e').trigger("reset")
+                        $('#form_f').trigger("reset")
+                        $('#form_g').trigger("reset")
+                    },
+                    error: function() {
+                        window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
+                        $('#form_a').trigger("reset")
+                        $('#form_b').trigger("reset")
+                        $('#form_c').trigger("reset")
+                        $('#form_d').trigger("reset")
+                        $('#form_e').trigger("reset")
+                        $('#form_f').trigger("reset")
+                        $('#form_g').trigger("reset")
+                    }
+                });
             }
         });
         
