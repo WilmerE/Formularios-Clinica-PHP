@@ -1,21 +1,23 @@
   <?php
 
 	//Conexión a la DB 
-	include 'db_connection.php';
-	$conn = OpenCon();
+  include 'db_connection.php';
+  $conn = OpenCon();
 
-	$action  = $_POST['action'];
-	$id      = $_POST['num']
-	$data    = $_POST['data'];
+  $action          = $_POST['action'];
+  $id_paciente     = $_POST['paciente'];
+  $data            = $_POST['data'];
 
-	$consulta = "";
+  $datajson = json_encode($data);
 
-	if ($action == 'add' {
-		$consulta = "INSERT INTO tvx_form_evlenguaje VALUES ('$id', '$data')";
-	} elseif ($action == 'update') {
+  $consulta = "";
+
+  if ($action == 'add') {
+  	$consulta = "INSERT INTO tvx_form_evlenguaje VALUES (NULL, '$id_paciente', '$datajson')"; 
+  } elseif ($action == 'update') {
 		// code...
-	} 
+  } 
 
-	$conn->query($consulta);
-	if($conn->errno) die($conn->error);
-?>
+  $conn->query($consulta);
+  if($conn->errno) die($conn->error);
+  ?>
