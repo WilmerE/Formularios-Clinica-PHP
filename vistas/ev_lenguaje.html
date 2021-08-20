@@ -4780,18 +4780,6 @@
                     success: function() {
                         //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
                         // do what ever you want with the server response
-                        /*window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
-                        $('#form_a').trigger("reset")
-                        $('#form_b').trigger("reset")
-                        $('#form_c').trigger("reset")
-                        $('#form_d').trigger("reset")
-                        $('#form_e').trigger("reset")
-                        $('#form_f').trigger("reset")
-                        $('#form_g').trigger("reset")
-                    */
-                    },
-                    error: function() {
-                        /*
                         window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
                         $('#form_a').trigger("reset")
                         $('#form_b').trigger("reset")
@@ -4800,7 +4788,16 @@
                         $('#form_e').trigger("reset")
                         $('#form_f').trigger("reset")
                         $('#form_g').trigger("reset")
-                        */
+                    },
+                    error: function() {
+                        window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
+                        $('#form_a').trigger("reset")
+                        $('#form_b').trigger("reset")
+                        $('#form_c').trigger("reset")
+                        $('#form_d').trigger("reset")
+                        $('#form_e').trigger("reset")
+                        $('#form_f').trigger("reset")
+                        $('#form_g').trigger("reset")
                     }
                 });
             }
