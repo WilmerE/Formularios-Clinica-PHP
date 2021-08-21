@@ -13,10 +13,9 @@ if (isset($_POST['action'])) {
 	if(!$resultado){
 		die("No hay datos para mostrar");
 	} else {
-		$i = 0;
 		while( $row = mysqli_fetch_array($resultado) ){
 			$data[] = array(
-				'numero' => $row["id"],
+				'id' => $row["id"],
 				'nombre' => $row["display_name"],
 				'usuario' => $row["user_login"],
 				'mail' => $row["user_email"],
