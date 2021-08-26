@@ -3407,7 +3407,7 @@
                     <tbody>
                         <tr>
                             <td colspan="3">
-                                <p>Nombre: </p><span class="txt_show" id="txt_nombre"></span>
+                                <p>Nombre: <span class="txt_show" id="txt_nombre"></span></p>
                             </td>
                             <td>
                                 <p>N°Ficha: </p><span class="txt_show" id="txt_numficha"></span>
@@ -4680,7 +4680,7 @@
 <script src="js/formulario-reporte.js"></script>
 <script src="js/popup.js"></script>
 <script src="js_libs/select2/js/select2.min.js"></script>
-
+<script src="js_libs/JSON-js/json2.js"></script>
 <script type="text/javascript">
 
     /*
@@ -4758,6 +4758,8 @@
                 var contenido = document.querySelectorAll('.txt_show')
                 var elements = document.querySelectorAll( "input, select, textarea.form-control" )
                 var obj = {}
+                var indexado = []
+                var nivel3 = {}
 
                 for( var i = 0; i < contenido.length; ++i ) {
                     var name = elements[i].name
@@ -4768,19 +4770,25 @@
                     }
                 }
 
+                indexado[0] = obj
+                nivel3[0] = indexado
+
+                //ARRAY A JSON
+                var toJSON = JSON.stringify(nivel3)
+
                 $.ajax({
                     type: "POST",
                     url: "insertar_ev_lenguaje.php",
                     data: {
                         'action': "add",
                         'paciente': $('#id_nombre').val(),
-                        'data': obj
+                        'data': toJSON
                     },
                     dataType: "json",
                     success: function() {
                         //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
                         // do what ever you want with the server response
-                        window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
+                        window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
                         $('#form_a').trigger("reset")
                         $('#form_b').trigger("reset")
                         $('#form_c').trigger("reset")
@@ -4790,7 +4798,7 @@
                         $('#form_g').trigger("reset")
                     },
                     error: function() {
-                        window.location="http://localhost/formularios_historia/ev_lenguaje_list.php";
+                        window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
                         $('#form_a').trigger("reset")
                         $('#form_b').trigger("reset")
                         $('#form_c').trigger("reset")

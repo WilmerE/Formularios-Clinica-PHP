@@ -6,9 +6,7 @@
 
   $action          = $_POST['action'];
   $id_paciente     = $_POST['paciente'];
-  $data            = $_POST['data'];
-
-  $datajson = json_encode($data);
+  $datajson        = $_POST['data'];
 
   $consulta = "";
 

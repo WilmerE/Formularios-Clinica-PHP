@@ -28,6 +28,14 @@ while( $row = mysqli_fetch_array($resultado) ){
 $consulta_user = "SELECT * FROM tvx_users";
 $resultado_user = $conn->query($consulta_user);
 
+/*
+foreach (json_decode($data[0]["datos"], true) as $clave => $valor) {
+	// $array[3] se actualizará con cada valor de $array...
+	print_r($valor[0]["nombre"]);
+}*/
+
+//print_r(json_decode($data[0]["datos"], true));
+
 // números de captcha
 $_SESSION['inicia_form'] = true;
 
