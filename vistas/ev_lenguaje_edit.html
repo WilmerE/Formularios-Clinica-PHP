@@ -16,7 +16,7 @@
             <h3 class="caja-title">EVALUACIÓN DEL LENGUAJE</h3>
         </div>
         <div class="caja-body">
-            <input type="hidden" name="id_form" value="">
+            <input type="hidden" name="id_form" value="{{ id_form }}">
             <table>
                 <tbody>
                     <tr>
@@ -27,7 +27,7 @@
                                 <select id="id_nombre" name="nombre" class="select2 users-select">
                                     <option value="{{ p.0.nombre }}"><strong>{{ p.0.nombre }}</strong></option>
                                     {% for users in usuarios %}
-                                    <option value=""></option>
+                                    <option value="{{ users.ID }}">{{ users.user_nicename }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -49,13 +49,13 @@
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_fecha_nacimiento" class="label active">Fecha de nacimiento:</label>
-                                <input type="date" name="fecha_nacimiento" class="form-control" id="id_fecha_nacimiento">
+                                <input type="date" name="fecha_nacimiento" class="form-control" id="id_fecha_nacimiento" value="{{ p.0.fecha_nacimiento }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_edad" class="label active">Edad:</label>
-                                <input type="text" name="edad" class="form-control"  id="id_edad" readonly>
+                                <input type="text" name="edad" class="form-control"  id="id_edad" readonly value="{{ p.0.edad }}">
                             </div>
                         </td>
                     </tr>
@@ -63,13 +63,13 @@
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_escolaridad" class="label">Escolaridad:</label>
-                                <input type="text" name="escolaridad" class="form-control"  id="id_escolaridad">
+                                <input type="text" name="escolaridad" class="form-control"  id="id_escolaridad" value="{{ p.0.escolaridad }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_procedencia" class="label">Procedencia:</label>
-                                <input type="text" name="procedencia" class="form-control"  id="id_procedencia">
+                                <input type="text" name="procedencia" class="form-control"  id="id_procedencia" value="{{ p.0.procedencia }}">
                             </div>
                         </td>
                     </tr>
@@ -77,7 +77,7 @@
                         <td colspan="4">
                             <div class="form-group">
                                 <label for="id_domicilio" class="label">Domicilio:</label>
-                                <input type="text" name="domicilio" class="form-control"  id="id_domicilio">
+                                <input type="text" name="domicilio" class="form-control"  id="id_domicilio" value="{{ p.0.domicilio }}">
                             </div>
                         </td>
                     </tr>
@@ -92,7 +92,7 @@
                 <label for="id_anomalias" class="label">Anomalías anatómicas:</label>
                 <br><br>
                 <select id="id_anomalias" name="anomalias" class="select2" multiple="">
-                    <option>Seleccione una opción</option>
+                    <option>{{ p.0.anomalias }}</option>
                     <option value="Paladar">Paladar</option>
                     <option value="Velo">Velo</option>
                     <option value="Úvula">Úvula</option>
@@ -105,7 +105,7 @@
             </div>
             <div class="form-group">
                 <label for="id_observaciones_anomalias" class="label active">Observaciones:</label>
-                <textarea name="observaciones_anomalias" class="form-control"  id="id_observaciones_anomalias"></textarea>
+                <textarea name="observaciones_anomalias" class="form-control" id="id_observaciones_anomalias">{{ p.0.observaciones_anomalias }}</textarea>
             </div>
         </div>
         <div class="caja-header">
@@ -114,17 +114,17 @@
         <div class="caja-body">
             <div class="form-group">
                 <label for="id_tono_general" class="label">Tono General:</label>
-                <input type="text" name="tono_general" class="form-control"  id="id_tono_general">
+                <input type="text" name="tono_general" class="form-control" id="id_tono_general" value="{{ p.0.tono_general }}">
             </div>
             <div class="form-group">
                 <label for="id_tono_muscular" class="label">Tono Muscular:</label>
-                <input type="text" name="tono_muscular" class="form-control"  id="id_tono_muscular">
+                <input type="text" name="tono_muscular" class="form-control" id="id_tono_muscular" value="{{ p.0.tono_muscular }}">
             </div>
             <div class="form-group">
                 <label for="id_cara" class="label">Cara:</label>
                 <br><br>
                 <select id="id_cara" name="cara" class="select2">
-                    <option>Seleccione una opción</option>
+                    <option>{{ p.0.cara }}</option>
                     <option value="Normal">Normal</option>
                     <option value="Incapaz">Incapaz</option>
                     <option value="Dificultad">Dificultad</option>
@@ -134,7 +134,7 @@
                 <label for="id_cuello" class="label">Cuello:</label>
                 <br><br>
                 <select id="id_cuello" name="cuello" class="select2">
-                    <option>Seleccione una opción</option>
+                    <option>{{ p.0.cuello }}</option>
                     <option value="Normal">Normal</option>
                     <option value="Incapaz">Incapaz</option>
                     <option value="Dificultad">Dificultad</option>
@@ -151,19 +151,19 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_inspiracion" class="label">Inspiracion nasal:</label>
-                                <input type="text" name="inspiracion" class="form-control"  id="id_inspiracion">
+                                <input type="text" name="inspiracion" class="form-control" id="id_inspiracion" value="{{ p.0.inspiracion }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_espiracion" class="label">Espiración bucal:</label>
-                                <input type="text" name="espiracion" class="form-control"  id="id_espiracion">
+                                <input type="text" name="espiracion" class="form-control" id="id_espiracion" value="{{ p.0.espiracion }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_respiracion_mixto" class="label">Mixto:</label>
-                                <input type="text" name="respiracion_mixto" class="form-control"  id="id_respiracion_mixto">
+                                <input type="text" name="respiracion_mixto" class="form-control" id="id_respiracion_mixto" value="{{ p.0.respiracion_mixto }}">
                             </div>
                         </td>
                     </tr>
@@ -171,19 +171,19 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_rcostal" class="label">R. costal:</label>
-                                <input type="text" name="rcostal" class="form-control"  id="id_rcostal">
+                                <input type="text" name="rcostal" class="form-control" id="id_rcostal" value="{{ p.0.rcostal }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_raire_costal" class="label">Retención del aire:</label>
-                                <input type="text" name="raire_costal" class="form-control"  id="id_raire_costal">
+                                <input type="text" name="raire_costal" class="form-control" id="id_raire_costal" value="{{ p.0.raire_costal }}">
                             </div>  
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_ritmo_costal" class="label">Ritmo:</label>
-                                <input type="text" name="ritmo_costal" class="form-control"  id="id_ritmo_costal">
+                                <input type="text" name="ritmo_costal" class="form-control" id="id_ritmo_costal" value="{{ p.0.ritmo_costal }}">
                             </div>
                         </td>
                     </tr>
@@ -191,19 +191,19 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_rdiafragmatica" class="label">R. diafragmática:</label>
-                                <input type="text" name="rdiafragmatica" class="form-control"  id="id_rdiafragmatica">
+                                <input type="text" name="rdiafragmatica" class="form-control" id="id_rdiafragmatica" value="{{ p.0.rdiafragmatica }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_raire_diafragmatica" class="label">Retención del aire:</label>
-                                <input type="text" name="raire_diafragmatica" class="form-control"  id="id_raire_diafragmatica">
+                                <input type="text" name="raire_diafragmatica" class="form-control" id="id_raire_diafragmatica" value="{{ p.0.raire_diafragmatica }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_ritmo_diafragmatica" class="label">Ritmo:</label>
-                                <input type="text" name="ritmo_diafragmatica" class="form-control"  id="id_ritmo_diafragmatica">
+                                <input type="text" name="ritmo_diafragmatica" class="form-control" id="id_ritmo_diafragmatica" value="{{ p.0.ritmo_diafragmatica }}">
                             </div>
                         </td>
                     </tr>
@@ -211,25 +211,25 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_soplo" class="label">Soplo:</label>
-                                <input type="text" name="soplo" class="form-control"  id="id_soplo">
+                                <input type="text" name="soplo" class="form-control" id="id_soplo" value="{{ p.0.soplo }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_soplo_intensidad" class="label">Intensidad:</label>
-                                <input type="text" name="soplo_intensidad" class="form-control"  id="id_soplo_intensidad">
+                                <input type="text" name="soplo_intensidad" class="form-control" id="id_soplo_intensidad" value="{{ p.0.soplo_intensidad }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_soplo_duracion" class="label">Duración:</label>
-                                <input type="text" name="soplo_duracion" class="form-control"  id="id_soplo_duracion">
+                                <input type="text" name="soplo_duracion" class="form-control" id="id_soplo_duracion" value="{{ p.0.soplo_duracion }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_soplo_direccionalidad" class="label">Direccionalidad:</label>
-                                <input type="text" name="soplo_direccionalidad" class="form-control"  id="id_soplo_direccionalidad">
+                                <input type="text" name="soplo_direccionalidad" class="form-control" id="id_soplo_direccionalidad" value="{{ p.0.soplo_direccionalidad }}">
                             </div>
                         </td>
                     </tr>
@@ -246,13 +246,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_sacar_lengua" class="label">Sacar la lengua:</label>
-                                <input type="text" name="sacar_lengua" class="form-control"  id="id_sacar_lengua">
+                                <input type="text" name="sacar_lengua" class="form-control" id="id_sacar_lengua" value="{{ p.0.sacar_lengua }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_elevar_lengua" class="label">Elevarla hacia la nariz:</label>
-                                <input type="text" name="elevar_lengua" class="form-control"  id="id_elevar_lengua">
+                                <input type="text" name="elevar_lengua" class="form-control" id="id_elevar_lengua" value="{{ p.0.lengua_ligera }}">
                             </div>
                         </td>
                     </tr>
@@ -260,13 +260,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_lengua_ligera" class="label">Sacar y esconder la lengua deprisa:</label>
-                                <input type="text" name="lengua_ligera" class="form-control"  id="id_lengua_ligera">
+                                <input type="text" name="lengua_ligera" class="form-control" id="id_lengua_ligera" value="{{ p.0.lengua_ligera }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_bajar_lengua" class="label">Bajarla hacia la barbilla:</label>
-                                <input type="text" name="bajar_lengua" class="form-control"  id="id_bajar_lengua">
+                                <input type="text" name="bajar_lengua" class="form-control" id="id_bajar_lengua" value="{{ p.0.bajar_lengua }}">
                             </div>
                         </td>
                     </tr>
@@ -274,13 +274,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_lengua_izquierda" class="label">Llevar la lengua a la comisura izquierda:</label>
-                                <input type="text" name="lengua_izquierda" class="form-control"  id="id_lengua_izquierda">
+                                <input type="text" name="lengua_izquierda" class="form-control" id="id_lengua_izquierda" value="{{ p.0.lengua_izquierda }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_lengua_derecha" class="label">Llevar la lengua a la comisura derecha:</label>
-                                <input type="text" name="lengua_derecha" class="form-control"  id="id_lengua_derecha">
+                                <input type="text" name="lengua_derecha" class="form-control" id="id_lengua_derecha" value="{{ p.0.lengua_derecha }}">
                             </div>
                         </td>
                     </tr>
@@ -297,19 +297,19 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_abocinar_labios" class="label">Abocinar labios:</label>
-                                <input type="text" name="abocinar_labios" class="form-control"  id="id_abocinar_labios">
+                                <input type="text" name="abocinar_labios" class="form-control" id="id_abocinar_labios" value="{{ p.0.abocinar_labios }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_distender_labios" class="label">Distender labios:</label>
-                                <input type="text" name="distenderr_labios" class="form-control"  id="id_distender_labios">
+                                <input type="text" name="distenderr_labios" class="form-control" id="id_distender_labios" value="{{ p.0.distender_labios }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_fruncir_labios" class="label">Fruncir labios:</label>
-                                <input type="text" name="fruncir_labios" class="form-control"  id="id_fruncir_labios">
+                                <input type="text" name="fruncir_labios" class="form-control" id="id_fruncir_labios" value="{{ p.0.fruncir_labios }}">
                             </div>
                         </td>
                     </tr>
@@ -317,13 +317,13 @@
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_labios_derecha" class="label">Lateralizar labios a la derecha:</label>
-                                <input type="text" name="labios_derecha" class="form-control"  id="id_labios_derecha">
+                                <input type="text" name="labios_derecha" class="form-control" id="id_labios_derecha" value="{{ p.0.labios_derecha }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_labios_izquierda" class="label">Lateralizar labios a la izquierda:</label>
-                                <input type="text" name="labios_izquierda" class="form-control"  id="id_labios_izquierda">
+                                <input type="text" name="labios_izquierda" class="form-control" id="id_labios_izquierda" value="{{ p.0.labios_izquierda }}">
                             </div>
                         </td>
                     </tr>
@@ -331,13 +331,13 @@
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_labio_superior" class="label">Morder labio superior:</label>
-                                <input type="text" name="labio_superior" class="form-control"  id="id_labio_superior">
+                                <input type="text" name="labio_superior" class="form-control" id="id_labio_superior" value="{{ p.0.labio_superior }}">
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_labio_inferior" class="label">Morder labio inferior:</label>
-                                <input type="text" name="labio_inferior" class="form-control"  id="id_labio_inferior">
+                                <input type="text" name="labio_inferior" class="form-control" id="id_labio_inferior" value="{{ p.0.labio_inferior }}">
                             </div>
                         </td>
                     </tr>
@@ -354,13 +354,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_hinchar_mejillas" class="label">Hinchar las mejillas:</label>
-                                <input type="text" name="hinchar_mejillas" class="form-control"  id="id_hinchar_mejillas">
+                                <input type="text" name="hinchar_mejillas" class="form-control" id="id_hinchar_mejillas" value="{{ p.0.hinchar_mejillas }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_contraer_mejillas" class="label">Contraer las mejillas:</label>
-                                <input type="text" name="contraer_mejillas" class="form-control"  id="id_contraer_mejilla">
+                                <input type="text" name="contraer_mejillas" class="form-control" id="id_contraer_mejilla" value="{{ p.0.contraer_mejillas }}">
                             </div>
                         </td>
                     </tr>
@@ -368,7 +368,7 @@
                         <td colspan="2">
                             <div class="form-group">
                                 <label for="id_alternar_mejillas" class="label">Alternar el hichar y contraer las mejillas:</label>
-                                <input type="text" name="alternar_mejillas" class="form-control"  id="id_alternar_mejilla">
+                                <input type="text" name="alternar_mejillas" class="form-control" id="id_alternar_mejilla" value="{{ p.0.alternar_mejillas }}">
                             </div>
                         </td>
                     </tr>
@@ -385,13 +385,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_abrir_boca" class="label">Abrir la boca:</label>
-                                <input type="text" name="abrir_boca" class="form-control"  id="id_abrir_boca">
+                                <input type="text" name="abrir_boca" class="form-control" id="id_abrir_boca" value="{{ p.0.abrir_boca }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_cerrar_boca" class="label">Cerrar la boca:</label>
-                                <input type="text" name="cerrar_boca" class="form-control"  id="id_cerrar_boca">
+                                <input type="text" name="cerrar_boca" class="form-control" id="id_cerrar_boca" value="{{ p.0.cerrar_boca }}">
                             </div>
                         </td>
                     </tr>
@@ -399,13 +399,13 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_desplazamiento_boca" class="label">Desplazamiento a los lados:</label>
-                                <input type="text" name="desplazamiento_boca" class="form-control"  id="id_desplazamiento_boca">
+                                <input type="text" name="desplazamiento_boca" class="form-control" id="id_desplazamiento_boca" value="{{ p.0.desplazamiento_boca }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_movimientos_boca" class="label">Moviminetos anteroposteriores:</label>
-                                <input type="text" name="movimientos_boca" class="form-control"  id="id_movimientos_boca">
+                                <input type="text" name="movimientos_boca" class="form-control" id="id_movimientos_boca" value="{{ p.0.movimientos_boca }}">
                             </div>
                         </td>
                     </tr>
@@ -422,31 +422,31 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_reir" class="label">Reir:</label>
-                                <input type="text" name="reir" class="form-control"  id="id_reir">
+                                <input type="text" name="reir" class="form-control" id="id_reir" value="{{ p.0.reir }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_llorar" class="label">Llorar:</label>
-                                <input type="text" name="llorar" class="form-control"  id="id_llorar">
+                                <input type="text" name="llorar" class="form-control" id="id_llorar" value="{{ p.0.llorar}}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_comer" class="label">Comer:</label>
-                                <input type="text" name="comer" class="form-control"  id="id_comer">
+                                <input type="text" name="comer" class="form-control" id="id_comer" value="{{ p.0.comer }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_dormir" class="label">Dormir:</label>
-                                <input type="text" name="dormir" class="form-control"  id="id_dormir">
+                                <input type="text" name="dormir" class="form-control" id="id_dormir" value="{{ p.0.dormir }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_beber" class="label">Beber:</label>
-                                <input type="text" name="beber" class="form-control"  id="id_beber">
+                                <input type="text" name="beber" class="form-control" id="id_beber" value="{{ p.0.beber }}">
                             </div>
                         </td>
                     </tr>
@@ -454,31 +454,31 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_sorpresa" class="label">Sorpresa:</label>
-                                <input type="text" name="sorpresa" class="form-control"  id="id_sorpresa">
+                                <input type="text" name="sorpresa" class="form-control" id="id_sorpresa" value="{{ p.0.sorpresa }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_miedo" class="label">Miedo:</label>
-                                <input type="text" name="miedo" class="form-control"  id="id_miedo">
+                                <input type="text" name="miedo" class="form-control" id="id_miedo" value="{{ p.0.miedo }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_tristeza" class="label">Tristeza:</label>
-                                <input type="text" name="tristeza" class="form-control"  id="id_tristeza">
+                                <input type="text" name="tristeza" class="form-control" id="id_tristeza" value="{{ p.0.tristeza }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_alegria" class="label">Alegría:</label>
-                                <input type="text" name="alegria" class="form-control"  id="id_alegria">
+                                <input type="text" name="alegria" class="form-control" id="id_alegria" value="{{ p.0.alegria }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_enfado" class="label">Enfado:</label>
-                                <input type="text" name="enfado" class="form-control"  id="id_enfado">
+                                <input type="text" name="enfado" class="form-control" id="id_enfado" value="{{ p.0.enfado }}">
                             </div>
                         </td>
                     </tr>
@@ -486,7 +486,7 @@
             </table>
             <div class="form-group">
                 <label for="id_observaciones_anatomico" class="label active">Observaciones:</label>
-                <textarea name="observaciones_anatomico" class="form-control"  id="id_observaciones_anatomico"></textarea>
+                <textarea name="observaciones_anatomico" class="form-control"  id="id_observaciones_anatomico">{{ p.0.observaciones_anatomico }}</textarea>
             </div>
         </div>
     </div>
@@ -497,15 +497,15 @@
         <div class="caja-body">
             <div class="form-group">
                 <label for="id_atencion" class="label active">Capacidad de atención: (comprobar si el niño/niña es capaz de mantener la mirada o escuchar intencionalmente al menos unos instantes, ante una demanda o estímulo)</label>
-                <textarea name="atencion" class="form-control"  id="id_atencion"></textarea>
+                <textarea name="atencion" class="form-control" id="id_atencion">{{ p.0.atencion }}</textarea>
             </div>
             <div class="form-group">
                 <label for="id_percepcion_visual" class="label active">Percepción visual: (Verificar si puede seguir con la mirada un objeto animado o inanimado que se desplace, si se reconoce ante un espejo, si reconoce a personas y objetos)</label>
-                <textarea name="percepcion_visual" class="form-control"  id="id_percepcion_visual"></textarea>
+                <textarea name="percepcion_visual" class="form-control" id="id_percepcion_visual">{{ p.0.percepcion_visual }}</textarea>
             </div>
             <div class="form-group">
                 <label for="id_percepcion_auditiva" class="label active">Percepción y discrimiación auditiva: (Cerciorarse de que oye reaccionando ante ruidos y sonidos y si discrimina diferentes sonidos, voces, etc.)</label>
-                <textarea name="percepcion_auditiva" class="form-control"  id="id_percepcion_auditiva"></textarea>
+                <textarea name="percepcion_auditiva" class="form-control" id="id_percepcion_auditiva">{{ p.0.percepcion_auditiva }}</textarea>
             </div>
         </div>
         <div class="caja-body">
@@ -524,12 +524,12 @@
                         <td colspan="2">Levanta la mano derecha </td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="realiza_sonido" class="form-control"  id="id_realiza_sonido"></textarea>
+                                <textarea name="realiza_sonido" class="form-control" id="id_realiza_sonido">{{ p.0.realiza_sonido }}</textarea>
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="notas_sonido" class="form-control"  id="id_notas_sonido"></textarea>
+                                <textarea name="notas_sonido" class="form-control" id="id_notas_sonido">{{ p.0.notas_sonido }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -538,12 +538,12 @@
                         <td colspan="2">Te pones de pie<br>Te quedas sentado</td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="realiza_fuerte" class="form-control"  id="id_realiza_fuerte"></textarea>
+                                <textarea name="realiza_fuerte" class="form-control" id="id_realiza_fuerte">{{ p.0.realiza_fuerte }}</textarea>
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="notas_fuerte" class="form-control"  id="id_notas_fuerte"></textarea>
+                                <textarea name="notas_fuerte" class="form-control" id="id_notas_fuerte">{{ p.0.notas_fuerte }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -552,12 +552,12 @@
                         <td colspan="2">Agita la mano derecha<br>Cierra el puño derecho</td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="realiza_largo" class="form-control"  id="id_realiza_largo"></textarea>
+                                <textarea name="realiza_largo" class="form-control" id="id_realiza_largo">{{ p.0.realiza_largo }}</textarea>
                             </div>
                         </td>
                         <td colspan="2">
                             <div class="form-group">
-                                <textarea name="notas_largo" class="form-control"  id="id_notas_largo"></textarea>
+                                <textarea name="notas_largo" class="form-control" id="id_notas_largo">{{ p.0.notas_largo }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -570,6 +570,7 @@
                         <td colspan="2">Silbido</td>
                         <td colspan="2">
                             <select id="id_silbido" name="silbido" class="select2">
+                                <option value="{{ p.0.silbido }}">{{ p.0.silbido }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -579,6 +580,7 @@
                         <td colspan="2">Aplauso</td>
                         <td colspan="2">
                             <select id="id_aplauso" name="aplauso" class="select2">
+                                <option value="{{ p.0.aplauso }}">{{ p.0.aplauso }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -589,6 +591,7 @@
                         <td colspan="2">Llaves</td>
                         <td colspan="2">
                             <select id="id_llaves" name="llaves" class="select2">
+                                <option value="{{ p.0.llaves }}">{{ p.0.llaves }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -598,6 +601,7 @@
                         <td colspan="2">Pelota</td>
                         <td colspan="2">
                             <select id="id_pelota" name="pelota" class="select2">
+                                <option value="{{ p.0.pelota }}">{{ p.0.pelota }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -608,6 +612,7 @@
                         <td colspan="2">Guitarra</td>
                         <td colspan="2">
                             <select id="id_guitarra" name="guitarra" class="select2">
+                                <option value="{{ p.0.guitarra }}">{{ p.0.guitarra }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -617,6 +622,7 @@
                         <td colspan="2">Tambor</td>
                         <td colspan="2">
                             <select id="id_tambor" name="tambor" class="select2">
+                                <option value="{{ p.0.tambor }}">{{ p.0.tambor }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -627,6 +633,7 @@
                         <td colspan="2">Agua</td>
                         <td colspan="2">
                             <select id="id_agua" name="agua" class="select2">
+                                <option value="{{ p.0.agua }}">{{ p.0.agua }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -636,6 +643,7 @@
                         <td colspan="2">Viento</td>
                         <td colspan="2">
                             <select id="id_viento" name="viento" class="select2">
+                                <option value="{{ p.0.viento }}">{{ p.0.viento }}</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
@@ -646,7 +654,7 @@
             <br><br>
             <div class="form-group">
                 <label for="id_observaciones_linguistico" class="label active">Observaciones</label>
-                <textarea name="observaciones_linguistico" class="form-control"  id="id_observaciones_linguistico"></textarea>
+                <textarea name="observaciones_linguistico" class="form-control" id="id_observaciones_linguistico">{{ p.0.observaciones_linguistico }}</textarea>
             </div>
         </div>
     </div>
@@ -667,30 +675,30 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_voz_normal" class="label">Normal:</label>
-                                <input type="text" name="voz_normal" class="form-control"  id="id_voz_normal">
+                                <input type="text" name="voz_normal" class="form-control" id="id_voz_normal" value="{{ p.0.voz_normal }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_voz_baja" class="label">Baja:</label>
-                                <input type="text" name="voz_baja" class="form-control"  id="id_voz_baja">
+                                <input type="text" name="voz_baja" class="form-control" id="id_voz_baja" value="{{ p.0.voz_baja }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_entonacion_normal" class="label">Normal:</label>
-                                <input type="text" name="entonacion_normal" class="form-control"  id="id_entonacion_normal">
+                                <input type="text" name="entonacion_normal" class="form-control" id="id_entonacion_normal" value="{{ p.0.entonacion_normal }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_ritmo_normal" class="label">Normal:</label>
-                                <input type="text" name="ritmo_normal" class="form-control"  id="id_ritmo_normal">
+                                <input type="text" name="ritmo_normal" class="form-control" id="id_ritmo_normal" value="{{ p.0.ritmo_normal }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <textarea type="text" name="consideraciones1" class="form-control"  id="id_consideraciones1"></textarea>
+                                <textarea type="text" name="consideraciones1" class="form-control" id="id_consideraciones1">{{ p.0.consideraciones1 }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -698,30 +706,30 @@
                         <td>
                             <div class="form-group">
                                 <label for="id_voz_fuerte" class="label">Fuerte:</label>
-                                <input type="text" name="voz_fuerte" class="form-control"  id="id_voz_fuerte">
+                                <input type="text" name="voz_fuerte" class="form-control" id="id_voz_fuerte" value="{{ p.0.voz_fuerte }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_voz_susurrada" class="label">Susurrada:</label>
-                                <input type="text" name="voz_susurrada" class="form-control"  id="id_voz_susurrada">
+                                <input type="text" name="voz_susurrada" class="form-control" id="id_voz_susurrada" value="{{ p.0.voz_susurrada }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_entonacion_monotona" class="label">Monótona:</label>
-                                <input type="text" name="entonacion_monotona" class="form-control"  id="id_entonacion_monotona">
+                                <input type="text" name="entonacion_monotona" class="form-control" id="id_entonacion_monotona" value="{{ p.0.entonacion_monotona }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label for="id_ritmo_rapido" class="label">Rápido:</label>
-                                <input type="text" name="ritmo_rapido" class="form-control"  id="id_ritmo_rapido">
+                                <input type="text" name="ritmo_rapido" class="form-control" id="id_ritmo_rapido" value="{{ p.0.ritmo_rapido }}">
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <textarea type="text" name="consideraciones2" class="form-control"  id="id_consideraciones2"></textarea>
+                                <textarea type="text" name="consideraciones2" class="form-control" id="id_consideraciones2">{{ p.0.consideraciones2 }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -730,30 +738,30 @@
                             <td>
                                 <div class="form-group">
                                     <label for="id_voz_disfonica" class="label">Disfónica:</label>
-                                    <input type="text" name="voz_disfonica" class="form-control"  id="id_voz_disfonica">
+                                    <input type="text" name="voz_disfonica" class="form-control" id="id_voz_disfonica" value="{{ p.0.voz_disfonica }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="id_voz_nasal" class="label">Nasal:</label>
-                                    <input type="text" name="voz_nasal" class="form-control"  id="id_voz_nasal">
+                                    <input type="text" name="voz_nasal" class="form-control" id="id_voz_nasal" value="{{ p.0.voz_nasal }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="id_entonacion_robotica" class="label">Robótica:</label>
-                                    <input type="text" name="entonacion_robotica" class="form-control"  id="id_entonacion_robotica">
+                                    <input type="text" name="entonacion_robotica" class="form-control" id="id_entonacion_robotica" value="{{ p.0.entonacion_robotica }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
                                     <label for="id_ritmo_lento" class="label">Lento:</label>
-                                    <input type="text" name="ritmo_lento" class="form-control"  id="id_ritmo_lento">
+                                    <input type="text" name="ritmo_lento" class="form-control" id="id_ritmo_lento" value="{{ p.0.ritmo_lento }}">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <textarea type="text" name="consideraciones3" class="form-control"  id="id_consideraciones3"></textarea>
+                                    <textarea type="text" name="consideraciones3" class="form-control" id="id_consideraciones3">{{ p.0.consideraciones3 }}</textarea>
                                 </div>
                             </td>
                         </tr>
@@ -3368,5 +3376,60 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
+    /*
+    *=================================== ENVIAR FORMULARIO ===================================
+    */
+    $(function(){
+        //Validar Formulario
+            $('#evlenguaje_update').validate({
+                submitHandler: function(){
+                    var elements = document.querySelectorAll( "input, select, textarea.form-control" )
+                    var obj = {}
+                    var indexado = []
+                    var nivel3 = {}
+
+                    for( var i = 0; i < elements.length; ++i ) {
+                        var name = elements[i].name
+                        var value = elements[i].val()
+
+                        if( name ) {
+                            obj[ name ] = value
+                        }
+                    }
+
+                    indexado[0] = obj
+                    nivel3[0] = indexado
+
+                    //ARRAY A JSON
+                    var toJSON = JSON.stringify(nivel3)
+
+                    $.ajax({
+                        type: "POST",
+                        url: "insertar_ev_lenguaje.php",
+                        data: {
+                            'action': "update",
+                            'paciente': $('#id_nombre').val(),
+                            'data': toJSON
+                        },
+                        dataType: "json",
+                        success: function() {
+                            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                            // do what ever you want with the server response
+                            window.location="https://localhost/Formularios-Clinica/geriatria_list.php";
+                            $('#geriatria_update').reset();
+                        },
+                        error: function() {
+                            window.location="https://localhost/Formularios-Clinica/geriatria_list.php";
+                            $('#geriatria_update').reset();
+                        }
+                    });
+
+                    return false;
+                },
+                errorPlacement: function(error, element) {
+                    error.appendTo(element.parent().append());
+                }
+            });
+    })
 </script>
 {% endblock %}
