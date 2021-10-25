@@ -11,11 +11,11 @@
   $consulta = "";
 
   if ($action == 'add') {
-  	$consulta = "INSERT INTO tvx_form_evlenguaje VALUES (NULL, '$id_paciente', '$datajson')"; 
+  	$consulta = "INSERT INTO tvx_form_evarticulacion VALUES (NULL, '$id_paciente', '$datajson')"; 
   }
   elseif ($action == 'update') {
     $id          = $_POST['id_form'];
-    $consulta = "UPDATE tvx_form_evlenguaje SET `idpaciente`='$id_paciente', `data`='$datajson' WHERE `id`='$id'"; 
+    $consulta = "UPDATE tvx_form_evarticulacion SET `idpaciente`='$id_paciente', `data`='$datajson' WHERE `id`='$id'"; 
   } 
 
   $conn->query($consulta);

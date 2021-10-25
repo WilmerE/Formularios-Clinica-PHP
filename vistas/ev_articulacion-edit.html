@@ -1,0 +1,3942 @@
+{% extends 'base.html' %}
+
+{% block title %} | Evaluación del lenguaje {% endblock %}
+
+{% block css %}
+<!-- SELECT2 -->
+<link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+{% endblock %}
+
+{% block content %}
+{% if resultado %}
+<form action="." method="post" name="evlenguaje_update" id="evlenguaje_update" enctype="multipart/form-data">
+	{% for p in resultado %}
+	<div class="caja">
+		<div class="caja-header">
+			<h3 class="caja-title">EVALUACIÓN DE ARTICULACION</h3>
+		</div>
+		<div class="caja-body">
+			<table>
+				<tbody>
+					<tr>
+						<td colspan="2">
+							<div class="form-group">
+								<label for="id_ea_nombre">Nombre:</label>
+								<br><select id="id_ea_nombre" name="ea_nombre" class="select2 users-select2">
+									<option value="{{ p.0.ea_nombre }}">Seleccione un paciente</option>
+									{% for users in usuarios %}
+									<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ea_numero" class="label">N°Ficha:</label>
+								<input type="text" name="ea_numero" class="form-control" id="id_ea_numero" value="{{ p.0.ea_numero }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_ea_fecha_evaluacion" class="label active">Fecha de evaluación:</label>
+								<input type="date" name="ea_fecha_evaluacion" class="form-control" id="id_ea_fecha_evaluacion" value="{{ p.0.ea_fecha_evaluacion }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ea_fecha_nacimiento" class="label active">Fecha de nacimiento:</label>
+								<input type="date" name="ea_fecha_nacimiento" class="form-control" id="id_ea_fecha_nacimiento" value="{{ p.0.ea_fecha_nacimiento }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ea_edad" class="label active">Edad:</label>
+								<input type="text" name="ea_edad" class="form-control"  id="id_ea_edad" readonly value="{{ p.0.ea_edad }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="form-group">
+								<label for="id_ea_escolaridad" class="label">Escolaridad:</label>
+								<input type="text" name="ea_escolaridad" class="form-control" id="id_ea_escolaridad" value="{{ p.0.ea_escolaridad }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ea_procedencia" class="label">Procedencia:</label>
+								<input type="text" name="ea_procedencia" class="form-control" id="id_ea_procedencia" value="{{ p.0.ea_procedencia }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_ea_domicilio" class="label">Domicilio:</label>
+								<input type="text" name="ea_domicilio" class="form-control" id="id_ea_domicilio" value="{{ p.0.ea_domicilio }}">
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-header">
+			<h3 class="caja-title">I. ANATOMIA FUNCIONAL</h3>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+					<tr>
+						<td colspan="4"><strong>A. ÓRGANOS FONOARTICULADORES Y SU FUNCIONAMIENTO</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">Simetría facial:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_facial_simetrico" class="label">Simétrico:</label>
+								<input type="text" name="facial_simetrico" id="id_facial_simetrico" class="form-control" value="{{ p.0.facial_simetrico }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_facial_asimetrico" class="label">Asimétrico:</label>
+								<input type="text" name="facial_asimetrico" id="id_facial_asimetrico" value="{{ p.0.facial_asimetrico }}">
+							</div>
+						</td> 
+					</tr>
+					<tr>
+						<td rowspan="2" colspan="2">Labio superior:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_labios_simetrico" class="label">Simétrico:</label>
+								<input type="text" name="labios_simetrico" id="id_labios_simetrico" value="{{ p.0.labios_simetrico }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_labios_asimetrico" class="label">Asimétrico:</label>
+								<input type="text" name="labios_asimetrico" id="id_labios_asimetrico" value="{{ p.0.labios_asimetrico }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="lb_tonicidad">Tonicidad:</label>
+								<br>
+								<select class="select2" id="id_lb_tonicidad" name="lb_tonicidad">
+									<option>{{ p.0.ea_lb_tonicidad }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Hipertónico">Hipertónico</option>
+									<option value="Hipotónico">Hipotónico</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="lb_tamanio">Tamaño:</label>
+								<br><select class="select2" id="id_lb_tamanio" name="lb_tamanio">
+									<option>{{ p.0.ea_lb_tamanio }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Largo">Largo</option>
+									<option value="Corto">Corto</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="lb_desviacion">Desviación comisura:</label>
+								<br>
+								<select class="select2" id="id_lb_desviacion" name="lb_desviacion">
+									<option>{{ p.0.lb_desviacion }}</option>
+									<option value="Derecha">Derecha</option>
+									<option value="Izquierda">Izquierda</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" colspan="2">Labio inferior:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_labios_simetrico" class="label">Simétrico:</label>
+								<input type="text" name="labios_simetrico" id="id_labios_simetrico" value="{{ p.0.labios_simetrico }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_labios_asimetrico" class="label">Asimetrico:</label>
+								<input type="text" name="labios_asimetrico" id="id_labios_asimetrico" value="{{ p.0.labios_asimetrico }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="li_tonicidad">Tonicidad:</label>
+								<br>
+								<select class="select2" id="id_li_tonicidad" name="li_tonicidad">
+									<option>{{ p.0.li_tonicidad }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Hipertónico">Hipertónico</option>
+									<option value="Hipotónico">Hipotónico</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="li_tamanio">Tamaño:</label>
+								<br>
+								<select class="select2" id="id_li_tamanio" name="li_tamanio">
+									<option>{{ p.0.ea_li_tamanio }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Largo">Largo</option>
+									<option value="Corto">Corto</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="li_desviacion">Desviación comisura:</label>
+								<br>
+								<select class="select2" id="id_li_desviacion" name="li_desviacion">
+									<option>{{ p.0.li_desviacion }}</option>
+									<option value="Derecha">Derecha</option>
+									<option value="Izquierda">Izquierda</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="li_posicion">Posición:</label>
+								<br>
+								<select class="select2" id="id_li_posicion" name="li_posicion">
+									<option>{{ p.0.li_posicion }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Evertido">Evertido</option>
+									<option value="Retraído">Retraído</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" colspan="2">Frenillo labial superior:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lbs_presencia" class="label">Presencia:</label>
+								<input type="text" name="lbs_presencia" id="id_lbs_presencia" value="{{ p.0.lbs_presencia }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lbs_ausencia" class="label">Ausencia:</label>
+								<input type="text" name="lbs_ausencia" id="id_lbs_ausencia" value="{{ p.0.lbs_ausencia }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="fls_tamanio">Tamaño:</label>
+								<br>
+								<select class="select2" id="id_fls_tamanio" name="fls_tamanio">
+									<option>{{ p.0.fls_tamanio }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Funcional">Funcional</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="fls_funcionalidad">Funcionalidad:</label>
+								<br>
+								<select class="select2" id="id_fls_funcionalidad" name="fls_funcionalidad">
+									<option>{{ p.0.fls_funcionalidad }}</option>
+									<option value="Funcional">Funcional</option>
+									<option value="No funcional">No funcional</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="2" colspan="2">Frenillo labial inferior:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lbi_presencia" class="label">Presencia:</label>
+								<input type="text" name="lbi_presencia" id="id_lbi_presencia" value="{{ p.0.lbi_presencia }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lbi_ausencia" class="label">Ausencia:</label>
+								<input type="text" name="lbi_ausencia" id="id_lbi_ausencia" value="{{ p.0.lbi_ausencia }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="fli_tamanio">Tamaño:</label>
+								<br>
+								<select class="select2" id="id_fli_tamanio" name="fli_tamanio">
+									<option>{{ p.0.tamanio }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Funcional">Funcional</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="fli_funcionalidad">Funcionalidad:</label>
+								<br>
+								<select class="select2" id="id_fli_funcionalidad" name="fli_funcionalidad">
+									<option>{{ p.0.fli_funcionalidad }}</option>
+									<option value="Funcional">Funcional</option>
+									<option value="No funcional">No funcional</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<tbody>
+					<tr>
+						<td rowspan="3" colspan="2">Arcada dentaria:
+							<img src="">
+						</td>
+
+						<td>
+							<div class="form-group">
+								<label for="id_ad_superior" class="label">Superior:</label>
+								<input type="text" name="ad_superior" id="id_ad_superior" value="{{ p.0.ad_superior }}">     
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ad_inferior" class="label">Inferior:</label>
+								<input type="text" name="ad_inferior" id="id_ad_inferior" value="{{ p.0.ad_inferior }}">     
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ad_malfdentaria" class="label">Malformación dentaria:</label>
+								<input type="text" name="ad_malfdentaria" id="id_ad_malfdentaria" value="{{ p.0.ad_malfdentaria }}">     
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" style="text-align: left;">Tipo de mordida:
+							<div class="form-group">
+								<label for="id_tm_bisabis" class="label">Bis a bis:</label>
+								<input type="text" name="tm_bisabis" id="id_tm_bisabis" value="{{ p.0.tm_bisabis }}">
+							</div>
+							<div class="form-group">
+								<label for="id_tm_mordcruzada" class="label">Mordida cruzada:</label>
+								<input type="text" name="tm_mordcruzada" id="id_tm_mordcruzada" value="{{ p.0.tm_mordcruzada }}"> 
+							</div>
+							<div class="form-group">
+								<label for="id_tm_mordabierta" class="label">Mordida abierta:</label>
+								<input type="text" name="tm_mordabierta" id="id_tm_mordabierta" value="{{ p.0.tm_mordabierta }}">
+							</div>
+							<div class="form-group">
+								<label for="id_tm_sbmvertical" class="label">Sobremordida vertical:</label>
+								<input type="text" name="tm_sbmvertical" id="id_tm_sbmvertical" value="{{ p.0.tm_sbmvertical }}"> 
+							</div>
+							<div class="form-group">
+								<label for="id_tm_sbmhorizontal" class="label">Sobremordida horizontal:</label>
+								<input type="text" name="tm_sbmhorizontal" id="id_tm_sbmhorizontal" value="{{ p.0.tm_sbmhorizontal }}"> 
+							</div>
+						</td>        
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_ad_denticion">Denticion:</label>
+								<br>
+								<select class="select2" id="id_ad_denticion" name="ad_denticion">
+									<option>{{ p.0.ad_denticion }}</option>
+									<option value="Completa">Completa</option>
+									<option value="Incompleta">Incompleta</option>
+								</select>
+							</div>
+						</td>
+						<td colspan="2">
+							<div class="form-group">
+								<label for="id_dent_cariesen">Caries en:</label>
+								<input type="text" name="dent_cariesen" id="id_dent_cariesen" value="{{ p.0.dent_cariesen }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Lengua:</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_len_tamanio">Tamaño:</label>
+								<br>
+								<select class="select2" id="id_len_tamanio" name="len_tamanio">
+									<option>{{ p.0.len_tamanio }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Macroglosia">Macroglosia</option>
+									<option value="Microglosia">Microglosia</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_len_periodorep">Periodo de reposo:</label>
+								<br>
+								<select class="select2" id="id_len_periodorep" name="len_periodorep">
+									<option>{{ p.0.len_periodorep }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Interpuesta">Interpuesta</option>
+									<option value="Descendida">Descendida</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_len_flingual">Frenillo sub lingual:</label>
+								<br>
+								<select class="select2" id="id_len_flingual" name="len_flingual">
+									<option>{{ p.0.len_flingual }}</option>
+									<option value="Funcional">Funcional</option>
+									<option value="Ausente">Ausente</option>
+									<option value="Fun. disminuida">Fun. disminuida</option>
+									<option value="No funcional">No funcional</option>
+									<option value="Corto">Corto</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_len_movilidad">Movilidad:</label>
+								<br>
+								<select class="select2" id="id_len_movilidad" name="len_movilidad">
+									<option>{{ p.0.len_movilidad }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Sinmovilidad">Sin movilidad</option>
+									<option value="Disminuida">Disminuida</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Paladar:</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_paladar_oseo">Paladar óseo:</label>
+								<br>
+								<select class="select2" id="id_paladar_oseo" name="paladar_oseo">
+									<option>{{ p.0.paladar_oseo }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Alto">Alto</option>
+									<option value="Plano">Plano</option>
+									<option value="Ojival">Ojival</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_paladar_blando">Paladar blando:</label>
+								<br>
+								<select class="select2" id="id_paladar_blando" name="paladar_blando">
+									<option>{{ p.0.paladar_blando }}</option>
+									<option value="Funcional">Funcional</option>
+									<option value="No funcional">No funcional</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Úvula</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_uvula"> </label>
+								<br>
+								<select class="select2" id="id_uvula" name="uvula">
+									<option>{{ p.0.uvula }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Corta">Corta</option>
+									<option value="Larga">Larga</option>
+									<option value="Bifida">Bifida</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Amígdalas</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_amigdalas"> </label>
+								<br>
+								<select class="select2" id="id_amigdalas" name="amigdalas">
+									<option>{{ p.0.amigdalas }}</option>
+									<option value="Normal">Normal</option>
+									<option value="Ausentes">Ausentes</option>
+									<option value="Hipertroficas">Hipertróficas</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Praxias</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_praxias"> </label>
+								<br>
+								<select class="select2" id="id_praxias" name="praxias">
+									<option>{{ p.0.praxias }}</option>
+									<option value="Faciales">Faciales</option>
+									<option value="Bucales">Bucales</option>
+									<option value="Linguales">Linguales</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Respiración:</td>
+						<td colspan="3">
+							<div class="form-group">
+								<label for="id_resp_modoresp">Modo de respiración:</label>
+								<br>
+								<select class="select2" id="id_resp_modoresp" name="resp_modoresp">
+									<option>{{ p.0.resp_modoresp }}</option>
+									<option value="Nasal">Nasal</option>
+									<option value="Oral">Oral</option>
+									<option value="Mixta">Mixta</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_resp_tiporesp">Tipo de respiración:</label>
+								<br>
+								<select class="select2" id="id_resp_tiporesp" name="resp_tiporesp">
+									<option>{{ p.0.resp_tiporesp }}</option>
+									<option value="Diafragmatica">Diafragmática</option>
+									<option value="Costal">Costal</option>
+									<option value="Clavicular">Clavicular</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="id_resp_maneraresp">Manera de respiración:</label>
+								<br>
+								<select class="select2" id="id_resp_maneraresp" name="resp_maneraresp">
+									<option>{{ p.0.resp_maneraresp }}</option>
+									<option value="Profunda">Profunda</option>
+									<option value="Superficial">Superficial</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+				</tbody>  
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<tbody>
+					<tr>
+						<td colspan="2">Soplo:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_spajillas" class="label">Sopla con pajillas:</label>
+								<input type="text" name="spajillas" id="id_spajillas" value="{{ p.0.spajillas }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_sucpajillas" class="label">Succiona con pajillas:</label>
+								<input type="text" name="sucpajillas" id="id_sucpajillas" value="{{ p.0.sucpajillas }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Posibilidades Bucales:</td>
+						<td colspan="2">
+							<div class="form-group">
+								<label for="id_pb_tienebabeo" class="label">Tiene babeo:</label>
+								<input type="text" name="pb_tienebabeo" id="id_pb_tienebabeo" value="{{ p.0.pb_tienebabeo }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Habla:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_habla_normal" class="label">Normal</label>
+								<input type="text" name="habla_normal" id="id_habla_normal" value="{{ p.0.habla_normal }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_mdeprisa" class="label">Habla muy deprisa</label>
+								<input type="text" name="habla_mdeprisa" id="id_habla_mdeprisa" value="{{ p.0.habla_mdeprisa }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_mdespacio" class="label">Habla muy despacio</label>
+								<input type="text" name="habla_mdespacio" id="id_habla_mdespacio" value="{{ p.0.habla_mdespacio }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_ssentido" class="label">Habla sin sentido/ininteligible</label>
+								<input type="text" name="habla_ssentido" id="id_habla_ssentido" value="{{ p.0.habla_ssentido }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_entienden" class="label">Sólo le entienden las personas cercanas a él</label>
+								<input type="text" name="habla_entienden" id="id_habla_entienden" value="{{ p.0.habla_entienden }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_gangosa" class="label">Tiene un habla gangosa</label>
+								<input type="text" name="habla_gangosa" id="id_habla_gangosa" value="{{ p.0.habla_gangosa }}">
+							</div>
+							<div class="form-group">
+								<label for="id_habla_thablar" class="label">Se traba al hablar:</label>
+								<input type="text" name="habla_thablar" id="id_habla_thablar" value="{{ p.0.habla_thablar }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Voz:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_voz_intensidad" class="label">Intensidad:</label>
+								<input type="text" name="voz_intensidad" id="id_voz_intensidad" value="{{ p.0.voz_intensidad }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_voz_rasonancia" class="label">Resonancia:</label>
+								<input type="text" name="voz_rasonancia" id="id_voz_rasonancia" value="{{ p.0.voz_rasonancia }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Audición:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_audicion_normal" class="label">Normal:</label>
+								<input type="text" name="audicion_normal" id="id_audicion_normal" value="{{ p.0.audicion_normal }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_audicion_deficiente" class="label">Deficiente:</label>
+								<input type="text" name="audicion_deficiente" id="id_audicion_deficiente" value="{{ p.0.audicion_deficiente }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Deglución:</td>
+						<td>
+							<div class="form-group">
+								<label for="id_deglucion_normal" class="label">Normal:</label>
+								<input type="text" name="audicion_normal" id="id_audicion_normal" value="{{ p.0.audicion_normal }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_deglucion_deficiente" class="label">Deficiente:</label>
+								<input type="text" name="deglucion_deficiente" id="id_deglucion_deficiente" value="{{ p.0.deglucion_deficiente }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Observaciones:</td>
+						<td colspan="3">
+							<textarea name="areaobservaciones" rows="10" cols="50">{{ p.0.areaobservaciones }}"</textarea>
+						</td>
+					</tr>
+				</tbody>  
+			</table>
+		</div>
+		<div class="caja-header">
+			<h3 class="caja-tittle">II. ANTECEDENTES DEL DESARROLLO PREVIOS Y ACTUALES</h3>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+					<tr>
+						<td colspan="2"><strong>DESARROLLO PSIMOTOR:</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_controlcabeza" class="label">Control cabeza:</label>
+								<input type="text" name="dp_controlcabeza" id="id_dp_controlcabeza" class="form-control" value="{{ p.0.dp_controlcabeza }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_sonrisasocial" class="label">Sonrisa social:</label>
+								<input type="text" name="dp_sonrisasocial" id="id_dp_sonrisasocial" class="form-control" value="{{ p.0.dp_sonrisasocial }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_sentarsesinapoyo" class="label">Sentarse sin apoyo:</label>
+								<input type="text" name="dp_sentarsesinapoyo" id="id_dp_sentarsesinapoyo" class="form-control" value="{{ p.0.dp_sentarsesinapoyo }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_gateo" class="label">Gateo:</label>
+								<input type="text" name="dp_gateo" id="id_dp_gateo" class="form-control" value="{{ p.0.dep_gateo }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_caminaconapoyo" class="label">Camina con apoyo:</label>
+								<input type="text" name="dp_caminaconapoyo" id="id_dp_caminaconapoyo" class="form-control" value="{{ p.0.dp_caminaconapoyo }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_caminasinayuda" class="label">Camina sin ayuda:</label>
+								<input type="text" name="dp_caminasinayuda" id="id_dp_caminasinayuda" class="form-control" value="{{ p.0.dp_caminasinayuda }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_controled" class="label">Control esfínteres diurno:</label>
+								<input type="text" name="dp_controled" id="id_dp_controled" class="form-control" value="{{ p.0.dep_controled }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_controlen" class="label">Control esfínteres nocturno:</label>
+								<input type="text" name="dp_controlen" id="id_dp_controlen" class="form-control" value="{{ p.0.dp_controlen }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_motricidadg" class="label">Motricidad gruesa:</label>
+								<input type="text" name="dp_motricidadg" id="id_dp_motricidadg" class="form-control" value="{{ p.0.dp_motricidadg }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dp_motricidadf" class="label">Motricidad fina:</label>
+								<input type="text" name="dp_motricidadf" id="id_dp_motricidadf" class="form-control" value="{{ p.0.dp_motricidadf }}">
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<thead>
+					<tr>
+						<td colspan="2"><strong>DESARROLLO DEL LENGUAJE:</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_balbuceo" class="label">Balbuceo (0-6 meses)</label>
+								<input type="text" name="dl_balbuceo" id="id_dl_balbuceo" class="form-control" value="{{ p.0.dl_balbuceo }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_pl" class="label">Protoconversaciones y laleo (6-12 meses)</label>
+								<input type="text" name="dl_pl" id="id_dl_pl" class="form-control" value="{{ p.0.dl_pl }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left;">Uso de primeras palabras con sentido (12-18 meses)
+							<div class="form-group">
+								<label for="id_dl_edad1" class="label">Edad:</label>
+								<input type="text" name="dl_edad1" id="id_dl_edad1" value="{{ p.0.dl_edad1 }}">
+							</div>
+							<div class="form-group">
+								<label for="id_dl_cuales1" class="label">Cuales:</label>
+								<input type="text" name="dl_cuales1" id="id_dl_cuales1" value="{{ p.0.dl_cuales1 }}"> 
+							</div>
+						</td>
+						<td style="text-align: left;">Uso de onomatopeyas, vocabulario de 50 palabras (18-24 meses)
+							<div class="form-group">
+								<label for="id_dl_edad2" class="label">Edad:</label>
+								<input type="text" name="dl_edad2" id="id_dl_edad2" value="{{ p.0.dl_edad2 }}">
+							</div>
+							<div class="form-group">
+								<label for="id_dl_cuales2" class="label">Cuales:</label>
+								<input type="text" name="dl_cuales2" id="id_dl_cuales2" value="{{ p.0.dl_cuales2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: left;">Uso de oraciones simples (2-3 años)
+							<div class="form-group">
+								<label for="id_dl_edad3" class="label">Edad:</label>
+								<input type="text" name="dl_edad3" id="id_dl_edad3" value="{{ p.0.dl_edad3 }}">
+							</div>
+							<div class="form-group">
+								<label for="id_dl_ejemplo1" class="label">Ejemplo:</label>
+								<input type="text" name="dl_ejemplo1" id="id_dl_ejemplo1" value="{{ p.0.dl_ejemplo1 }}"> 
+							</div>
+						</td>
+						<td style="text-align: left;">Uso de oraciones complejas (4-5 años)
+							<div class="form-group">
+								<label for="id_dl_edad4" class="label">Edad:</label>
+								<input type="text" name="dl_edad4" id="id_dl_edad4" value="{{ p.0.dl_edad4 }}">
+							</div>
+							<div class="form-group">
+								<label for="id_dl_ejemplo2" class="label">Ejemplo:</label>
+								<input type="text" name="dl_ejemplo2" id="id_dl_ejemplo2" value="{{ p.0.dl_ejemplo2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_lenguajeea" class="label">Lenguaje expresivo actual:</label>
+								<input type="text" name="dl_lenguajeea" id="id_dl_lenguajeea" class="form-control" value="{{ p.0.dl_lenguajeea }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_lenguajeca" class="label">Lenguaje comprensivo actual:</label>
+								<input type="text" name="dl_lenguajeca" id="id_dl_lenguajeca" class="form-control" value="{{ p.0.dl_lenguajeca }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_pregunta1" class="label">¿Cómo ayudan al paciente frente a sus dificultades de lenguaje, habla y comunicación?</label>
+								<input type="text" name="dl_pregunta1" id="id_dl_pregunta1" class="form-control" value="{{ p.0.dl_pregunta1 }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_pregunta2" class="label">¿Qué hace el paciente frente a sus dificultades?</label>
+								<input type="text" name="dl_pregunta2" id="id_dl_pregunta2" class="form-control" value="{{ p.0.dl_pregunta2 }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_pregunta3" class="label">¿Cómo se relaciona el paciente con los demás y con los diferentes lugares?</label>
+								<input type="text" name="dl_pregunta3" id="id_dl_pregunta3" class="form-control" value="{{ p.0.dl_pregunta3 }}">
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_dl_pregunta4" class="label">¿Presenta conducta disruptiva?</label>
+								<input type="text" name="dl_pregunta4" id="id_dl_pregunta4" class="form-control" value="{{ p.0.dl_pregunta4 }}">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div class="form-group">
+								<label for="id_dl_pregunta5" class="label">¿Presenta interes restrictivos o estereotipados?</label>
+								<input type="text" name="dl_pregunta5" id="id_dl_pregunta5" class="form-control" value="{{ p.0.dl_pregunta5 }}">
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-header">
+			<h3 class="caja-tittle">III. EVALUACIÓN DE ARTICULACIÓN</h3>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+					<tr>
+						<td colspan="9"><strong>B. EVALUACIÓN DE ARTICULACIÓN</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+							<td colspan="2">
+								Fonema
+							</td>
+							<td>
+								Palabra (S.I)
+							</td>
+							<td>
+								Trans. Fonética
+							</td>
+							<td>
+								Omisión
+							</td>
+							<td>
+								Sustitución
+							</td>
+							<td>
+								Asimilación
+							</td>
+							<td>
+								Adición
+							</td>
+							<td>
+								Otro
+							</td>
+						</tr>
+						<tr>
+							<td>Bilabial</td>
+							<td>/b/<br>/p/<br>/m/</td>
+							<td>Bote<br>Pala<br>Mano</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio1"></label>
+									<input type="text" name="bilabial_espacio1" id="id_bilabial_espacio1" value="{{ p.0.bilabial_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio2"></label>
+									<input type="text" name="bilabial_espacio2" id="id_bilabial_espacio2" value="{{ p.0.bilabial_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio3"></label>
+									<input type="text" name="bilabial_espacio3" id="id_bilabial_espacio3" value="{{ p.0.bilabial_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio4"></label>
+									<input type="text" name="bilabial_espacio4" id="id_bilabial_espacio4" value="{{ p.0.bilabial_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio5"></label>
+									<input type="text" name="bilabial_espacio5" id="id_bilabial_espacio5" value="{{ p.0.bilabial_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial_espacio6"></label>
+									<input type="text" name="bilabial_espacio6" id="id_bilabial_espacio6" value="{{ p.0.bilabial_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Velar</td>
+							<td>/k/<br>/g/<br>/j/</td>
+							<td>Casa<br>Gata<br>Jirafa</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio1"></label>
+									<input type="text" name="velar_espacio1" id="id_velar_espacio1" value="{{ p.0.velar_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio2"></label>
+									<input type="text" name="velar_espacio2" id="id_velar_espacio2" value="{{ p.0.velar_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio3"></label>
+									<input type="text" name="velar_espacio3" id="id_velar_espacio3" value="{{ p.0.velar_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio4"></label>
+									<input type="text" name="velar_espacio4" id="id_velar_espacio4" value="{{ p.0.velar_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio5"></label>
+									<input type="text" name="velar_espacio5" id="id_velar_espacio5" value="{{ p.0.velar_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar_espacio6"></label>
+									<input type="text" name="velar_espacio6" id="id_velar_espacio6" value="{{ p.0.velar_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Labiodental</td>
+							<td>/f/</td>
+							<td>Falda</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio1"></label>
+									<input type="text" name="labiodental_espacio1" id="id_labiodental_espacio1" value="{{ p.0.labiodental_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio2"></label>
+									<input type="text" name="labiodental_espacio2" id="id_labiodental_espacio2" value="{{ p.0.labiodental_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio3"></label>
+									<input type="text" name="labiodental_espacio3" id="id_labiodental_espacio3" value="{{ p.0.labiodental_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio4"></label>
+									<input type="text" name="labiodental_espacio4" id="id_labiodental_espacio4" value="{{ p.0.labiodental_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio5"></label>
+									<input type="text" name="labiodental_espacio5" id="id_labiodental_espacio5"  value="{{ p.0.labiodental_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental_espacio6"></label>
+									<input type="text" name="labiodental_espacio6" id="id_labiodental_espacio6" value="{{ p.0.labiodental_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Palatal</td>
+							<td>/y/<br>/ñ/<br>/ch/</td>
+							<td>Llave<br>Ñato<br>Chato</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio1"></label>
+									<input type="text" name="palatal_espacio1" id="id_palatal_espacio1" value="{{ p.0.palatal_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio2"></label>
+									<input type="text" name="palatal_espacio2" id="id_palatal_espacio2" value="{{ p.0.palatal_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio3"></label>
+									<input type="text" name="palatal_espacio3" id="id_palatal_espacio3" value="{{ p.0.palatal_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio4"></label>
+									<input type="text" name="palatal_espacio4" id="id_palatal_espacio4" value="{{ p.0.palatal_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio5"></label>
+									<input type="text" name="palatal_espacio5" id="id_palatal_espacio5" value="{{ p.0.palatal_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal_espacio6"></label>
+									<input type="text" name="palatal_espacio6" id="id_palatal_espacio6" value="{{ p.0.palatal_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Dental</td>
+							<td>/d/<br>/t/</td>
+							<td>Dedo<br>Tapón</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio1"></label>
+									<input type="text" name="dental_espacio1" id="id_dental_espacio1" value="{{ p.0.dental_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio2"></label>
+									<input type="text" name="dental_espacio2" id="id_dental_espacio2" value="{{ p.0.dental_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio3"></label>
+									<input type="text" name="dental_espacio3" id="id_dental_espacio3" value="{{ p.0.dental_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio4"></label>
+									<input type="text" name="dental_espacio4" id="id_dental_espacio4" value="{{ p.0.dental_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio5"></label>
+									<input type="text" name="dental_espacio5" id="id_dental_espacio5" value="{{ p.0.dental_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental_espacio6"></label>
+									<input type="text" name="dental_espacio6" id="id_dental_espacio6" value="{{ p.0.dental_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Alveolar</td>
+							<td>/n/<br>/s/<br>/l/<br>/r/</td>
+							<td>Niño<br>Sapo<br>Lunes<br>Rosa</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio1"></label>
+									<input type="text" name="alveolar_espacio1" id="id_alveolar_espacio1" value="{{ p.0.alveolar_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio2"></label>
+									<input type="text" name="alveolar_espacio2" id="id_alveolar_espacio2" value="{{ p.0.alveolar_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio3"></label>
+									<input type="text" name="alveolar_espacio3" id="id_alveolar_espacio3" value="{{ p.0.alveolar_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio4"></label>
+									<input type="text" name="alveolar_espacio4" id="id_alveolar_espacio4" value="{{ p.0.alveolar_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio5"></label>
+									<input type="text" name="alveolar_espacio5" id="id_alveolar_espacio5" value="{{ p.0.alveolar_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar_espacio6"></label>
+									<input type="text" name="alveolar_espacio6" id="id_alveolar_espacio6" value="{{ p.0.alveolar_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<tbody>
+					<tr>
+						<td colspan="2">
+								Fonema
+							</td>
+							<td>
+								Palabra (S.I)
+							</td>
+							<td>
+								Trans. Fonética
+							</td>
+							<td>
+								Omisión
+							</td>
+							<td>
+								Sustitución
+							</td>
+							<td>
+								Asimilación
+							</td>
+							<td>
+								Adición
+							</td>
+							<td>
+								Otro
+							</td>
+						</tr>
+						<tr>
+							<td>Bilabial</td>
+							<td>/b/<br>/p/<br>/m/</td>
+							<td>Cabeza<br>✓<br>Camera</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio1"></label>
+									<input type="text" name="bilabial2_espacio1" id="id_bilabial2_espacio1" value="{{ p.0.bilabial2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio2"></label>
+									<input type="text" name="bilabial2_espacio2" id="id_bilabial2_espacio2" value="{{ p.0.bilabial2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio3"></label>
+									<input type="text" name="bilabial2_espacio3" id="id_bilabial2_espacio3" value="{{ p.0.bilabial2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio4"></label>
+									<input type="text" name="bilabial2_espacio4" id="id_bilabial2_espacio4" value="{{ p.0.bilabial2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio5"></label>
+									<input type="text" name="bilabial2_espacio5" id="id_bilabial2_espacio5" value="{{ p.0.bilabial2_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_bilabial2_espacio6"></label>
+									<input type="text" name="bilabial2_espacio6" id="id_bilabial2_espacio6" value="{{ p.0.bilabial2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Velar</td>
+							<td>/k/<br>/g/<br>/j/</td>
+							<td>Paquete<br>Laguna<br>Tejedor</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio1"></label>
+									<input type="text" name="velar2_espacio1" id="id_velar2_espacio1" value="{{ p.0.velar2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio2"></label>
+									<input type="text" name="velar2_espacio2" id="id_velar2_espacio2" value="{{ p.0.velar2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio3"></label>
+									<input type="text" name="velar2_espacio3" id="id_velar2_espacio3" value="{{ p.0.velar2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio4"></label>
+									<input type="text" name="velar2_espacio4" id="id_velar2_espacio4" value="{{ p.0.velar2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio5"></label>
+									<input type="text" name="velar2_espacio5" id="id_velar2_espacio5" value="{{ p.0.velar2_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_velar2_espacio6"></label>
+									<input type="text" name="velar2_espacio6" id="id_velar2_espacio6" value="{{ p.0.velar2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Labiodental</td>
+							<td>/f/</td>
+							<td>Búfalo</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio1"></label>
+									<input type="text" name="labiodental2_espacio1" id="id_labiodental2_espacio1" value="{{ p.0.labiodental2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio2"></label>
+									<input type="text" name="labiodental2_espacio2" id="id_labiodental2_espacio2" value="{{ p.0.labiodental2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio3"></label>
+									<input type="text" name="labiodental2_espacio3" id="id_labiodental2_espacio3" value="{{ p.0.labiodental2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio4"></label>
+									<input type="text" name="labiodental2_espacio4" id="id_labiodental2_espacio4" value="{{ p.0.labiodental2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio5"></label>
+									<input type="text" name="labiodental2_espacio5" id="id_labiodental2_espacio5" value="{{ p.0.labiodental2_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_labiodental2_espacio6"></label>
+									<input type="text" name="labiodental2_espacio6" id="id_labiodental2_espacio6" value="{{ p.0.labiodental2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Palatal</td>
+							<td>/y/<br>/ñ/<br>/ch/</td>
+							<td>Payaso<br>Leñador<br>Lechuza</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio1"></label>
+									<input type="text" name="palatal2_espacio1" id="id_palatal2_espacio1" value="{{ p.0.palatal2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio2"></label>
+									<input type="text" name="palatal2_espacio2" id="id_palatal2_espacio2" value="{{ p.0.palatal2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio3"></label>
+									<input type="text" name="palatal2_espacio3" id="id_palatal2_espacio3" value="{{ p.0.palatal2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio4"></label>
+									<input type="text" name="palatal2_espacio4" id="id_palatal2_espacio4" value="{{ p.0.palatal2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio5"></label>
+									<input type="text" name="palatal2_espacio5" id="id_palatal2_espacio5" value="{{ p.0.palatal2_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_palatal2_espacio6"></label>
+									<input type="text" name="palatal2_espacio6" id="id_palatal2_espacio6" value="{{ p.0.palatal2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Dental</td>
+							<td>/d/<br>/t/</td>
+							<td>Cadena<br>Botella</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio1"></label>
+									<input type="text" name="dental2_espacio1" id="id_dental2_espacio1" value="{{ p.0.dental2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio2"></label>
+									<input type="text" name="dental2_espacio2" id="id_dental2_espacio2" value="{{ p.0.dental2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio3"></label>
+									<input type="text" name="dental2_espacio3" id="id_dental2_espacio3" value="{{ p.0.dental2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio4"></label>
+									<input type="text" name="dental2_espacio4" id="id_dental2_espacio4" value="{{ p.0.dental2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio5"></label>
+									<input type="text" name="dental2_espacio5" id="id_dental2_espacio5" value="{{ p.0.dental2_espacio5 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_dental2_espacio6"></label>
+									<input type="text" name="dental2_espacio6" id="id_dental2_espacio6" value="{{ p.0.dental2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Alveolar</td>
+							<td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
+							<td>✓<br>Cocina<br>Melena<br>Piropo<br>Carroza</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio1"></label>
+									<input type="text" name="alveolar2_espacio1" id="id_alveolar2_espacio1" value="{{ p.0.alveolar2_espacio1 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio2"></label>
+									<input type="text" name="alveolar2_espacio2" id="id_alveolar2_espacio2" value="{{ p.0.alveolar2_espacio2 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio3"></label>
+									<input type="text" name="alveolar2_espacio3" id="id_alveolar2_espacio3" value="{{ p.0.alveolar2_espacio3 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio4"></label>
+									<input type="text" name="alveolar2_espacio4" id="id_alveolar2_espacio4" value="{{ p.0.alveolar2_espacio4 }}"> 
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio5"></label>
+									<input type="text" name="alveolar2_espacio5" id="id_alveolar2_espacio5" value="{{ p.0.alveolar2_espacio5 }}">  
+								</div>
+							</td>
+							<td>
+								<div class="form-group">
+									<label for="id_alveolar2_espacio6"></label>
+									<input type="text" name="alveolar2_espacio6" id="id_alveolar2_espacio6" value="{{ p.0.alveolar2_espacio6 }}"> 
+								</div>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<tbody>
+					<tr>
+						<td colspan="2">
+								Fonema
+							</td>
+							<td>
+								Palabra (S.I)
+							</td>
+							<td>
+								Trans. Fonética
+							</td>
+							<td>
+								Omisión
+							</td>
+							<td>
+								Sustitución
+							</td>
+							<td>
+								Asimilación
+							</td>
+							<td>
+								Adición
+							</td>
+							<td>
+								Otro
+							</td>
+						</tr>
+						<tr>
+							<td>Bilabial</td>
+							<td>/b/<br>/p/<br>/m/</td>
+							<td>Nube<br>✓<br>Suma/td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio1"></label>
+										<input type="text" name="bilabial3_espacio1" id="id_bilabial3_espacio1" value="{{ p.0.bilabial3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio2"></label>
+										<input type="text" name="bilabial3_espacio2" id="id_bilabial3_espacio2" value="{{ p.0.bilabial3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio3"></label>
+										<input type="text" name="bilabial3_espacio3" id="id_bilabial3_espacio3" value="{{ p.0.bilabial3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio4"></label>
+										<input type="text" name="bilabial3_espacio4" id="id_bilabial3_espacio4" value="{{ p.0.bilabial3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio5"></label>
+										<input type="text" name="bilabial3_espacio5" id="id_bilabial3_espacio5" value="{{ p.0.bilabial3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bilabial3_espacio6"></label>
+										<input type="text" name="bilabial3_espacio6" id="id_bilabial3_espacio6" value="{{ p.0.bilabial3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Velar</td>
+								<td>/k/<br>/g/<br>/j/</td>
+								<td>Taco<br>Jugo<br>Caja</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio1"></label>
+										<input type="text" name="velar3_espacio1" id="id_velar3_espacio1" value="{{ p.0.velar3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio2"></label>
+										<input type="text" name="velar3_espacio2" id="id_velar3_espacio2" value="{{ p.0.velar3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio3"></label>
+										<input type="text" name="velar3_espacio3" id="id_velar3_espacio3" value="{{ p.0.velar3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio4"></label>
+										<input type="text" name="velar3_espacio4" id="id_velar3_espacio4" value="{{ p.0.velar3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio5"></label>
+										<input type="text" name="velar3_espacio5" id="id_velar3_espacio5" value="{{ p.0.velar3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_velar3_espacio6"></label>
+										<input type="text" name="velar3_espacio6" id="id_velar3_espacio6" value="{{ p.0.velar3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Labiodental</td>
+								<td>/f/</td>
+								<td>Café</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio1"></label>
+										<input type="text" name="labiodental3_espacio1" id="id_labiodental3_espacio1" value="{{ p.0.labiodental3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio2"></label>
+										<input type="text" name="labiodental3_espacio2" id="id_labiodental3_espacio2" value="{{ p.0.labiodental3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio3"></label>
+										<input type="text" name="labiodental3_espacio3" id="id_labiodental3_espacio3" value="{{ p.0.labiodental3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio4"></label>
+										<input type="text" name="labiodental3_espacio4" id="id_labiodental3_espacio4" value="{{ p.0.labiodental3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio5"></label>
+										<input type="text" name="labiodental3_espacio5" id="id_labiodental3_espacio5" value="{{ p.0.labiodental3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_labiodental3_espacio6"></label>
+										<input type="text" name="labiodental3_espacio6" id="id_labiodental3_espacio6" value="{{ p.0.labiodental3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Palatal</td>
+								<td>/y/<br>/ñ/<br>/ch/</td>
+								<td>✓<br>✓<br>Noche</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio1"></label>
+										<input type="text" name="palatal3_espacio1" id="id_palatal3_espacio1" value="{{ p.0.palatal3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio2"></label>
+										<input type="text" name="palatal3_espacio2" id="id_palatal3_espacio2" value="{{ p.0.palatal3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio3"></label>
+										<input type="text" name="palatal3_espacio3" id="id_palatal3_espacio3" value="{{ p.0.palatal3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio4"></label>
+										<input type="text" name="palatal3_espacio4" id="id_palatal3_espacio4" value="{{ p.0.palatal3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio5"></label>
+										<input type="text" name="palatal3_espacio5" id="id_palatal3_espacio5" value="{{ p.0.palatal3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_palatal3_espacio6"></label>
+										<input type="text" name="palatal3_espacio6" id="id_palatal3_espacio6" value="{{ p.0.palatal3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Dental</td>
+								<td>/d/<br>/t/</td>
+								<td>✓<br>✓</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio1"></label>
+										<input type="text" name="dental3_espacio1" id="id_dental3_espacio1" value="{{ p.0.dental3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio2"></label>
+										<input type="text" name="dental3_espacio2" id="id_dental3_espacio2" value="{{ p.0.dental3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio3"></label>
+										<input type="text" name="dental3_espacio3" id="id_dental3_espacio3" value="{{ p.0.dental3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio4"></label>
+										<input type="text" name="dental3_espacio4" id="id_dental3_espacio4" value="{{ p.0.dental3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio5"></label>
+										<input type="text" name="dental3_espacio5" id="id_dental3_espacio5" value="{{ p.0.dental3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dental3_espacio6"></label>
+										<input type="text" name="dental3_espacio6" id="id_dental3_espacio6" value="{{ p.0.dental3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Alveolar</td>
+								<td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
+								<td>✓<br>✓<br>✓<br>✓<br>Perro</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio1"></label>
+										<input type="text" name="alveolar3_espacio1" id="id_alveolar3_espacio1" value="{{ p.0.alveolar3_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio2"></label>
+										<input type="text" name="alveolar3_espacio2" id="id_alveolar3_espacio2" value="{{ p.0.alveolar3_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio3"></label>
+										<input type="text" name="alveolar3_espacio3" id="id_alveolar3_espacio3" value="{{ p.0.alveolar3_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio4"></label>
+										<input type="text" name="alveolar3_espacio4" id="id_alveolar3_espacio4" value="{{ p.0.alveolar3_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio5"></label>
+										<input type="text" name="alveolar3_espacio5" id="id_alveolar3_espacio5" value="{{ p.0.alveolar3_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alveolar3_espacio6"></label>
+										<input type="text" name="alveolar3_espacio6" id="id_alveolar3_espacio6" value="{{ p.0.alveolar3_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+							<tr>
+								<td colspan="9"><strong>C. EVALUACIÓN DE DIPTONGOS:</strong></td>
+							</tr>
+				</thead>
+				<tbody>
+							<tr>
+								<td colspan="2">
+									Difonos<br>Vocálicos-posición
+								</td>
+								<td>
+									Palabra
+								</td>
+								<td>
+									Trans. Fonética
+								</td>
+								<td>
+									Omisión
+								</td>
+								<td>
+									Sustitución
+								</td>
+								<td>
+									Asimilación
+								</td>
+								<td>
+									Adición
+								</td>
+								<td>
+									Otro
+								</td>
+							</tr>
+							<tr>
+								<td>/ae/</td>
+								<td>I<br>M<br>F</td>
+								<td>Aeros<br>Paella<br>Cae</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio1"></label>
+										<input type="text" name="ae_espacio1" id="id_ae_espacio1" value="{{ p.0.ae_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio2"></label>
+										<input type="text" name="ae_espacio2" id="id_ae_espacio2" value="{{ p.0.ae_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio3"></label>
+										<input type="text" name="ae_espacio3" id="id_ae_espacio3" value="{{ p.0.ae_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio4"></label>
+										<input type="text" name="ae_espacio4" id="id_ae_espacio4" value="{{ p.0.ae_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio5"></label>
+										<input type="text" name="ae_espacio5" id="id_ae_espacio5" value="{{ p.0.ae_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ae_espacio6"></label>
+										<input type="text" name="ae_espacio6" id="id_ae_espacio6" value="{{ p.0.ae_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ai</td>
+								<td>I<br>M<br>F</td>
+								<td>Aire<br>Baile<br>Caí</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio1"></label>
+										<input type="text" name="ai_espacio1" id="id_ai_espacio1" value="{{ p.0.ai_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio2"></label>
+										<input type="text" name="ai_espacio2" id="id_ai_espacio2" value="{{ p.0.ai_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio3"></label>
+										<input type="text" name="ai_espacio3" id="id_ai_espacio3" value="{{ p.0.ai_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio4"></label>
+										<input type="text" name="ai_espacio4" id="id_ai_espacio4" value="{{ p.0.ai_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio5"></label>
+										<input type="text" name="ai_espacio5" id="id_ai_espacio5" value="{{ p.0.ai_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ai_espacio6"></label>
+										<input type="text" name="ai_espacio6" id="id_ai_espacio6" value="{{ p.0.ai_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/au/</td>
+								<td>I<br>M<br>F</td>
+								<td>Aula<br>Jaula<br>Guau</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio1"></label>
+										<input type="text" name="au_espacio1" id="id_au_espacio1" value="{{ p.0.au_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio2"></label>
+										<input type="text" name="au_espacio2" id="id_au_espacio2" value="{{ p.0.au_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio3"></label>
+										<input type="text" name="au_espacio3" id="id_au_espacio3" value="{{ p.0.au_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio4"></label>
+										<input type="text" name="au_espacio4" id="id_au_espacio4" value="{{ p.0.au_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio5"></label>
+										<input type="text" name="au_espacio5" id="id_au_espacio5" value="{{ p.0.au_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_au_espacio6"></label>
+										<input type="text" name="au_espacio6" id="id_au_espacio6" value="{{ p.0.au_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>ao</td>
+								<td>I<br>M<br>F</td>
+								<td>Ahora<br>Caos<br>Cacao</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio1"></label>
+										<input type="text" name="ao_espacio1" id="id_ao_espacio1" value="{{ p.0.ao_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio2"></label>
+										<input type="text" name="ao_espacio2" id="id_ao_espacio2" value="{{ p.0.ao_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio3"></label>
+										<input type="text" name="ao_espacio3" id="id_ao_espacio3" value="{{ p.0.ao_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio4"></label>
+										<input type="text" name="ao_espacio4" id="id_ao_espacio4" value="{{ p.0.ao_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio5"></label>
+										<input type="text" name="ao_espacio5" id="id_ao_espacio5" value="{{ p.0.ao_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ao_espacio6"></label>
+										<input type="text" name="ao_espacio6" id="id_ao_espacio6" value="{{ p.0.ao_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>ea</td>
+								<td>I<br>M<br>F</td>
+								<td>Easo<br>Teatro<br>Aldea</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio1"></label>
+										<input type="text" name="ea_espacio1" id="id_ea_espacio1" value="{{ p.0.ea_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio2"></label>
+										<input type="text" name="ea_espacio2" id="id_ea_espacio2" value="{{ p.0.ea_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio3"></label>
+										<input type="text" name="ea_espacio3" id="id_ea_espacio3" value="{{ p.0.ea_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio4"></label>
+										<input type="text" name="ea_espacio4" id="id_ea_espacio4" value="{{ p.0.ea_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio5"></label>
+										<input type="text" name="ea_espacio5" id="id_ea_espacio5" value="{{ p.0.ea_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ea_espacio6"></label>
+										<input type="text" name="ea_espacio6" id="id_ea_espacio6" value="{{ p.0.ea_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ei/</td>
+								<td>I<br>M<br>F</td>
+								<td>Eilyn<br>Reino<br>Rey</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio1"></label>
+										<input type="text" name="ei_espacio1" id="id_ei_espacio1" value="{{ p.0.ei_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio2"></label>
+										<input type="text" name="ei_espacio2" id="id_ei_espacio2" value="{{ p.0.ei_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio3"></label>
+										<input type="text" name="ei_espacio3" id="id_ei_espacio3" value="{{ p.0.ei_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio4"></label>
+										<input type="text" name="ei_espacio4" id="id_ei_espacio4" value="{{ p.0.ei_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio5"></label>
+										<input type="text" name="ei_espacio5" id="id_ei_espacio5" value="{{ p.0.ei_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ei_espacio6"></label>
+										<input type="text" name="ei_espacio6" id="id_ei_espacio6" value="{{ p.0.ei_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/eu/</td>
+								<td>I<br>M<br>F</td>
+								<td>Euro<br>Feudal<br>Zeus</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio1"></label>
+										<input type="text" name="eu_espacio1" id="id_eu_espacio1" value="{{ p.0.eu_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio2"></label>
+										<input type="text" name="eu_espacio2" id="id_eu_espacio2" value="{{ p.0.eu_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio3"></label>
+										<input type="text" name="eu_espacio3" id="id_eu_espacio3" value="{{ p.0.eu_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio4"></label>
+										<input type="text" name="eu_espacio4" id="id_eu_espacio4" value="{{ p.0.eu_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio5"></label>
+										<input type="text" name="eu_espacio5" id="id_eu_espacio5" value="{{ p.0.eu_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eu_espacio6"></label>
+										<input type="text" name="eu_espacio6" id="id_eu_espacio6" value="{{ p.0.eu_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/eo/</td>
+								<td>I<br>M<br>F</td>
+								<td>Eólica<br>León<br>Video</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio1"></label>
+										<input type="text" name="eo_espacio1" id="id_eo_espacio1" value="{{ p.0.eo_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio2"></label>
+										<input type="text" name="eo_espacio2" id="id_eo_espacio2" value="{{ p.0.eo_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio3"></label>
+										<input type="text" name="eo_espacio3" id="id_eo_espacio3" value="{{ p.0.eo_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio4"></label>
+										<input type="text" name="eo_espacio4" id="id_eo_espacio4" value="{{ p.0.eo_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio5"></label>
+										<input type="text" name="eo_espacio5" id="id_eo_espacio5" value="{{ p.0.eo_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio6"></label>
+										<input type="text" name="eo_espacio6" id="id_eo_espacio6" value="{{ p.0.eo_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ia/</td>
+								<td>I<br>M<br>F</td>
+								<td>Hiato<br>Anciano<br>Rubia</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio1"></label>
+										<input type="text" name="ia_espacio1" id="id_ia_espacio1" value="{{ p.0.ia_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio2"></label>
+										<input type="text" name="ia_espacio2" id="id_ia_espacio2" value="{{ p.0.ia_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio3"></label>
+										<input type="text" name="ia_espacio3" id="id_ia_espacio3" value="{{ p.0.ia_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio4"></label>
+										<input type="text" name="ia_espacio4" id="id_ia_espacio4" value="{{ p.0.ia_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio5"></label>
+										<input type="text" name="ia_espacio5" id="id_ia_espacio5" value="{{ p.0.ia_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ia_espacio6"></label>
+										<input type="text" name="ia_espacio6" id="id_ia_espacio6" value="{{ p.0.ia_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/eo/</td>
+								<td>I<br>M<br>F</td>
+								<td>Eólica<br>León<br>Video</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio1"></label>
+										<input type="text" name="eo_espacio1" id="id_eo_espacio1" value="{{ p.0.eo_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio2"></label>
+										<input type="text" name="eo_espacio2" id="id_eo_espacio2" value="{{ p.0.eo_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio3"></label>
+										<input type="text" name="eo_espacio3" id="id_eo_espacio3" value="{{ p.0.eo_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio4"></label>
+										<input type="text" name="eo_espacio4" id="id_eo_espacio4" value="{{ p.0.eo_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio5"></label>
+										<input type="text" name="eo_espacio5" id="id_eo_espacio5" value="{{ p.0.eo_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_eo_espacio6"></label>
+										<input type="text" name="eo_espacio6" id="id_eo_espacio6" value="{{ p.0.eo_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ie/</td>
+								<td>I<br>M<br>F</td>
+								<td>Hierba<br>Pliego<br>Premié</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio1"></label>
+										<input type="text" name="ie_espacio1" id="id_ie_espacio1" value="{{ p.0.ie_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio2"></label>
+										<input type="text" name="ie_espacio2" id="id_ie_espacio2" value="{{ p.0.ie_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio3"></label>
+										<input type="text" name="ie_espacio3" id="id_ie_espacio3" value="{{ p.0.ie_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio4"></label>
+										<input type="text" name="ie_espacio4" id="id_ie_espacio4" value="{{ p.0.ie_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio5"></label>
+										<input type="text" name="ie_espacio5" id="id_ie_espacio5" value="{{ p.0.ie_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ie_espacio6"></label>
+										<input type="text" name="ie_espacio6" id="id_ie_espacio6" value="{{ p.0.ie_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/iu/</td>
+								<td>I<br>M<br>F</td>
+								<td>Viuda<br>Triunfo<br>Celsius</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio1"></label>
+										<input type="text" name="iu_espacio1" id="id_iu_espacio1" value="{{ p.0.iu_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio2"></label>
+										<input type="text" name="iu_espacio2" id="id_iu_espacio2" value="{{ p.0.iu_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio3"></label>
+										<input type="text" name="iu_espacio3" id="id_iu_espacio3" value="{{ p.0.iu_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio4"></label>
+										<input type="text" name="iu_espacio4" id="id_iu_espacio4" value="{{ p.0.iu_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio5"></label>
+										<input type="text" name="iu_espacio5" id="id_iu_espacio5" value="{{ p.0.iu_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iu_espacio6"></label>
+										<input type="text" name="iu_espacio6" id="id_iu_espacio6" value="{{ p.0.iu_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/io/</td>
+								<td>I<br>M<br>F</td>
+								<td>Iota<br>Idioma<br>Indio</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio1"></label>
+										<input type="text" name="io_espacio1" id="id_io_espacio1" value="{{ p.0.io_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio2"></label>
+										<input type="text" name="io_espacio2" id="id_io_espacio2" value="{{ p.0.io_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio3"></label>
+										<input type="text" name="io_espacio3" id="id_io_espacio3" value="{{ p.0.io_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio4"></label>
+										<input type="text" name="io_espacio4" id="id_io_espacio4" value="{{ p.0.io_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio5"></label>
+										<input type="text" name="io_espacio5" id="id_io_espacio5" value="{{ p.0.io_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_io_espacio6"></label>
+										<input type="text" name="io_espacio6" id="id_io_espacio6" value="{{ p.0.io_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ua/</td>
+								<td>I<br>M<br>F</td>
+								<td>Guasa<br>Iguana<br>Agua</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio1"></label>
+										<input type="text" name="ua_espacio1" id="id_ua_espacio1" value="{{ p.0.ua_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio2"></label>
+										<input type="text" name="ua_espacio2" id="id_ua_espacio2" value="{{ p.0.ua_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio3"></label>
+										<input type="text" name="ua_espacio3" id="id_ua_espacio3" value="{{ p.0.ua_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio4"></label>
+										<input type="text" name="ua_espacio4" id="id_ua_espacio4" value="{{ p.0.ua_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio5"></label>
+										<input type="text" name="ua_espacio5" id="id_ua_espacio5" value="{{ p.0.ua_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ua_espacio6"></label>
+										<input type="text" name="ua_espacio6" id="id_ua_espacio6" value="{{ p.0.ua_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ue/</td>
+								<td>I<br>M<br>F</td>
+								<td>Hueso<br>Beso<br>Actué</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio1"></label>
+										<input type="text" name="ue_espacio1" id="id_ue_espacio1" value="{{ p.0.ue_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio2"></label>
+										<input type="text" name="ue_espacio2" id="id_ue_espacio2" value="{{ p.0.eu_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio3"></label>
+										<input type="text" name="ue_espacio3" id="id_ue_espacio3" value="{{ p.0.eu_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio4"></label>
+										<input type="text" name="ue_espacio4" id="id_ue_espacio4" value="{{ p.0.eu_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio5"></label>
+										<input type="text" name="ue_espacio5" id="id_ue_espacio5" value="{{ p.0.eu_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ue_espacio6"></label>
+										<input type="text" name="ue_espacio6" id="id_ue_espacio6" value="{{ p.0.eu_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ui/</td>
+								<td>I<br>M<br>F</td>
+								<td>Buitre<br>Circuito<br>Influir</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio1"></label>
+										<input type="text" name="ui_espacio1" id="id_ui_espacio1" value="{{ p.0.ui_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio2"></label>
+										<input type="text" name="ui_espacio2" id="id_ui_espacio2" value="{{ p.0.ui_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio3"></label>
+										<input type="text" name="ui_espacio3" id="id_ui_espacio3" value="{{ p.0.ui_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio4"></label>
+										<input type="text" name="ui_espacio4" id="id_ui_espacio4" value="{{ p.0.ui_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio5"></label>
+										<input type="text" name="ui_espacio5" id="id_ui_espacio5" value="{{ p.0.ui_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ui_espacio6"></label>
+										<input type="text" name="ui_espacio6" id="id_ui_espacio6" value="{{ p.0.ui_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/uo/</td>
+								<td>I<br>M<br>F</td>
+								<td>Cuota<br>Secuoya<br>Monstruo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio1"></label>
+										<input type="text" name="uo_espacio1" id="id_uo_espacio1" value="{{ p.0.uo_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio2"></label>
+										<input type="text" name="uo_espacio2" id="id_uo_espacio2" value="{{ p.0.uo_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio3"></label>
+										<input type="text" name="uo_espacio3" id="id_uo_espacio3" value="{{ p.0.uo_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio4"></label>
+										<input type="text" name="uo_espacio4" id="id_uo_espacio4" value="{{ p.0.uo_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio5"></label>
+										<input type="text" name="uo_espacio5" id="id_uo_espacio5" value="{{ p.0.uo_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uo_espacio6"></label>
+										<input type="text" name="uo_espacio6" id="id_uo_espacio6" value="{{ p.0.uo_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/oa/</td>
+								<td>I<br>M<br>F</td>
+								<td>Boa<br>Croata<br>Canoa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio1"></label>
+										<input type="text" name="oa_espacio1" id="id_oa_espacio1" value="{{ p.0.oa_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio2"></label>
+										<input type="text" name="oa_espacio2" id="id_oa_espacio2" value="{{ p.0.oa_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio3"></label>
+										<input type="text" name="oa_espacio3" id="id_oa_espacio3" value="{{ p.0.oa_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio4"></label>
+										<input type="text" name="oa_espacio4" id="id_oa_espacio4" value="{{ p.0.oa_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio5"></label>
+										<input type="text" name="oa_espacio5" id="id_oa_espacio5" value="{{ p.0.oa_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oa_espacio6"></label>
+										<input type="text" name="oa_espacio6" id="id_oa_espacio6" value="{{ p.0.oa_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/oe/</td>
+								<td>I<br>M<br>F</td>
+								<td>Oeste<br>Sudoeste<br>Héroe</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio1"></label>
+										<input type="text" name="oe_espacio1" id="id_oe_espacio1" value="{{ p.0.oe_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio2"></label>
+										<input type="text" name="oe_espacio2" id="id_oe_espacio2" value="{{ p.0.oe_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio3"></label>
+										<input type="text" name="oe_espacio3" id="id_oe_espacio3" value="{{ p.0.oe_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio4"></label>
+										<input type="text" name="oe_espacio4" id="id_oe_espacio4" value="{{ p.0.oe_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio5"></label>
+										<input type="text" name="oe_espacio5" id="id_oe_espacio5" value="{{ p.0.oe_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oe_espacio6"></label>
+										<input type="text" name="oe_espacio6" id="id_oe_espacio6" value="{{ p.0.oe_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/oi/</td>
+								<td>I<br>M<br>F</td>
+								<td>Oído<br>Roído<br>Hanói</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio1"></label>
+										<input type="text" name="oi_espacio1" id="id_oi_espacio1" value="{{ p.0.oi_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio2"></label>
+										<input type="text" name="oi_espacio2" id="id_oi_espacio2" value="{{ p.0.oi_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio3"></label>
+										<input type="text" name="oi_espacio3" id="id_oi_espacio3" value="{{ p.0.oi_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio4"></label>
+										<input type="text" name="oi_espacio4" id="id_oi_espacio4" value="{{ p.0.oi_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio5"></label>
+										<input type="text" name="oi_espacio5" id="id_oi_espacio5" value="{{ p.0.oi_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_oi_espacio6"></label>
+										<input type="text" name="oi_espacio6" id="id_oi_espacio6" value="{{ p.0.oi_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ou/</td>
+								<td>I<br>M</td>
+								<td>Oufit<br>Boutique</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio1"></label>
+										<input type="text" name="ou_espacio1" id="id_ou_espacio1" value="{{ p.0.ou_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio2"></label>
+										<input type="text" name="ou_espacio2" id="id_ou_espacio2" value="{{ p.0.ou_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio3"></label>
+										<input type="text" name="ou_espacio3" id="id_ou_espacio3" value="{{ p.0.ou_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio4"></label>
+										<input type="text" name="ou_espacio4" id="id_ou_espacio4" value="{{ p.0.ou_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio5"></label>
+										<input type="text" name="ou_espacio5" id="id_ou_espacio5" value="{{ p.0.ou_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ou_espacio6"></label>
+										<input type="text" name="ou_espacio6" id="id_ou_espacio6" value="{{ p.0.ou_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/uei/</td>
+								<td>M<br>F</td>
+								<td>Buey<br>Actuéis</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio1"></label>
+										<input type="text" name="uei_espacio1" id="id_uei_espacio1" value="{{ p.0.uei_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio2"></label>
+										<input type="text" name="uei_espacio2" id="id_uei_espacio2" value="{{ p.0.uei_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio3"></label>
+										<input type="text" name="uei_espacio3" id="id_uei_espacio3" value="{{ p.0.uei_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio4"></label>
+										<input type="text" name="uei_espacio4" id="id_uei_espacio4" value="{{ p.0.uei_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio5"></label>
+										<input type="text" name="uei_espacio5" id="id_uei_espacio5" value="{{ p.0.uei_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uei_espacio6"></label>
+										<input type="text" name="uei_espacio6" id="id_uei_espacio6" value="{{ p.0.uei_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/uai/</td>
+								<td>I<br>M<br>F</td>
+								<td>Huaico<br>Aguaitar<br>Uruguay</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio1"></label>
+										<input type="text" name="uai_espacio1" id="id_uai_espacio1" value="{{ p.0.uai_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio2"></label>
+										<input type="text" name="uai_espacio2" id="id_uai_espacio2" value="{{ p.0.uai_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio3"></label>
+										<input type="text" name="uai_espacio3" id="id_uai_espacio3" value="{{ p.0.uai_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio4"></label>
+										<input type="text" name="uai_espacio4" id="id_uai_espacio4" value="{{ p.0.uai_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio5"></label>
+										<input type="text" name="uai_espacio5" id="id_uai_espacio5" value="{{ p.0.uai_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_uai_espacio6"></label>
+										<input type="text" name="uai_espacio6" id="id_uai_espacio6" value="{{ p.0.uai_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/iai/</td>
+								<td>M</td>
+								<td>Abríais</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio1"></label>
+										<input type="text" name="iai_espacio1" id="id_iai_espacio1" value="{{ p.0.iai_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio2"></label>
+										<input type="text" name="iai_espacio2" id="id_iai_espacio2" value="{{ p.0.iai_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio3"></label>
+										<input type="text" name="iai_espacio3" id="id_iai_espacio3" value="{{ p.0.iai_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio4"></label>
+										<input type="text" name="iai_espacio4" id="id_iai_espacio4" value="{{ p.0.iai_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio5"></label>
+										<input type="text" name="iai_espacio5" id="id_iai_espacio5" value="{{ p.0.iai_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iai_espacio6"></label>
+										<input type="text" name="iai_espacio6" id="id_iai_espacio6" value="{{ p.0.iai_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/iau/</td>
+								<td>M</td>
+								<td>Miau</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio1"></label>
+										<input type="text" name="iau_espacio1" id="id_iau_espacio1" value="{{ p.0.iau_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio2"></label>
+										<input type="text" name="iau_espacio2" id="id_iau_espacio2" value="{{ p.0.iau_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio3"></label>
+										<input type="text" name="iau_espacio3" id="id_iau_espacio3" value="{{ p.0.iau_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio4"></label>
+										<input type="text" name="iau_espacio4" id="id_iau_espacio4" value="{{ p.0.iau_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio5"></label>
+										<input type="text" name="iau_espacio5" id="id_iau_espacio5" value="{{ p.0.iau_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_iau_espacio6"></label>
+										<input type="text" name="iau_espacio6" id="id_iau_espacio6" value="{{ p.0.iau_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>/ieu/</td>
+								<td>M</td>
+								<td>Antieuropa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio1"></label>
+										<input type="text" name="ieu_espacio1" id="id_ieu_espacio1" value="{{ p.0.ieu_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio2"></label>
+										<input type="text" name="ieu_espacio2" id="id_ieu_espacio2" value="{{ p.0.ieu_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio3"></label>
+										<input type="text" name="ieu_espacio3" id="id_ieu_espacio3" value="{{ p.0.ieu_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio4"></label>
+										<input type="text" name="ieu_espacio4" id="id_ieu_espacio4" value="{{ p.0.ieu_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio5"></label>
+										<input type="text" name="ieu_espacio5" id="id_ieu_espacio5" value="{{ p.0.ieu_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ieu_espacio6"></label>
+										<input type="text" name="ieu_espacio6" id="id_ieu_espacio6" value="{{ p.0.ieu_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+							<tr>
+								<td colspan="8"><strong>D. DIFONOS CONSONÁNTICOS</strong></td>
+							</tr>
+				</thead>
+				<tbody>
+							<tr>
+								<td>
+									Silaba
+								</td>
+								<td>
+									Palabra
+								</td>
+								<td>
+									Trans. Fonética
+								</td>
+								<td>
+									Omisión
+								</td>
+								<td>
+									Sustitución
+								</td>
+								<td>
+									Asimilación
+								</td>
+								<td>
+									Adición
+								</td>
+								<td>
+									Otro
+								</td>
+							</tr>
+							<tr>
+								<td>Br</td>
+								<td>Brazo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio1"></label>
+										<input type="text" name="br_espacio1" id="id_br_espacio1" value="{{ p.0.br_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio2"></label>
+										<input type="text" name="br_espacio2" id="id_br_espacio2" value="{{ p.0.br_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio3"></label>
+										<input type="text" name="br_espacio3" id="id_br_espacio3" value="{{ p.0.br_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio4"></label>
+										<input type="text" name="br_espacio4" id="id_br_espacio4" value="{{ p.0.br_espacio4 }}">  
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio5"></label>
+										<input type="text" name="br_espacio5" id="id_br_espacio5" value="{{ p.0.br_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_br_espacio6"></label>
+										<input type="text" name="br_espacio6" id="id_br_espacio6" value="{{ p.0.br_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Bl</td>
+								<td>Blanco</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio1"></label>
+										<input type="text" name="bl_espacio1" id="id_bl_espacio1" value="{{ p.0.bl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio2"></label>
+										<input type="text" name="bl_espacio2" id="id_bl_espacio2" value="{{ p.0.bl_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio3"></label>
+										<input type="text" name="bl_espacio3" id="id_bl_espacio3" value="{{ p.0.bl_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio4"></label>
+										<input type="text" name="bl_espacio4" id="id_bl_espacio4" value="{{ p.0.bl_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio5"></label>
+										<input type="text" name="bl_espacio5" id="id_bl_espacio5" value="{{ p.0.bl_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_bl_espacio6"></label>
+										<input type="text" name="bl_espacio6" id="id_bl_espacio6" value="{{ p.0.bl_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Pr</td>
+								<td>Prender</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio1"></label>
+										<input type="text" name="pr_espacio1" id="id_pr_espacio1" value="{{ p.0.pr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio2"></label>
+										<input type="text" name="pr_espacio2" id="id_pr_espacio2" value="{{ p.0.pr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio3"></label>
+										<input type="text" name="pr_espacio3" id="id_pr_espacio3" value="{{ p.0.pr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio4"></label>
+										<input type="text" name="pr_espacio4" id="id_pr_espacio4" value="{{ p.0.pr_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio5"></label>
+										<input type="text" name="pr_espacio5" id="id_pr_espacio5" value="{{ p.0.pr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pr_espacio6"></label>
+										<input type="text" name="pr_espacio6" id="id_pr_espacio6" value="{{ p.0.pr_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Pl</td>
+								<td>Plano</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio1"></label>
+										<input type="text" name="pl_espacio1" id="id_pl_espacio1" value="{{ p.0.pl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio2"></label>
+										<input type="text" name="pl_espacio2" id="id_pl_espacio2" value="{{ p.0.pl_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio3"></label>
+										<input type="text" name="pl_espacio3" id="id_pl_espacio3" value="{{ p.0.pl_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio4"></label>
+										<input type="text" name="pl_espacio4" id="id_pl_espacio4" value="{{ p.0.pl_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio5"></label>
+										<input type="text" name="pl_espacio5" id="id_pl_espacio5" value="{{ p.0.pl_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pl_espacio6"></label>
+										<input type="text" name="pl_espacio6" id="id_pl_espacio6" value="{{ p.0.pl_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Fr</td>
+								<td>Frenar</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio1"></label>
+										<input type="text" name="fr_espacio1" id="id_fr_espacio1" value="{{ p.0.fr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio2"></label>
+										<input type="text" name="fr_espacio2" id="id_fr_espacio2" value="{{ p.0.fr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio3"></label>
+										<input type="text" name="fr_espacio3" id="id_fr_espacio3" value="{{ p.0.fr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio4"></label>
+										<input type="text" name="fr_espacio4" id="id_fr_espacio4" value="{{ p.0.fr_espacio4 }}">  
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio5"></label>
+										<input type="text" name="fr_espacio5" id="id_fr_espacio5" value="{{ p.0.fr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fr_espacio6"></label>
+										<input type="text" name="fr_espacio6" id="id_fr_espacio6" value="{{ p.0.fr_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Fl</td>
+								<td>Flotar</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio1"></label>
+										<input type="text" name="fl_espacio1" id="id_fl_espacio1" value="{{ p.0.fl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio2"></label>
+										<input type="text" name="fl_espacio2" id="id_fl_espacio2" value="{{ p.0.fl_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio3"></label>
+										<input type="text" name="fl_espacio3" id="id_fl_espacio3" value="{{ p.0.fl_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio4"></label>
+										<input type="text" name="fl_espacio4" id="id_fl_espacio4" value="{{ p.0.fl_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio5"></label>
+										<input type="text" name="fl_espacio5" id="id_fl_espacio5" value="{{ p.0.fl_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_fl_espacio6"></label>
+										<input type="text" name="fl_espacio6" id="id_fl_espacio6" value="{{ p.0.fl_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Dr</td>
+								<td>Drama</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio1"></label>
+										<input type="text" name="dr_espacio1" id="id_dr_espacio1" value="{{ p.0.dr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio2"></label>
+										<input type="text" name="dr_espacio2" id="id_dr_espacio2" value="{{ p.0.dr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio3"></label>
+										<input type="text" name="dr_espacio3" id="id_dr_espacio3" value="{{ p.0.dr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio4"></label>
+										<input type="text" name="dr_espacio4" id="id_dr_espacio4" value="{{ p.0.dr_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio5"></label>
+										<input type="text" name="dr_espacio5" id="id_dr_espacio5" value="{{ p.0.dr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_dr_espacio6"></label>
+										<input type="text" name="dr_espacio6" id="id_dr_espacio6" value="{{ p.0.dr_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Tr</td>
+								<td>Trapo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio1"></label>
+										<input type="text" name="tr_espacio1" id="id_tr_espacio1" value="{{ p.0.tr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio2"></label>
+										<input type="text" name="tr_espacio2" id="id_tr_espacio2" value="{{ p.0.tr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio3"></label>
+										<input type="text" name="tr_espacio3" id="id_tr_espacio3" value="{{ p.0.tr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio4"></label>
+										<input type="text" name="tr_espacio4" id="id_tr_espacio4" value="{{ p.0.tr_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio5"></label>
+										<input type="text" name="tr_espacio5" id="id_tr_espacio5" value="{{ p.0.tr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_tr_espacio6"></label>
+										<input type="text" name="tr_espacio6" id="id_tr_espacio6" value="{{ p.0.tr_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Gr</td>
+								<td>Grapa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio1"></label>
+										<input type="text" name="gr_espacio1" id="id_gr_espacio1" value="{{ p.0.gr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio2"></label>
+										<input type="text" name="gr_espacio2" id="id_gr_espacio2" value="{{ p.0.gr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio3"></label>
+										<input type="text" name="gr_espacio3" id="id_gr_espacio3" value="{{ p.0.gr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio4"></label>
+										<input type="text" name="gr_espacio4" id="id_gr_espacio4" value="{{ p.0.gr_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio5"></label>
+										<input type="text" name="gr_espacio5" id="id_gr_espacio5" value="{{ p.0.gr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gr_espacio6"></label>
+										<input type="text" name="gr_espacio6" id="id_gr_espacio6" value="{{ p.0.gr_espacio6 }}">  
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Gl</td>
+								<td>Glaciar</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio1"></label>
+										<input type="text" name="gl_espacio1" id="id_gl_espacio1" value="{{ p.0.gl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio2"></label>
+										<input type="text" name="gl_espacio2" id="id_gl_espacio2" value="{{ p.0.gl_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio3"></label>
+										<input type="text" name="gl_espacio3" id="id_gl_espacio3" value="{{ p.0.gl_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio4"></label>
+										<input type="text" name="gl_espacio4" id="id_gl_espacio4" value="{{ p.0.gl_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio5"></label>
+										<input type="text" name="gl_espacio5" id="id_gl_espacio5" value="{{ p.0.gl_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gl_espacio6"></label>
+										<input type="text" name="gl_espacio6" id="id_gl_espacio6" value="{{ p.0.gl_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cr</td>
+								<td>Cruel</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio1"></label>
+										<input type="text" name="cr_espacio1" id="id_cr_espacio1" value="{{ p.0.cr_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio2"></label>
+										<input type="text" name="cr_espacio2" id="id_cr_espacio2" value="{{ p.0.cr_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio3"></label>
+										<input type="text" name="cr_espacio3" id="id_cr_espacio3" value="{{ p.0.cr_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio4"></label>
+										<input type="text" name="cr_espacio4" id="id_cr_espacio4" value="{{ p.0.cr_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio5"></label>
+										<input type="text" name="cr_espacio5" id="id_cr_espacio5" value="{{ p.0.cr_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cr_espacio6"></label>
+										<input type="text" name="cr_espacio6" id="id_cr_espacio6" value="{{ p.0.cr_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cl</td>
+								<td>Clavo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio1"></label>
+										<input type="text" name="cl_espacio1" id="id_cl_espacio1" value="{{ p.0.cl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio2"></label>
+										<input type="text" name="cl_espacio2" id="id_cl_espacio2" value="{{ p.0.cl_espacio2 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio3"></label>
+										<input type="text" name="cl_espacio3" id="id_cl_espacio3" value="{{ p.0.cl_espacio3 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio4"></label>
+										<input type="text" name="cl_espacio4" id="id_cl_espacio4" value="{{ p.0.cl_espacio4 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio5"></label>
+										<input type="text" name="cl_espacio5" id="id_cl_espacio5" value="{{ p.0.cl_espacio5 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cl_espacio6"></label>
+										<input type="text" name="cl_espacio6" id="id_cl_espacio6" value="{{ p.0.cl_espacio6 }}"> 
+									</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+							<tr>
+								<td colspan="8"><strong>E. REPETICIÓN DE FRASES:</strong></td>
+							</tr>
+				</thead>
+				<tbody>
+							<tr>
+								<td>1. El gato salió.</td>
+							</tr>
+							<tr>
+								<td>2. La muñeca bonita sonríe.</td>
+							</tr>
+							<tr>
+								<td>3. Luis juega en la casa de María.</td>
+							</tr>
+							<tr>
+								<td>4. El niño sonríe porque está feliz.</td>
+							</tr>
+							<tr>
+								<td>5. La pelota que había en mi cuarto ya no está.</td>
+							</tr>
+							<tr>
+								<td>6. José fue a la escuela para que no lo regañaran sus padres.</td>
+							</tr>
+							<tr>
+								<td>Observaciones:</td>
+								<td>
+									<textarea name="areaobservaciones" rows="10" cols="50">{{ p.0.areaobservaciones }}</textarea>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-header">
+			<h3 class="caja-tittle">IV. EVALUACIÓN FONOLÓGICA</h3>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+					<tr>
+						<td colspan="3"><strong>F. PROCESO DE DENOMINACIÓN</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+							<tr>
+								<td colspan="3">Se mostrarán varias imágenes de diferente naturaleza, el objetivo es reconocer y nombrar el objeto de cada imagen mostrada</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">ALIMENTOS</td>
+							</tr>
+							<tr>
+								<td>Item:</td>
+								<td>Comprensión:</td>
+								<td>Expresión:</td>
+							</tr>
+							<tr>
+								<td>Manzana</td>
+								<td>
+									<div class="form-group">
+										<label for="id_mzna_espacio1"></label>
+										<input type="text" name="mzna_espacio1" id="id_mzna_espacio1" value="{{ p.0.mzna_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_mzna_espacio2"></label>
+										<input type="text" name="mzna_espacio2" id="id_mzna_espacio2" value="{{ p.0.mzna_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Plátano</td>
+								<td>
+									<div class="form-group">
+										<label for="id_plat_espacio1"></label>
+										<input type="text" name="plat_espacio1" id="id_plat_espacio1" value="{{ p.0.plat_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_plat_espacio2"></label>
+										<input type="text" name="plat_espacio2" id="id_plat_espacio2" value="{{ p.0.plat_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Pan</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pan_espacio1"></label>
+										<input type="text" name="pan_espacio1" id="id_pan_espacio1" value="{{ p.0.pan_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pan_espacio2"></label>
+										<input type="text" name="pan_espacio2" id="id_pan_espacio2" value="{{ p.0.pan_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cebolla</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ceb_espacio1"></label>
+										<input type="text" name="ceb_espacio1" id="id_ceb_espacio1" value="{{ p.0.cb_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ceb_espacio2"></label>
+										<input type="text" name="ceb_espacio2" id="id_ceb_espacio2" value="{{ p.0.ceb_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Espaguetis</td>
+								<td>
+									<div class="form-group">
+										<label for="id_espag_espacio1"></label>
+										<input type="text" name="espag_espacio1" id="id_espag_espacio1" value="{{ p.0.espag_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_espag_espacio2"></label>
+										<input type="text" name="espag_espacio2" id="id_espag_espacio2" value="{{ p.0.espag_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Pizza</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pizza_espacio1"></label>
+										<input type="text" name="pizza_espacio1" id="id_pizza_espacio1" value="{{ p.0.pizza_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pizza_espacio2"></label>
+										<input type="text" name="pizza_espacio2" id="id_pizza_espacio2" value="{{ p.0.pizza_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Sandía</td>
+								<td>
+									<div class="form-group">
+										<label for="id_sand_espacio1"></label>
+										<input type="text" name="sand_espacio1" id="id_sand_espacio1" value="{{ p.0.sand_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_sand_espacio2"></label>
+										<input type="text" name="sand_espacio2" id="id_sand_espacio2" value="{{ p.0.sand_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Hamburguesa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_hmg_espacio1"></label>
+										<input type="text" name="hmg_espacio1" id="id_hmg_espacio1" value="{{ p.0.hmg_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_hmg_espacio2"></label>
+										<input type="text" name="hmg_espacio2" id="id_hmg_espacio2" value="{{ p.0.hmg_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">OBJETOS</td>
+							</tr>
+							<tr>
+								<td>Item:</td>
+								<td>Comprensión:</tds>
+								<td>Expresión:</td>
+							</tr>
+							<tr>
+								<td>Lámpara</td>
+								<td>
+									<div class="form-group">
+										<label for="id_lamp_espacio1"></label>
+										<input type="text" name="lamp_espacio1" id="id_lamp_espacio1" value="{{ p.0.lamp_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_lamp_espacio2"></label>
+										<input type="text" name="lamp_espacio2" id="id_lamp_espacio2" value="{{ p.0.lamp_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Sillón</td>
+								<td>
+									<div class="form-group">
+										<label for="id_sillon_espacio1"></label>
+										<input type="text" name="sillon_espacio1" id="id_sillon_espacio1" value="{{ p.0.sillon_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_sillon_espacio2"></label>
+										<input type="text" name="sillon_espacio2" id="id_sillon_espacio2" value="{{ p.0.sillon_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Alfombra</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alf_espacio1"></label>
+										<input type="text" name="alf_espacio1" id="id_alf_espacio1" value="{{ p.0.alf_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_alf_espacio2"></label>
+										<input type="text" name="alf_espacio2" id="id_alf_espacio2" value="{{ p.0.alf_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Estufa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_est_espacio1"></label>
+										<input type="text" name="est_espacio1" id="id_est_espacio1" value="{{ p.0.est_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_est_espacio2"></label>
+										<input type="text" name="est_espacio2" id="id_est_espacio2" value="{{ p.0.est_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Computadora</td>
+								<td>
+									<div class="form-group">
+										<label for="id_comp_espacio1"></label>
+										<input type="text" name="comp_espacio1" id="id_comp_espacio1" value="{{ p.0.comp_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_comp_espacio2"></label>
+										<input type="text" name="comp_espacio2" id="id_comp_espacio2" value="{{ p.0.comp_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Mesa</td>
+								<td>
+									<div class="form-group">
+										<label for="id_mesa_espacio1"></label>
+										<input type="text" name="mesa_espacio1" id="id_mesa_espacio1" value="{{ p.0.mesa_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_mesa_espacio2"></label>
+										<input type="text" name="mesa_espacio2" id="id_mesa_espacio2" value="{{ p.0.mesa_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Silla</td>
+								<td>
+									<div class="form-group">
+										<label for="id_silla_espacio1"></label>
+										<input type="text" name="silla_espacio1" id="id_silla_espacio1" value="{{ p.0.silla_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_silla_espacio2"></label>
+										<input type="text" name="silla_espacio2" id="id_silla_espacio2" value="{{ p.0.silla_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Espejo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_spj_espacio1"></label>
+										<input type="text" name="spj_espacio1" id="id_spj_espacio1" value="{{ p.0.spj_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_spj_espacio2"></label>
+										<input type="text" name="spj_espacio2" id="id_spj_espacio2" value="{{ p.0.spj_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">ANIMALES</td>
+							</tr>
+							<tr>
+								<td>Item:</td>
+								<td>Comprensión:</td>
+								<td>Expresión:</td>
+							</tr>
+							<tr>
+								<td>León</td>
+								<td>
+									<div class="form-group">
+										<label for="id_leon_espacio1"></label>
+										<input type="text" name="leon_espacio1" id="id_leon_espacio1" value="{{ p.0.leon_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_leon_espacio2"></label>
+										<input type="text" name="leon_espacio2" id="id_leon_espacio2" value="{{ p.0.leon_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Perro</td>
+								<td>
+									<div class="form-group">
+										<label for="id_perro_espacio1"></label>
+										<input type="text" name="perro_espacio1" id="id_perro_espacio1" value="{{ p.0.perro_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_perro_espacio2"></label>
+										<input type="text" name="perro_espacio2" id="id_perro_espacio2" value="{{ p.0.perro_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cerdo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cer_espacio1"></label>
+										<input type="text" name="cer_espacio1" id="id_cer_espacio1" value="{{ p.0.cer_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_cer_espacio2"></label>
+										<input type="text" name="cer_espacio2" id="id_cer_espacio2" value="{{ p.0.cer_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Gallina</td>
+								<td>
+									<div class="form-group">
+										<label for="id_glln_espacio1"></label>
+										<input type="text" name="glln_espacio1" id="id_glln_espacio1" value="{{ p.0.glln_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_glln_espacio2"></label>
+										<input type="text" name="glln_espacio2" id="id_glln_espacio2" value="{{ p.0.glln_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Ratón</td>
+								<td>
+									<div class="form-group">
+										<label for="id_rtn_espacio1"></label>
+										<input type="text" name="rtn_espacio1" id="id_rtn_espacio1" value="{{ p.0.rtn_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_rtn_espacio2"></label>
+										<input type="text" name="rtn_espacio2" id="id_rtn_espacio2" value="{{ p.0.rtn_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cocodrilo</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ccdl_espacio1"></label>
+										<input type="text" name="ccdl_espacio1" id="id_ccdl_espacio1" value="{{ p.0.ccdl_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_ccdl_espacio2"></label>
+										<input type="text" name="ccdl_espacio2" id="id_ccdl_espacio2" value="{{ p.0.ccdl_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Pato</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pt_espacio1"></label>
+										<input type="text" name="pt_espacio1" id="id_pt_espacio1" value="{{ p.0.pt_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_pt_espacio2"></label>
+										<input type="text" name="pt_espacio2" id="id_pt_espacio2" value="{{ p.0.pt_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Gato</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gt_espacio1"></label>
+										<input type="text" name="gt_espacio1" id="id_gt_espacio1" value="{{ p.0.gt_espacio1 }}"> 
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<label for="id_gt_espacio2"></label>
+										<input type="text" name="gt_espacio2" id="id_gt_espacio2" value="{{ p.0.gt_espacio2 }}"> 
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Observaciones:</td>
+								<td colspan="2">
+									<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="caja-body">
+					<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+						<thead>
+							<tr>
+								<td colspan="3"><strong>G. IMÁGENES PARA LA EVALUACIÓN DEL EJERCICIO DE DENOMINACIÓN</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td>
+									<img src="">
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+							<tr>
+								<td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
+							</tr>
+							<tr>
+								<td>Rellenar el círculo que complete la oración correcta.</td>
+							</tr>
+				</thead>
+				<tbody>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td colspan="2" style="text-align: left;">
+									<div class="form-group">
+										<label for="prr_espacio1">La muñeca está sentada en la:</label>
+										<br>
+										<select class="select2" id="id_prr_espacio1" name="prr_espacio1">
+											<option>{{ p.0.prr_espacio1 }}</option>
+											<option value="Mesa">Mesa</option>
+											<option value="Silla">Silla</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td colspan="2" style="text-align: left;">
+									<div class="form-group">
+										<label for="prr_espacio2">La señorita tiene el pelo de color:</label>
+										<br>
+										<select class="select2" id="id_prr_espacio2" name="prr_espacio2">
+											<option>{{ p.0.prr_espacio2 }}</option>
+											<option value="Rojo">Rojo</option>
+											<option value="Negro">Negro</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td colspan="2" style="text-align: left;">
+									<div class="form-group">
+										<label for="prr_espacio3">El señor oficial de policía está:</label>
+										<br>
+										<select class="select2" id="id_prr_espacio3" name="prr_espacio3">
+											<option>{{ p.0.prr_espacio3 }}</option>
+											<option value="Corriendo">Corriendo</option>
+											<option value="Saludando">Saludando</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td colspan="2" style="text-align: left;">
+									<div class="form-group">
+										<label for="prr_espacio4">Este gatito sostiene un:</label>
+										<br>
+										<select class="select2" id="id_prr_espacio4" name="prr_espacio4">
+											<option>{{ p.0.prr_espacio4 }}</option>
+											<option value="Bate de beisbol">Bate de beisbol</option>
+											<option value="Portafolio">Portafolio</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="">
+								</td>
+								<td colspan="2" style="text-align: left;">
+									<div class="form-group">
+										<label for="prr_espacio5">El astronauta tiene un maletín en la mano:</label>
+										<br>
+										<select class="select2" id="id_prr_espacio5" name="prr_espacio5">
+											<option>{{ p.0.prr_espacio5 }}</option>
+											<option value="Derecha">Derecha</option>
+											<option value="Izquierda">Izquierda</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Observaciones:</td>
+								<td>
+									<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
+	</div> 
+			{% endfor %}
+</form>
+		{% else %}
+		<span>Ocurrió un error 505</span>
+		{% endif %}
+		{% endblock %}
