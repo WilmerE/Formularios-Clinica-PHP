@@ -9,7 +9,7 @@
   $datajson        = $_POST['data'];
 
   $consulta = "";
-
+echo("Insertar");
   if ($action == 'add') {
   	$consulta = "INSERT INTO tvx_form_evarticulacion VALUES (NULL, '$id_paciente', '$datajson')"; 
   }

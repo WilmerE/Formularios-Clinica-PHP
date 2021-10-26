@@ -3,7 +3,7 @@
 {% block title %} | Evaluación de articulación {% endblock %}
 
 {% block css %}
-<!-- select2 -->
+<!-- SELECT2 -->
 <link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css"/>
 {% endblock %}
 
@@ -602,7 +602,7 @@
                                     <tr>
                                         <td colspan="2">Observaciones:</td>
                                         <td colspan="3">
-                                            <textarea name="areaobservaciones" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="areaobservaciones" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>  
@@ -817,7 +817,7 @@
                             </table>
                         </div>
                         <div class="caja-footer">
-                            <a href="" id="btn_return_a" class="btn btn-link">Atras</a>
+                            <a href="" id="btn_return_a" class="btn btn-primary">Atras</a>
                             <button type="submit" class="btn btn-primary" id="btn_evaluacion">Siguiente</button>
                         </div>
 
@@ -3318,14 +3318,14 @@
                                     <tr>
                                         <td>Observaciones:</td>
                                         <td>
-                                            <textarea name="areaobservaciones" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="areaobservaciones" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="caja-footer">
-                            <a href="" id="btn_return_b" class="btn btn-link">Atras</a>
+                            <a href="" id="btn_return_b" class="btn btn-primary">Atras</a>
                             <button type="submit" class="btn btn-primary" id="btn_evaluacionfn">Siguiente</button>
                         </div>
                     </div>          
@@ -3735,7 +3735,7 @@
                                     <tr>
                                         <td>Observaciones:</td>
                                         <td colspan="2">
-                                            <textarea name="evfonologica" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="evfonologica" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -3849,7 +3849,7 @@
                                         <td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
                                     </tr>
                                     <tr>
-                                        <td>Rellenar el círculo que complete la oración correcta.</td>
+                                        <td colspan="3">Rellenar el círculo que complete la oración correcta.</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -3931,14 +3931,14 @@
                                     <tr>
                                         <td>Observaciones:</td>
                                         <td>
-                                            <textarea name="evfonologica" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="evfonologica" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="caja-footer">
-                            <a href="" id="btn_return_c" class="btn btn-link">Atras</a>
+                            <a href="" id="btn_return_c" class="btn btn-primary">Atras</a>
                             <button type="submit" class="btn btn-primary" id="btn_confirmar">Siguiente</button>
                         </div>
                     </div>          
@@ -3948,1364 +3948,1369 @@
                 <div class="caja-header">
                     <h3 class="caja-title">Confirmar:</h3>
                 </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <p>Nombre: <span class="txt_show" id="txt_nombre"></span></p>
-                            </td>
-                            <td>
-                                <p>N°Ficha: <span class="txt_show" id="txt_nficha"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Fecha de evaluación: <span class="txt_show" id="txt_fevaluacion"></span></p>
-                            </td>
-                            <td>
-                                <p>Fecha de nacimiento: <span class="txt_show" id="txt_fnacimiento"></span></p>
-                            </td>
-                            <td>
-                                <p>Edad: <span class="txt_show" id="txt_edad"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <p>Escolaridad: <span class="txt_show" id="txt_escolaridad"></span></p>
-                            </td>
-                            <td>
-                                <p>Procedencia: <span class="txt_show" id="txt_procedencia"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <p>Domicilio: <span class="txt_show" id="txt_domicilio"></span></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="4"><strong>A. ÓRGANOS FONOARTICULADORES Y SU FUNCIONAMIENTO</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Simetría facial:</td>
-                            <td>
-                                <p>Simétrico: <span class="txt_show" id="txt_simetrico"></span></p>
-                            </td>
-                            <td>
-                                <p>Asimétrico: <span class="txt_show" id="txt_asimetrico"></span></p>
-                            </td> 
-                        </tr>
-                        <tr>
-                            <td rowspan="2" colspan="2">Labio superior:</td>
-                            <td>
-                                <p>Simétrico: <span class="txt_show" id="txt_lsimetrico"></span></p>
+                <div class="caja-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <p>Nombre: <span class="txt_show" id="txt_nombre"></span></p>
+                                </td>
+                                <td>
+                                    <p>N°Ficha: <span class="txt_show" id="txt_nficha"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Fecha de evaluación: <span class="txt_show" id="txt_fevaluacion"></span></p>
+                                </td>
+                                <td>
+                                    <p>Fecha de nacimiento: <span class="txt_show" id="txt_fnacimiento"></span></p>
+                                </td>
+                                <td>
+                                    <p>Edad: <span class="txt_show" id="txt_edad"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>Escolaridad: <span class="txt_show" id="txt_escolaridad"></span></p>
+                                </td>
+                                <td>
+                                    <p>Procedencia: <span class="txt_show" id="txt_procedencia"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <p>Domicilio: <span class="txt_show" id="txt_domicilio"></span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="4"><strong>A. ÓRGANOS FONOARTICULADORES Y SU FUNCIONAMIENTO</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Simetría facial:</td>
+                                <td>
+                                    <p>Simétrico: <span class="txt_show" id="txt_simetrico"></span></p>
+                                </td>
+                                <td>
+                                    <p>Asimétrico: <span class="txt_show" id="txt_asimetrico"></span></p>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td rowspan="2" colspan="2">Labio superior:</td>
+                                <td>
+                                    <p>Simétrico: <span class="txt_show" id="txt_lsimetrico"></span></p>
 
-                            </td>
-                            <td>
-                                <p>Asimétrico: <span class="txt_show" id="txt_lasimetrico"></span></p>
+                                </td>
+                                <td>
+                                    <p>Asimétrico: <span class="txt_show" id="txt_lasimetrico"></span></p>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left;">
-                                <p>Tonicidad: <span class="txt_show" id="txt_tonicidad"></span></p>
-                                <p>Tamaño: <span class="txt_show" id="txt_tamano"></span></p>
-                                <p>Desviación comisura: <span class="txt_show" id="txt_dcomisura"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" colspan="2">Labio inferior:</td>
-                            <td>
-                                <p>Simétrico: <span class="txt_show" id="txt_labsimetrico"></span></p>
-                            </td>
-                            <td>
-                                <p>Asimétrico: <span class="txt_show" id="txt_labasimetrico"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left;">
-                                <p>Tonicidad: <span class="txt_show" id="txt_lbtonicidad"></span></p>
-                                <p>Tamaño: <span class="txt_show" id="txt_lbtamano"></span></p>
-                                <p>Desviación comisura: <span class="txt_show" id="txt_lbdesviacion"></span></p>
-                                <p>Posición: <span class="txt_show" id="txt_lbposicion"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" colspan="2">Frenillo labial superior:</td>
-                            <td>
-                                <p>Presencia: <span class="txt_show" id="txt_presencia"></span></p>
-                            </td>
-                            <td>
-                                <p>Ausencia: <span class="txt_show" id="txt_ausencia"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" colspan="2" style="text-align: left;">
-                                <p>Tamaño: <span class="txt_show" id="txt_fltamano"></span></p>
-                                <p>Funcionalidad: <span class="txt_show" id="txt_funcionalidad"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2" colspan="2">Frenillo labial inferior:</td>
-                            <td>
-                                <p>Presencia: <span class="txt_show" id="txt_flpresencia"></span></p>
-                            </td>
-                            <td>
-                                <p>Ausencia: <span class="txt_show" id="txt_flausencia"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left;">
-                                <p>Tamaño: <span class="txt_show" id="txt_flitamaño"></span></p>
-                                <p>Funcionalidad: <span class="txt_show" id="txt_flifuncionalidad"></span></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" colspan="2">Arcada dentaria:
-                                <img src="">
-                            </td>
-                            <td>
-                                <p>Superior: <span class="txt_show" id="txt_adsuperior"></span></p>
-                            </td>
-                            <td>
-                                <p>Inferior: <span class="txt_show" id="txt_adinferior"></span></p>
-                            </td>
-                            <td>
-                                <p>Malformación dentaria: <span class="txt_show" id="txt_malformaciond"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="text-align: left;">Tipo de mordida:
-                                <p>Bis a bis: <span class="txt_show" id="txt_bisabis"></span></p>
-                                <p>Mordida cruzada: <span class="txt_show" id="txt_mordidac"></span></p>
-                                <p>Mordida abierta: <span class="txt_show" id="txt_mordidaab"></span></p>
-                                <p>Sobremordida vertical: <span class="txt_show" id="txt_svertical"></span></p>
-                                <p>Sobremordida horizontal: <span class="txt_show" id="txt_shorizontal"></span></p>
-                            </td>        
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Denticion: <span class="txt_show" id="txt_denticion"></span></p>
-                            </td>
-                            <td colspan="2">
-                                <p>Caries en: <span class="txt_show" id="txt_cariesen"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Lengua:</td>
-                            <td colspan="3">
-                                <p>Tamaño: <span class="txt_show" id="txt_ltamano"></span></p>
-                                <p>Periodo de reposo: <span class="txt_show" id="txt_periodo"></span></p>
-                                <p>Frenillo sub lingual: <span class="txt_show" id="txt_frenillosl"></span></p>
-                                <p>Movilidad: <span class="txt_show" id="txt_movilidad"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Paladar:</td>
-                            <td colspan="3">
-                                <p>Paladar óseo: <span class="txt_show" id="txt_oseo"></span></p>
-                                <p>Paladar blando: <span class="txt_show" id="txt_blando"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Úvula: <span class="txt_show" id="txt_uvula"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Amígdalas: <span class="txt_show" id="txt_amigdalas"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Praxias: <span class="txt_show" id="txt_nombre"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <p>Respiración: <span class="txt_show" id="txt_respiracion"></span></p>
-                            <p>Tipo de respiración: <span class="txt_show" id="txt_tiporesp"></span></p>
-                            <p>Manera de respiración: <span class="txt_show" id="txt_mrespiracion"></span></p>
-                            </td>
-                        </tr>
-                    </tbody>  
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Soplo:</td>
-                            <td>
-                                <p>Solpa con pajillas: <span class="txt_show" id="txt_spajillas"></span></p>
-                            </td>
-                            <td>
-                                <p>Succiona con pajillas: <span class="txt_show" id="txt_succpajillas"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Posibilidades Bucales:</td>
-                            <td colspan="2">
-                                <p>Tiene babeo: <span class="txt_show" id="txt_tbabeo"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Habla:</td>
-                            <td>
-                                <p>Normal: <span class="txt_show" id="txt_normal"></span></p>
-                                <p>Habla muy deprisa: <span class="txt_show" id="txt_hdeprisa"></span></p>
-                                <p>Habla muy despacio: <span class="txt_show" id="txt_hdespacio"></span></p>
-                                <p>Habla sin sentido/ininteligible: <span class="txt_show" id="txt_hsentido"></span></p>
-                                <p>Solo le entienden las personas cercanas a él:  <span class="txt_show" id="txt_entienden"></span></p>
-                                <p>Tiene un habla gangosa: <span class="txt_show" id="txt_hgangosa"></span></p>
-                                <p>Se traba al hablar: <span class="txt_show" id="txt_thablar"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Voz:</td>
-                            <td>
-                                <p>Intensidad: <span class="txt_show" id="txt_intensidad"></span></p>
-                            </td>
-                            <td>
-                                <p>Resonancia: <span class="txt_show" id="txt_resonancia"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Audición:</td>
-                            <td>
-                                <p>Normal: <span class="txt_show" id="txt_adcnormal"></span></p>
-                            </td>
-                            <td>
-                                <p>Deficiente: <span class="txt_show" id="txt_deficiente"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Deglución:</td>
-                            <td>
-                                <p>Normal: <span class="txt_show" id="txt_dgnormal"></span></p>
-                            </td>
-                            <td>
-                                <p>Deficiente: <span class="txt_show" id="txt_dldeficiente"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Observaciones: <span class="txt_show" id="txt_nombre"></span></p>
-                            </td>
-                        </tr>
-                    </tbody>  
-                </table>
-                <!-- =====================================================
-                ------------------------- BLOQUE 1 -------------------------
-                ===================================================== -->
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="2"><strong>DESARROLLO PSIMOTOR:</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>Control cabeza: <span class="txt_show" id="txt_controlc"></span></p>
-                            </td>
-                            <td>
-                                <p>Sonrisa social: <span class="txt_show" id="txt_sonrisa"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Sentarse sin apoyo: <span class="txt_show" id="txt_sentarse"></span></p>
-                            </td>
-                            <td>
-                                <p>Gateo: <span class="txt_show" id="txt_gateo"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Camina con apoyo: <span class="txt_show" id="txt_cmnapoyo"></span></p>
-                            </td>
-                            <td>
-                                <p>Camina sin ayuda: <span class="txt_show" id="txt_cmnayuda"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Control esfínteres diurno: <span class="txt_show" id="txt_controled"></span></p>
-                            </td>
-                            <td>
-                                <p>Control esfínteres nocturno: <span class="txt_show" id="txt_controlen"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Motricidad gruesa: <span class="txt_show" id="txt_motricidadg"></span></p>
-                            </td>
-                            <td>
-                                <p>Motricidad fina: <span class="txt_show" id="txt_motricidadf"></span></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <td colspan="2"><strong>DESARROLLO DEL LENGUAJE:</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>Balbuceo (0-6 meses): <span class="txt_show" id="txt_balbuceo06"></span></p>
-                            </td>
-                            <td>
-                                <p>Protoconversaciones y laleo (6-12 meses): <span class="txt_show" id="txt_protoconversaciones"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left;">Uso de primeras palabras con sentido (12-18 meses)
-                                <p>Edad: <span class="txt_show" id="txt_dledad"></span></p>
-                                <p>Cuales: <span class="txt_show" id="txt_dlcuales"></span></p>
-                            </td>
-                            <td style="text-align: left;">Uso de onomatopeyas, vocabulario de 50 palabras (18-24 meses)
-                                <p>Edad: <span class="txt_show" id="txt_dedad"></span></p>
-                                <p>Cuales: <span class="txt_show" id="txt_dcuales"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left;">Uso de oraciones simples (2-3 años)
-                                <p>Edad: <span class="txt_show" id="txt_23edad"></span></p>
-                                <p>Ejemplo: <span class="txt_show" id="txt_ejemplo"></span></p>
-                            </td>
-                            <td style="text-align: left;">Uso de oraciones complejas (4-5 años)
-                                <p>Edad: <span class="txt_show" id="txt_45edad"></span></p>
-                                <p>Ejemplo: <span class="txt_show" id="txt_54ejemplo"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Lenguaje expresivo actual: <span class="txt_show" id="txt_lengexpresivo"></span></p>
-                            </td>
-                            <td>
-                                <p>Lenguaje comprensivo actual: <span class="txt_show" id="txt_lengcomprensivo"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>¿Cómo ayudan al paciente frente a sus dificultades de lenguaje, habla y comunicación?: <span class="txt_show" id="txt_pregunta1"></span></p>
-                            </td>
-                            <td>
-                                <p>¿Qué hace el paciente frente a sus dificultades?: <span class="txt_show" id="txt_pregunta2"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>¿Cómo se relaciona el paciente con los demás y con los difrentes lugares?: <span class="txt_show" id="txt_pregunta3"></span></p>
-                            </td>
-                            <td>
-                                <p>¿Presenta conducta disruptiva?: <span class="txt_show" id="txt_pregunta4"></span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <p>¿Presenta interes restrictivos o estereotipados? <span class="txt_show" id="txt_pregunta5"></span></p>
-                            </td>
-                        </tr>
-                </table>
-                <!-- =====================================================
-                ------------------------- BLOQUE 2 -------------------------
-                ===================================================== -->
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="9"><strong>B. EVALUACIÓN DE ARTICULACIÓN</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Fonema</td>
-                            <td>Palabra (S.I)</td>
-                            <td>Trans. Fonética</td>
-                            <td>Omisión</td>
-                            <td>Sustitución</td>
-                            <td>Asimilación</td>
-                            <td>Adición</td>
-                            <td>Otro</td>
-                        </tr>
-                        <tr>
-                            <td>Bilabial</td>
-                            <td>/b/<br>/p/<br>/m/</td>
-                            <td>Bote<br>Pala<br>Mano</td>
-                            <td><span class="txt_show" id="txt_1"></span></td>
-                            <td><span class="txt_show" id="txt_2"></span></td>
-                            <td><span class="txt_show" id="txt_3"></span></td>
-                            <td><span class="txt_show" id="txt_4"></span></td>
-                            <td><span class="txt_show" id="txt_5"></span></td>
-                            <td><span class="txt_show" id="txt_6"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Velar</td>
-                            <td>/k/<br>/g/<br>/j/</td>
-                            <td>Casa<br>Gata<br>Jirafa</td>
-                            <td><span class="txt_show" id="txt_7"></span></td>
-                            <td><span class="txt_show" id="txt_8"></span></td>
-                            <td><span class="txt_show" id="txt_9"></span></td>
-                            <td><span class="txt_show" id="txt_10"></span></td>
-                            <td><span class="txt_show" id="txt_11"></span></td>
-                            <td><span class="txt_show" id="txt_12"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Labiodental</td>
-                            <td>/f/</td>
-                            <td>Falda</td>
-                            <td><span class="txt_show" id="txt_13"></span></td>
-                            <td><span class="txt_show" id="txt_14"></span></td>
-                            <td><span class="txt_show" id="txt_15"></span></td>
-                            <td><span class="txt_show" id="txt_16"></span></td>
-                            <td><span class="txt_show" id="txt_17"></span></td>
-                            <td><span class="txt_show" id="txt_18"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Palatal</td>
-                            <td>/y/<br>/ñ/<br>/ch/</td>
-                            <td>Llave<br>Ñato<br>Chato</td>
-                            <td><span class="txt_show" id="txt_19"></span></td>
-                            <td><span class="txt_show" id="txt_20"></span></td>
-                            <td><span class="txt_show" id="txt_21"></span></td>
-                            <td><span class="txt_show" id="txt_22"></span></td>
-                            <td><span class="txt_show" id="txt_23"></span></td>
-                            <td><span class="txt_show" id="txt_24"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Dental</td>
-                            <td>/d/<br>/t/</td>
-                            <td>Dedo<br>Tapón</td>
-                            <td><span class="txt_show" id="txt_25"></span></td>
-                            <td><span class="txt_show" id="txt_26"></span></td>
-                            <td><span class="txt_show" id="txt_27"></span></td>
-                            <td><span class="txt_show" id="txt_28"></span></td>
-                            <td><span class="txt_show" id="txt_29"></span></td>
-                            <td><span class="txt_show" id="txt_30"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Alveolar</td>
-                            <td>/n/<br>/s/<br>/l/<br>/r/</td>
-                            <td>Niño<br>Sapo<br>Lunes<br>Rosa</td>
-                            <td><span class="txt_show" id="txt_31"></span></td>
-                            <td><span class="txt_show" id="txt_32"></span></td>
-                            <td><span class="txt_show" id="txt_33"></span></td>
-                            <td><span class="txt_show" id="txt_34"></span></td>
-                            <td><span class="txt_show" id="txt_35"></span></td>
-                            <td><span class="txt_show" id="txt_36"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Fonema</td>
-                            <td>Palabra (S.I)</td>
-                            <td>Trans. Fonética</td>
-                            <td>Omisión</td>
-                            <td>Sustitución</td>
-                            <td>Asimilación</td>
-                            <td>Adición</td>
-                            <td>Otro</td>
-                        </tr>
-                        <tr>
-                            <td>Bilabial</td>
-                            <td>/b/<br>/p/<br>/m/</td>
-                            <td>Cabeza<br>✓<br>Camera</td>
-                            <td><span class="txt_show" id="txt_37"></span></td>
-                            <td><span class="txt_show" id="txt_38"></span></td>
-                            <td><span class="txt_show" id="txt_39"></span></td>
-                            <td><span class="txt_show" id="txt_40"></span></td>
-                            <td><span class="txt_show" id="txt_41"></span></td>
-                            <td><span class="txt_show" id="txt_42"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Velar</td>
-                            <td>/k/<br>/g/<br>/j/</td>
-                            <td>Paquete<br>Laguna<br>Tejedor</td>
-                            <td><span class="txt_show" id="txt_43"></span></td>
-                            <td><span class="txt_show" id="txt_44"></span></td>
-                            <td><span class="txt_show" id="txt_45"></span></td>
-                            <td><span class="txt_show" id="txt_46"></span></td>
-                            <td><span class="txt_show" id="txt_47"></span></td>
-                            <td><span class="txt_show" id="txt_48"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Labiodental</td>
-                            <td>/f/</td>
-                            <td>Búfalo</td>
-                            <td><span class="txt_show" id="txt_49"></span></td>
-                            <td><span class="txt_show" id="txt_50"></span></td>
-                            <td><span class="txt_show" id="txt_51"></span></td>
-                            <td><span class="txt_show" id="txt_52"></span></td>
-                            <td><span class="txt_show" id="txt_53"></span></td>
-                            <td><span class="txt_show" id="txt_54"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Palatal</td>
-                            <td>/y/<br>/ñ/<br>/ch/</td>
-                            <td>Payaso<br>Leñador<br>Lechuza</td>
-                            <td><span class="txt_show" id="txt_55"></span></td>
-                            <td><span class="txt_show" id="txt_56"></span></td>
-                            <td><span class="txt_show" id="txt_57"></span></td>
-                            <td><span class="txt_show" id="txt_58"></span></td>
-                            <td><span class="txt_show" id="txt_59"></span></td>
-                            <td><span class="txt_show" id="txt_60"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Dental</td>
-                            <td>/d/<br>/t/</td>
-                            <td>Cadena<br>Botella</td>
-                            <td><span class="txt_show" id="txt_61"></span></td>
-                            <td><span class="txt_show" id="txt_62"></span></td>
-                            <td><span class="txt_show" id="txt_63"></span></td>
-                            <td><span class="txt_show" id="txt_64"></span></td>
-                            <td><span class="txt_show" id="txt_65"></span></td>
-                            <td><span class="txt_show" id="txt_66"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Alveolar</td>
-                            <td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
-                            <td>✓<br>Cocina<br>Melena<br>Piropo<br>Carroza</td>
-                            <td><span class="txt_show" id="txt_67"></span></td>
-                            <td><span class="txt_show" id="txt_68"></span></td>
-                            <td><span class="txt_show" id="txt_69"></span></td>
-                            <td><span class="txt_show" id="txt_70"></span></td>
-                            <td><span class="txt_show" id="txt_71"></span></td>
-                            <td><span class="txt_show" id="txt_72"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Fonema</td>
-                            <td>Palabra (S.I)</td>
-                            <td>Trans. Fonética</td>
-                            <td>Omisión</td>
-                            <td>Sustitución</td>
-                            <td>Asimilación</td>
-                            <td>Adición</td>
-                            <td>Otro</td>
-                        </tr>
-                        <tr>
-                            <td>Bilabial</td>
-                            <td>/b/<br>/p/<br>/m/</td>
-                            <td>Nube<br>✓<br>Suma</td>
-                            <td><span class="txt_show" id="txt_73"></span></td>
-                            <td><span class="txt_show" id="txt_74"></span></td>
-                            <td><span class="txt_show" id="txt_75"></span></td>
-                            <td><span class="txt_show" id="txt_76"></span></td>
-                            <td><span class="txt_show" id="txt_77"></span></td>
-                            <td><span class="txt_show" id="txt_78"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Velar</td>
-                            <td>/k/<br>/g/<br>/j/</td>
-                            <td>Taco<br>Jugo<br>Caja</td>
-                            <td><span class="txt_show" id="txt_79"></span></td>
-                            <td><span class="txt_show" id="txt_80"></span></td>
-                            <td><span class="txt_show" id="txt_81"></span></td>
-                            <td><span class="txt_show" id="txt_82"></span></td>
-                            <td><span class="txt_show" id="txt_83"></span></td>
-                            <td><span class="txt_show" id="txt_84"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Labiodental</td>
-                            <td>/f/</td>
-                            <td>Café</td>
-                            <td><span class="txt_show" id="txt_85"></span></td>
-                            <td><span class="txt_show" id="txt_86"></span></td>
-                            <td><span class="txt_show" id="txt_87"></span></td>
-                            <td><span class="txt_show" id="txt_88"></span></td>
-                            <td><span class="txt_show" id="txt_89"></span></td>
-                            <td><span class="txt_show" id="txt_90"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Palatal</td>
-                            <td>/y/<br>/ñ/<br>/ch/</td>
-                            <td>✓<br>✓<br>Noche</td>
-                            <td><span class="txt_show" id="txt_91"></span></td>
-                            <td><span class="txt_show" id="txt_92"></span></td>
-                            <td><span class="txt_show" id="txt_93"></span></td>
-                            <td><span class="txt_show" id="txt_94"></span></td>
-                            <td><span class="txt_show" id="txt_95"></span></td>
-                            <td><span class="txt_show" id="txt_96"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Dental</td>
-                            <td>/d/<br>/t/</td>
-                            <td>✓<br>✓</td>
-                            <td><span class="txt_show" id="txt_97"></span></td>
-                            <td><span class="txt_show" id="txt_98"></span></td>
-                            <td><span class="txt_show" id="txt_99"></span></td>
-                            <td><span class="txt_show" id="txt_100"></span></td>
-                            <td><span class="txt_show" id="txt_101"></span></td>
-                            <td><span class="txt_show" id="txt_102"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Alveolar</td>
-                            <td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
-                            <td>✓<br>✓<br>✓<br>✓<br>Perro</td>
-                            <td><span class="txt_show" id="txt_103"></span></td>
-                            <td><span class="txt_show" id="txt_104"></span></td>
-                            <td><span class="txt_show" id="txt_105"></span></td>
-                            <td><span class="txt_show" id="txt_106"></span></td>
-                            <td><span class="txt_show" id="txt_107"></span></td>
-                            <td><span class="txt_show" id="txt_108"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="9"><strong>C. EVALUACIÓN DE DIPTONGOS:</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">Difonos<br>Vocálicos-posición</td>
-                            <td>Palabra</td>
-                            <td>Trans. Fonética</td>
-                            <td>Omisión</td>
-                            <td>Sustitución</td>
-                            <td>Asimilación</td>
-                            <td>Adición</td>
-                            <td>Otro</td>
-                        </tr>
-                        <tr>
-                            <td>/ae/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Aeros<br>Paella<br>Cae</td>
-                            <td><span class="txt_show" id="txt_109"></span></td>
-                            <td><span class="txt_show" id="txt_110"></span></td>
-                            <td><span class="txt_show" id="txt_111"></span></td>
-                            <td><span class="txt_show" id="txt_112"></span></td>
-                            <td><span class="txt_show" id="txt_113"></span></td>
-                            <td><span class="txt_show" id="txt_114"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ai</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Aire<br>Baile<br>Caí</td>
-                            <td><span class="txt_show" id="txt_115"></span></td>
-                            <td><span class="txt_show" id="txt_116"></span></td>
-                            <td><span class="txt_show" id="txt_117"></span></td>
-                            <td><span class="txt_show" id="txt_118"></span></td>
-                            <td><span class="txt_show" id="txt_119"></span></td>
-                            <td><span class="txt_show" id="txt_120"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/au/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Aula<br>Jaula<br>Guau</td>
-                            <td><span class="txt_show" id="txt_121"></span></td>
-                            <td><span class="txt_show" id="txt_122"></span></td>
-                            <td><span class="txt_show" id="txt_123"></span></td>
-                            <td><span class="txt_show" id="txt_124"></span></td>
-                            <td><span class="txt_show" id="txt_125"></span></td>
-                            <td><span class="txt_show" id="txt_126"></span></td>
-                        </tr>
-                        <tr>
-                            <td>ao</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Ahora<br>Caos<br>Cacao</td>
-                            <td><span class="txt_show" id="txt_127"></span></td>
-                            <td><span class="txt_show" id="txt_128"></span></td>
-                            <td><span class="txt_show" id="txt_129"></span></td>
-                            <td><span class="txt_show" id="txt_130"></span></td>
-                            <td><span class="txt_show" id="txt_131"></span></td>
-                            <td><span class="txt_show" id="txt_132"></span></td>
-                        </tr>
-                        <tr>
-                            <td>ea</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Easo<br>Teatro<br>Aldea</td>
-                            <td><span class="txt_show" id="txt_133"></span></td>
-                            <td><span class="txt_show" id="txt_134"></span></td>
-                            <td><span class="txt_show" id="txt_135"></span></td>
-                            <td><span class="txt_show" id="txt_136"></span></td>
-                            <td><span class="txt_show" id="txt_137"></span></td>
-                            <td><span class="txt_show" id="txt_138"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ei/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Eilyn<br>Reino<br>Rey</td>
-                            <td><span class="txt_show" id="txt_139"></span></td>
-                            <td><span class="txt_show" id="txt_140"></span></td>
-                            <td><span class="txt_show" id="txt_141"></span></td>
-                            <td><span class="txt_show" id="txt_142"></span></td>
-                            <td><span class="txt_show" id="txt_143"></span></td>
-                            <td><span class="txt_show" id="txt_144"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/eu/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Euro<br>Feudal<br>Zeus</td>
-                            <td><span class="txt_show" id="txt_145"></span></td>
-                            <td><span class="txt_show" id="txt_146"></span></td>
-                            <td><span class="txt_show" id="txt_147"></span></td>
-                            <td><span class="txt_show" id="txt_148"></span></td>
-                            <td><span class="txt_show" id="txt_149"></span></td>
-                            <td><span class="txt_show" id="txt_150"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/eo/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Eólica<br>León<br>Video</td>
-                            <td><span class="txt_show" id="txt_151"></span></td>
-                            <td><span class="txt_show" id="txt_152"></span></td>
-                            <td><span class="txt_show" id="txt_153"></span></td>
-                            <td><span class="txt_show" id="txt_154"></span></td>
-                            <td><span class="txt_show" id="txt_155"></span></td>
-                            <td><span class="txt_show" id="txt_156"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ia/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Hiato<br>Anciano<br>Rubia</td>
-                            <td><span class="txt_show" id="txt_157"></span></td>
-                            <td><span class="txt_show" id="txt_158"></span></td>
-                            <td><span class="txt_show" id="txt_159"></span></td>
-                            <td><span class="txt_show" id="txt_160"></span></td>
-                            <td><span class="txt_show" id="txt_161"></span></td>
-                            <td><span class="txt_show" id="txt_162"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/eo/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Eólica<br>León<br>Video</td>
-                            <td><span class="txt_show" id="txt_163"></span></td>
-                            <td><span class="txt_show" id="txt_164"></span></td>
-                            <td><span class="txt_show" id="txt_165"></span></td>
-                            <td><span class="txt_show" id="txt_166"></span></td>
-                            <td><span class="txt_show" id="txt_167"></span></td>
-                            <td><span class="txt_show" id="txt_168"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ie/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Hierba<br>Pliego<br>Premié</td>
-                            <td><span class="txt_show" id="txt_169"></span></td>
-                            <td><span class="txt_show" id="txt_170"></span></td>
-                            <td><span class="txt_show" id="txt_171"></span></td>
-                            <td><span class="txt_show" id="txt_172"></span></td>
-                            <td><span class="txt_show" id="txt_173"></span></td>
-                            <td><span class="txt_show" id="txt_174"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/iu/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Viuda<br>Triunfo<br>Celsius</td>
-                            <td><span class="txt_show" id="txt_175"></span></td>
-                            <td><span class="txt_show" id="txt_176"></span></td>
-                            <td><span class="txt_show" id="txt_177"></span></td>
-                            <td><span class="txt_show" id="txt_178"></span></td>
-                            <td><span class="txt_show" id="txt_179"></span></td>
-                            <td><span class="txt_show" id="txt_180"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/io/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Iota<br>Idioma<br>Indio</td>
-                            <td><span class="txt_show" id="txt_182"></span></td>
-                            <td><span class="txt_show" id="txt_183"></span></td>
-                            <td><span class="txt_show" id="txt_184"></span></td>
-                            <td><span class="txt_show" id="txt_185"></span></td>
-                            <td><span class="txt_show" id="txt_186"></span></td>
-                            <td><span class="txt_show" id="txt_187"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ua/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Guasa<br>Iguana<br>Agua</td>
-                            <td><span class="txt_show" id="txt_188"></span></td>
-                            <td><span class="txt_show" id="txt_189"></span></td>
-                            <td><span class="txt_show" id="txt_190"></span></td>
-                            <td><span class="txt_show" id="txt_191"></span></td>
-                            <td><span class="txt_show" id="txt_192"></span></td>
-                            <td><span class="txt_show" id="txt_193"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ue/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Hueso<br>Beso<br>Actué</td>
-                            <td><span class="txt_show" id="txt_194"></span></td>
-                            <td><span class="txt_show" id="txt_195"></span></td>
-                            <td><span class="txt_show" id="txt_196"></span></td>
-                            <td><span class="txt_show" id="txt_197"></span></td>
-                            <td><span class="txt_show" id="txt_198"></span></td>
-                            <td><span class="txt_show" id="txt_199"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ui/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Buitre<br>Circuito<br>Influir</td>
-                            <td><span class="txt_show" id="txt_200"></span></td>
-                            <td><span class="txt_show" id="txt_201"></span></td>
-                            <td><span class="txt_show" id="txt_203"></span></td>
-                            <td><span class="txt_show" id="txt_204"></span></td>
-                            <td><span class="txt_show" id="txt_205"></span></td>
-                            <td><span class="txt_show" id="txt_206"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/uo/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Cuota<br>Secuoya<br>Monstruo</td>
-                            <td><span class="txt_show" id="txt_207"></span></td>
-                            <td><span class="txt_show" id="txt_208"></span></td>
-                            <td><span class="txt_show" id="txt_209"></span></td>
-                            <td><span class="txt_show" id="txt_210"></span></td>
-                            <td><span class="txt_show" id="txt_211"></span></td>
-                            <td><span class="txt_show" id="txt_212"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/oa/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Boa<br>Croata<br>Canoa</td>
-                            <td><span class="txt_show" id="txt_213"></span></td>
-                            <td><span class="txt_show" id="txt_214"></span></td>
-                            <td><span class="txt_show" id="txt_215"></span></td>
-                            <td><span class="txt_show" id="txt_216"></span></td>
-                            <td><span class="txt_show" id="txt_217"></span></td>
-                            <td><span class="txt_show" id="txt_218"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/oe/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Oeste<br>Sudoeste<br>Héroe</td>
-                            <td><span class="txt_show" id="txt_219"></span></td>
-                            <td><span class="txt_show" id="txt_220"></span></td>
-                            <td><span class="txt_show" id="txt_221"></span></td>
-                            <td><span class="txt_show" id="txt_222"></span></td>
-                            <td><span class="txt_show" id="txt_223"></span></td>
-                            <td><span class="txt_show" id="txt_224"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/oi/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Oído<br>Roído<br>Hanói</td>
-                            <td><span class="txt_show" id="txt_225"></span></td>
-                            <td><span class="txt_show" id="txt_226"></span></td>
-                            <td><span class="txt_show" id="txt_227"></span></td>
-                            <td><span class="txt_show" id="txt_228"></span></td>
-                            <td><span class="txt_show" id="txt_229"></span></td>
-                            <td><span class="txt_show" id="txt_230"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ou/</td>
-                            <td>I<br>M</td>
-                            <td>Oufit<br>Boutique</td>
-                            <td><span class="txt_show" id="txt_230"></span></td>
-                            <td><span class="txt_show" id="txt_231"></span></td>
-                            <td><span class="txt_show" id="txt_232"></span></td>
-                            <td><span class="txt_show" id="txt_233"></span></td>
-                            <td><span class="txt_show" id="txt_234"></span></td>
-                            <td><span class="txt_show" id="txt_235"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/uei/</td>
-                            <td>M<br>F</td>
-                            <td>Buey<br>Actuéis</td>
-                            <td><span class="txt_show" id="txt_236"></span></td>
-                            <td><span class="txt_show" id="txt_237"></span></td>
-                            <td><span class="txt_show" id="txt_238"></span></td>
-                            <td><span class="txt_show" id="txt_239"></span></td>
-                            <td><span class="txt_show" id="txt_240"></span></td>
-                            <td><span class="txt_show" id="txt_241"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/uai/</td>
-                            <td>I<br>M<br>F</td>
-                            <td>Huaico<br>Aguaitar<br>Uruguay</td>
-                            <td><span class="txt_show" id="txt_242"></span></td>
-                            <td><span class="txt_show" id="txt_243"></span></td>
-                            <td><span class="txt_show" id="txt_244"></span></td>
-                            <td><span class="txt_show" id="txt_245"></span></td>
-                            <td><span class="txt_show" id="txt_246"></span></td>
-                            <td><span class="txt_show" id="txt_247"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/iai/</td>
-                            <td>M</td>
-                            <td>Abríais</td>
-                            <td><span class="txt_show" id="txt_248"></span></td>
-                            <td><span class="txt_show" id="txt_249"></span></td>
-                            <td><span class="txt_show" id="txt_250"></span></td>
-                            <td><span class="txt_show" id="txt_251"></span></td>
-                            <td><span class="txt_show" id="txt_252"></span></td>
-                            <td><span class="txt_show" id="txt_253"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/iau/</td>
-                            <td>M</td>
-                            <td>Miau</td>
-                            <td><span class="txt_show" id="txt_254"></span></td>
-                            <td><span class="txt_show" id="txt_255"></span></td>
-                            <td><span class="txt_show" id="txt_256"></span></td>
-                            <td><span class="txt_show" id="txt_257"></span></td>
-                            <td><span class="txt_show" id="txt_258"></span></td>
-                            <td><span class="txt_show" id="txt_259"></span></td>
-                        </tr>
-                        <tr>
-                            <td>/ieu/</td>
-                            <td>M</td>
-                            <td>Antieuropa</td>
-                            <td><span class="txt_show" id="txt_260"></span></td>
-                            <td><span class="txt_show" id="txt_261"></span></td>
-                            <td><span class="txt_show" id="txt_262"></span></td>
-                            <td><span class="txt_show" id="txt_263"></span></td>
-                            <td><span class="txt_show" id="txt_264"></span></td>
-                            <td><span class="txt_show" id="txt_265"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="8"><strong>D. DIFONOS CONSONÁNTICOS</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Silaba</td>
-                            <td>Palabra</td>
-                            <td>Trans. Fonética</td>
-                            <td>Omisión</td>
-                            <td>Sustitución</td>
-                            <td>Asimilación</td>
-                            <td>Adición</td>
-                            <td>Otro</td>
-                        </tr>
-                        <tr>
-                            <td>Br</td>
-                            <td>Brazo</td>
-                            <td><span class="txt_show" id="txt_266"></span></td>
-                            <td><span class="txt_show" id="txt_257"></span></td>
-                            <td><span class="txt_show" id="txt_258"></span></td>
-                            <td><span class="txt_show" id="txt_259"></span></td>
-                            <td><span class="txt_show" id="txt_260"></span></td>
-                            <td><span class="txt_show" id="txt_261"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Bl</td>
-                            <td>Blanco</td>
-                            <td><span class="txt_show" id="txt_262"></span></td>
-                            <td><span class="txt_show" id="txt_263"></span></td>
-                            <td><span class="txt_show" id="txt_264"></span></td>
-                            <td><span class="txt_show" id="txt_265"></span></td>
-                            <td><span class="txt_show" id="txt_266"></span></td>
-                            <td><span class="txt_show" id="txt_267"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Pr</td>
-                            <td>Prender</td>
-                            <td><span class="txt_show" id="txt_268"></span></td>
-                            <td><span class="txt_show" id="txt_269"></span></td>
-                            <td><span class="txt_show" id="txt_270"></span></td>
-                            <td><span class="txt_show" id="txt_271"></span></td>
-                            <td><span class="txt_show" id="txt_272"></span></td>
-                            <td><span class="txt_show" id="txt_273"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Pl</td>
-                            <td>Plano</td>
-                            <td><span class="txt_show" id="txt_274"></span></td>
-                            <td><span class="txt_show" id="txt_275"></span></td>
-                            <td><span class="txt_show" id="txt_276"></span></td>
-                            <td><span class="txt_show" id="txt_277"></span></td>
-                            <td><span class="txt_show" id="txt_278"></span></td>
-                            <td><span class="txt_show" id="txt_279"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Fr</td>
-                            <td>Frenar</td>
-                            <td><span class="txt_show" id="txt_280"></span></td>
-                            <td><span class="txt_show" id="txt_281"></span></td>
-                            <td><span class="txt_show" id="txt_282"></span></td>
-                            <td><span class="txt_show" id="txt_283"></span></td>
-                            <td><span class="txt_show" id="txt_284"></span></td>
-                            <td><span class="txt_show" id="txt_285"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Fl</td>
-                            <td>Flotar</td>
-                            <td><span class="txt_show" id="txt_286"></span></td>
-                            <td><span class="txt_show" id="txt_287"></span></td>
-                            <td><span class="txt_show" id="txt_288"></span></td>
-                            <td><span class="txt_show" id="txt_289"></span></td>
-                            <td><span class="txt_show" id="txt_290"></span></td>
-                            <td><span class="txt_show" id="txt_291"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Dr</td>
-                            <td>Drama</td>
-                            <td><span class="txt_show" id="txt_292"></span></td>
-                            <td><span class="txt_show" id="txt_293"></span></td>
-                            <td><span class="txt_show" id="txt_294"></span></td>
-                            <td><span class="txt_show" id="txt_295"></span></td>
-                            <td><span class="txt_show" id="txt_296"></span></td>
-                            <td><span class="txt_show" id="txt_297"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Tr</td>
-                            <td>Trapo</td>
-                            <td><span class="txt_show" id="txt_298"></span></td>
-                            <td><span class="txt_show" id="txt_299"></span></td>
-                            <td><span class="txt_show" id="txt_300"></span></td>
-                            <td><span class="txt_show" id="txt_301"></span></td>
-                            <td><span class="txt_show" id="txt_302"></span></td>
-                            <td><span class="txt_show" id="txt_303"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Gr</td>
-                            <td>Grapa</td>
-                            <td><span class="txt_show" id="txt_304"></span></td>
-                            <td><span class="txt_show" id="txt_305"></span></td>
-                            <td><span class="txt_show" id="txt_306"></span></td>
-                            <td><span class="txt_show" id="txt_307"></span></td>
-                            <td><span class="txt_show" id="txt_308"></span></td>
-                            <td><span class="txt_show" id="txt_309"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Gl</td>
-                            <td>Glaciar</td>
-                            <td><span class="txt_show" id="txt_310"></span></td>
-                            <td><span class="txt_show" id="txt_311"></span></td>
-                            <td><span class="txt_show" id="txt_312"></span></td>
-                            <td><span class="txt_show" id="txt_313"></span></td>
-                            <td><span class="txt_show" id="txt_314"></span></td>
-                            <td><span class="txt_show" id="txt_315"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Cr</td>
-                            <td>Cruel</td>
-                            <td><span class="txt_show" id="txt_316"></span></td>
-                            <td><span class="txt_show" id="txt_317"></span></td>
-                            <td><span class="txt_show" id="txt_318"></span></td>
-                            <td><span class="txt_show" id="txt_319"></span></td>
-                            <td><span class="txt_show" id="txt_320"></span></td>
-                            <td><span class="txt_show" id="txt_321"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Cl</td>
-                            <td>Clavo</td>
-                            <td><span class="txt_show" id="txt_322"></span></td>
-                            <td><span class="txt_show" id="txt_323"></span></td>
-                            <td><span class="txt_show" id="txt_324"></span></td>
-                            <td><span class="txt_show" id="txt_325"></span></td>
-                            <td><span class="txt_show" id="txt_326"></span></td>
-                            <td><span class="txt_show" id="txt_327"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="8"><strong>E. REPETICIÓN DE FRASES:</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="8">1. El gato salió.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="8">2. La muñeca bonita sonríe.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="8">3. Luis juega en la casa de María.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="8">4. El niño sonríe porque está feliz.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="8">5. La pelota que había en mi cuarto ya no está.</td>
-                        </tr>
-                        <tr>
-                            <td colspan="8">6. José fue a la escuela para que no lo regañaran sus padres.</td>
-                        </tr>
-                        <tr>
-                            <td>Observaciones:</td>
-                            <td><span class="txt_show" id="observaciones3"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- =====================================================
-                ------------------------- BLOQUE 3 -------------------------
-                ===================================================== -->
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="3"><strong>F. PROCESO DE DENOMINACIÓN</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="3">Se mostrarán varias imágenes de diferente naturaleza, el objetivo es reconocer y nombrar el objeto de cada imagen mostrada</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="center">ALIMENTOS</td>
-                        </tr>
-                        <tr>
-                            <td>Item:</td>
-                            <td>Comprensión:</td>
-                            <td>Expresión:</td>
-                        </tr>
-                        <tr>
-                            <td>Manzana</td>
-                            <td><span class="txt_show" id="txt_266"></span></td>
-                            <td><span class="txt_show" id="txt_267"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Plátano</td>
-                            <td><span class="txt_show" id="txt_268"></span></td>
-                            <td><span class="txt_show" id="txt_269"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Pan</td>
-                            <td><span class="txt_show" id="txt_270"></span></td>
-                            <td><span class="txt_show" id="txt_271"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Cebolla</td>
-                            <td><span class="txt_show" id="txt_272"></span></td>
-                            <td><span class="txt_show" id="txt_273"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Espaguetis</td>
-                            <td><span class="txt_show" id="txt_274"></span></td>
-                            <td><span class="txt_show" id="txt_275"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Pizza</td>
-                            <td><span class="txt_show" id="txt_276"></span></td>
-                            <td><span class="txt_show" id="txt_277"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Sandía</td>
-                            <td><span class="txt_show" id="txt_278"></span></td>
-                            <td><span class="txt_show" id="txt_279"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Hamburguesa</td>
-                            <td><span class="txt_show" id="txt_280"></span></td>
-                            <td><span class="txt_show" id="txt_281"></span></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="center">OBJETOS</td>
-                        </tr>
-                        <tr>
-                            <td>Item:</td>
-                            <td>Comprensión:</td>
-                            <td>Expresión:</td>
-                        </tr>
-                        <tr>
-                            <td>Lámpara</td>
-                            <td><span class="txt_show" id="txt_282"></span></td>
-                            <td><span class="txt_show" id="txt_283"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Sillón</td>
-                            <td><span class="txt_show" id="txt_284"></span></td>
-                            <td><span class="txt_show" id="txt_285"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Alfombra</td>
-                            <td><span class="txt_show" id="txt_286"></span></td>
-                            <td><span class="txt_show" id="txt_287"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Estufa</td>
-                            <td><span class="txt_show" id="txt_288"></span></td>
-                            <td><span class="txt_show" id="txt_289"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Computadora</td>
-                            <td><span class="txt_show" id="txt_290"></span></td>
-                            <td><span class="txt_show" id="txt_291"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Mesa</td>
-                            <td><span class="txt_show" id="txt_292"></span></td>
-                            <td><span class="txt_show" id="txt_293"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Silla</td>
-                            <td><span class="txt_show" id="txt_294"></span></td>
-                            <td><span class="txt_show" id="txt_295"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Espejo</td>
-                            <td><span class="txt_show" id="txt_296"></span></td>
-                            <td><span class="txt_show" id="txt_297"></span></td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="center">ANIMALES</td>
-                        </tr>
-                        <tr>
-                            <td>Item:</td>
-                            <td>Comprensión:</td>
-                            <td>Expresión:</td>
-                        </tr>
-                        <tr>
-                            <td>León</td>
-                            <td><span class="txt_show" id="txt_298"></span></td>
-                            <td><span class="txt_show" id="txt_299"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Perro</td>
-                            <td><span class="txt_show" id="txt_300"></span></td>
-                            <td><span class="txt_show" id="txt_301"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Cerdo</td>
-                            <td><span class="txt_show" id="txt_302"></span></td>
-                            <td><span class="txt_show" id="txt_303"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Gallina</td>
-                            <td><span class="txt_show" id="txt_304"></span></td>
-                            <td><span class="txt_show" id="txt_305"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ratón</td>
-                            <td><span class="txt_show" id="txt_306"></span></td>
-                            <td><span class="txt_show" id="txt_307"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Cocodrilo</td>
-                            <td><span class="txt_show" id="txt_308"></span></td>
-                            <td><span class="txt_show" id="txt_309"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Pato</td>
-                            <td><span class="txt_show" id="txt_310"></span></td>
-                            <td><span class="txt_show" id="txt_311"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Gato</td>
-                            <td><span class="txt_show" id="txt_312"></span></td>
-                            <td><span class="txt_show" id="txt_313"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Observaciones:</td>
-                            <td><span class="txt_show" id="txt_314"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="3"><strong>G. IMÁGENES PARA LA EVALUACIÓN DEL EJERCICIO DE DENOMINACIÓN</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td><img src=""></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                    <thead>
-                        <tr>
-                            <td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Rellenar el círculo que complete la oración correcta.</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src=""></td>
-                            <td colspan="2" style="text-align: left;">
-                                <span class="txt_show" id="txt_315"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td colspan="2" style="text-align: left;">
-                                <span class="txt_show" id="txt_316"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td colspan="2" style="text-align: left;">
-                                <span class="txt_show" id="txt_317"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td colspan="2" style="text-align: left;">
-                                <span class="txt_show" id="txt_318"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src=""></td>
-                            <td colspan="2" style="text-align: left;">
-                                <span class="txt_show" id="txt_319"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Observaciones:</td>
-                            <td><span class="txt_show" id="txt_320"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: left;">
+                                    <p>Tonicidad: <span class="txt_show" id="txt_tonicidad"></span></p>
+                                    <p>Tamaño: <span class="txt_show" id="txt_tamano"></span></p>
+                                    <p>Desviación comisura: <span class="txt_show" id="txt_dcomisura"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" colspan="2">Labio inferior:</td>
+                                <td>
+                                    <p>Simétrico: <span class="txt_show" id="txt_labsimetrico"></span></p>
+                                </td>
+                                <td>
+                                    <p>Asimétrico: <span class="txt_show" id="txt_labasimetrico"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: left;">
+                                    <p>Tonicidad: <span class="txt_show" id="txt_lbtonicidad"></span></p>
+                                    <p>Tamaño: <span class="txt_show" id="txt_lbtamano"></span></p>
+                                    <p>Desviación comisura: <span class="txt_show" id="txt_lbdesviacion"></span></p>
+                                    <p>Posición: <span class="txt_show" id="txt_lbposicion"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" colspan="2">Frenillo labial superior:</td>
+                                <td>
+                                    <p>Presencia: <span class="txt_show" id="txt_presencia"></span></p>
+                                </td>
+                                <td>
+                                    <p>Ausencia: <span class="txt_show" id="txt_ausencia"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" colspan="2" style="text-align: left;">
+                                    <p>Tamaño: <span class="txt_show" id="txt_fltamano"></span></p>
+                                    <p>Funcionalidad: <span class="txt_show" id="txt_funcionalidad"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" colspan="2">Frenillo labial inferior:</td>
+                                <td>
+                                    <p>Presencia: <span class="txt_show" id="txt_flpresencia"></span></p>
+                                </td>
+                                <td>
+                                    <p>Ausencia: <span class="txt_show" id="txt_flausencia"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: left;">
+                                    <p>Tamaño: <span class="txt_show" id="txt_flitamaño"></span></p>
+                                    <p>Funcionalidad: <span class="txt_show" id="txt_flifuncionalidad"></span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <tbody>
+                            <tr>
+                                <td rowspan="3" colspan="2">Arcada dentaria:
+                                    <img src="">
+                                </td>
+                                <td>
+                                    <p>Superior: <span class="txt_show" id="txt_adsuperior"></span></p>
+                                </td>
+                                <td>
+                                    <p>Inferior: <span class="txt_show" id="txt_adinferior"></span></p>
+                                </td>
+                                <td>
+                                    <p>Malformación dentaria: <span class="txt_show" id="txt_malformaciond"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;">Tipo de mordida:
+                                    <p>Bis a bis: <span class="txt_show" id="txt_bisabis"></span></p>
+                                    <p>Mordida cruzada: <span class="txt_show" id="txt_mordidac"></span></p>
+                                    <p>Mordida abierta: <span class="txt_show" id="txt_mordidaab"></span></p>
+                                    <p>Sobremordida vertical: <span class="txt_show" id="txt_svertical"></span></p>
+                                    <p>Sobremordida horizontal: <span class="txt_show" id="txt_shorizontal"></span></p>
+                                </td>        
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Denticion: <span class="txt_show" id="txt_denticion"></span></p>
+                                </td>
+                                <td colspan="2">
+                                    <p>Caries en: <span class="txt_show" id="txt_cariesen"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Lengua:</td>
+                                <td colspan="3">
+                                    <p>Tamaño: <span class="txt_show" id="txt_ltamano"></span></p>
+                                    <p>Periodo de reposo: <span class="txt_show" id="txt_periodo"></span></p>
+                                    <p>Frenillo sub lingual: <span class="txt_show" id="txt_frenillosl"></span></p>
+                                    <p>Movilidad: <span class="txt_show" id="txt_movilidad"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Paladar:</td>
+                                <td colspan="3">
+                                    <p>Paladar óseo: <span class="txt_show" id="txt_oseo"></span></p>
+                                    <p>Paladar blando: <span class="txt_show" id="txt_blando"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Úvula: <span class="txt_show" id="txt_uvula"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Amígdalas: <span class="txt_show" id="txt_amigdalas"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Praxias: <span class="txt_show" id="txt_nombre"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <p>Respiración: <span class="txt_show" id="txt_respiracion"></span></p>
+                                <p>Tipo de respiración: <span class="txt_show" id="txt_tiporesp"></span></p>
+                                <p>Manera de respiración: <span class="txt_show" id="txt_mrespiracion"></span></p>
+                                </td>
+                            </tr>
+                        </tbody>  
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Soplo:</td>
+                                <td>
+                                    <p>Solpa con pajillas: <span class="txt_show" id="txt_spajillas"></span></p>
+                                </td>
+                                <td>
+                                    <p>Succiona con pajillas: <span class="txt_show" id="txt_succpajillas"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Posibilidades Bucales:</td>
+                                <td colspan="2">
+                                    <p>Tiene babeo: <span class="txt_show" id="txt_tbabeo"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Habla:</td>
+                                <td>
+                                    <p>Normal: <span class="txt_show" id="txt_normal"></span></p>
+                                    <p>Habla muy deprisa: <span class="txt_show" id="txt_hdeprisa"></span></p>
+                                    <p>Habla muy despacio: <span class="txt_show" id="txt_hdespacio"></span></p>
+                                    <p>Habla sin sentido/ininteligible: <span class="txt_show" id="txt_hsentido"></span></p>
+                                    <p>Solo le entienden las personas cercanas a él:  <span class="txt_show" id="txt_entienden"></span></p>
+                                    <p>Tiene un habla gangosa: <span class="txt_show" id="txt_hgangosa"></span></p>
+                                    <p>Se traba al hablar: <span class="txt_show" id="txt_thablar"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Voz:</td>
+                                <td>
+                                    <p>Intensidad: <span class="txt_show" id="txt_intensidad"></span></p>
+                                </td>
+                                <td>
+                                    <p>Resonancia: <span class="txt_show" id="txt_resonancia"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Audición:</td>
+                                <td>
+                                    <p>Normal: <span class="txt_show" id="txt_adcnormal"></span></p>
+                                </td>
+                                <td>
+                                    <p>Deficiente: <span class="txt_show" id="txt_deficiente"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Deglución:</td>
+                                <td>
+                                    <p>Normal: <span class="txt_show" id="txt_dgnormal"></span></p>
+                                </td>
+                                <td>
+                                    <p>Deficiente: <span class="txt_show" id="txt_dldeficiente"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Observaciones: <span class="txt_show" id="txt_nombre"></span></p>
+                                </td>
+                            </tr>
+                        </tbody>  
+                    </table>
+                    <!-- =====================================================
+                    ------------------------- BLOQUE 1 -------------------------
+                    ===================================================== -->
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="2"><strong>DESARROLLO PSIMOTOR:</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Control cabeza: <span class="txt_show" id="txt_controlc"></span></p>
+                                </td>
+                                <td>
+                                    <p>Sonrisa social: <span class="txt_show" id="txt_sonrisa"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Sentarse sin apoyo: <span class="txt_show" id="txt_sentarse"></span></p>
+                                </td>
+                                <td>
+                                    <p>Gateo: <span class="txt_show" id="txt_gateo"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Camina con apoyo: <span class="txt_show" id="txt_cmnapoyo"></span></p>
+                                </td>
+                                <td>
+                                    <p>Camina sin ayuda: <span class="txt_show" id="txt_cmnayuda"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Control esfínteres diurno: <span class="txt_show" id="txt_controled"></span></p>
+                                </td>
+                                <td>
+                                    <p>Control esfínteres nocturno: <span class="txt_show" id="txt_controlen"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Motricidad gruesa: <span class="txt_show" id="txt_motricidadg"></span></p>
+                                </td>
+                                <td>
+                                    <p>Motricidad fina: <span class="txt_show" id="txt_motricidadf"></span></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <td colspan="2"><strong>DESARROLLO DEL LENGUAJE:</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Balbuceo (0-6 meses): <span class="txt_show" id="txt_balbuceo06"></span></p>
+                                </td>
+                                <td>
+                                    <p>Protoconversaciones y laleo (6-12 meses): <span class="txt_show" id="txt_protoconversaciones"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Uso de primeras palabras con sentido (12-18 meses)
+                                    <p>Edad: <span class="txt_show" id="txt_dledad"></span></p>
+                                    <p>Cuales: <span class="txt_show" id="txt_dlcuales"></span></p>
+                                </td>
+                                <td style="text-align: left;">Uso de onomatopeyas, vocabulario de 50 palabras (18-24 meses)
+                                    <p>Edad: <span class="txt_show" id="txt_dedad"></span></p>
+                                    <p>Cuales: <span class="txt_show" id="txt_dcuales"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Uso de oraciones simples (2-3 años)
+                                    <p>Edad: <span class="txt_show" id="txt_23edad"></span></p>
+                                    <p>Ejemplo: <span class="txt_show" id="txt_ejemplo"></span></p>
+                                </td>
+                                <td style="text-align: left;">Uso de oraciones complejas (4-5 años)
+                                    <p>Edad: <span class="txt_show" id="txt_45edad"></span></p>
+                                    <p>Ejemplo: <span class="txt_show" id="txt_54ejemplo"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Lenguaje expresivo actual: <span class="txt_show" id="txt_lengexpresivo"></span></p>
+                                </td>
+                                <td>
+                                    <p>Lenguaje comprensivo actual: <span class="txt_show" id="txt_lengcomprensivo"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>¿Cómo ayudan al paciente frente a sus dificultades de lenguaje, habla y comunicación?: <span class="txt_show" id="txt_pregunta1"></span></p>
+                                </td>
+                                <td>
+                                    <p>¿Qué hace el paciente frente a sus dificultades?: <span class="txt_show" id="txt_pregunta2"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>¿Cómo se relaciona el paciente con los demás y con los difrentes lugares?: <span class="txt_show" id="txt_pregunta3"></span></p>
+                                </td>
+                                <td>
+                                    <p>¿Presenta conducta disruptiva?: <span class="txt_show" id="txt_pregunta4"></span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>¿Presenta interes restrictivos o estereotipados? <span class="txt_show" id="txt_pregunta5"></span></p>
+                                </td>
+                            </tr>
+                    </table>
+                    <!-- =====================================================
+                    ------------------------- BLOQUE 2 -------------------------
+                    ===================================================== -->
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="9"><strong>B. EVALUACIÓN DE ARTICULACIÓN</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Fonema</td>
+                                <td>Palabra (S.I)</td>
+                                <td>Trans. Fonética</td>
+                                <td>Omisión</td>
+                                <td>Sustitución</td>
+                                <td>Asimilación</td>
+                                <td>Adición</td>
+                                <td>Otro</td>
+                            </tr>
+                            <tr>
+                                <td>Bilabial</td>
+                                <td>/b/<br>/p/<br>/m/</td>
+                                <td>Bote<br>Pala<br>Mano</td>
+                                <td><span class="txt_show" id="txt_1"></span></td>
+                                <td><span class="txt_show" id="txt_2"></span></td>
+                                <td><span class="txt_show" id="txt_3"></span></td>
+                                <td><span class="txt_show" id="txt_4"></span></td>
+                                <td><span class="txt_show" id="txt_5"></span></td>
+                                <td><span class="txt_show" id="txt_6"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Velar</td>
+                                <td>/k/<br>/g/<br>/j/</td>
+                                <td>Casa<br>Gata<br>Jirafa</td>
+                                <td><span class="txt_show" id="txt_7"></span></td>
+                                <td><span class="txt_show" id="txt_8"></span></td>
+                                <td><span class="txt_show" id="txt_9"></span></td>
+                                <td><span class="txt_show" id="txt_10"></span></td>
+                                <td><span class="txt_show" id="txt_11"></span></td>
+                                <td><span class="txt_show" id="txt_12"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Labiodental</td>
+                                <td>/f/</td>
+                                <td>Falda</td>
+                                <td><span class="txt_show" id="txt_13"></span></td>
+                                <td><span class="txt_show" id="txt_14"></span></td>
+                                <td><span class="txt_show" id="txt_15"></span></td>
+                                <td><span class="txt_show" id="txt_16"></span></td>
+                                <td><span class="txt_show" id="txt_17"></span></td>
+                                <td><span class="txt_show" id="txt_18"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Palatal</td>
+                                <td>/y/<br>/ñ/<br>/ch/</td>
+                                <td>Llave<br>Ñato<br>Chato</td>
+                                <td><span class="txt_show" id="txt_19"></span></td>
+                                <td><span class="txt_show" id="txt_20"></span></td>
+                                <td><span class="txt_show" id="txt_21"></span></td>
+                                <td><span class="txt_show" id="txt_22"></span></td>
+                                <td><span class="txt_show" id="txt_23"></span></td>
+                                <td><span class="txt_show" id="txt_24"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Dental</td>
+                                <td>/d/<br>/t/</td>
+                                <td>Dedo<br>Tapón</td>
+                                <td><span class="txt_show" id="txt_25"></span></td>
+                                <td><span class="txt_show" id="txt_26"></span></td>
+                                <td><span class="txt_show" id="txt_27"></span></td>
+                                <td><span class="txt_show" id="txt_28"></span></td>
+                                <td><span class="txt_show" id="txt_29"></span></td>
+                                <td><span class="txt_show" id="txt_30"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alveolar</td>
+                                <td>/n/<br>/s/<br>/l/<br>/r/</td>
+                                <td>Niño<br>Sapo<br>Lunes<br>Rosa</td>
+                                <td><span class="txt_show" id="txt_31"></span></td>
+                                <td><span class="txt_show" id="txt_32"></span></td>
+                                <td><span class="txt_show" id="txt_33"></span></td>
+                                <td><span class="txt_show" id="txt_34"></span></td>
+                                <td><span class="txt_show" id="txt_35"></span></td>
+                                <td><span class="txt_show" id="txt_36"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Fonema</td>
+                                <td>Palabra (S.I)</td>
+                                <td>Trans. Fonética</td>
+                                <td>Omisión</td>
+                                <td>Sustitución</td>
+                                <td>Asimilación</td>
+                                <td>Adición</td>
+                                <td>Otro</td>
+                            </tr>
+                            <tr>
+                                <td>Bilabial</td>
+                                <td>/b/<br>/p/<br>/m/</td>
+                                <td>Cabeza<br>✓<br>Camera</td>
+                                <td><span class="txt_show" id="txt_37"></span></td>
+                                <td><span class="txt_show" id="txt_38"></span></td>
+                                <td><span class="txt_show" id="txt_39"></span></td>
+                                <td><span class="txt_show" id="txt_40"></span></td>
+                                <td><span class="txt_show" id="txt_41"></span></td>
+                                <td><span class="txt_show" id="txt_42"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Velar</td>
+                                <td>/k/<br>/g/<br>/j/</td>
+                                <td>Paquete<br>Laguna<br>Tejedor</td>
+                                <td><span class="txt_show" id="txt_43"></span></td>
+                                <td><span class="txt_show" id="txt_44"></span></td>
+                                <td><span class="txt_show" id="txt_45"></span></td>
+                                <td><span class="txt_show" id="txt_46"></span></td>
+                                <td><span class="txt_show" id="txt_47"></span></td>
+                                <td><span class="txt_show" id="txt_48"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Labiodental</td>
+                                <td>/f/</td>
+                                <td>Búfalo</td>
+                                <td><span class="txt_show" id="txt_49"></span></td>
+                                <td><span class="txt_show" id="txt_50"></span></td>
+                                <td><span class="txt_show" id="txt_51"></span></td>
+                                <td><span class="txt_show" id="txt_52"></span></td>
+                                <td><span class="txt_show" id="txt_53"></span></td>
+                                <td><span class="txt_show" id="txt_54"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Palatal</td>
+                                <td>/y/<br>/ñ/<br>/ch/</td>
+                                <td>Payaso<br>Leñador<br>Lechuza</td>
+                                <td><span class="txt_show" id="txt_55"></span></td>
+                                <td><span class="txt_show" id="txt_56"></span></td>
+                                <td><span class="txt_show" id="txt_57"></span></td>
+                                <td><span class="txt_show" id="txt_58"></span></td>
+                                <td><span class="txt_show" id="txt_59"></span></td>
+                                <td><span class="txt_show" id="txt_60"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Dental</td>
+                                <td>/d/<br>/t/</td>
+                                <td>Cadena<br>Botella</td>
+                                <td><span class="txt_show" id="txt_61"></span></td>
+                                <td><span class="txt_show" id="txt_62"></span></td>
+                                <td><span class="txt_show" id="txt_63"></span></td>
+                                <td><span class="txt_show" id="txt_64"></span></td>
+                                <td><span class="txt_show" id="txt_65"></span></td>
+                                <td><span class="txt_show" id="txt_66"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alveolar</td>
+                                <td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
+                                <td>✓<br>Cocina<br>Melena<br>Piropo<br>Carroza</td>
+                                <td><span class="txt_show" id="txt_67"></span></td>
+                                <td><span class="txt_show" id="txt_68"></span></td>
+                                <td><span class="txt_show" id="txt_69"></span></td>
+                                <td><span class="txt_show" id="txt_70"></span></td>
+                                <td><span class="txt_show" id="txt_71"></span></td>
+                                <td><span class="txt_show" id="txt_72"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Fonema</td>
+                                <td>Palabra (S.I)</td>
+                                <td>Trans. Fonética</td>
+                                <td>Omisión</td>
+                                <td>Sustitución</td>
+                                <td>Asimilación</td>
+                                <td>Adición</td>
+                                <td>Otro</td>
+                            </tr>
+                            <tr>
+                                <td>Bilabial</td>
+                                <td>/b/<br>/p/<br>/m/</td>
+                                <td>Nube<br>✓<br>Suma</td>
+                                <td><span class="txt_show" id="txt_73"></span></td>
+                                <td><span class="txt_show" id="txt_74"></span></td>
+                                <td><span class="txt_show" id="txt_75"></span></td>
+                                <td><span class="txt_show" id="txt_76"></span></td>
+                                <td><span class="txt_show" id="txt_77"></span></td>
+                                <td><span class="txt_show" id="txt_78"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Velar</td>
+                                <td>/k/<br>/g/<br>/j/</td>
+                                <td>Taco<br>Jugo<br>Caja</td>
+                                <td><span class="txt_show" id="txt_79"></span></td>
+                                <td><span class="txt_show" id="txt_80"></span></td>
+                                <td><span class="txt_show" id="txt_81"></span></td>
+                                <td><span class="txt_show" id="txt_82"></span></td>
+                                <td><span class="txt_show" id="txt_83"></span></td>
+                                <td><span class="txt_show" id="txt_84"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Labiodental</td>
+                                <td>/f/</td>
+                                <td>Café</td>
+                                <td><span class="txt_show" id="txt_85"></span></td>
+                                <td><span class="txt_show" id="txt_86"></span></td>
+                                <td><span class="txt_show" id="txt_87"></span></td>
+                                <td><span class="txt_show" id="txt_88"></span></td>
+                                <td><span class="txt_show" id="txt_89"></span></td>
+                                <td><span class="txt_show" id="txt_90"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Palatal</td>
+                                <td>/y/<br>/ñ/<br>/ch/</td>
+                                <td>✓<br>✓<br>Noche</td>
+                                <td><span class="txt_show" id="txt_91"></span></td>
+                                <td><span class="txt_show" id="txt_92"></span></td>
+                                <td><span class="txt_show" id="txt_93"></span></td>
+                                <td><span class="txt_show" id="txt_94"></span></td>
+                                <td><span class="txt_show" id="txt_95"></span></td>
+                                <td><span class="txt_show" id="txt_96"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Dental</td>
+                                <td>/d/<br>/t/</td>
+                                <td>✓<br>✓</td>
+                                <td><span class="txt_show" id="txt_97"></span></td>
+                                <td><span class="txt_show" id="txt_98"></span></td>
+                                <td><span class="txt_show" id="txt_99"></span></td>
+                                <td><span class="txt_show" id="txt_100"></span></td>
+                                <td><span class="txt_show" id="txt_101"></span></td>
+                                <td><span class="txt_show" id="txt_102"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alveolar</td>
+                                <td>/n/<br>/s/<br>/l/<br>/r/<br>rr</td>
+                                <td>✓<br>✓<br>✓<br>✓<br>Perro</td>
+                                <td><span class="txt_show" id="txt_103"></span></td>
+                                <td><span class="txt_show" id="txt_104"></span></td>
+                                <td><span class="txt_show" id="txt_105"></span></td>
+                                <td><span class="txt_show" id="txt_106"></span></td>
+                                <td><span class="txt_show" id="txt_107"></span></td>
+                                <td><span class="txt_show" id="txt_108"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="9"><strong>C. EVALUACIÓN DE DIPTONGOS:</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Difonos<br>Vocálicos-posición</td>
+                                <td>Palabra</td>
+                                <td>Trans. Fonética</td>
+                                <td>Omisión</td>
+                                <td>Sustitución</td>
+                                <td>Asimilación</td>
+                                <td>Adición</td>
+                                <td>Otro</td>
+                            </tr>
+                            <tr>
+                                <td>/ae/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Aeros<br>Paella<br>Cae</td>
+                                <td><span class="txt_show" id="txt_109"></span></td>
+                                <td><span class="txt_show" id="txt_110"></span></td>
+                                <td><span class="txt_show" id="txt_111"></span></td>
+                                <td><span class="txt_show" id="txt_112"></span></td>
+                                <td><span class="txt_show" id="txt_113"></span></td>
+                                <td><span class="txt_show" id="txt_114"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ai</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Aire<br>Baile<br>Caí</td>
+                                <td><span class="txt_show" id="txt_115"></span></td>
+                                <td><span class="txt_show" id="txt_116"></span></td>
+                                <td><span class="txt_show" id="txt_117"></span></td>
+                                <td><span class="txt_show" id="txt_118"></span></td>
+                                <td><span class="txt_show" id="txt_119"></span></td>
+                                <td><span class="txt_show" id="txt_120"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/au/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Aula<br>Jaula<br>Guau</td>
+                                <td><span class="txt_show" id="txt_121"></span></td>
+                                <td><span class="txt_show" id="txt_122"></span></td>
+                                <td><span class="txt_show" id="txt_123"></span></td>
+                                <td><span class="txt_show" id="txt_124"></span></td>
+                                <td><span class="txt_show" id="txt_125"></span></td>
+                                <td><span class="txt_show" id="txt_126"></span></td>
+                            </tr>
+                            <tr>
+                                <td>ao</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Ahora<br>Caos<br>Cacao</td>
+                                <td><span class="txt_show" id="txt_127"></span></td>
+                                <td><span class="txt_show" id="txt_128"></span></td>
+                                <td><span class="txt_show" id="txt_129"></span></td>
+                                <td><span class="txt_show" id="txt_130"></span></td>
+                                <td><span class="txt_show" id="txt_131"></span></td>
+                                <td><span class="txt_show" id="txt_132"></span></td>
+                            </tr>
+                            <tr>
+                                <td>ea</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Easo<br>Teatro<br>Aldea</td>
+                                <td><span class="txt_show" id="txt_133"></span></td>
+                                <td><span class="txt_show" id="txt_134"></span></td>
+                                <td><span class="txt_show" id="txt_135"></span></td>
+                                <td><span class="txt_show" id="txt_136"></span></td>
+                                <td><span class="txt_show" id="txt_137"></span></td>
+                                <td><span class="txt_show" id="txt_138"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ei/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Eilyn<br>Reino<br>Rey</td>
+                                <td><span class="txt_show" id="txt_139"></span></td>
+                                <td><span class="txt_show" id="txt_140"></span></td>
+                                <td><span class="txt_show" id="txt_141"></span></td>
+                                <td><span class="txt_show" id="txt_142"></span></td>
+                                <td><span class="txt_show" id="txt_143"></span></td>
+                                <td><span class="txt_show" id="txt_144"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/eu/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Euro<br>Feudal<br>Zeus</td>
+                                <td><span class="txt_show" id="txt_145"></span></td>
+                                <td><span class="txt_show" id="txt_146"></span></td>
+                                <td><span class="txt_show" id="txt_147"></span></td>
+                                <td><span class="txt_show" id="txt_148"></span></td>
+                                <td><span class="txt_show" id="txt_149"></span></td>
+                                <td><span class="txt_show" id="txt_150"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/eo/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Eólica<br>León<br>Video</td>
+                                <td><span class="txt_show" id="txt_151"></span></td>
+                                <td><span class="txt_show" id="txt_152"></span></td>
+                                <td><span class="txt_show" id="txt_153"></span></td>
+                                <td><span class="txt_show" id="txt_154"></span></td>
+                                <td><span class="txt_show" id="txt_155"></span></td>
+                                <td><span class="txt_show" id="txt_156"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ia/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Hiato<br>Anciano<br>Rubia</td>
+                                <td><span class="txt_show" id="txt_157"></span></td>
+                                <td><span class="txt_show" id="txt_158"></span></td>
+                                <td><span class="txt_show" id="txt_159"></span></td>
+                                <td><span class="txt_show" id="txt_160"></span></td>
+                                <td><span class="txt_show" id="txt_161"></span></td>
+                                <td><span class="txt_show" id="txt_162"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/eo/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Eólica<br>León<br>Video</td>
+                                <td><span class="txt_show" id="txt_163"></span></td>
+                                <td><span class="txt_show" id="txt_164"></span></td>
+                                <td><span class="txt_show" id="txt_165"></span></td>
+                                <td><span class="txt_show" id="txt_166"></span></td>
+                                <td><span class="txt_show" id="txt_167"></span></td>
+                                <td><span class="txt_show" id="txt_168"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ie/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Hierba<br>Pliego<br>Premié</td>
+                                <td><span class="txt_show" id="txt_169"></span></td>
+                                <td><span class="txt_show" id="txt_170"></span></td>
+                                <td><span class="txt_show" id="txt_171"></span></td>
+                                <td><span class="txt_show" id="txt_172"></span></td>
+                                <td><span class="txt_show" id="txt_173"></span></td>
+                                <td><span class="txt_show" id="txt_174"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/iu/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Viuda<br>Triunfo<br>Celsius</td>
+                                <td><span class="txt_show" id="txt_175"></span></td>
+                                <td><span class="txt_show" id="txt_176"></span></td>
+                                <td><span class="txt_show" id="txt_177"></span></td>
+                                <td><span class="txt_show" id="txt_178"></span></td>
+                                <td><span class="txt_show" id="txt_179"></span></td>
+                                <td><span class="txt_show" id="txt_180"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/io/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Iota<br>Idioma<br>Indio</td>
+                                <td><span class="txt_show" id="txt_182"></span></td>
+                                <td><span class="txt_show" id="txt_183"></span></td>
+                                <td><span class="txt_show" id="txt_184"></span></td>
+                                <td><span class="txt_show" id="txt_185"></span></td>
+                                <td><span class="txt_show" id="txt_186"></span></td>
+                                <td><span class="txt_show" id="txt_187"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ua/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Guasa<br>Iguana<br>Agua</td>
+                                <td><span class="txt_show" id="txt_188"></span></td>
+                                <td><span class="txt_show" id="txt_189"></span></td>
+                                <td><span class="txt_show" id="txt_190"></span></td>
+                                <td><span class="txt_show" id="txt_191"></span></td>
+                                <td><span class="txt_show" id="txt_192"></span></td>
+                                <td><span class="txt_show" id="txt_193"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ue/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Hueso<br>Beso<br>Actué</td>
+                                <td><span class="txt_show" id="txt_194"></span></td>
+                                <td><span class="txt_show" id="txt_195"></span></td>
+                                <td><span class="txt_show" id="txt_196"></span></td>
+                                <td><span class="txt_show" id="txt_197"></span></td>
+                                <td><span class="txt_show" id="txt_198"></span></td>
+                                <td><span class="txt_show" id="txt_199"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ui/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Buitre<br>Circuito<br>Influir</td>
+                                <td><span class="txt_show" id="txt_200"></span></td>
+                                <td><span class="txt_show" id="txt_201"></span></td>
+                                <td><span class="txt_show" id="txt_203"></span></td>
+                                <td><span class="txt_show" id="txt_204"></span></td>
+                                <td><span class="txt_show" id="txt_205"></span></td>
+                                <td><span class="txt_show" id="txt_206"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/uo/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Cuota<br>Secuoya<br>Monstruo</td>
+                                <td><span class="txt_show" id="txt_207"></span></td>
+                                <td><span class="txt_show" id="txt_208"></span></td>
+                                <td><span class="txt_show" id="txt_209"></span></td>
+                                <td><span class="txt_show" id="txt_210"></span></td>
+                                <td><span class="txt_show" id="txt_211"></span></td>
+                                <td><span class="txt_show" id="txt_212"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/oa/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Boa<br>Croata<br>Canoa</td>
+                                <td><span class="txt_show" id="txt_213"></span></td>
+                                <td><span class="txt_show" id="txt_214"></span></td>
+                                <td><span class="txt_show" id="txt_215"></span></td>
+                                <td><span class="txt_show" id="txt_216"></span></td>
+                                <td><span class="txt_show" id="txt_217"></span></td>
+                                <td><span class="txt_show" id="txt_218"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/oe/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Oeste<br>Sudoeste<br>Héroe</td>
+                                <td><span class="txt_show" id="txt_219"></span></td>
+                                <td><span class="txt_show" id="txt_220"></span></td>
+                                <td><span class="txt_show" id="txt_221"></span></td>
+                                <td><span class="txt_show" id="txt_222"></span></td>
+                                <td><span class="txt_show" id="txt_223"></span></td>
+                                <td><span class="txt_show" id="txt_224"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/oi/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Oído<br>Roído<br>Hanói</td>
+                                <td><span class="txt_show" id="txt_225"></span></td>
+                                <td><span class="txt_show" id="txt_226"></span></td>
+                                <td><span class="txt_show" id="txt_227"></span></td>
+                                <td><span class="txt_show" id="txt_228"></span></td>
+                                <td><span class="txt_show" id="txt_229"></span></td>
+                                <td><span class="txt_show" id="txt_230"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ou/</td>
+                                <td>I<br>M</td>
+                                <td>Oufit<br>Boutique</td>
+                                <td><span class="txt_show" id="txt_230"></span></td>
+                                <td><span class="txt_show" id="txt_231"></span></td>
+                                <td><span class="txt_show" id="txt_232"></span></td>
+                                <td><span class="txt_show" id="txt_233"></span></td>
+                                <td><span class="txt_show" id="txt_234"></span></td>
+                                <td><span class="txt_show" id="txt_235"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/uei/</td>
+                                <td>M<br>F</td>
+                                <td>Buey<br>Actuéis</td>
+                                <td><span class="txt_show" id="txt_236"></span></td>
+                                <td><span class="txt_show" id="txt_237"></span></td>
+                                <td><span class="txt_show" id="txt_238"></span></td>
+                                <td><span class="txt_show" id="txt_239"></span></td>
+                                <td><span class="txt_show" id="txt_240"></span></td>
+                                <td><span class="txt_show" id="txt_241"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/uai/</td>
+                                <td>I<br>M<br>F</td>
+                                <td>Huaico<br>Aguaitar<br>Uruguay</td>
+                                <td><span class="txt_show" id="txt_242"></span></td>
+                                <td><span class="txt_show" id="txt_243"></span></td>
+                                <td><span class="txt_show" id="txt_244"></span></td>
+                                <td><span class="txt_show" id="txt_245"></span></td>
+                                <td><span class="txt_show" id="txt_246"></span></td>
+                                <td><span class="txt_show" id="txt_247"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/iai/</td>
+                                <td>M</td>
+                                <td>Abríais</td>
+                                <td><span class="txt_show" id="txt_248"></span></td>
+                                <td><span class="txt_show" id="txt_249"></span></td>
+                                <td><span class="txt_show" id="txt_250"></span></td>
+                                <td><span class="txt_show" id="txt_251"></span></td>
+                                <td><span class="txt_show" id="txt_252"></span></td>
+                                <td><span class="txt_show" id="txt_253"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/iau/</td>
+                                <td>M</td>
+                                <td>Miau</td>
+                                <td><span class="txt_show" id="txt_254"></span></td>
+                                <td><span class="txt_show" id="txt_255"></span></td>
+                                <td><span class="txt_show" id="txt_256"></span></td>
+                                <td><span class="txt_show" id="txt_257"></span></td>
+                                <td><span class="txt_show" id="txt_258"></span></td>
+                                <td><span class="txt_show" id="txt_259"></span></td>
+                            </tr>
+                            <tr>
+                                <td>/ieu/</td>
+                                <td>M</td>
+                                <td>Antieuropa</td>
+                                <td><span class="txt_show" id="txt_260"></span></td>
+                                <td><span class="txt_show" id="txt_261"></span></td>
+                                <td><span class="txt_show" id="txt_262"></span></td>
+                                <td><span class="txt_show" id="txt_263"></span></td>
+                                <td><span class="txt_show" id="txt_264"></span></td>
+                                <td><span class="txt_show" id="txt_265"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="8"><strong>D. DIFONOS CONSONÁNTICOS</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Silaba</td>
+                                <td>Palabra</td>
+                                <td>Trans. Fonética</td>
+                                <td>Omisión</td>
+                                <td>Sustitución</td>
+                                <td>Asimilación</td>
+                                <td>Adición</td>
+                                <td>Otro</td>
+                            </tr>
+                            <tr>
+                                <td>Br</td>
+                                <td>Brazo</td>
+                                <td><span class="txt_show" id="txt_266"></span></td>
+                                <td><span class="txt_show" id="txt_257"></span></td>
+                                <td><span class="txt_show" id="txt_258"></span></td>
+                                <td><span class="txt_show" id="txt_259"></span></td>
+                                <td><span class="txt_show" id="txt_260"></span></td>
+                                <td><span class="txt_show" id="txt_261"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Bl</td>
+                                <td>Blanco</td>
+                                <td><span class="txt_show" id="txt_262"></span></td>
+                                <td><span class="txt_show" id="txt_263"></span></td>
+                                <td><span class="txt_show" id="txt_264"></span></td>
+                                <td><span class="txt_show" id="txt_265"></span></td>
+                                <td><span class="txt_show" id="txt_266"></span></td>
+                                <td><span class="txt_show" id="txt_267"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Pr</td>
+                                <td>Prender</td>
+                                <td><span class="txt_show" id="txt_268"></span></td>
+                                <td><span class="txt_show" id="txt_269"></span></td>
+                                <td><span class="txt_show" id="txt_270"></span></td>
+                                <td><span class="txt_show" id="txt_271"></span></td>
+                                <td><span class="txt_show" id="txt_272"></span></td>
+                                <td><span class="txt_show" id="txt_273"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Pl</td>
+                                <td>Plano</td>
+                                <td><span class="txt_show" id="txt_274"></span></td>
+                                <td><span class="txt_show" id="txt_275"></span></td>
+                                <td><span class="txt_show" id="txt_276"></span></td>
+                                <td><span class="txt_show" id="txt_277"></span></td>
+                                <td><span class="txt_show" id="txt_278"></span></td>
+                                <td><span class="txt_show" id="txt_279"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Fr</td>
+                                <td>Frenar</td>
+                                <td><span class="txt_show" id="txt_280"></span></td>
+                                <td><span class="txt_show" id="txt_281"></span></td>
+                                <td><span class="txt_show" id="txt_282"></span></td>
+                                <td><span class="txt_show" id="txt_283"></span></td>
+                                <td><span class="txt_show" id="txt_284"></span></td>
+                                <td><span class="txt_show" id="txt_285"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Fl</td>
+                                <td>Flotar</td>
+                                <td><span class="txt_show" id="txt_286"></span></td>
+                                <td><span class="txt_show" id="txt_287"></span></td>
+                                <td><span class="txt_show" id="txt_288"></span></td>
+                                <td><span class="txt_show" id="txt_289"></span></td>
+                                <td><span class="txt_show" id="txt_290"></span></td>
+                                <td><span class="txt_show" id="txt_291"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Dr</td>
+                                <td>Drama</td>
+                                <td><span class="txt_show" id="txt_292"></span></td>
+                                <td><span class="txt_show" id="txt_293"></span></td>
+                                <td><span class="txt_show" id="txt_294"></span></td>
+                                <td><span class="txt_show" id="txt_295"></span></td>
+                                <td><span class="txt_show" id="txt_296"></span></td>
+                                <td><span class="txt_show" id="txt_297"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Tr</td>
+                                <td>Trapo</td>
+                                <td><span class="txt_show" id="txt_298"></span></td>
+                                <td><span class="txt_show" id="txt_299"></span></td>
+                                <td><span class="txt_show" id="txt_300"></span></td>
+                                <td><span class="txt_show" id="txt_301"></span></td>
+                                <td><span class="txt_show" id="txt_302"></span></td>
+                                <td><span class="txt_show" id="txt_303"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Gr</td>
+                                <td>Grapa</td>
+                                <td><span class="txt_show" id="txt_304"></span></td>
+                                <td><span class="txt_show" id="txt_305"></span></td>
+                                <td><span class="txt_show" id="txt_306"></span></td>
+                                <td><span class="txt_show" id="txt_307"></span></td>
+                                <td><span class="txt_show" id="txt_308"></span></td>
+                                <td><span class="txt_show" id="txt_309"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Gl</td>
+                                <td>Glaciar</td>
+                                <td><span class="txt_show" id="txt_310"></span></td>
+                                <td><span class="txt_show" id="txt_311"></span></td>
+                                <td><span class="txt_show" id="txt_312"></span></td>
+                                <td><span class="txt_show" id="txt_313"></span></td>
+                                <td><span class="txt_show" id="txt_314"></span></td>
+                                <td><span class="txt_show" id="txt_315"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Cr</td>
+                                <td>Cruel</td>
+                                <td><span class="txt_show" id="txt_316"></span></td>
+                                <td><span class="txt_show" id="txt_317"></span></td>
+                                <td><span class="txt_show" id="txt_318"></span></td>
+                                <td><span class="txt_show" id="txt_319"></span></td>
+                                <td><span class="txt_show" id="txt_320"></span></td>
+                                <td><span class="txt_show" id="txt_321"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Cl</td>
+                                <td>Clavo</td>
+                                <td><span class="txt_show" id="txt_322"></span></td>
+                                <td><span class="txt_show" id="txt_323"></span></td>
+                                <td><span class="txt_show" id="txt_324"></span></td>
+                                <td><span class="txt_show" id="txt_325"></span></td>
+                                <td><span class="txt_show" id="txt_326"></span></td>
+                                <td><span class="txt_show" id="txt_327"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="8"><strong>E. REPETICIÓN DE FRASES:</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8">1. El gato salió.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">2. La muñeca bonita sonríe.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">3. Luis juega en la casa de María.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">4. El niño sonríe porque está feliz.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">5. La pelota que había en mi cuarto ya no está.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="8">6. José fue a la escuela para que no lo regañaran sus padres.</td>
+                            </tr>
+                            <tr>
+                                <td>Observaciones:</td>
+                                <td><span class="txt_show" id="observaciones3"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- =====================================================
+                    ------------------------- BLOQUE 3 -------------------------
+                    ===================================================== -->
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="3"><strong>F. PROCESO DE DENOMINACIÓN</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3">Se mostrarán varias imágenes de diferente naturaleza, el objetivo es reconocer y nombrar el objeto de cada imagen mostrada</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">ALIMENTOS</td>
+                            </tr>
+                            <tr>
+                                <td>Item:</td>
+                                <td>Comprensión:</td>
+                                <td>Expresión:</td>
+                            </tr>
+                            <tr>
+                                <td>Manzana</td>
+                                <td><span class="txt_show" id="txt_266"></span></td>
+                                <td><span class="txt_show" id="txt_267"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Plátano</td>
+                                <td><span class="txt_show" id="txt_268"></span></td>
+                                <td><span class="txt_show" id="txt_269"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Pan</td>
+                                <td><span class="txt_show" id="txt_270"></span></td>
+                                <td><span class="txt_show" id="txt_271"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Cebolla</td>
+                                <td><span class="txt_show" id="txt_272"></span></td>
+                                <td><span class="txt_show" id="txt_273"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Espaguetis</td>
+                                <td><span class="txt_show" id="txt_274"></span></td>
+                                <td><span class="txt_show" id="txt_275"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Pizza</td>
+                                <td><span class="txt_show" id="txt_276"></span></td>
+                                <td><span class="txt_show" id="txt_277"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Sandía</td>
+                                <td><span class="txt_show" id="txt_278"></span></td>
+                                <td><span class="txt_show" id="txt_279"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Hamburguesa</td>
+                                <td><span class="txt_show" id="txt_280"></span></td>
+                                <td><span class="txt_show" id="txt_281"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">OBJETOS</td>
+                            </tr>
+                            <tr>
+                                <td>Item:</td>
+                                <td>Comprensión:</td>
+                                <td>Expresión:</td>
+                            </tr>
+                            <tr>
+                                <td>Lámpara</td>
+                                <td><span class="txt_show" id="txt_282"></span></td>
+                                <td><span class="txt_show" id="txt_283"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Sillón</td>
+                                <td><span class="txt_show" id="txt_284"></span></td>
+                                <td><span class="txt_show" id="txt_285"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alfombra</td>
+                                <td><span class="txt_show" id="txt_286"></span></td>
+                                <td><span class="txt_show" id="txt_287"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Estufa</td>
+                                <td><span class="txt_show" id="txt_288"></span></td>
+                                <td><span class="txt_show" id="txt_289"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Computadora</td>
+                                <td><span class="txt_show" id="txt_290"></span></td>
+                                <td><span class="txt_show" id="txt_291"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Mesa</td>
+                                <td><span class="txt_show" id="txt_292"></span></td>
+                                <td><span class="txt_show" id="txt_293"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Silla</td>
+                                <td><span class="txt_show" id="txt_294"></span></td>
+                                <td><span class="txt_show" id="txt_295"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Espejo</td>
+                                <td><span class="txt_show" id="txt_296"></span></td>
+                                <td><span class="txt_show" id="txt_297"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">ANIMALES</td>
+                            </tr>
+                            <tr>
+                                <td>Item:</td>
+                                <td>Comprensión:</td>
+                                <td>Expresión:</td>
+                            </tr>
+                            <tr>
+                                <td>León</td>
+                                <td><span class="txt_show" id="txt_298"></span></td>
+                                <td><span class="txt_show" id="txt_299"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Perro</td>
+                                <td><span class="txt_show" id="txt_300"></span></td>
+                                <td><span class="txt_show" id="txt_301"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Cerdo</td>
+                                <td><span class="txt_show" id="txt_302"></span></td>
+                                <td><span class="txt_show" id="txt_303"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Gallina</td>
+                                <td><span class="txt_show" id="txt_304"></span></td>
+                                <td><span class="txt_show" id="txt_305"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Ratón</td>
+                                <td><span class="txt_show" id="txt_306"></span></td>
+                                <td><span class="txt_show" id="txt_307"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Cocodrilo</td>
+                                <td><span class="txt_show" id="txt_308"></span></td>
+                                <td><span class="txt_show" id="txt_309"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Pato</td>
+                                <td><span class="txt_show" id="txt_310"></span></td>
+                                <td><span class="txt_show" id="txt_311"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Gato</td>
+                                <td><span class="txt_show" id="txt_312"></span></td>
+                                <td><span class="txt_show" id="txt_313"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Observaciones:</td>
+                                <td><span class="txt_show" id="txt_314"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="3"><strong>G. IMÁGENES PARA LA EVALUACIÓN DEL EJERCICIO DE DENOMINACIÓN</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td><img src=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                        <thead>
+                            <tr>
+                                <td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Rellenar el círculo que complete la oración correcta.</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src=""></td>
+                                <td colspan="2" style="text-align: left;">
+                                    <span class="txt_show" id="txt_315"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td colspan="2" style="text-align: left;">
+                                    <span class="txt_show" id="txt_316"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td colspan="2" style="text-align: left;">
+                                    <span class="txt_show" id="txt_317"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td colspan="2" style="text-align: left;">
+                                    <span class="txt_show" id="txt_318"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src=""></td>
+                                <td colspan="2" style="text-align: left;">
+                                    <span class="txt_show" id="txt_319"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Observaciones:</td>
+                                <td><span class="txt_show" id="txt_320"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="caja-footer">
+                    <a class="btn btn-primary" id="btn_return_d">Atrás</a>
+                    <a class="btn btn-primary" id="btn_terminar">Guardar</a>
+                </div>
             </div>         
         </div>
     </div>
 </div>
 {% endblock %}
-
 
 {% block js %}
 <script src="js/formulario-reporte.js"></script>
@@ -5313,15 +5318,6 @@
 <script src="js_libs/select2/js/select2.min.js"></script>
 <script src="js_libs/JSON-js/json2.js"></script>
 <script type="text/javascript">
-
-    let contenido = document.querySelectorAll( "input, select, textarea.form-control" )
-    for( var i = 0; i < contenido.length; ++i ) {
-        var name = contenido[i].name
-        
-        if( name ) {
-            console.log(name)
-        }
-    }
 
 	/*
     *=================================== INICIAR SELECT2 ===================================
@@ -5331,9 +5327,26 @@
         $('.select2').select2();
     });
     /*
+    *=================================== CALCULAR EDAD ===================================
+    */
+    $('#id_ea_fecha_nacimiento').on('change', calcularEdad)
+    
+    function calcularEdad(){
+        fecha = $(this).val()
+        var hoy = new Date()
+        var cumpleanos = new Date(fecha)
+        var edad = hoy.getFullYear() - cumpleanos.getFullYear()
+        var m = hoy.getMonth() - cumpleanos.getMonth()
+
+        if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+            edad--;
+        }
+        $('#id_ea_edad').val(edad);
+    }
+    /*
     *=================================== FORMULARIO POR PARTES ===================================
     */
-    $(function(){
+    $(document).ready(function() {
 
         //Detectar qué botón (etiqueta 'a') se clickea dentro el formulario
         $('body').on('click','#formularios a', function(elemento){
@@ -5360,11 +5373,9 @@
                 $('#paso_e').hide();
                 $('#paso_d').show();
             }
-            else if(mostrar == 'btn-terminar'){
-                // Serializamos formularios
-                //var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e, #form_f, #form_g').serialize();
-                var contenido = document.querySelectorAll('.txt_show')
-                var elements = document.querySelectorAll( "input, select, textarea.form-control" )
+            else if(mostrar == 'btn_terminar'){
+                var contenido = document.querySelectorAll(".txt_show")
+                var elements = document.querySelectorAll( "input, select, textarea.form-control")
                 var obj = {}
                 var indexado = []
                 var nivel3 = {}
@@ -5383,6 +5394,7 @@
 
                 //ARRAY A JSON
                 var toJSON = JSON.stringify(nivel3)
+                //console.log(toJSON)
 
                 $.ajax({
                     type: "POST",
@@ -5396,14 +5408,14 @@
                     success: function() {
                         //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
                         // do what ever you want with the server response
-                        window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                        //window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
                         $('#form_a').trigger("reset")
                         $('#form_b').trigger("reset")
                         $('#form_c').trigger("reset")
                         $('#form_d').trigger("reset")
                     },
                     error: function() {
-                        window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                        //window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
                         $('#form_a').trigger("reset")
                         $('#form_b').trigger("reset")
                         $('#form_c').trigger("reset")
@@ -5506,6 +5518,7 @@
 
                 //VALORES DE CAMPOS SELECT Y MULTISELECT
                 nombre       = $('select[name="ea_nombre"] option:selected').text()
+                $('#txt_nombre').text(nombre)
 
                 /*
                 **============================== OCULTAR Y MOSTRAR ==============================

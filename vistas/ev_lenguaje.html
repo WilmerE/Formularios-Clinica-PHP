@@ -4,7 +4,7 @@
 
 {% block css %}
 <!-- SELECT2 -->
-<link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="libs/select2/css/select2.min.css"/>
 {% endblock %}
 
 {% block content %}
@@ -4692,7 +4692,6 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
-
     /*
     *=================================== CALCULAR EDAD ===================================
     */
@@ -4755,10 +4754,8 @@
                 $('#paso_h').show();
             }
             else if(mostrar == 'btn_terminar'){
-                // Serializamos formularios
-                //var dataForm = $('#form_a, #form_b, #form_c, #form_d, #form_e, #form_f, #form_g').serialize();
-                var contenido = document.querySelectorAll('.txt_show')
-                var elements = document.querySelectorAll( "input, select, textarea.form-control" )
+                var contenido = document.querySelectorAll(".txt_show")
+                var elements = document.querySelectorAll( "input, select, textarea.form-control")
                 var obj = {}
                 var indexado = []
                 var nivel3 = {}
