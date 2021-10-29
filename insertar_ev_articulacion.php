@@ -1,5 +1,4 @@
   <?php
-
 	//Conexión a la DB 
   include 'db_connection.php';
   $conn = OpenCon();
@@ -9,9 +8,9 @@
   $datajson        = $_POST['data'];
 
   $consulta = "";
-echo("Insertar");
+
   if ($action == 'add') {
-  	$consulta = "INSERT INTO tvx_form_evarticulacion VALUES (NULL, '$id_paciente', '$datajson')"; 
+  	$consulta = "INSERT INTO tvx_form_evarticulacion VALUES (NULL, '$id_paciente', '$datajson')";
   }
   elseif ($action == 'update') {
     $id          = $_POST['id_form'];

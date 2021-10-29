@@ -1,5 +1,4 @@
   <?php
-
 	//Conexión a la DB 
   include 'db_connection.php';
   $conn = OpenCon();
@@ -12,6 +11,7 @@
 
   if ($action == 'add') {
   	$consulta = "INSERT INTO tvx_form_evlenguaje VALUES (NULL, '$id_paciente', '$datajson')"; 
+    echo($datajson);
   }
   elseif ($action == 'update') {
     $id          = $_POST['id_form'];

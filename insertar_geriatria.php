@@ -1,5 +1,4 @@
 <?php
-
 	//Conexión a la DB 
 	include 'db_connection.php';
 	$conn = OpenCon();

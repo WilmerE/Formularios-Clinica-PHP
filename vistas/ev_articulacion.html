@@ -24,8 +24,8 @@
                                     <tr>
                                         <td colspan="2">
                                             <div class="form-group">
-                                                <label for="id_ea_nombre">Nombre:</label>
-                                                <br><select id="id_ea_nombre" name="ea_nombre" class="select2 users-select2">
+                                                <label for="id_ea_nombre">Nombre:</label><br>
+                                                <select id="id_ea_nombre" name="ea_nombre" class="select2 users-select2">
                                                     <option>Seleccione un paciente</option>
                                                     {% for users in usuarios %}
                                                     <option value="{{ users.ID }}">{{ users.user_nicename }}</option>
@@ -3735,7 +3735,7 @@
                                     <tr>
                                         <td>Observaciones:</td>
                                         <td colspan="2">
-                                            <textarea class="form-control" name="evfonologica" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="evfonologica1" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -3931,7 +3931,7 @@
                                     <tr>
                                         <td>Observaciones:</td>
                                         <td>
-                                            <textarea class="form-control" name="evfonologica" rows="10" cols="50"></textarea>
+                                            <textarea class="form-control" name="evfonologica2" rows="10" cols="50"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -5374,54 +5374,59 @@
                 $('#paso_d').show();
             }
             else if(mostrar == 'btn_terminar'){
-                var contenido = document.querySelectorAll(".txt_show")
-                var elements = document.querySelectorAll( "input, select, textarea.form-control")
-                var obj = {}
-                var indexado = []
-                var nivel3 = {}
+                try {
+                    var contenido = document.querySelectorAll(".txt_show")
+                    var elements = document.querySelectorAll( "input, select, textarea.form-control")
+                    var obj = {}
+                    var indexado = []
+                    var nivel3 = {}
 
-                for( var i = 0; i < contenido.length; ++i ) {
-                    var name = elements[i].name
-                    var value = contenido[i].textContent
+                    //console.log("Names "+elements.length+" Inputs "+contenido.length)
 
-                    if( name ) {
-                        obj[ name ] = value
+                    for( var i = 0; i < contenido.length; ++i ) {
+                        var name = elements[i].name
+                        var value = contenido[i].textContent
+
+                        if( name ) {
+                            obj[ name ] = value
+                        }
                     }
+
+                    indexado[0] = obj
+                    nivel3[0] = indexado
+
+                    //ARRAY A JSON
+                    var toJSON = JSON.stringify(nivel3)
+                    //console.log(toJSON)
+
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: "insertar_ev_articulacion.php",
+                        data: {
+                            'action'  : "add",
+                            'paciente': $('#id_ea_nombre').val(),
+                            'data'    : toJSON
+                        },
+                        //dataType: "json",
+                        success: function(data) {
+                            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                            // do what ever you want with the server response
+                            $('#form_a').trigger("reset")
+                            $('#form_b').trigger("reset")
+                            $('#form_c').trigger("reset")
+                            $('#form_d').trigger("reset")
+                            window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.error("Estado ==>" + jqXHR.statusText);
+                            console.error("Excepcion ==>" + errorThrown);
+                            window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                        }
+                    });
+                } catch (error) {
+                    console.error(error);
                 }
-
-                indexado[0] = obj
-                nivel3[0] = indexado
-
-                //ARRAY A JSON
-                var toJSON = JSON.stringify(nivel3)
-                //console.log(toJSON)
-
-                $.ajax({
-                    type: "POST",
-                    url: "insertar_ev_articulacion.php",
-                    data: {
-                        'action': "add",
-                        'paciente': $('#id_ea_nombre').val(),
-                        'data': toJSON
-                    },
-                    dataType: "json",
-                    success: function() {
-                        //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
-                        // do what ever you want with the server response
-                        //window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
-                        $('#form_a').trigger("reset")
-                        $('#form_b').trigger("reset")
-                        $('#form_c').trigger("reset")
-                        $('#form_d').trigger("reset")
-                    },
-                    error: function() {
-                        //window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
-                        $('#form_a').trigger("reset")
-                        $('#form_b').trigger("reset")
-                        $('#form_c').trigger("reset")
-                        $('#form_d').trigger("reset")
-                    }
-                });
             }
         });
 

@@ -21,9 +21,9 @@
 					<tr>
 						<td colspan="2">
 							<div class="form-group">
-								<label for="id_ea_nombre">Nombre:</label>
-								<br><select id="id_ea_nombre" name="ea_nombre" class="select2 users-select2">
-									<option value="{{ p.0.ea_nombre }}">Seleccione un paciente</option>
+								<label for="id_ea_nombre">Nombre:</label><br>
+								<select id="id_ea_nombre" name="ea_nombre" class="select2 users-select2">
+									<option value="{{ p.0.ea_nombre }}">{{ p.0.ea_nombre }}</option>
 									{% for users in usuarios %}
 									<option value="{{ users.ID }}">{{ users.user_nicename }}</option>
 									{% endfor %}
@@ -32,7 +32,7 @@
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_ea_numero" class="label">N°Ficha:</label>
+								<label for="id_ea_numero" class="label acive">N°Ficha:</label>
 								<input type="text" name="ea_numero" class="form-control" id="id_ea_numero" value="{{ p.0.ea_numero }}">
 							</div>
 						</td>
@@ -60,13 +60,13 @@
 					<tr>
 						<td colspan="2">
 							<div class="form-group">
-								<label for="id_ea_escolaridad" class="label">Escolaridad:</label>
+								<label for="id_ea_escolaridad" class="label acive">Escolaridad:</label>
 								<input type="text" name="ea_escolaridad" class="form-control" id="id_ea_escolaridad" value="{{ p.0.ea_escolaridad }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_ea_procedencia" class="label">Procedencia:</label>
+								<label for="id_ea_procedencia" class="label acive">Procedencia:</label>
 								<input type="text" name="ea_procedencia" class="form-control" id="id_ea_procedencia" value="{{ p.0.ea_procedencia }}">
 							</div>
 						</td>
@@ -74,7 +74,7 @@
 					<tr>
 						<td colspan="3">
 							<div class="form-group">
-								<label for="id_ea_domicilio" class="label">Domicilio:</label>
+								<label for="id_ea_domicilio" class="label acive">Domicilio:</label>
 								<input type="text" name="ea_domicilio" class="form-control" id="id_ea_domicilio" value="{{ p.0.ea_domicilio }}">
 							</div>
 						</td>
@@ -97,13 +97,13 @@
 						<td colspan="2">Simetría facial:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_facial_simetrico" class="label">Simétrico:</label>
+								<label for="id_facial_simetrico" class="label acive">Simétrico:</label>
 								<input type="text" name="facial_simetrico" id="id_facial_simetrico" class="form-control" value="{{ p.0.facial_simetrico }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_facial_asimetrico" class="label">Asimétrico:</label>
+								<label for="id_facial_asimetrico" class="label acive">Asimétrico:</label>
 								<input type="text" name="facial_asimetrico" id="id_facial_asimetrico" value="{{ p.0.facial_asimetrico }}">
 							</div>
 						</td> 
@@ -112,13 +112,13 @@
 						<td rowspan="2" colspan="2">Labio superior:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_labios_simetrico" class="label">Simétrico:</label>
+								<label for="id_labios_simetrico" class="label acive">Simétrico:</label>
 								<input type="text" name="labios_simetrico" id="id_labios_simetrico" value="{{ p.0.labios_simetrico }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_labios_asimetrico" class="label">Asimétrico:</label>
+								<label for="id_labios_asimetrico" class="label acive">Asimétrico:</label>
 								<input type="text" name="labios_asimetrico" id="id_labios_asimetrico" value="{{ p.0.labios_asimetrico }}">
 							</div>
 						</td>
@@ -159,13 +159,13 @@
 						<td rowspan="2" colspan="2">Labio inferior:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_labios_simetrico" class="label">Simétrico:</label>
+								<label for="id_labios_simetrico" class="label acive">Simétrico:</label>
 								<input type="text" name="labios_simetrico" id="id_labios_simetrico" value="{{ p.0.labios_simetrico }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_labios_asimetrico" class="label">Asimetrico:</label>
+								<label for="id_labios_asimetrico" class="label acive">Asimetrico:</label>
 								<input type="text" name="labios_asimetrico" id="id_labios_asimetrico" value="{{ p.0.labios_asimetrico }}">
 							</div>
 						</td>
@@ -217,13 +217,13 @@
 						<td rowspan="2" colspan="2">Frenillo labial superior:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_lbs_presencia" class="label">Presencia:</label>
+								<label for="id_lbs_presencia" class="label acive">Presencia:</label>
 								<input type="text" name="lbs_presencia" id="id_lbs_presencia" value="{{ p.0.lbs_presencia }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_lbs_ausencia" class="label">Ausencia:</label>
+								<label for="id_lbs_ausencia" class="label acive">Ausencia:</label>
 								<input type="text" name="lbs_ausencia" id="id_lbs_ausencia" value="{{ p.0.lbs_ausencia }}">
 							</div>
 						</td>
@@ -254,13 +254,13 @@
 						<td rowspan="2" colspan="2">Frenillo labial inferior:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_lbi_presencia" class="label">Presencia:</label>
+								<label for="id_lbi_presencia" class="label acive">Presencia:</label>
 								<input type="text" name="lbi_presencia" id="id_lbi_presencia" value="{{ p.0.lbi_presencia }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_lbi_ausencia" class="label">Ausencia:</label>
+								<label for="id_lbi_ausencia" class="label acive">Ausencia:</label>
 								<input type="text" name="lbi_ausencia" id="id_lbi_ausencia" value="{{ p.0.lbi_ausencia }}">
 							</div>
 						</td>
@@ -300,19 +300,19 @@
 
 						<td>
 							<div class="form-group">
-								<label for="id_ad_superior" class="label">Superior:</label>
+								<label for="id_ad_superior" class="label acive">Superior:</label>
 								<input type="text" name="ad_superior" id="id_ad_superior" value="{{ p.0.ad_superior }}">     
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_ad_inferior" class="label">Inferior:</label>
+								<label for="id_ad_inferior" class="label acive">Inferior:</label>
 								<input type="text" name="ad_inferior" id="id_ad_inferior" value="{{ p.0.ad_inferior }}">     
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_ad_malfdentaria" class="label">Malformación dentaria:</label>
+								<label for="id_ad_malfdentaria" class="label acive">Malformación dentaria:</label>
 								<input type="text" name="ad_malfdentaria" id="id_ad_malfdentaria" value="{{ p.0.ad_malfdentaria }}">     
 							</div>
 						</td>
@@ -320,23 +320,23 @@
 					<tr>
 						<td colspan="3" style="text-align: left;">Tipo de mordida:
 							<div class="form-group">
-								<label for="id_tm_bisabis" class="label">Bis a bis:</label>
+								<label for="id_tm_bisabis" class="label acive">Bis a bis:</label>
 								<input type="text" name="tm_bisabis" id="id_tm_bisabis" value="{{ p.0.tm_bisabis }}">
 							</div>
 							<div class="form-group">
-								<label for="id_tm_mordcruzada" class="label">Mordida cruzada:</label>
+								<label for="id_tm_mordcruzada" class="label acive">Mordida cruzada:</label>
 								<input type="text" name="tm_mordcruzada" id="id_tm_mordcruzada" value="{{ p.0.tm_mordcruzada }}"> 
 							</div>
 							<div class="form-group">
-								<label for="id_tm_mordabierta" class="label">Mordida abierta:</label>
+								<label for="id_tm_mordabierta" class="label acive">Mordida abierta:</label>
 								<input type="text" name="tm_mordabierta" id="id_tm_mordabierta" value="{{ p.0.tm_mordabierta }}">
 							</div>
 							<div class="form-group">
-								<label for="id_tm_sbmvertical" class="label">Sobremordida vertical:</label>
+								<label for="id_tm_sbmvertical" class="label acive">Sobremordida vertical:</label>
 								<input type="text" name="tm_sbmvertical" id="id_tm_sbmvertical" value="{{ p.0.tm_sbmvertical }}"> 
 							</div>
 							<div class="form-group">
-								<label for="id_tm_sbmhorizontal" class="label">Sobremordida horizontal:</label>
+								<label for="id_tm_sbmhorizontal" class="label acive">Sobremordida horizontal:</label>
 								<input type="text" name="tm_sbmhorizontal" id="id_tm_sbmhorizontal" value="{{ p.0.tm_sbmhorizontal }}"> 
 							</div>
 						</td>        
@@ -522,13 +522,13 @@
 						<td colspan="2">Soplo:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_spajillas" class="label">Sopla con pajillas:</label>
+								<label for="id_spajillas" class="label acive">Sopla con pajillas:</label>
 								<input type="text" name="spajillas" id="id_spajillas" value="{{ p.0.spajillas }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_sucpajillas" class="label">Succiona con pajillas:</label>
+								<label for="id_sucpajillas" class="label acive">Succiona con pajillas:</label>
 								<input type="text" name="sucpajillas" id="id_sucpajillas" value="{{ p.0.sucpajillas }}">
 							</div>
 						</td>
@@ -537,7 +537,7 @@
 						<td colspan="2">Posibilidades Bucales:</td>
 						<td colspan="2">
 							<div class="form-group">
-								<label for="id_pb_tienebabeo" class="label">Tiene babeo:</label>
+								<label for="id_pb_tienebabeo" class="label acive">Tiene babeo:</label>
 								<input type="text" name="pb_tienebabeo" id="id_pb_tienebabeo" value="{{ p.0.pb_tienebabeo }}">
 							</div>
 						</td>
@@ -546,31 +546,31 @@
 						<td colspan="2">Habla:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_habla_normal" class="label">Normal</label>
+								<label for="id_habla_normal" class="label acive">Normal</label>
 								<input type="text" name="habla_normal" id="id_habla_normal" value="{{ p.0.habla_normal }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_mdeprisa" class="label">Habla muy deprisa</label>
+								<label for="id_habla_mdeprisa" class="label acive">Habla muy deprisa</label>
 								<input type="text" name="habla_mdeprisa" id="id_habla_mdeprisa" value="{{ p.0.habla_mdeprisa }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_mdespacio" class="label">Habla muy despacio</label>
+								<label for="id_habla_mdespacio" class="label acive">Habla muy despacio</label>
 								<input type="text" name="habla_mdespacio" id="id_habla_mdespacio" value="{{ p.0.habla_mdespacio }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_ssentido" class="label">Habla sin sentido/ininteligible</label>
+								<label for="id_habla_ssentido" class="label acive">Habla sin sentido/ininteligible</label>
 								<input type="text" name="habla_ssentido" id="id_habla_ssentido" value="{{ p.0.habla_ssentido }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_entienden" class="label">Sólo le entienden las personas cercanas a él</label>
+								<label for="id_habla_entienden" class="label acive">Sólo le entienden las personas cercanas a él</label>
 								<input type="text" name="habla_entienden" id="id_habla_entienden" value="{{ p.0.habla_entienden }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_gangosa" class="label">Tiene un habla gangosa</label>
+								<label for="id_habla_gangosa" class="label acive">Tiene un habla gangosa</label>
 								<input type="text" name="habla_gangosa" id="id_habla_gangosa" value="{{ p.0.habla_gangosa }}">
 							</div>
 							<div class="form-group">
-								<label for="id_habla_thablar" class="label">Se traba al hablar:</label>
+								<label for="id_habla_thablar" class="label acive">Se traba al hablar:</label>
 								<input type="text" name="habla_thablar" id="id_habla_thablar" value="{{ p.0.habla_thablar }}">
 							</div>
 						</td>
@@ -579,13 +579,13 @@
 						<td colspan="2">Voz:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_voz_intensidad" class="label">Intensidad:</label>
+								<label for="id_voz_intensidad" class="label acive">Intensidad:</label>
 								<input type="text" name="voz_intensidad" id="id_voz_intensidad" value="{{ p.0.voz_intensidad }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_voz_rasonancia" class="label">Resonancia:</label>
+								<label for="id_voz_rasonancia" class="label acive">Resonancia:</label>
 								<input type="text" name="voz_rasonancia" id="id_voz_rasonancia" value="{{ p.0.voz_rasonancia }}">
 							</div>
 						</td>
@@ -594,13 +594,13 @@
 						<td colspan="2">Audición:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_audicion_normal" class="label">Normal:</label>
+								<label for="id_audicion_normal" class="label acive">Normal:</label>
 								<input type="text" name="audicion_normal" id="id_audicion_normal" value="{{ p.0.audicion_normal }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_audicion_deficiente" class="label">Deficiente:</label>
+								<label for="id_audicion_deficiente" class="label acive">Deficiente:</label>
 								<input type="text" name="audicion_deficiente" id="id_audicion_deficiente" value="{{ p.0.audicion_deficiente }}">
 							</div>
 						</td>
@@ -609,13 +609,13 @@
 						<td colspan="2">Deglución:</td>
 						<td>
 							<div class="form-group">
-								<label for="id_deglucion_normal" class="label">Normal:</label>
+								<label for="id_deglucion_normal" class="label acive">Normal:</label>
 								<input type="text" name="audicion_normal" id="id_audicion_normal" value="{{ p.0.audicion_normal }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_deglucion_deficiente" class="label">Deficiente:</label>
+								<label for="id_deglucion_deficiente" class="label acive">Deficiente:</label>
 								<input type="text" name="deglucion_deficiente" id="id_deglucion_deficiente" value="{{ p.0.deglucion_deficiente }}">
 							</div>
 						</td>
@@ -643,13 +643,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_controlcabeza" class="label">Control cabeza:</label>
+								<label for="id_dp_controlcabeza" class="label acive">Control cabeza:</label>
 								<input type="text" name="dp_controlcabeza" id="id_dp_controlcabeza" class="form-control" value="{{ p.0.dp_controlcabeza }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_sonrisasocial" class="label">Sonrisa social:</label>
+								<label for="id_dp_sonrisasocial" class="label acive">Sonrisa social:</label>
 								<input type="text" name="dp_sonrisasocial" id="id_dp_sonrisasocial" class="form-control" value="{{ p.0.dp_sonrisasocial }}">
 							</div>
 						</td>
@@ -657,13 +657,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_sentarsesinapoyo" class="label">Sentarse sin apoyo:</label>
+								<label for="id_dp_sentarsesinapoyo" class="label acive">Sentarse sin apoyo:</label>
 								<input type="text" name="dp_sentarsesinapoyo" id="id_dp_sentarsesinapoyo" class="form-control" value="{{ p.0.dp_sentarsesinapoyo }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_gateo" class="label">Gateo:</label>
+								<label for="id_dp_gateo" class="label acive">Gateo:</label>
 								<input type="text" name="dp_gateo" id="id_dp_gateo" class="form-control" value="{{ p.0.dep_gateo }}">
 							</div>
 						</td>
@@ -671,13 +671,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_caminaconapoyo" class="label">Camina con apoyo:</label>
+								<label for="id_dp_caminaconapoyo" class="label acive">Camina con apoyo:</label>
 								<input type="text" name="dp_caminaconapoyo" id="id_dp_caminaconapoyo" class="form-control" value="{{ p.0.dp_caminaconapoyo }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_caminasinayuda" class="label">Camina sin ayuda:</label>
+								<label for="id_dp_caminasinayuda" class="label acive">Camina sin ayuda:</label>
 								<input type="text" name="dp_caminasinayuda" id="id_dp_caminasinayuda" class="form-control" value="{{ p.0.dp_caminasinayuda }}">
 							</div>
 						</td>
@@ -685,13 +685,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_controled" class="label">Control esfínteres diurno:</label>
+								<label for="id_dp_controled" class="label acive">Control esfínteres diurno:</label>
 								<input type="text" name="dp_controled" id="id_dp_controled" class="form-control" value="{{ p.0.dep_controled }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_controlen" class="label">Control esfínteres nocturno:</label>
+								<label for="id_dp_controlen" class="label acive">Control esfínteres nocturno:</label>
 								<input type="text" name="dp_controlen" id="id_dp_controlen" class="form-control" value="{{ p.0.dp_controlen }}">
 							</div>
 						</td>
@@ -699,13 +699,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_motricidadg" class="label">Motricidad gruesa:</label>
+								<label for="id_dp_motricidadg" class="label acive">Motricidad gruesa:</label>
 								<input type="text" name="dp_motricidadg" id="id_dp_motricidadg" class="form-control" value="{{ p.0.dp_motricidadg }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dp_motricidadf" class="label">Motricidad fina:</label>
+								<label for="id_dp_motricidadf" class="label acive">Motricidad fina:</label>
 								<input type="text" name="dp_motricidadf" id="id_dp_motricidadf" class="form-control" value="{{ p.0.dp_motricidadf }}">
 							</div>
 						</td>
@@ -720,13 +720,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_balbuceo" class="label">Balbuceo (0-6 meses)</label>
+								<label for="id_dl_balbuceo" class="label acive">Balbuceo (0-6 meses)</label>
 								<input type="text" name="dl_balbuceo" id="id_dl_balbuceo" class="form-control" value="{{ p.0.dl_balbuceo }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_pl" class="label">Protoconversaciones y laleo (6-12 meses)</label>
+								<label for="id_dl_pl" class="label acive">Protoconversaciones y laleo (6-12 meses)</label>
 								<input type="text" name="dl_pl" id="id_dl_pl" class="form-control" value="{{ p.0.dl_pl }}">
 							</div>
 						</td>
@@ -734,21 +734,21 @@
 					<tr>
 						<td style="text-align: left;">Uso de primeras palabras con sentido (12-18 meses)
 							<div class="form-group">
-								<label for="id_dl_edad1" class="label">Edad:</label>
+								<label for="id_dl_edad1" class="label acive">Edad:</label>
 								<input type="text" name="dl_edad1" id="id_dl_edad1" value="{{ p.0.dl_edad1 }}">
 							</div>
 							<div class="form-group">
-								<label for="id_dl_cuales1" class="label">Cuales:</label>
+								<label for="id_dl_cuales1" class="label acive">Cuales:</label>
 								<input type="text" name="dl_cuales1" id="id_dl_cuales1" value="{{ p.0.dl_cuales1 }}"> 
 							</div>
 						</td>
 						<td style="text-align: left;">Uso de onomatopeyas, vocabulario de 50 palabras (18-24 meses)
 							<div class="form-group">
-								<label for="id_dl_edad2" class="label">Edad:</label>
+								<label for="id_dl_edad2" class="label acive">Edad:</label>
 								<input type="text" name="dl_edad2" id="id_dl_edad2" value="{{ p.0.dl_edad2 }}">
 							</div>
 							<div class="form-group">
-								<label for="id_dl_cuales2" class="label">Cuales:</label>
+								<label for="id_dl_cuales2" class="label acive">Cuales:</label>
 								<input type="text" name="dl_cuales2" id="id_dl_cuales2" value="{{ p.0.dl_cuales2 }}"> 
 							</div>
 						</td>
@@ -756,21 +756,21 @@
 					<tr>
 						<td style="text-align: left;">Uso de oraciones simples (2-3 años)
 							<div class="form-group">
-								<label for="id_dl_edad3" class="label">Edad:</label>
+								<label for="id_dl_edad3" class="label acive">Edad:</label>
 								<input type="text" name="dl_edad3" id="id_dl_edad3" value="{{ p.0.dl_edad3 }}">
 							</div>
 							<div class="form-group">
-								<label for="id_dl_ejemplo1" class="label">Ejemplo:</label>
+								<label for="id_dl_ejemplo1" class="label acive">Ejemplo:</label>
 								<input type="text" name="dl_ejemplo1" id="id_dl_ejemplo1" value="{{ p.0.dl_ejemplo1 }}"> 
 							</div>
 						</td>
 						<td style="text-align: left;">Uso de oraciones complejas (4-5 años)
 							<div class="form-group">
-								<label for="id_dl_edad4" class="label">Edad:</label>
+								<label for="id_dl_edad4" class="label acive">Edad:</label>
 								<input type="text" name="dl_edad4" id="id_dl_edad4" value="{{ p.0.dl_edad4 }}">
 							</div>
 							<div class="form-group">
-								<label for="id_dl_ejemplo2" class="label">Ejemplo:</label>
+								<label for="id_dl_ejemplo2" class="label acive">Ejemplo:</label>
 								<input type="text" name="dl_ejemplo2" id="id_dl_ejemplo2" value="{{ p.0.dl_ejemplo2 }}"> 
 							</div>
 						</td>
@@ -778,13 +778,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_lenguajeea" class="label">Lenguaje expresivo actual:</label>
+								<label for="id_dl_lenguajeea" class="label acive">Lenguaje expresivo actual:</label>
 								<input type="text" name="dl_lenguajeea" id="id_dl_lenguajeea" class="form-control" value="{{ p.0.dl_lenguajeea }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_lenguajeca" class="label">Lenguaje comprensivo actual:</label>
+								<label for="id_dl_lenguajeca" class="label acive">Lenguaje comprensivo actual:</label>
 								<input type="text" name="dl_lenguajeca" id="id_dl_lenguajeca" class="form-control" value="{{ p.0.dl_lenguajeca }}">
 							</div>
 						</td>
@@ -792,13 +792,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_pregunta1" class="label">¿Cómo ayudan al paciente frente a sus dificultades de lenguaje, habla y comunicación?</label>
+								<label for="id_dl_pregunta1" class="label acive">¿Cómo ayudan al paciente frente a sus dificultades de lenguaje, habla y comunicación?</label>
 								<input type="text" name="dl_pregunta1" id="id_dl_pregunta1" class="form-control" value="{{ p.0.dl_pregunta1 }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_pregunta2" class="label">¿Qué hace el paciente frente a sus dificultades?</label>
+								<label for="id_dl_pregunta2" class="label acive">¿Qué hace el paciente frente a sus dificultades?</label>
 								<input type="text" name="dl_pregunta2" id="id_dl_pregunta2" class="form-control" value="{{ p.0.dl_pregunta2 }}">
 							</div>
 						</td>
@@ -806,13 +806,13 @@
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_pregunta3" class="label">¿Cómo se relaciona el paciente con los demás y con los diferentes lugares?</label>
+								<label for="id_dl_pregunta3" class="label acive">¿Cómo se relaciona el paciente con los demás y con los diferentes lugares?</label>
 								<input type="text" name="dl_pregunta3" id="id_dl_pregunta3" class="form-control" value="{{ p.0.dl_pregunta3 }}">
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
-								<label for="id_dl_pregunta4" class="label">¿Presenta conducta disruptiva?</label>
+								<label for="id_dl_pregunta4" class="label acive">¿Presenta conducta disruptiva?</label>
 								<input type="text" name="dl_pregunta4" id="id_dl_pregunta4" class="form-control" value="{{ p.0.dl_pregunta4 }}">
 							</div>
 						</td>
@@ -820,7 +820,7 @@
 					<tr>
 						<td colspan="2">
 							<div class="form-group">
-								<label for="id_dl_pregunta5" class="label">¿Presenta interes restrictivos o estereotipados?</label>
+								<label for="id_dl_pregunta5" class="label acive">¿Presenta interes restrictivos o estereotipados?</label>
 								<input type="text" name="dl_pregunta5" id="id_dl_pregunta5" class="form-control" value="{{ p.0.dl_pregunta5 }}">
 							</div>
 						</td>
@@ -3936,7 +3936,85 @@
 	</div> 
 			{% endfor %}
 </form>
-		{% else %}
-		<span>Ocurrió un error 505</span>
-		{% endif %}
-		{% endblock %}
+{% else %}
+<span>Ocurrió un error 505</span>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+<script src="js_libs/select2/js/select2.min.js"></script>
+<script type="text/javascript">
+    $activo = $("input")
+    $activo.addClass("active")
+    $label = $("label")
+    $label.addClass("active")
+
+    cancelar_edit  = document.getElementById('btn_cancelar')
+    cancelar_edit.addEventListener('click', function(e){
+        e.preventDefault();
+
+        window.location="http://localhost/Formularios-Clinica/";
+    });
+    /*
+    *=================================== INICIAR SELECT2 ===================================
+    */
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    /*
+    *=================================== ENVIAR FORMULARIO ===================================
+    */
+    $(function(){
+        //Validar Formulario
+            $('#evlenguaje_update').validate({
+                submitHandler: function(){
+                    var elements = document.querySelectorAll( "input, select, textarea.form-control" )
+                    var obj = {}
+                    var indexado = []
+                    var nivel3 = {}
+
+                    for( var i = 0; i < elements.length; ++i ) {
+                        var name = elements[i].name
+                        var value = elements[i].val()
+
+                        if( name ) {
+                            obj[ name ] = value
+                        }
+                    }
+
+                    indexado[0] = obj
+                    nivel3[0] = indexado
+
+                    //ARRAY A JSON
+                    var toJSON = JSON.stringify(nivel3)
+
+                    $.ajax({
+                        type: "POST",
+                        url: "insertar_ev_articulacion.php",
+                        data: {
+                            'action': "update",
+                            'paciente': $('#id_nombre').val(),
+                            'data': toJSON
+                        },
+                        dataType: "json",
+                        success: function() {
+                            //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                            // do what ever you want with the server response
+                            window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                            $('#evlenguaje_update').reset();
+                        },
+                        error: function() {
+                            window.location="https://localhost/Formularios-Clinica/ev_articulacion_list.php";
+                            $('#evlenguaje_update').reset();
+                        }
+                    });
+
+                    return false;
+                },
+                errorPlacement: function(error, element) {
+                    error.appendTo(element.parent().append());
+                }
+            });
+    })
+</script>
+{% endblock %}
