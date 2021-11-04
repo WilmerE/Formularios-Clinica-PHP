@@ -3358,7 +3358,7 @@
             </div>
         </div>
         <div class="caja-footer">
-            <a class="btn btn-primary" id="btn_cancelar">Cancelar</a>
+            <a class="btn btn-link" id="btn_cancelar">Cancelar</a>
             <button type="submit" class="btn btn-primary" id="btn_pragmatico">Guardar</button>
         </div>
     </div>
@@ -3376,6 +3376,13 @@
     $activo.addClass("active")
     $label = $("label")
     $label.addClass("active")
+
+    var cancelar_form  = document.getElementById('btn_cancelar');
+    cancelar_form.addEventListener('click', function(e){
+        e.preventDefault();
+
+        window.location="http://localhost/Formularios-Clinica/ev_articulacion_list.php";
+    });
     
     /*
     *=================================== INICIAR SELECT2 ===================================

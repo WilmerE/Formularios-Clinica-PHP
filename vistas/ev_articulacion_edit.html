@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} | Evaluación del lenguaje {% endblock %}
+{% block title %} | Evaluación de articulación {% endblock %}
 
 {% block css %}
 <!-- SELECT2 -->
@@ -3336,595 +3336,551 @@
 					</tr>
 				</thead>
 				<tbody>
-							<tr>
-								<td colspan="3">Se mostrarán varias imágenes de diferente naturaleza, el objetivo es reconocer y nombrar el objeto de cada imagen mostrada</td>
-							</tr>
-							<tr>
-								<td colspan="3" align="center">ALIMENTOS</td>
-							</tr>
-							<tr>
-								<td>Item:</td>
-								<td>Comprensión:</td>
-								<td>Expresión:</td>
-							</tr>
-							<tr>
-								<td>Manzana</td>
-								<td>
-									<div class="form-group">
-										<label for="id_mzna_espacio1"></label>
-										<input type="text" name="mzna_espacio1" id="id_mzna_espacio1" value="{{ p.0.mzna_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_mzna_espacio2"></label>
-										<input type="text" name="mzna_espacio2" id="id_mzna_espacio2" value="{{ p.0.mzna_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Plátano</td>
-								<td>
-									<div class="form-group">
-										<label for="id_plat_espacio1"></label>
-										<input type="text" name="plat_espacio1" id="id_plat_espacio1" value="{{ p.0.plat_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_plat_espacio2"></label>
-										<input type="text" name="plat_espacio2" id="id_plat_espacio2" value="{{ p.0.plat_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Pan</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pan_espacio1"></label>
-										<input type="text" name="pan_espacio1" id="id_pan_espacio1" value="{{ p.0.pan_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pan_espacio2"></label>
-										<input type="text" name="pan_espacio2" id="id_pan_espacio2" value="{{ p.0.pan_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Cebolla</td>
-								<td>
-									<div class="form-group">
-										<label for="id_ceb_espacio1"></label>
-										<input type="text" name="ceb_espacio1" id="id_ceb_espacio1" value="{{ p.0.cb_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_ceb_espacio2"></label>
-										<input type="text" name="ceb_espacio2" id="id_ceb_espacio2" value="{{ p.0.ceb_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Espaguetis</td>
-								<td>
-									<div class="form-group">
-										<label for="id_espag_espacio1"></label>
-										<input type="text" name="espag_espacio1" id="id_espag_espacio1" value="{{ p.0.espag_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_espag_espacio2"></label>
-										<input type="text" name="espag_espacio2" id="id_espag_espacio2" value="{{ p.0.espag_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Pizza</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pizza_espacio1"></label>
-										<input type="text" name="pizza_espacio1" id="id_pizza_espacio1" value="{{ p.0.pizza_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pizza_espacio2"></label>
-										<input type="text" name="pizza_espacio2" id="id_pizza_espacio2" value="{{ p.0.pizza_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Sandía</td>
-								<td>
-									<div class="form-group">
-										<label for="id_sand_espacio1"></label>
-										<input type="text" name="sand_espacio1" id="id_sand_espacio1" value="{{ p.0.sand_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_sand_espacio2"></label>
-										<input type="text" name="sand_espacio2" id="id_sand_espacio2" value="{{ p.0.sand_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Hamburguesa</td>
-								<td>
-									<div class="form-group">
-										<label for="id_hmg_espacio1"></label>
-										<input type="text" name="hmg_espacio1" id="id_hmg_espacio1" value="{{ p.0.hmg_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_hmg_espacio2"></label>
-										<input type="text" name="hmg_espacio2" id="id_hmg_espacio2" value="{{ p.0.hmg_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3" align="center">OBJETOS</td>
-							</tr>
-							<tr>
-								<td>Item:</td>
-								<td>Comprensión:</tds>
-								<td>Expresión:</td>
-							</tr>
-							<tr>
-								<td>Lámpara</td>
-								<td>
-									<div class="form-group">
-										<label for="id_lamp_espacio1"></label>
-										<input type="text" name="lamp_espacio1" id="id_lamp_espacio1" value="{{ p.0.lamp_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_lamp_espacio2"></label>
-										<input type="text" name="lamp_espacio2" id="id_lamp_espacio2" value="{{ p.0.lamp_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Sillón</td>
-								<td>
-									<div class="form-group">
-										<label for="id_sillon_espacio1"></label>
-										<input type="text" name="sillon_espacio1" id="id_sillon_espacio1" value="{{ p.0.sillon_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_sillon_espacio2"></label>
-										<input type="text" name="sillon_espacio2" id="id_sillon_espacio2" value="{{ p.0.sillon_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Alfombra</td>
-								<td>
-									<div class="form-group">
-										<label for="id_alf_espacio1"></label>
-										<input type="text" name="alf_espacio1" id="id_alf_espacio1" value="{{ p.0.alf_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_alf_espacio2"></label>
-										<input type="text" name="alf_espacio2" id="id_alf_espacio2" value="{{ p.0.alf_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Estufa</td>
-								<td>
-									<div class="form-group">
-										<label for="id_est_espacio1"></label>
-										<input type="text" name="est_espacio1" id="id_est_espacio1" value="{{ p.0.est_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_est_espacio2"></label>
-										<input type="text" name="est_espacio2" id="id_est_espacio2" value="{{ p.0.est_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Computadora</td>
-								<td>
-									<div class="form-group">
-										<label for="id_comp_espacio1"></label>
-										<input type="text" name="comp_espacio1" id="id_comp_espacio1" value="{{ p.0.comp_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_comp_espacio2"></label>
-										<input type="text" name="comp_espacio2" id="id_comp_espacio2" value="{{ p.0.comp_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Mesa</td>
-								<td>
-									<div class="form-group">
-										<label for="id_mesa_espacio1"></label>
-										<input type="text" name="mesa_espacio1" id="id_mesa_espacio1" value="{{ p.0.mesa_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_mesa_espacio2"></label>
-										<input type="text" name="mesa_espacio2" id="id_mesa_espacio2" value="{{ p.0.mesa_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Silla</td>
-								<td>
-									<div class="form-group">
-										<label for="id_silla_espacio1"></label>
-										<input type="text" name="silla_espacio1" id="id_silla_espacio1" value="{{ p.0.silla_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_silla_espacio2"></label>
-										<input type="text" name="silla_espacio2" id="id_silla_espacio2" value="{{ p.0.silla_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Espejo</td>
-								<td>
-									<div class="form-group">
-										<label for="id_spj_espacio1"></label>
-										<input type="text" name="spj_espacio1" id="id_spj_espacio1" value="{{ p.0.spj_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_spj_espacio2"></label>
-										<input type="text" name="spj_espacio2" id="id_spj_espacio2" value="{{ p.0.spj_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3" align="center">ANIMALES</td>
-							</tr>
-							<tr>
-								<td>Item:</td>
-								<td>Comprensión:</td>
-								<td>Expresión:</td>
-							</tr>
-							<tr>
-								<td>León</td>
-								<td>
-									<div class="form-group">
-										<label for="id_leon_espacio1"></label>
-										<input type="text" name="leon_espacio1" id="id_leon_espacio1" value="{{ p.0.leon_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_leon_espacio2"></label>
-										<input type="text" name="leon_espacio2" id="id_leon_espacio2" value="{{ p.0.leon_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Perro</td>
-								<td>
-									<div class="form-group">
-										<label for="id_perro_espacio1"></label>
-										<input type="text" name="perro_espacio1" id="id_perro_espacio1" value="{{ p.0.perro_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_perro_espacio2"></label>
-										<input type="text" name="perro_espacio2" id="id_perro_espacio2" value="{{ p.0.perro_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Cerdo</td>
-								<td>
-									<div class="form-group">
-										<label for="id_cer_espacio1"></label>
-										<input type="text" name="cer_espacio1" id="id_cer_espacio1" value="{{ p.0.cer_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_cer_espacio2"></label>
-										<input type="text" name="cer_espacio2" id="id_cer_espacio2" value="{{ p.0.cer_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Gallina</td>
-								<td>
-									<div class="form-group">
-										<label for="id_glln_espacio1"></label>
-										<input type="text" name="glln_espacio1" id="id_glln_espacio1" value="{{ p.0.glln_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_glln_espacio2"></label>
-										<input type="text" name="glln_espacio2" id="id_glln_espacio2" value="{{ p.0.glln_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Ratón</td>
-								<td>
-									<div class="form-group">
-										<label for="id_rtn_espacio1"></label>
-										<input type="text" name="rtn_espacio1" id="id_rtn_espacio1" value="{{ p.0.rtn_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_rtn_espacio2"></label>
-										<input type="text" name="rtn_espacio2" id="id_rtn_espacio2" value="{{ p.0.rtn_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Cocodrilo</td>
-								<td>
-									<div class="form-group">
-										<label for="id_ccdl_espacio1"></label>
-										<input type="text" name="ccdl_espacio1" id="id_ccdl_espacio1" value="{{ p.0.ccdl_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_ccdl_espacio2"></label>
-										<input type="text" name="ccdl_espacio2" id="id_ccdl_espacio2" value="{{ p.0.ccdl_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Pato</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pt_espacio1"></label>
-										<input type="text" name="pt_espacio1" id="id_pt_espacio1" value="{{ p.0.pt_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_pt_espacio2"></label>
-										<input type="text" name="pt_espacio2" id="id_pt_espacio2" value="{{ p.0.pt_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Gato</td>
-								<td>
-									<div class="form-group">
-										<label for="id_gt_espacio1"></label>
-										<input type="text" name="gt_espacio1" id="id_gt_espacio1" value="{{ p.0.gt_espacio1 }}"> 
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<label for="id_gt_espacio2"></label>
-										<input type="text" name="gt_espacio2" id="id_gt_espacio2" value="{{ p.0.gt_espacio2 }}"> 
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Observaciones:</td>
-								<td colspan="2">
-									<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="caja-body">
-					<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-                                <thead>
-                                    <tr>
-                                        <td colspan="3"><strong>G. IMÁGENES PARA LA EVALUACIÓN DEL EJERCICIO DE DENOMINACIÓN</strong></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="img/02.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/03.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/04.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/05.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/06.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/07.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/08.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/09.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/10.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/11.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/12.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/13.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/14.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/15.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/16.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/17.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/18.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/19.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/20.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/21.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/22.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/23.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/24.png">
-                                        </td>
-                                        <td>
-                                            <img src="img/25.png">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-				</div>
-				<div class="caja-body">
-					<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
-						<thead>
-							<tr>
-								<td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
-							</tr>
-							<tr>
-								<td colspan="3">Rellenar el círculo que complete la oración correcta.</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><img src="img/26.png"></td>
-								<td colspan="2" style="text-align: left;">
-									<div class="form-group">
-										<label for="prr_espacio1">La muñeca está sentada en la:</label>
-										<br>
-										<select class="select2" id="id_prr_espacio1" name="prr_espacio1">
-											<option>{{ p.0.prr_espacio1 }}</option>
-											<option value="Mesa">Mesa</option>
-											<option value="Silla">Silla</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="img/27.png"></td>
-								<td colspan="2" style="text-align: left;">
-									<div class="form-group">
-										<label for="prr_espacio2">La señorita tiene el pelo de color:</label>
-										<br>
-										<select class="select2" id="id_prr_espacio2" name="prr_espacio2">
-											<option>{{ p.0.prr_espacio2 }}</option>
-											<option value="Rojo">Rojo</option>
-											<option value="Negro">Negro</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="img/28.png"></td>
-								<td colspan="2" style="text-align: left;">
-									<div class="form-group">
-										<label for="prr_espacio3">El señor oficial de policía está:</label>
-										<br>
-										<select class="select2" id="id_prr_espacio3" name="prr_espacio3">
-											<option>{{ p.0.prr_espacio3 }}</option>
-											<option value="Corriendo">Corriendo</option>
-											<option value="Saludando">Saludando</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="img/29.png"></td>
-								<td colspan="2" style="text-align: left;">
-									<div class="form-group">
-										<label for="prr_espacio4">Este gatito sostiene un:</label>
-										<br>
-										<select class="select2" id="id_prr_espacio4" name="prr_espacio4">
-											<option>{{ p.0.prr_espacio4 }}</option>
-											<option value="Bate de beisbol">Bate de beisbol</option>
-											<option value="Portafolio">Portafolio</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="img/30.png"></td>
-								<td colspan="2" style="text-align: left;">
-									<div class="form-group">
-										<label for="prr_espacio5">El astronauta tiene un maletín en la mano:</label>
-										<br>
-										<select class="select2" id="id_prr_espacio5" name="prr_espacio5">
-											<option>{{ p.0.prr_espacio5 }}</option>
-											<option value="Derecha">Derecha</option>
-											<option value="Izquierda">Izquierda</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>Observaciones:</td>
-								<td>
-									<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div> 
-			{% endfor %}
+					<tr>
+						<td colspan="3">Se mostrarán varias imágenes de diferente naturaleza, el objetivo es reconocer y nombrar el objeto de cada imagen mostrada</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center">ALIMENTOS</td>
+					</tr>
+					<tr>
+						<td>Item:</td>
+						<td>Comprensión:</td>
+						<td>Expresión:</td>
+					</tr>
+					<tr>
+						<td>Manzana</td>
+						<td>
+							<div class="form-group">
+								<label for="id_mzna_espacio1"></label>
+								<input type="text" name="mzna_espacio1" id="id_mzna_espacio1" value="{{ p.0.mzna_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_mzna_espacio2"></label>
+								<input type="text" name="mzna_espacio2" id="id_mzna_espacio2" value="{{ p.0.mzna_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Plátano</td>
+						<td>
+							<div class="form-group">
+								<label for="id_plat_espacio1"></label>
+								<input type="text" name="plat_espacio1" id="id_plat_espacio1" value="{{ p.0.plat_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_plat_espacio2"></label>
+								<input type="text" name="plat_espacio2" id="id_plat_espacio2" value="{{ p.0.plat_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Pan</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pan_espacio1"></label>
+								<input type="text" name="pan_espacio1" id="id_pan_espacio1" value="{{ p.0.pan_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pan_espacio2"></label>
+								<input type="text" name="pan_espacio2" id="id_pan_espacio2" value="{{ p.0.pan_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Cebolla</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ceb_espacio1"></label>
+								<input type="text" name="ceb_espacio1" id="id_ceb_espacio1" value="{{ p.0.cb_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ceb_espacio2"></label>
+								<input type="text" name="ceb_espacio2" id="id_ceb_espacio2" value="{{ p.0.ceb_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Espaguetis</td>
+						<td>
+							<div class="form-group">
+								<label for="id_espag_espacio1"></label>
+								<input type="text" name="espag_espacio1" id="id_espag_espacio1" value="{{ p.0.espag_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_espag_espacio2"></label>
+								<input type="text" name="espag_espacio2" id="id_espag_espacio2" value="{{ p.0.espag_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Pizza</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pizza_espacio1"></label>
+								<input type="text" name="pizza_espacio1" id="id_pizza_espacio1" value="{{ p.0.pizza_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pizza_espacio2"></label>
+								<input type="text" name="pizza_espacio2" id="id_pizza_espacio2" value="{{ p.0.pizza_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Sandía</td>
+						<td>
+							<div class="form-group">
+								<label for="id_sand_espacio1"></label>
+								<input type="text" name="sand_espacio1" id="id_sand_espacio1" value="{{ p.0.sand_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_sand_espacio2"></label>
+								<input type="text" name="sand_espacio2" id="id_sand_espacio2" value="{{ p.0.sand_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Hamburguesa</td>
+						<td>
+							<div class="form-group">
+								<label for="id_hmg_espacio1"></label>
+								<input type="text" name="hmg_espacio1" id="id_hmg_espacio1" value="{{ p.0.hmg_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_hmg_espacio2"></label>
+								<input type="text" name="hmg_espacio2" id="id_hmg_espacio2" value="{{ p.0.hmg_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center">OBJETOS</td>
+					</tr>
+					<tr>
+						<td>Item:</td>
+						<td>Comprensión:</tds>
+						<td>Expresión:</td>
+					</tr>
+					<tr>
+						<td>Lámpara</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lamp_espacio1"></label>
+								<input type="text" name="lamp_espacio1" id="id_lamp_espacio1" value="{{ p.0.lamp_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_lamp_espacio2"></label>
+								<input type="text" name="lamp_espacio2" id="id_lamp_espacio2" value="{{ p.0.lamp_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Sillón</td>
+						<td>
+							<div class="form-group">
+								<label for="id_sillon_espacio1"></label>
+								<input type="text" name="sillon_espacio1" id="id_sillon_espacio1" value="{{ p.0.sillon_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_sillon_espacio2"></label>
+								<input type="text" name="sillon_espacio2" id="id_sillon_espacio2" value="{{ p.0.sillon_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Alfombra</td>
+						<td>
+							<div class="form-group">
+								<label for="id_alf_espacio1"></label>
+								<input type="text" name="alf_espacio1" id="id_alf_espacio1" value="{{ p.0.alf_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_alf_espacio2"></label>
+								<input type="text" name="alf_espacio2" id="id_alf_espacio2" value="{{ p.0.alf_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Estufa</td>
+						<td>
+							<div class="form-group">
+								<label for="id_est_espacio1"></label>
+								<input type="text" name="est_espacio1" id="id_est_espacio1" value="{{ p.0.est_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_est_espacio2"></label>
+								<input type="text" name="est_espacio2" id="id_est_espacio2" value="{{ p.0.est_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Computadora</td>
+						<td>
+							<div class="form-group">
+								<label for="id_comp_espacio1"></label>
+								<input type="text" name="comp_espacio1" id="id_comp_espacio1" value="{{ p.0.comp_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_comp_espacio2"></label>
+								<input type="text" name="comp_espacio2" id="id_comp_espacio2" value="{{ p.0.comp_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Mesa</td>
+						<td>
+							<div class="form-group">
+								<label for="id_mesa_espacio1"></label>
+								<input type="text" name="mesa_espacio1" id="id_mesa_espacio1" value="{{ p.0.mesa_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_mesa_espacio2"></label>
+								<input type="text" name="mesa_espacio2" id="id_mesa_espacio2" value="{{ p.0.mesa_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Silla</td>
+						<td>
+							<div class="form-group">
+								<label for="id_silla_espacio1"></label>
+								<input type="text" name="silla_espacio1" id="id_silla_espacio1" value="{{ p.0.silla_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_silla_espacio2"></label>
+								<input type="text" name="silla_espacio2" id="id_silla_espacio2" value="{{ p.0.silla_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Espejo</td>
+						<td>
+							<div class="form-group">
+								<label for="id_spj_espacio1"></label>
+								<input type="text" name="spj_espacio1" id="id_spj_espacio1" value="{{ p.0.spj_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_spj_espacio2"></label>
+								<input type="text" name="spj_espacio2" id="id_spj_espacio2" value="{{ p.0.spj_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center">ANIMALES</td>
+					</tr>
+					<tr>
+						<td>Item:</td>
+						<td>Comprensión:</td>
+						<td>Expresión:</td>
+					</tr>
+					<tr>
+						<td>León</td>
+						<td>
+							<div class="form-group">
+								<label for="id_leon_espacio1"></label>
+								<input type="text" name="leon_espacio1" id="id_leon_espacio1" value="{{ p.0.leon_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_leon_espacio2"></label>
+								<input type="text" name="leon_espacio2" id="id_leon_espacio2" value="{{ p.0.leon_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Perro</td>
+						<td>
+							<div class="form-group">
+								<label for="id_perro_espacio1"></label>
+								<input type="text" name="perro_espacio1" id="id_perro_espacio1" value="{{ p.0.perro_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_perro_espacio2"></label>
+								<input type="text" name="perro_espacio2" id="id_perro_espacio2" value="{{ p.0.perro_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Cerdo</td>
+						<td>
+							<div class="form-group">
+								<label for="id_cer_espacio1"></label>
+								<input type="text" name="cer_espacio1" id="id_cer_espacio1" value="{{ p.0.cer_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_cer_espacio2"></label>
+								<input type="text" name="cer_espacio2" id="id_cer_espacio2" value="{{ p.0.cer_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Gallina</td>
+						<td>
+							<div class="form-group">
+								<label for="id_glln_espacio1"></label>
+								<input type="text" name="glln_espacio1" id="id_glln_espacio1" value="{{ p.0.glln_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_glln_espacio2"></label>
+								<input type="text" name="glln_espacio2" id="id_glln_espacio2" value="{{ p.0.glln_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Ratón</td>
+						<td>
+							<div class="form-group">
+								<label for="id_rtn_espacio1"></label>
+								<input type="text" name="rtn_espacio1" id="id_rtn_espacio1" value="{{ p.0.rtn_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_rtn_espacio2"></label>
+								<input type="text" name="rtn_espacio2" id="id_rtn_espacio2" value="{{ p.0.rtn_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Cocodrilo</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ccdl_espacio1"></label>
+								<input type="text" name="ccdl_espacio1" id="id_ccdl_espacio1" value="{{ p.0.ccdl_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_ccdl_espacio2"></label>
+								<input type="text" name="ccdl_espacio2" id="id_ccdl_espacio2" value="{{ p.0.ccdl_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Pato</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pt_espacio1"></label>
+								<input type="text" name="pt_espacio1" id="id_pt_espacio1" value="{{ p.0.pt_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_pt_espacio2"></label>
+								<input type="text" name="pt_espacio2" id="id_pt_espacio2" value="{{ p.0.pt_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Gato</td>
+						<td>
+							<div class="form-group">
+								<label for="id_gt_espacio1"></label>
+								<input type="text" name="gt_espacio1" id="id_gt_espacio1" value="{{ p.0.gt_espacio1 }}"> 
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+								<label for="id_gt_espacio2"></label>
+								<input type="text" name="gt_espacio2" id="id_gt_espacio2" value="{{ p.0.gt_espacio2 }}"> 
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Observaciones:</td>
+						<td colspan="2">
+							<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+                <thead>
+                    <tr>
+                       <td colspan="3"><strong>G. IMÁGENES PARA LA EVALUACIÓN DEL EJERCICIO DE DENOMINACIÓN</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="img/02.png"></td>
+                        <td><img src="img/03.png"></td>
+                        <td><img src="img/04.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/05.png"></td>
+                    	<td><img src="img/06.png"></td>
+                    	<td><img src="img/07.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/08.png"></td>
+                    	<td><img src="img/09.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/10.png"></td>
+                    	<td><img src="img/11.png"></td>
+                    	<td><img src="img/12.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/13.png"></td>
+                    	<td><img src="img/14.png"></td>
+                    	<td><img src="img/15.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/16.png"></td>
+                    	<td><img src="img/17.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/18.png"></td>
+                        <td><img src="img/19.png"></td>
+                        <td><img src="img/20.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/21.png"></td>
+                    	<td><img src="img/22.png"></td>
+                    	<td><img src="img/23.png"></td>
+                    </tr>
+                    <tr>
+                    	<td><img src="img/24.png"></td>
+                    	<td><img src="img/25.png"></td>
+                    </tr>
+                </tbody>
+            </table>
+		</div>
+		<div class="caja-body">
+			<table border="1" cellspacing="0" cellpadding="3" bordercolor="#e7e7e7">
+				<thead>
+					<tr>
+						<td colspan="3"><strong>H. PROCESO DE RECONOCIMIENTO Y RELACIÓN</strong></td>
+					</tr>
+					<tr>
+						<td colspan="3">Rellenar el círculo que complete la oración correcta.</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><img src="img/26.png"></td>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="prr_espacio1">La muñeca está sentada en la:</label>
+								<br>
+								<select class="select2" id="id_prr_espacio1" name="prr_espacio1">
+									<option>{{ p.0.prr_espacio1 }}</option>
+									<option value="Mesa">Mesa</option>
+									<option value="Silla">Silla</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><img src="img/27.png"></td>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="prr_espacio2">La señorita tiene el pelo de color:</label>
+								<br>
+								<select class="select2" id="id_prr_espacio2" name="prr_espacio2">
+									<option>{{ p.0.prr_espacio2 }}</option>
+									<option value="Rojo">Rojo</option>
+									<option value="Negro">Negro</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><img src="img/28.png"></td>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="prr_espacio3">El señor oficial de policía está:</label>
+								<br>
+								<select class="select2" id="id_prr_espacio3" name="prr_espacio3">
+									<option>{{ p.0.prr_espacio3 }}</option>
+									<option value="Corriendo">Corriendo</option>
+									<option value="Saludando">Saludando</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><img src="img/29.png"></td>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="prr_espacio4">Este gatito sostiene un:</label>
+								<br>
+								<select class="select2" id="id_prr_espacio4" name="prr_espacio4">
+									<option>{{ p.0.prr_espacio4 }}</option>
+									<option value="Bate de beisbol">Bate de beisbol</option>
+									<option value="Portafolio">Portafolio</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><img src="img/30.png"></td>
+						<td colspan="2" style="text-align: left;">
+							<div class="form-group">
+								<label for="prr_espacio5">El astronauta tiene un maletín en la mano:</label>
+								<br>
+								<select class="select2" id="id_prr_espacio5" name="prr_espacio5">
+									<option>{{ p.0.prr_espacio5 }}</option>
+									<option value="Derecha">Derecha</option>
+									<option value="Izquierda">Izquierda</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>Observaciones:</td>
+						<td>
+							<textarea name="evfonologica" rows="10" cols="50">{{ p.0.evfonologica }}</textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="caja-footer">
+            <a class="btn btn-link" id="btn_cancelar">Cancelar</a>
+            <button type="submit" class="btn btn-primary" id="btn_pragmatico">Guardar</button>
+        </div>
+	</div> 
+	{% endfor %}
 </form>
 {% else %}
 <span>Ocurrió un error 505</span>
@@ -3939,6 +3895,13 @@
     $label = $("label")
     $label.addClass("active")
 
+    var cancelar_form  = document.getElementById('btn_cancelar');
+    cancelar_form.addEventListener('click', function(e){
+		e.preventDefault();
+
+		window.location="http://localhost/Formularios-Clinica/ev_articulacion_list.php";
+	});
+
     /*
     *=================================== INICIAR SELECT2 ===================================
     */
@@ -3950,7 +3913,7 @@
     */
     $(function(){
         //Validar Formulario
-            $('#evlenguaje_update').validate({
+            $('#evarticulacion_update').validate({
                 submitHandler: function(){
                     var elements = document.querySelectorAll( "input, select, textarea.form-control" )
                     var obj = {}
