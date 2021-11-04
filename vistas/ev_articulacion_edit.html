@@ -9,7 +9,7 @@
 
 {% block content %}
 {% if resultado %}
-<form action="." method="post" name="evlenguaje_update" id="evlenguaje_update" enctype="multipart/form-data">
+<form action="." method="post" name="evarticulacion_update" id="evarticulacion_update" enctype="multipart/form-data">
 	{% for p in resultado %}
 	<div class="caja">
 		<div class="caja-header">
@@ -3939,12 +3939,6 @@
     $label = $("label")
     $label.addClass("active")
 
-    cancelar_edit  = document.getElementById('btn_cancelar')
-    cancelar_edit.addEventListener('click', function(e){
-        e.preventDefault();
-
-        window.location="http://localhost/Formularios-Clinica/";
-    });
     /*
     *=================================== INICIAR SELECT2 ===================================
     */
