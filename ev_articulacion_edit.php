@@ -20,7 +20,7 @@ $data = array();
 while( $row = mysqli_fetch_array($resultado) ){
 	$data[] = array(
 		'id' => $row["id"],
-		'idpaciene' => $row["idpaciente"],
+		'idpaciente' => $row["idpaciente"],
 		'datos' => $row["data"],
 	);
 }
@@ -39,6 +39,7 @@ if(!empty($_SESSION)){
 	$twig->display('ev_articulacion_edit.html',array(
 		"resultado" => json_decode($data[0]["datos"], true),
 		"id_form" => $data[0]["id"],
+		"id_paciente" => $data[0]["idpaciente"],
 		"usuarios" => $resultado_user,
 	));
 }

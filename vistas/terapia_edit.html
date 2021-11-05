@@ -270,7 +270,7 @@
 
 				//Usamos condiciones para saber que acción tomar según el botón
 				if(mostrar == 'cancelar_form'){
-					window.location="http://localhost/formularios_historia/";
+					window.location="https://localhost/Formularios-Clinica/terapia_list.php";
 				}
 				else if(mostrar == 'btn-guardar'){
 					// Serializamos formularios
@@ -284,16 +284,10 @@
 						success: function() {
 							window.location="https://localhost/Formularios-Clinica/terapia_list.php";
 							$('#form_a').trigger("reset")
-							$('#form_b').trigger("reset")
-							$('#form_c').trigger("reset")
-							$('#form_d').trigger("reset")
 						},
 						error: function() {
 							window.location="https://localhost/Formularios-Clinica/terapia_list.php";
 							$('#form_a').trigger("reset")
-							$('#form_b').trigger("reset")
-							$('#form_c').trigger("reset")
-							$('#form_d').trigger("reset")
 						}
 					});
 				}

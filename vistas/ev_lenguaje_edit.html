@@ -16,7 +16,7 @@
             <h3 class="caja-title">EVALUACIÓN DEL LENGUAJE</h3>
         </div>
         <div class="caja-body">
-            <input type="hidden" name="id_form" value="{{ id_form }}">
+            <input type="hidden" id="id_form" name="id_form" value="{{ id_form }}">
             <table>
                 <tbody>
                     <tr>
@@ -25,7 +25,7 @@
                                 <label for="id_nombre">Nombre:</label>
                                 <br>
                                 <select id="id_nombre" name="nombre" class="select2 users-select">
-                                    <option value="{{ p.0.nombre }}"><strong>{{ p.0.nombre }}</strong></option>
+                                    <option value="{{ id_paciente }}"><strong>{{ p.0.nombre }}</strong></option>
                                     {% for users in usuarios %}
                                     <option value="{{ users.ID }}">{{ users.user_nicename }}</option>
                                     {% endfor %}
@@ -3358,7 +3358,7 @@
             </div>
         </div>
         <div class="caja-footer">
-            <a class="btn btn-link" id="btn_cancelar">Cancelar</a>
+            <a href="ev_lenguaje_list.php" class="btn btn-link" id="btn_cancelar">Cancelar</a>
             <button type="submit" class="btn btn-primary" id="btn_pragmatico">Guardar</button>
         </div>
     </div>
@@ -3376,13 +3376,6 @@
     $activo.addClass("active")
     $label = $("label")
     $label.addClass("active")
-
-    var cancelar_form  = document.getElementById('btn_cancelar');
-    cancelar_form.addEventListener('click', function(e){
-        e.preventDefault();
-
-        window.location="http://localhost/Formularios-Clinica/ev_articulacion_list.php";
-    });
     
     /*
     *=================================== INICIAR SELECT2 ===================================
@@ -3404,7 +3397,7 @@
 
                     for( var i = 0; i < elements.length; ++i ) {
                         var name = elements[i].name
-                        var value = elements[i].val()
+                        var value = elements[i].value
 
                         if( name ) {
                             obj[ name ] = value
@@ -3422,6 +3415,7 @@
                         url: "insertar_ev_lenguaje.php",
                         data: {
                             'action': "update",
+                            'form': $('#id_form').val(),
                             'paciente': $('#id_nombre').val(),
                             'data': toJSON
                         },
@@ -3429,12 +3423,12 @@
                         success: function() {
                             //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
                             // do what ever you want with the server response
-                            window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
-                            $('#evlenguaje_update').reset();
+                            //window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
+                            //$('#evlenguaje_update').reset();
                         },
                         error: function() {
-                            window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
-                            $('#evlenguaje_update').reset();
+                            //window.location="https://localhost/Formularios-Clinica/ev_lenguaje_list.php";
+                            //$('#evlenguaje_update').reset();
                         }
                     });
 

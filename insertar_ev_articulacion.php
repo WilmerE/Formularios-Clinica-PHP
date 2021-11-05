@@ -4,6 +4,7 @@
   $conn = OpenCon();
 
   $action          = $_POST['action'];
+  $id_form         = $_POST['form'];
   $id_paciente     = $_POST['paciente'];
   $datajson        = $_POST['data'];
 
@@ -13,8 +14,7 @@
   	$consulta = "INSERT INTO tvx_form_evarticulacion VALUES (NULL, '$id_paciente', '$datajson')";
   }
   elseif ($action == 'update') {
-    $id          = $_POST['id_form'];
-    $consulta = "UPDATE tvx_form_evarticulacion SET `idpaciente`='$id_paciente', `data`='$datajson' WHERE `id`='$id'"; 
+    $consulta = "UPDATE tvx_form_evarticulacion SET `idpaciente`='$id_paciente', `data`='$datajson' WHERE `id`='$id_form'"; 
   } 
 
   $conn->query($consulta);
