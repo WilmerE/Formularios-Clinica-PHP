@@ -3923,6 +3923,11 @@
                         }
                     }
 
+                    nombre       = $('select[name="ea_nombre"] option:selected').text()
+                    console.log(nombre)
+                    obj["ea_nombre"] = nombre
+                    console.log(obj)
+
                     indexado[0] = obj
                     nivel3[0] = indexado
 
