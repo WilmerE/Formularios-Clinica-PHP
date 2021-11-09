@@ -3923,10 +3923,9 @@
                         }
                     }
 
-                    nombre       = $('select[name="ea_nombre"] option:selected').text()
-                    console.log(nombre)
-                    obj["ea_nombre"] = nombre
-                    console.log(obj)
+                    //Almacenar nombre del paciente no el id
+                    nombre       = $('select[name="nombre"] option:selected').text()
+                    obj["nombre"] = nombre
 
                     indexado[0] = obj
                     nivel3[0] = indexado
